@@ -327,7 +327,7 @@ const WIN_BTN =
 const WIN_BTN_PRIMARY =
   'inline-flex items-center justify-center gap-1.5 px-4 py-1.5 text-[13px] font-bold text-[#00156E] bg-gradient-to-b from-[#FFFFFF] via-[#E5F1FB] to-[#C4DCF3] border-2 border-[#003C74] rounded-[3px] shadow-[inset_0_1px_0_#fff] hover:from-[#FFFDF5] hover:to-[#FCE6A6] hover:border-[#E59700] cursor-pointer';
 
-export default function App() {
+function App() {
   // Điểm phục hồi giao diện: 'winforms' (Giao diện theo ảnh mẫu) | 'modern' (Điểm phục hồi gốc)
   const [uiStyle, setUiStyle] = useState('winforms');
   // Chế độ Admin (#ktskhoa365): Chỉ hiển thị 2 nút công cụ thiết kế trên máy Admin.
@@ -4776,7 +4776,7 @@ function doPost(e) {
   );
 }
     const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<MediCareClinicApp />);
+    root.render(<App />);
   </script>
 </body>
 </html>

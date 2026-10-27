@@ -318,7 +318,7 @@ const calculateAge = (dobString) => {
   return currentYear - birthYear;
 };
 
-export default function App() {
+function App() {
   const [activeTab, setActiveTab] = useState('tab1');
   const [patients, setPatients] = useState(INITIAL_PATIENTS);
   const [visits, setVisits] = useState(INITIAL_VISITS);
@@ -2662,7 +2662,7 @@ function doPost(e) {
 }
 
     const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<MediCareClinicApp />);
+    root.render(<App />);
   </script>
 </body>
 </html>
