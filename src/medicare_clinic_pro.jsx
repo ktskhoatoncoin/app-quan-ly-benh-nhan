@@ -1,3 +1,4 @@
+import { INITIAL_PATIENTS, INITIAL_VISITS } from './clinicData.js';
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
@@ -60,285 +61,7 @@ if (typeof window !== 'undefined') {
     const ShieldCheck = makeIcon(<><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></>);
     const Archive = makeIcon(<><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></>);
 
-const INITIAL_PATIENTS = [
-  {
-    id: 'BN0001',
-    name: 'Nguyễn Văn An',
-    dob: '1978-05-14',
-    gender: 'Nam',
-    phone: '0903123456',
-    relativePhone: '0903123456 (Bản thân)',
-    initialWeight: 72,
-    occupation: 'Kỹ sư xây dựng',
-    address: '124 Nguyễn Thị Minh Khai, Quận 3, TP.HCM',
-    medicalHistory: 'Tăng huyết áp vô căn (phát hiện 3 năm), Rối loạn lipid máu',
-    allergies: 'Dị ứng kháng sinh nhóm Penicillin',
-    pastParaclinical: 'X-Quang tim phổi thẳng (2024), ECG nhịp xoang 82 lần/phút',
-    pastMedications: 'Amlodipin 5mg, Lipanthyl 145mg',
-    imageFolderUrl: 'https://drive.google.com/drive/folders/demo-anh-bn0001',
-    createdAt: '2026-08-10'
-  },
-  {
-    id: 'BN0002',
-    name: 'Trần Thị Bích Ngọc',
-    dob: '1992-11-22',
-    gender: 'Nữ',
-    phone: '0918765432',
-    relativePhone: '0918765432 (Bản thân)',
-    initialWeight: 51,
-    occupation: 'Giáo viên tiểu học',
-    address: '45 Lê Văn Sỹ, Quận Phú Nhuận, TP.HCM',
-    medicalHistory: 'Viêm dạ dày tá tràng mạn tính, Trào ngược dạ dày thực quản (GERD)',
-    allergies: 'Không ghi nhận dị ứng',
-    pastParaclinical: 'Nội soi dạ dày (2025: Viêm hang vị xung huyết, Test HP -)',
-    pastMedications: 'Nexium 40mg, Phosphalugel',
-    imageFolderUrl: '',
-    createdAt: '2026-09-05'
-  },
-  {
-    id: 'BN0003',
-    name: 'Lê Hoàng Minh',
-    dob: '1965-02-18',
-    gender: 'Nam',
-    phone: '0989112233',
-    relativePhone: '0989112233 (Vợ: Mai 0989334455)',
-    initialWeight: 68,
-    occupation: 'Hưu trí',
-    address: '88 Phan Xích Long, Quận Bình Thạnh, TP.HCM',
-    medicalHistory: 'Đái tháo đường tuýp 2, Thoái hóa khớp gối 2 bên',
-    allergies: 'Dị ứng Ibuprofen (nổi mề đay)',
-    pastParaclinical: 'X-Quang khớp gối phải thẳng nghiêng, HbA1c 6.5%',
-    pastMedications: 'Glucophage 850mg, Glucosamin 1500mg',
-    imageFolderUrl: 'https://drive.google.com/drive/folders/demo-anh-bn0003',
-    createdAt: '2026-09-12'
-  },
-  {
-    id: 'BN0004',
-    name: 'Phạm Mai Phương',
-    dob: '2001-07-30',
-    gender: 'Nữ',
-    phone: '0934556677',
-    relativePhone: '0934556677 (Mẹ: Lan 0934112233)',
-    initialWeight: 50,
-    occupation: 'Nhân viên thiết kế',
-    address: '19 Nguyễn Hữu Cảnh, Quận Bình Thạnh, TP.HCM',
-    medicalHistory: 'Viêm mũi dị ứng thời tiết',
-    allergies: 'Hải sản, Phấn hoa',
-    pastParaclinical: 'Nội soi tai mũi họng',
-    pastMedications: 'Telfast 180mg, Avamys xịt mũi',
-    imageFolderUrl: '',
-    createdAt: '2026-10-18'
-  },
-  {
-    id: 'BN0005',
-    name: 'Võ Quốc Tuấn',
-    dob: '1984-04-09',
-    gender: 'Nam',
-    phone: '0977889900',
-    relativePhone: '0977889900 (Bản thân)',
-    initialWeight: 79,
-    occupation: 'Kinh doanh tự do',
-    address: '312 Cộng Hòa, Quận Tân Bình, TP.HCM',
-    medicalHistory: 'Gan nhiễm mỡ độ 1, Tăng acid uric máu',
-    allergies: 'Không ghi nhận dị ứng',
-    pastParaclinical: 'Siêu âm bụng tổng quát màu, Acid Uric máu (485 µmol/L)',
-    pastMedications: 'Feburic 40mg, Silymarin 140mg',
-    imageFolderUrl: 'https://drive.google.com/drive/folders/demo-anh-bn0005',
-    createdAt: '2026-10-20'
-  }
-];
-
-const INITIAL_VISITS = [
-  {
-    visitId: 'LK261025-01',
-    patientId: 'BN0001',
-    visitDate: '2026-10-25',
-    height: 168,
-    weight: 72,
-    bp: '145/90',
-    pulse: 82,
-    symptoms: 'Đau đầu vùng chẩm buổi sáng, chóng mặt nhẹ khi thay đổi tư thế',
-    diagnosis: 'Tăng huyết áp độ 1 - Rối loạn tiền đình ngoại biên',
-    diseaseCategory: 'Tim mạch - Huyết áp',
-    followUpDate: '2026-11-08',
-    doctorNotes: 'Hạn chế ăn mặn, tập đi bộ nhẹ 30 phút/ngày, đo huyết áp tại nhà sáng/tối',
-    verbatimTreatment: 'Amlodipin 5mg x14j, Betahistin 16mg x14j, Ginkgo Biloba 120mg x14j = 310k',
-    consultationFee: 150000,
-    paymentStatus: 'Đã thu',
-    prescriptions: [
-      { id: 'T1', drugName: 'Amlodipin 5mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 0, days: 14, price: 3500, note: 'Uống sau ăn sáng' },
-      { id: 'T2', drugName: 'Betahistin 16mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 1, days: 14, price: 4200, note: 'Uống sau ăn sáng - tối' },
-      { id: 'T3', drugName: 'Ginkgo Biloba 120mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 1, evening: 0, days: 14, price: 5000, note: 'Uống sau ăn' }
-    ],
-    labs: [
-      { id: 'XN1', type: 'Thử máu', name: 'Xét nghiệm mỡ máu (Cholesterol, Triglyceride, HDL, LDL)', result: 'Cholesterol toàn phần: 5.8 mmol/L (tăng nhẹ), Triglyceride: 2.3 mmol/L', cost: 220000, status: 'Đã có KQ', attachment: 'KQ_MoMau_BN0001.pdf' },
-      { id: 'XN2', type: 'Điện tim', name: 'Điện tâm đồ (ECG) 12 chuyển đạo', result: 'Nhịp xoang đều 82 lần/phút, trục trung gian', cost: 100000, status: 'Đã có KQ', attachment: 'ECG_BN0001.png' }
-    ]
-  },
-  {
-    visitId: 'LK260920-01',
-    patientId: 'BN0001',
-    visitDate: '2026-09-20',
-    height: 168,
-    weight: 73,
-    bp: '150/95',
-    pulse: 84,
-    symptoms: 'Mệt mỏi, nặng đầu về chiều',
-    diagnosis: 'Tăng huyết áp vô căn',
-    diseaseCategory: 'Tim mạch - Huyết áp',
-    followUpDate: '2026-10-25',
-    doctorNotes: 'Theo dõi đáp ứng thuốc hạ áp tuần đầu',
-    consultationFee: 150000,
-    paymentStatus: 'Đã thu',
-    prescriptions: [
-      { id: 'T4', drugName: 'Amlodipin 5mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 0, days: 30, price: 3500, note: 'Uống sau ăn sáng' }
-    ],
-    labs: []
-  },
-  {
-    visitId: 'LK261025-02',
-    patientId: 'BN0002',
-    visitDate: '2026-10-25',
-    height: 158,
-    weight: 51,
-    bp: '110/70',
-    pulse: 76,
-    symptoms: 'Đau âm ỉ vùng thượng vị, ợ chua nhiều về đêm, đầy bụng khó tiêu',
-    diagnosis: 'Trào ngược dạ dày thực quản (GERD) - Viêm hang vị dạ dày',
-    diseaseCategory: 'Tiêu hóa - Gan mật',
-    followUpDate: '2026-11-01',
-    doctorNotes: 'Kiêng đồ chua cay, cà phê, nước có gas; không nằm ngay sau khi ăn 2 tiếng',
-    verbatimTreatment: 'Esomeprazol 40mg x14j, Domperidon 10mg x7j, Phosphalugel x7j = 190k',
-    consultationFee: 150000,
-    paymentStatus: 'Chưa thu',
-    prescriptions: [
-      { id: 'T5', drugName: 'Esomeprazol 40mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 0, days: 14, price: 8500, note: 'Uống trước ăn sáng 30 phút' },
-      { id: 'T6', drugName: 'Domperidon 10mg', unit: 'Viên', morning: 1, noon: 1, afternoon: 0, evening: 1, days: 7, price: 2500, note: 'Uống trước ăn 15 phút' },
-      { id: 'T7', drugName: 'Phosphalugel (Sữa dạ dày)', unit: 'Gói', morning: 0, noon: 1, afternoon: 0, evening: 1, days: 7, price: 6500, note: 'Uống sau ăn 1 giờ hoặc khi đau' }
-    ],
-    labs: [
-      { id: 'XN3', type: 'Xét nghiệm', name: 'Test hơi thở tìm vi khuẩn H.Pylori (C13)', result: 'Âm tính (-)', cost: 350000, status: 'Đã có KQ', attachment: 'Test_HP_BN0002.pdf' }
-    ]
-  },
-  {
-    visitId: 'LK261024-01',
-    patientId: 'BN0003',
-    visitDate: '2026-10-24',
-    height: 165,
-    weight: 68,
-    bp: '130/80',
-    pulse: 78,
-    symptoms: 'Đau khớp gối phải khi lên cầu thang, lục cục khớp, tê nhẹ bàn chân',
-    diagnosis: 'Thoái hóa khớp gối phải - Đái tháo đường tuýp 2 ổn định',
-    diseaseCategory: 'Cơ xương khớp - Nội tiết',
-    followUpDate: '2026-10-25',
-    doctorNotes: 'Tái khám đọc kết quả X-quang khớp gối và xét nghiệm HbA1c',
-    verbatimTreatment: 'Metformin 850mg x15j, Glucosamin 1500mg x15j, Celecoxib 200mg x5j = 270k',
-    consultationFee: 150000,
-    paymentStatus: 'Đã thu',
-    prescriptions: [
-      { id: 'T8', drugName: 'Metformin 850mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 1, days: 15, price: 3200, note: 'Uống ngay sau ăn' },
-      { id: 'T9', drugName: 'Glucosamin Sulfate 1500mg', unit: 'Gói', morning: 1, noon: 0, afternoon: 0, evening: 0, days: 15, price: 9000, note: 'Pha nước uống sau ăn sáng' },
-      { id: 'T10', drugName: 'Celecoxib 200mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 0, days: 5, price: 7500, note: 'Uống sau ăn no' }
-    ],
-    labs: [
-      { id: 'XN4', type: 'Chụp X-Quang', name: 'X-Quang khớp gối phải (Thẳng - Nghiêng)', result: 'Hẹp khe khớp đùi chày trong, gai xương nhỏ bờ khớp', cost: 180000, status: 'Đã có KQ', attachment: 'XQuang_GoiP_BN0003.jpg' },
-      { id: 'XN5', type: 'Thử máu', name: 'Đường huyết đói (Glucose) & HbA1c', result: 'Glucose: 6.4 mmol/L | HbA1c: 6.5% (Kiểm soát tốt)', cost: 250000, status: 'Đã có KQ', attachment: 'XN_DuongHuyet_BN0003.pdf' }
-    ]
-  },
-  {
-    visitId: 'LK261022-01',
-    patientId: 'BN0004',
-    visitDate: '2026-10-22',
-    height: 162,
-    weight: 50,
-    bp: '105/65',
-    pulse: 72,
-    symptoms: 'Hắt hơi liên tục buổi sáng, chảy nước mũi trong, ngứa mũi',
-    diagnosis: 'Viêm mũi dị ứng cấp do thời tiết',
-    diseaseCategory: 'Tai Mũi Họng - Hô hấp',
-    followUpDate: '2026-10-29',
-    doctorNotes: 'Rửa mũi bằng nước muối sinh lý ấm mỗi tối, đeo khẩu trang khi ra ngoài',
-    consultationFee: 150000,
-    paymentStatus: 'Đã thu',
-    prescriptions: [
-      { id: 'T11', drugName: 'Fexofenadin 180mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 0, days: 7, price: 5500, note: 'Uống sau ăn sáng (không gây buồn ngủ)' },
-      { id: 'T12', drugName: 'Xịt mũi Fluticason (Avamys)', unit: 'Chai', morning: 1, noon: 0, afternoon: 0, evening: 1, days: 1, price: 185000, note: 'Xịt mỗi bên mũi 1 nhát sáng - tối' }
-    ],
-    labs: []
-  },
-  {
-    visitId: 'LK261020-01',
-    patientId: 'BN0005',
-    visitDate: '2026-10-20',
-    height: 172,
-    weight: 79,
-    bp: '125/80',
-    pulse: 75,
-    symptoms: 'Khám sức khỏe tổng quát, đau nhẹ ngón chân cái bên trái sau ăn tiệc',
-    diagnosis: 'Tăng Acid Uric máu - Theo dõi Gout cấp / Gan nhiễm mỡ độ 1',
-    diseaseCategory: 'Cơ xương khớp - Nội tiết',
-    followUpDate: '2026-11-05',
-    doctorNotes: 'Kiêng rượu bia, hải sản, thịt đỏ, nội tạng động vật; uống đủ 2.5 lít nước/ngày',
-    consultationFee: 150000,
-    paymentStatus: 'Đã thu',
-    prescriptions: [
-      { id: 'T13', drugName: 'Febuxostat 40mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 0, days: 15, price: 8000, note: 'Uống sau ăn sáng' },
-      { id: 'T14', drugName: 'Silymarin 140mg (Bổ gan)', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 1, days: 15, price: 4500, note: 'Uống sau ăn' }
-    ],
-    labs: [
-      { id: 'XN6', type: 'Thử máu', name: 'Acid Uric máu & Men gan (AST, ALT, GGT)', result: 'Acid Uric: 485 µmol/L (Cao) | AST: 42 U/L, ALT: 55 U/L', cost: 240000, status: 'Đã có KQ', attachment: 'XN_SinhHoa_BN0005.pdf' },
-      { id: 'XN7', type: 'Siêu âm', name: 'Siêu âm bụng tổng quát màu', result: 'Gan tăng sáng nhẹ (Gan nhiễm mỡ độ 1), thận không sỏi', cost: 200000, status: 'Đã có KQ', attachment: 'SieuAm_BN0005.jpg' }
-    ]
-  }
-];
-
-// Danh mục thuốc mẫu giúp bác sĩ chọn nhanh
-const DRUG_CATALOG = [
-  { name: 'Amlodipin 5mg', unit: 'Viên', price: 3500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Atorvastatin 20mg (Lipitor)', unit: 'Viên', price: 14000, defaultNote: 'Uống sau ăn tối', m: 0, n: 0, a: 0, e: 1 },
-  { name: 'Rosuvastatin 10mg (Crestor)', unit: 'Viên', price: 16000, defaultNote: 'Uống sau ăn tối', m: 0, n: 0, a: 0, e: 1 },
-  { name: 'Telmisartan 40mg (Micardis)', unit: 'Viên', price: 9500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Coversyl 5mg (Perindopril)', unit: 'Viên', price: 8000, defaultNote: 'Uống trước ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Concor 2.5mg (Bisoprolol)', unit: 'Viên', price: 5000, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Concor 5mg (Bisoprolol)', unit: 'Viên', price: 6500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Metformin 850mg (Glucophage)', unit: 'Viên', price: 3200, defaultNote: 'Uống ngay sau ăn', m: 1, n: 0, a: 0, e: 1 },
-  { name: 'Glucophage XR 750mg', unit: 'Viên', price: 5500, defaultNote: 'Uống sau ăn tối', m: 0, n: 0, a: 0, e: 1 },
-  { name: 'Diamicron MR 30mg', unit: 'Viên', price: 4200, defaultNote: 'Uống trước ăn sáng 15 phút', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Esomeprazol 40mg (Nexium)', unit: 'Viên', price: 11000, defaultNote: 'Uống trước ăn sáng 30 phút', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Phosphalugel (Sữa dạ dày)', unit: 'Gói', price: 6500, defaultNote: 'Uống sau ăn 1 giờ hoặc khi đau', m: 0, n: 1, a: 0, e: 1 },
-  { name: 'Domperidon 10mg (Motilium)', unit: 'Viên', price: 2500, defaultNote: 'Uống trước ăn 15 phút', m: 1, n: 1, a: 0, e: 1 },
-  { name: 'Betahistin 16mg (Betaserc)', unit: 'Viên', price: 4800, defaultNote: 'Uống sau ăn no', m: 1, n: 0, a: 0, e: 1 },
-  { name: 'Betaserc 24mg', unit: 'Viên', price: 7500, defaultNote: 'Uống sau ăn no', m: 1, n: 0, a: 0, e: 1 },
-  { name: 'Ginkgo Biloba 120mg (Tanakan)', unit: 'Viên', price: 5000, defaultNote: 'Uống sau ăn', m: 1, n: 0, a: 1, e: 0 },
-  { name: 'Medrol 4mg (Methylprednisolon)', unit: 'Viên', price: 2500, defaultNote: 'Uống sau ăn sáng no', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Medrol 16mg (Methylprednisolon)', unit: 'Viên', price: 6000, defaultNote: 'Uống sau ăn sáng no', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Celecoxib 200mg (Celebrex)', unit: 'Viên', price: 7500, defaultNote: 'Uống sau ăn no', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Glucosamin Sulfate 1500mg', unit: 'Gói', price: 9000, defaultNote: 'Pha nước uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Fexofenadin 180mg (Telfast)', unit: 'Viên', price: 5500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Desloratadin 5mg (Aerius)', unit: 'Viên', price: 7500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Augmentin 1g (Amox/Clav)', unit: 'Viên', price: 16000, defaultNote: 'Uống ngay sau ăn no', m: 1, n: 0, a: 0, e: 1 },
-  { name: 'Cefixim 200mg', unit: 'Viên', price: 8000, defaultNote: 'Uống sau ăn sáng - tối', m: 1, n: 0, a: 0, e: 1 },
-  { name: 'Febuxostat 40mg (Feburic)', unit: 'Viên', price: 8500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Lipanthyl 145mg (Fenofibrat)', unit: 'Viên', price: 12500, defaultNote: 'Uống sau ăn chính', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Daflon 500mg', unit: 'Viên', price: 4500, defaultNote: 'Uống sau ăn trưa - tối', m: 0, n: 1, a: 0, e: 1 },
-  { name: 'Paracetamol 500mg', unit: 'Viên', price: 1500, defaultNote: 'Uống sau ăn khi đau/sốt > 38.5 độ', m: 1, n: 1, a: 0, e: 1 },
-  { name: 'Vitamin 3B (B1-B6-B12)', unit: 'Viên', price: 2000, defaultNote: 'Uống sau ăn sáng - trưa', m: 1, n: 1, a: 0, e: 0 }
-];
-
-// Danh mục xét nghiệm / X-Quang mẫu
-const LAB_CATALOG = [
-  { type: 'Thử máu', name: 'Công thức máu 18 thông số (CBC)', cost: 120000 },
-  { type: 'Thử máu', name: 'Xét nghiệm mỡ máu (Cholesterol, Triglyceride, HDL, LDL)', cost: 220000 },
-  { type: 'Thử máu', name: 'Đường huyết đói (Glucose) & HbA1c', cost: 250000 },
-  { type: 'Thử máu', name: 'Acid Uric máu & Chức năng gan thận (AST, ALT, Creatinin)', cost: 240000 },
-  { type: 'Chụp X-Quang', name: 'X-Quang tim phổi thẳng kỹ thuật số', cost: 160000 },
-  { type: 'Chụp X-Quang', name: 'X-Quang cột sống thắt lưng (Thẳng - Nghiêng)', cost: 190000 },
-  { type: 'Chụp X-Quang', name: 'X-Quang khớp gối (Thẳng - Nghiêng)', cost: 180000 },
-  { type: 'Siêu âm', name: 'Siêu âm bụng tổng quát màu', cost: 200000 },
-  { type: 'Điện tim', name: 'Điện tâm đồ (ECG) 12 chuyển đạo', cost: 100000 },
-  { type: 'Xét nghiệm', name: 'Test hơi thở tìm vi khuẩn H.Pylori (C13)', cost: 350000 }
-];
+// Cơ sở dữ liệu 522 bệnh nhân & 2.321 lượt khám đã nạp từ clinicData.js
 
 // Hàm hỗ trợ định dạng tiền tệ VNĐ
 const formatVND = (amount) => {
@@ -514,7 +237,18 @@ function MediCareClinicApp() {
   const [patients, setPatients] = useState(() => {
     try {
       const saved = localStorage.getItem('MEDICARE_PATIENTS_V1');
-      return saved ? JSON.parse(saved) : INITIAL_PATIENTS;
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        const isDemo = Array.isArray(parsed) && (
+          parsed.length <= 5 ||
+          parsed.some(p => p.name === 'Nguyễn Văn An' || p.name === 'Nguy?n Van An')
+        );
+        if (!isDemo && parsed.length > 0) return parsed;
+      }
+      try {
+        localStorage.setItem('MEDICARE_PATIENTS_V1', JSON.stringify(INITIAL_PATIENTS));
+      } catch (e) {}
+      return INITIAL_PATIENTS;
     } catch (e) {
       return INITIAL_PATIENTS;
     }
@@ -522,16 +256,27 @@ function MediCareClinicApp() {
   const [visits, setVisits] = useState(() => {
     try {
       const saved = localStorage.getItem('MEDICARE_VISITS_V1');
-      return saved ? JSON.parse(saved) : INITIAL_VISITS;
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        const isDemo = Array.isArray(parsed) && (
+          parsed.length <= 5 ||
+          parsed.some(v => v.visitId === 'LK261025-01')
+        );
+        if (!isDemo && parsed.length > 0) return parsed;
+      }
+      try {
+        localStorage.setItem('MEDICARE_VISITS_V1', JSON.stringify(INITIAL_VISITS));
+      } catch (e) {}
+      return INITIAL_VISITS;
     } catch (e) {
       return INITIAL_VISITS;
     }
   });
   const [sheetWebAppUrl, setSheetWebAppUrl] = useState(() => {
     try {
-      return localStorage.getItem('MEDICARE_SHEET_URL_V1') || '';
+      return localStorage.getItem('MEDICARE_SHEET_URL_V1') || 'https://script.google.com/macros/s/AKfycbwNfuqRnn-9LgHiwB1ZI3I3ftt1bkdgc-rnphOjj14HMSD7UQxinJNhy_MtgJogvH14/exec';
     } catch (e) {
-      return '';
+      return 'https://script.google.com/macros/s/AKfycbwNfuqRnn-9LgHiwB1ZI3I3ftt1bkdgc-rnphOjj14HMSD7UQxinJNhy_MtgJogvH14/exec';
     }
   });
 
@@ -559,7 +304,7 @@ function MediCareClinicApp() {
 
   // State bệnh nhân & lượt khám đang chọn ở Tab 2 & Tab 3
   const [selectedPatientId, setSelectedPatientId] = useState('BN0001');
-  const [selectedVisitId, setSelectedVisitId] = useState('LK261025-01');
+  const [selectedVisitId, setSelectedVisitId] = useState(() => (INITIAL_VISITS[0] ? INITIAL_VISITS[0].visitId : 'LK000001'));
   const [isDeletePatientModalOpen, setIsDeletePatientModalOpen] = useState(false);
 
   // State modal thêm bệnh nhân mới
@@ -895,6 +640,20 @@ function MediCareClinicApp() {
       showToast('Đã tải file MediCare_Clinic_Pro_Standalone.html! Anh hãy chọn lưu vào J:\AI-LAB\app-quan-ly-benh-nhan');
     } catch (e) {
       showToast('Anh có thể nhấn Ctrl + S (Lưu trang) vào thư mục J:\AI-LAB\app-quan-ly-benh-nhan');
+    }
+  };
+
+  const handleResetToRealData = () => {
+    if (window.confirm(`Bạn có chắc muốn nạp lại dữ liệu gốc của phòng khám (${INITIAL_PATIENTS.length} bệnh nhân & ${INITIAL_VISITS.length} lượt khám)?`)) {
+      setPatients(INITIAL_PATIENTS);
+      setVisits(INITIAL_VISITS);
+      if (INITIAL_PATIENTS[0]) setSelectedPatientId(INITIAL_PATIENTS[0].id);
+      if (INITIAL_VISITS[0]) setSelectedVisitId(INITIAL_VISITS[0].visitId);
+      try {
+        localStorage.setItem('MEDICARE_PATIENTS_V1', JSON.stringify(INITIAL_PATIENTS));
+        localStorage.setItem('MEDICARE_VISITS_V1', JSON.stringify(INITIAL_VISITS));
+      } catch (e) {}
+      showToast(`Đã nạp thành công ${INITIAL_PATIENTS.length} bệnh nhân & ${INITIAL_VISITS.length} lượt khám gốc!`);
     }
   };
 
