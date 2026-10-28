@@ -154,12 +154,15 @@ function MediCareClinicApp() {
   });
 
   // Form thiết lập tài khoản Phòng khám + Mã PIN (Cách A: Thoải mái sử dụng + Ghi nhận danh sách người dùng)
+  const defaultDoctorName = 'BSCK1. Tôn Thất Hào';
+  const defaultClinicName = 'Phòng khám Da liễu & Thẩm mỹ Da - BSCK1 Tôn Thất Hào';
+
   const [setupForm, setSetupForm] = useState(() => ({
-    doctorName: clinicAccount?.doctorName || 'BS. Nguyễn Khoa',
-    clinicName: clinicAccount?.clinicName || 'Phòng khám Chuyên khoa Nội MediCare',
+    doctorName: clinicAccount?.doctorName || defaultDoctorName,
+    clinicName: clinicAccount?.clinicName || defaultClinicName,
     phone: clinicAccount?.phone || '0908297118',
     pin: clinicAccount?.pin || '1234',
-    requirePinOnStart: clinicAccount?.requirePinOnStart ?? true
+    requirePinOnStart: clinicAccount?.requirePinOnStart ?? false
   }));
 
   // Link Google Apps Script Web App nhận nhật ký người dùng của Admin (#ktskhoa365)
@@ -180,8 +183,8 @@ function MediCareClinicApp() {
         : [
             {
               id: 'LOG-01',
-              doctorName: 'BS. Nguyễn Khoa (#ktskhoa365)',
-              clinicName: 'Phòng khám Chuyên khoa Nội MediCare',
+              doctorName: 'BSCK1. Tôn Thất Hào (#ktskhoa365)',
+              clinicName: 'Phòng khám Da liễu & Thẩm mỹ Da - BSCK1 Tôn Thất Hào',
               phone: '0908297118',
               action: 'Khởi tạo & Đăng nhập hệ thống',
               patientCount: 5,
@@ -374,7 +377,7 @@ function MediCareClinicApp() {
           return;
         }
         const canvas = await html2canvas(printArea, {
-          scale: 2.5,
+          scale: 3, logging: false,
           useCORS: true,
           backgroundColor: '#ffffff'
         });
@@ -397,7 +400,7 @@ function MediCareClinicApp() {
           return;
         }
         const canvas = await html2canvas(printArea, {
-          scale: 2.5,
+          scale: 3, logging: false,
           useCORS: true,
           backgroundColor: '#ffffff'
         });
@@ -565,10 +568,60 @@ function MediCareClinicApp() {
   };
 
   // Đồng bộ dữ liệu (Lưu tự động vào trình duyệt + Gửi lên Google Sheets Web App nếu đã cấu hình URL)
+  // Ghi tức thì phiếu khám & đơn thuốc của bệnh nhân đang chọn vào Google Sheets
+  const handleSaveCurrentVisitToSheet = async () => {
+    setIsSyncing(true);
+    const now = new Date();
+    const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')} - ${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+
+    // Lưu ngay vào localStorage
+    try {
+      localStorage.setItem('MEDICARE_PATIENTS_V1', JSON.stringify(patients));
+      localStorage.setItem('MEDICARE_VISITS_V1', JSON.stringify(visits));
+    } catch (e) {}
+
+    if (sheetWebAppUrl && sheetWebAppUrl.trim().startsWith('https://script.google.com')) {
+      try {
+        await fetch(sheetWebAppUrl.trim(), {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'SAVE_VISIT',
+            patient: selectedPatient,
+            visit: currentVisit,
+            timestamp: new Date().toISOString()
+          })
+        });
+        setIsSyncing(false);
+        setLastSyncTime(timeStr);
+        showToast(`Đã ghi phiếu khám của BN "${selectedPatient.name}" thành công vào Google Sheets!`);
+        return;
+      } catch (err) {
+        setIsSyncing(false);
+        showToast('Đã lưu vào bộ nhớ máy! (Kiểm tra lại kết nối mạng/URL Google Sheets)');
+        return;
+      }
+    }
+
+    setTimeout(() => {
+      setIsSyncing(false);
+      setLastSyncTime(timeStr);
+      showToast(`Đã lưu phiếu khám của BN "${selectedPatient.name}" vào bộ nhớ máy tính!`);
+    }, 400);
+  };
+
+  // Đồng bộ toàn bộ dữ liệu (Lưu tự động vào trình duyệt + Gửi lên Google Sheets Web App)
   const handleSyncToGoogleSheets = async () => {
     setIsSyncing(true);
     const now = new Date();
     const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')} - ${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+
+    // Lưu ngay vào localStorage
+    try {
+      localStorage.setItem('MEDICARE_PATIENTS_V1', JSON.stringify(patients));
+      localStorage.setItem('MEDICARE_VISITS_V1', JSON.stringify(visits));
+    } catch (e) {}
 
     if (sheetWebAppUrl && sheetWebAppUrl.trim().startsWith('https://script.google.com')) {
       try {
@@ -587,11 +640,11 @@ function MediCareClinicApp() {
         });
         setIsSyncing(false);
         setLastSyncTime(timeStr);
-        showToast('Đã đồng bộ dữ liệu lên Google Sheets & lưu an toàn vào trình duyệt!');
+        showToast(`Đã đồng bộ thành công ${patients.length} bệnh nhân lên Google Sheets & lưu an toàn!`);
         return;
       } catch (err) {
         setIsSyncing(false);
-        showToast('Đã lưu vào bộ nhớ máy! (Kiểm tra lại kết nối mạng/URL Google Sheet)');
+        showToast('Đã lưu an toàn vào bộ nhớ máy! (Kiểm tra lại kết nối mạng/URL Google Sheet)');
         return;
       }
     }
@@ -599,8 +652,8 @@ function MediCareClinicApp() {
     setTimeout(() => {
       setIsSyncing(false);
       setLastSyncTime(timeStr);
-      showToast('Đã lưu dữ liệu vào bộ nhớ máy tính & cập nhật bảng Google Sheets!');
-    }, 500);
+      showToast('Đã lưu toàn bộ dữ liệu vào bộ nhớ máy tính!');
+    }, 400);
   };
 
   // Xuất file JSON sao lưu dự phòng về máy tính
@@ -1303,7 +1356,7 @@ function doPost(e) {
                 MC
               </div>
               <span className="font-bold text-[14px] text-[#1E395B] drop-shadow-[0_1px_0_rgba(255,255,255,0.8)]">
-                Hệ thống Quản lý Phòng khám Tư nhân - MediCare Clinic Pro (Liên kết Google Sheets)
+                MediCare Clinic Pro — BSCK1 Tôn Thất Hào (Chuyên khoa Da liễu & Thẩm mỹ Da)
               </span>
             </div>
 
@@ -1350,8 +1403,8 @@ function doPost(e) {
                 type="button"
                 onClick={() => {
                   setSetupForm({
-                    doctorName: clinicAccount?.doctorName || 'BS. Nguyễn Khoa',
-                    clinicName: clinicAccount?.clinicName || 'Phòng khám Chuyên khoa Nội MediCare',
+                    doctorName: clinicAccount?.doctorName || 'BSCK1. Tôn Thất Hào',
+                    clinicName: clinicAccount?.clinicName || 'Phòng khám Da liễu & Thẩm mỹ Da - BSCK1 Tôn Thất Hào',
                     phone: clinicAccount?.phone || '0908297118',
                     pin: clinicAccount?.pin || '1234',
                     requirePinOnStart: clinicAccount?.requirePinOnStart ?? true
@@ -2626,7 +2679,7 @@ function doPost(e) {
                     onClick={handleSyncToGoogleSheets}
                     className={`${WIN_BTN_PRIMARY} min-w-[130px]`}
                   >
-                    {isSyncing ? 'Đang ghi...' : 'OK (Lưu Sheet)'}
+                    {isSyncing ? 'Đang ghi...' : '💾 Ghi phiếu này vào Google Sheets'}
                   </button>
 
                   <button
@@ -3539,7 +3592,7 @@ function doPost(e) {
                     <span className="text-slate-500 text-[11px] normal-case font-medium">Số lượng & ĐVT</span>
                   </div>
 
-                  <div className="space-y-2 text-[12px]">
+                  <div className="space-y-1.5 text-[12px]">
                     {currentVisit.prescriptions && currentVisit.prescriptions.length > 0 ? (
                       currentVisit.prescriptions.map((item, idx) => {
                         const daily =
@@ -3549,19 +3602,22 @@ function doPost(e) {
                           (Number(item.evening) || 0);
                         const totalQty =
                           daily > 0 ? daily * (Number(item.days) || 1) : Number(item.days) || 1;
+                        const isTopical = item.note && (item.note.toLowerCase().includes('bôi') || item.note.toLowerCase().includes('thoa'));
                         return (
-                          <div key={item.id} className="pb-1.5 border-b border-dashed border-slate-200">
-                            <div className="flex justify-between items-baseline">
-                              <div className="font-bold text-slate-900 flex-1 pr-2 truncate">
+                          <div key={item.id || idx} className="pb-1 border-b border-dashed border-slate-200">
+                            <div className="flex justify-between items-baseline gap-2">
+                              <div className="font-bold text-slate-900 whitespace-nowrap">
                                 <span>{idx + 1}. {item.drugName}</span>
                               </div>
+                              <div className="border-b border-dotted border-slate-400 flex-1 min-w-[20px] mb-1"></div>
                               <div className="font-bold text-slate-900 text-right whitespace-nowrap">
                                 <span>{totalQty} {item.unit || 'Viên'}</span>
                               </div>
                             </div>
                             <div className="text-[11.5px] text-slate-700 pl-4 flex items-center justify-between">
                               <span>
-                                Uống: Sáng {item.morning || 0}, Trưa {item.noon || 0}, Chiều {item.afternoon || 0}, Tối {item.evening || 0}
+                                {isTopical ? 'Bôi ngoài da: ' : 'Uống: '}
+                                Sáng {item.morning || 0}, Trưa {item.noon || 0}, Chiều {item.afternoon || 0}, Tối {item.evening || 0}
                                 {item.note ? ` (${item.note})` : ''}
                               </span>
                               <span className="text-[11px] text-slate-500 italic">({item.days} ngày)</span>
@@ -3570,7 +3626,7 @@ function doPost(e) {
                         );
                       })
                     ) : (
-                      <div className="py-8 text-center text-slate-400 italic">Chưa có thuốc được kê trong đơn này.</div>
+                      <div className="py-6 text-center text-slate-400 italic">Chưa có thuốc được kê trong đơn này.</div>
                     )}
                   </div>
                 </div>

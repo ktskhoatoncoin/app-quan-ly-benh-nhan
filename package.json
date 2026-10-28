@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "merge-excel": "node merge_excel_to_sheets.js"
+    "merge-excel": "node merge_excel_to_sheets.js",
+    "import-excel": "node scripts/import_26_excel_books.js"
   },
   "dependencies": {
     "html2canvas": "^1.4.1",

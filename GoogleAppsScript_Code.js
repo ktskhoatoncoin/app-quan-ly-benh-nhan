@@ -67,6 +67,7 @@ function moThuMucAnhGoc() {
 function doGet(e) {
   const lock = LockService.getScriptLock();
   lock.tryLock(15000);
+  const callback = (e && e.parameter && e.parameter.callback) ? e.parameter.callback : null;
 
   try {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -76,9 +77,11 @@ function doGet(e) {
       return jsonResponse({
         status: "success",
         message: "MediCare Clinic API online và sẵn sàng kết nối!",
+        doctorName: "BSCK1. Tôn Thất Hào",
+        specialty: "Chuyên khoa Da liễu & Thẩm mỹ Da",
         version: "2.10",
         timestamp: new Date().toISOString()
-      });
+      }, callback);
     }
 
     // Đọc toàn bộ danh sách bệnh nhân, lượt khám, đơn thuốc
@@ -89,6 +92,8 @@ function doGet(e) {
 
     return jsonResponse({
       status: "success",
+      doctorName: "BSCK1. Tôn Thất Hào",
+      clinicName: "Phòng khám Da liễu & Thẩm mỹ Da - BSCK1 Tôn Thất Hào",
       totalPatients: patients.length,
       totalVisits: visits.length,
       totalPrescriptions: prescriptions.length,
@@ -98,9 +103,9 @@ function doGet(e) {
       prescriptions: prescriptions,
       labs: labs,
       timestamp: new Date().toISOString()
-    });
+    }, callback);
   } catch (err) {
-    return jsonResponse({ status: "error", message: err.toString() });
+    return jsonResponse({ status: "error", message: err.toString() }, callback);
   } finally {
     lock.releaseLock();
   }
@@ -173,6 +178,33 @@ function doPost(e) {
           totalPatientsInSheet: bnResult.totalRows,
           visitsProcessed: visitResult.processedVisits
         },
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    // --------------------------------------------------------------------------
+    // A2. GHI TỨC THÌ 1 PHIẾU KHÁM & ĐƠN THUỐC (SAVE_VISIT / GHI_PHIEU)
+    // --------------------------------------------------------------------------
+    if (action === "SAVE_VISIT" || action === "GHI_PHIEU") {
+      const patient = payload.patient;
+      const visit = payload.visit;
+      if (!patient || !visit) {
+        return jsonResponse({ status: "error", message: "Thiếu thông tin bệnh nhân hoặc lượt khám" });
+      }
+
+      const sBN = ensureSheetWithHeaders(ss, "Benh_Nhan", HEADERS_BENH_NHAN);
+      const bnResult = smartMergePatients(sBN, [patient]);
+
+      const sLK = ensureSheetWithHeaders(ss, "Luot_Kham", HEADERS_LUOT_KHAM);
+      const sDT = ensureSheetWithHeaders(ss, "Don_Thuoc_Chi_Tiet", HEADERS_DON_THUOC);
+      const sDV = ensureSheetWithHeaders(ss, "Xet_Nghiem_Chi_Phi", HEADERS_XET_NGHIEM);
+      const visitResult = smartMergeVisits(sLK, sDT, sDV, [visit]);
+
+      return jsonResponse({
+        status: "success",
+        message: "Đã ghi nhận phiếu khám bệnh & đơn thuốc thành công vào Google Sheets!",
+        patientName: patient.name,
+        visitId: visit.visitId,
         timestamp: new Date().toISOString()
       });
     }
@@ -548,7 +580,11 @@ function normalizeKey(str) {
   return str.toString().trim().toLowerCase().replace(/\s+/g, " ");
 }
 
-function jsonResponse(data) {
+function jsonResponse(data, callback) {
+  if (callback) {
+    return ContentService.createTextOutput(callback + '(' + JSON.stringify(data) + ');')
+      .setMimeType(ContentService.MimeType.JAVASCRIPT);
+  }
   return ContentService.createTextOutput(JSON.stringify(data))
     .setMimeType(ContentService.MimeType.JSON);
 }

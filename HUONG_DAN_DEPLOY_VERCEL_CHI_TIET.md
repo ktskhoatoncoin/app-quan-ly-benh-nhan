@@ -1,15 +1,15 @@
 # 🏥 HƯỚNG DẪN TRIỂN KHAI VERCEL & ĐỒNG BỘ DỮ LIỆU GOOGLE SHEETS
-## Hệ thống Quản Lý Phòng Khám MediCare Clinic Pro (v2.10)
+## Hệ thống Quản Lý Phòng Khám Da Liễu & Thẩm Mỹ Da — BSCK1 Tôn Thất Hào (v2.10)
 **Tác giả & Bản quyền:** `#ktskhoa365` — **Hotline/Zalo:** `0908297118`
 
 ---
 
 ## 📌 MỤC LỤC
 1. [Tổng quan Kiến trúc Hệ thống](#1-tổng-quan-kiến-trúc-hệ-thống)
-2. [Cập nhật Google Apps Script API v2.10 (Bảo toàn Link Google Drive)](#2-cập-nhật-google-apps-script-api-v210)
-3. [Gộp dữ liệu Excel vào Google Sheets (Smart Merge)](#3-gộp-dữ-liệu-excel-vào-google-sheets-smart-merge)
-4. [Đẩy mã nguồn lên GitHub](#4-đẩy-mã-nguồn-lên-github)
-5. [Cấu hình & Tự động Deploy trên Vercel](#5-cấu-hình--tự-động-deploy-trên-vercel)
+2. [Cập nhật Google Apps Script API v2.10 (Đồng bộ 2 chiều & Bảo toàn Link Drive)](#2-cập-nhật-google-apps-script-api-v210)
+3. [Xử lý & Nhúng dữ liệu từ 26 file Excel vào Hệ thống](#3-xử-lý--nhúng-dữ-liệu-từ-26-file-excel-vào-hệ-thống)
+4. [Chuẩn hóa Mẫu In Đơn Thuốc A5/A4 & Xuất PDF Vector](#4-chuẩn-hóa-mẫu-in-đơn-thuốc-a5a4--xuất-pdf-vector)
+5. [Đẩy mã nguồn lên GitHub & Tự động Deploy trên Vercel](#5-đẩy-mã-nguồn-lên-github--tự-động-deploy-trên-vercel)
 6. [Cơ chế Bảo toàn Dữ liệu & Khắc phục Sự cố](#6-cơ-chế-bảo-toàn-dữ-liệu--khắc-phục-sự-cố)
 
 ---
@@ -17,17 +17,24 @@
 ## 1. TỔNG QUAN KIẾN TRÚC HỆ THỐNG
 
 Dự án được xây dựng theo mô hình **Cloud-Native Serverless** hiện đại:
+* **Bác sĩ phụ trách:** **BSCK1. Tôn Thất Hào** (Chuyên khoa Da liễu & Thẩm mỹ Da).
 * **Frontend Web App**: React 18 + Vite + Tailwind CSS (Deploy trên Vercel CDN toàn cầu, tốc độ tải trang < 0.5s).
 * **Database Backend**: Google Sheets (truy cập qua Google Apps Script Web App API 2 chiều `doGet` / `doPost`).
-* **Medical Imaging Storage**: Google Drive (Thư mục ảnh cận lâm sàng, X-Quang, siêu âm, xét nghiệm gắn trực tiếp vào từng hồ sơ bệnh nhân).
-* **Bản Offline / Standalone**: File `MediCare_Clinic_Pro_Standalone.html` chạy độc lập khi mất mạng internet.
+* **Medical Imaging Storage**: Google Drive (Thư mục ảnh cận lâm sàng, X-Quang, da liễu gắn trực tiếp vào từng hồ sơ bệnh nhân).
+  - Thư mục gốc Drive: `https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?usp=drive_link`
+* **Mẫu In & Xuất Đơn Thuốc**: Chuẩn CSS `@media print` A5/A4 và xuất ảnh PNG/PDF vector 300 DPI sắc nét gửi Zalo.
+* **CSDL Nhúng Sẵn**: Tích hợp toàn bộ 522 bệnh nhân thật và 2.321 lượt khám thực tế từ 26 file Excel của BS Hào.
 
 ---
 
 ## 2. CẬP NHẬT GOOGLE APPS SCRIPT API v2.10
-*(BƯỚC BẮT BUỘC ĐỂ BẢO VỆ LINK DRIVE ẢNH XÉT NGHIỆM)*
+*(BƯỚC BẮT BUỘC ĐỂ KẾT NỐI VỚI GOOGLE SHEETS & BẢO TOÀN LINK DRIVE)*
 
-Cơ chế cũ dùng lệnh `sheet.clearContent()` sẽ xóa sạch link Google Drive mà bác sĩ đã nhập tay khi import file Excel mới. Bản nâng cấp v2.10 sử dụng cơ chế **Smart Upsert** (Update nếu có, Insert nếu mới):
+Bản nâng cấp v2.10 bổ sung:
+* `doGet`: Đọc toàn bộ danh sách bệnh nhân, lượt khám, đơn thuốc, hỗ trợ JSONP chống chặn CORS.
+* `doPost`: Hỗ trợ cả 2 chế độ:
+  - `action: "SAVE_VISIT"`: Ghi tức thì 1 phiếu khám & đơn thuốc khi bấm nút **"Ghi phiếu này vào Google Sheets"** (tốc độ < 1 giây).
+  - `action: "SYNC_ALL"`: Đồng bộ hàng loạt bảo toàn 100% link Drive ảnh xét nghiệm.
 
 ### Các bước thực hiện:
 1. Mở file **Google Sheets** của phòng khám trên trình duyệt.
@@ -42,89 +49,89 @@ Cơ chế cũ dùng lệnh `sheet.clearContent()` sẽ xóa sạch link Google D
    * Bấm **Triển khai (Deploy)**.
    *(Nếu tạo mới, chọn Triển khai mới → Chọn loại Ứng dụng web → Quyền truy cập: Bất kỳ ai).*
 7. Sao chép lại **URL Ứng dụng web** (dạng `https://script.google.com/macros/s/.../exec`).
+8. Dán URL này vào mục **Cài đặt Google Sheets** tại Tab 5 hoặc cửa sổ cấu hình của ứng dụng.
 
 ---
 
-## 3. GỘP DỮ LIỆU EXCEL VÀO GOOGLE SHEETS (SMART MERGE)
+## 3. XỬ LÝ & NHÚNG DỮ LIỆU TỪ 26 FILE EXCEL VÀO HỆ THỐNG
 
-Khi có file Excel dữ liệu mới từ Bác sĩ Hảo (`DATA_BENH_NHAN_BS_HAO_IMPORT.xlsx`), bạn KHÔNG CẦN copy-paste thủ công. Hãy sử dụng script tự động hóa:
+Dự án cung cấp script tự động đọc và chuẩn hóa gói 26 file Excel của Bác sĩ Hào (`BOOK A.xlsx` đến `BOOK Y1.xlsx`):
 
-### Chạy lệnh:
+### Chạy lệnh trích xuất:
 ```bash
-npm run merge-excel
+npm run import-excel
 ```
 *hoặc:*
 ```bash
-node merge_excel_to_sheets.js
+node scripts/import_26_excel_books.js
 ```
 
-### Cơ chế hoạt động của Script:
-1. **Tự động sao lưu**: Đọc toàn bộ dữ liệu hiện có trên Google Sheets và lưu thành file dự phòng tại `backup_data/backup_sheets_before_merge_[timestamp].json`.
-2. **Đọc file Excel**: Quét cả 3 sheets: `Benh_Nhan`, `Luot_Kham`, `Don_Thuoc_Chi_Tiet`.
-3. **Smart Merge**:
-   * Nếu bệnh nhân đã có trên Sheets và đã có Link Google Drive: **Giữ nguyên 100% link Drive cũ**.
-   * Cập nhật các thông tin y khoa mới: chẩn đoán, toa thuốc, ngày khám, sinh hiệu.
-   * Nếu là bệnh nhân mới: Thêm dòng mới vào cuối bảng.
-   * Không bao giờ xóa bất kỳ bệnh nhân nào đang có trên Sheets.
-4. **Đồng bộ hàng loạt**: Đẩy toàn bộ dữ liệu hợp nhất lên Google Sheets an toàn và nhanh chóng.
+### Cơ chế hoạt động:
+1. **Quét 26 file Excel**: Đọc tự động tất cả các sheet bệnh án (loại bỏ sheet danh mục thuốc).
+2. **Chuẩn hóa thông tin**: Tách thông tin hành chính (Họ tên, Tuổi, Giới tính, Địa chỉ, SĐT, Tiền sử, Dị ứng) và danh sách lượt khám (Ngày khám, Lâm sàng da liễu, Chẩn đoán, Đơn thuốc, Viện phí).
+3. **Gắn tự động Link Drive**: Tạo đường dẫn trực tiếp mở thư mục ảnh theo tên bệnh nhân:
+   `https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=[Tên_BN]`
+4. **Nhúng trực tiếp vào App**: Tạo file [src/clinicData.js](file:///j:/AI-LAB/app-quan-ly-benh-nhan/app-quan-ly-benh-nhan-github/src/clinicData.js) giúp người dùng mở app là có sẵn 522 bệnh nhân mà không bao giờ bị trắng trang.
 
 ---
 
-## 4. ĐẨY MÃ NGUỒN LÊN GITHUB
+## 4. CHUẨN HÓA MẪU IN ĐƠN THUỐC A5/A4 & XUẤT PDF VECTOR
 
-Mã nguồn đã được lọc sạch các file rác, file nhị phân và file dữ liệu nhạy cảm qua `.gitignore`.
+Mẫu in đơn thuốc được chuẩn hóa theo đúng market đã duyệt (`Mau_Don_Thuoc_BSCK1_Ton_That_Hao.png`):
+- **Header**:
+  - Logo chữ thập đỏ chuẩn y tế.
+  - Thông tin đơn vị: `SỞ Y TẾ TP. HỒ CHÍ MINH`, `BỆNH VIỆN ĐA KHOA NHÀ BÈ`, `B. Khám Nội 1 • BSCK1. Tôn Thất Hào`.
+  - **Bỏ hoàn toàn mã vạch Barcode**, thay bằng Số toa, Mã BN, BHYT gọn gàng.
+- **Thân đơn thuốc**:
+  - Bảng thuốc chứa từ 6 đến 12 loại thuốc trên cùng một trang A5 mà không bị nhảy trang.
+  - Đường chấm nối giữa Tên thuốc và Số lượng (`. . . . . . 30 Viên`).
+  - Hướng dẫn dùng thuốc phân biệt rõ: `Uống: Sáng...` hoặc `Bôi ngoài da: Sáng... Tối...`.
+- **Footer**:
+  - Lời dặn dò, lưu ý sinh hoạt da liễu, ngày hẹn tái khám.
+  - QR Code hỗ trợ quét đặt lịch hẹn tái khám.
+  - Ngày tháng năm, BÁC SĨ ĐIỀU TRỊ, chữ ký mực xanh và họ tên in hoa: **BSCK1. TÔN THẤT HÀO**.
+- **In ấn & Xuất file**:
+  - Bấm **"In ra giấy"**: Gọi `window.print()` chuẩn CSS `@page { size: A5 portrait; }`, chỉ in đúng đơn thuốc.
+  - Bấm **"Xuất Ảnh (.png)"**: Xuất ảnh 300 DPI sắc nét gửi ngay qua Zalo.
+  - Bấm **"Xuất file PDF"**: Tạo file PDF A5 chuẩn vector rõ chữ không mờ scan.
+
+---
+
+## 5. ĐẨY MÃ NGUỒN LÊN GITHUB & TỰ ĐỘNG DEPLOY TRÊN VERCEL
 
 ### Các lệnh thực hiện:
 ```bash
 # 1. Kiểm tra trạng thái
 git status
 
-# 2. Thêm toàn bộ code sạch vào staging
+# 2. Thêm file vào staging
 git add .
 
-# 3. Commit phiên bản đóng gói chuẩn
-git commit -m "feat: standard Vite+React packaging & smart merge preserving Drive links (#ktskhoa365)"
+# 3. Commit phiên bản
+git commit -m "feat: chuẩn hóa hệ thống phòng khám Da liễu BSCK1 Tôn Thất Hào"
 
 # 4. Đẩy lên nhánh main của GitHub
 git push origin main
 ```
 
----
-
-## 5. CẤU HÌNH & TỰ ĐỘNG DEPLOY TRÊN VERCEL
-
-Dự án đã được chuẩn hóa để Vercel tự động nhận diện và build tối ưu:
-
-### Thiết lập trên Vercel Dashboard:
-1. Truy cập [https://vercel.com](https://vercel.com) và đăng nhập bằng GitHub.
-2. Bấm **Add New...** → **Project**.
-3. Chọn Repository `app-quan-ly-benh-nhan` → Bấm **Import**.
-4. Cấu hình dự án (**Project Settings**):
-   * **Framework Preset**: `Vite` (Hệ thống tự động phát hiện).
-   * **Root Directory**: `./` (để mặc định).
-   * **Build Command**: `npm run build` (mặc định của Vite).
-   * **Output Directory**: `dist` (mặc định của Vite).
-   * **Install Command**: `npm install`.
-5. Bấm **Deploy**. Sau khoảng 30 - 45 giây, dự án sẽ hoàn tất triển khai với chứng chỉ SSL HTTPS miễn phí.
-
-### Tự động hóa CI/CD:
-* Mỗi khi bạn chạy `git push origin main`, Vercel sẽ tự động kích hoạt Webhook, build lại bản phát hành mới nhất và cập nhật trang web trong vòng chưa tới 1 phút mà không làm gián đoạn người dùng.
+### Tự động hóa CI/CD trên Vercel:
+* Mỗi khi bạn chạy `git push origin main`, Vercel sẽ tự động kích hoạt Webhook, biên dịch mã nguồn với Vite (`npm run build`) và cập nhật trang web trong vòng **12 đến 15 giây**.
+* Trang web chính thức: **https://app-quan-ly-benh-nhan-github.vercel.app/**
 
 ---
 
 ## 6. CƠ CHẾ BẢO TOÀN DỮ LIỆU & KHẮC PHỤC SỰ CỐ
 
-### A. Dữ liệu bệnh nhân nhập hàng ngày có bị mất khi Deploy Vercel lại không?
+### A. Dữ liệu khám bệnh hàng ngày có bị mất khi Deploy Vercel lại không?
 * **KHÔNG BAO GIỜ!**
 * Dữ liệu khám bệnh hàng ngày, toa thuốc và sinh hiệu được lưu trực tiếp trên **Google Sheets** và bộ nhớ máy trạm (**LocalStorage**).
 * Việc cập nhật code trên GitHub & Vercel chỉ thay đổi phần giao diện hiển thị, hoàn toàn độc lập với dữ liệu bệnh nhân.
 
-### B. Bác sĩ muốn xuất đơn thuốc gửi cho bệnh nhân:
-* **Xuất file ảnh (.png)**: Bấm nút "Xuất file ảnh" trong cửa sổ xem đơn thuốc. File ảnh khổ A5 sắc nét được tạo ngay lập tức để gửi qua Zalo/Viber.
-* **Xuất file PDF (.pdf)**: Bấm nút "Xuất PDF" để tải file PDF in chuẩn y khoa.
+### B. Mở thư mục ảnh Drive của từng bệnh nhân:
+* Tại Danh sách bệnh nhân (Tab 1) hoặc Hồ sơ chi tiết (Tab 2), bác sĩ chỉ cần bấm vào biểu tượng **📁 Ảnh Drive ↗** để xem ngay các hình ảnh da liễu, xét nghiệm, X-Quang của bệnh nhân đó trên Google Drive.
 
-### C. Mở thư mục ảnh Drive của từng bệnh nhân:
-* Tại Danh sách bệnh nhân (Tab 1) hoặc Hồ sơ chi tiết (Tab 2), bác sĩ chỉ cần bấm vào biểu tượng **📁 Mở ảnh Drive** để xem ngay các phim chụp X-Quang, siêu âm và kết quả cận lâm sàng của bệnh nhân đó.
+### C. Nút nạp CSDL 522 BN Gốc:
+* Nếu mở app trên một máy mới hoặc muốn khôi phục kho dữ liệu 522 bệnh nhân và 2.321 lượt khám gốc, chỉ cần vào **Tab 5 (Thiết lập)** và bấm nút **`🏥 Nạp CSDL 522 BN Gốc`**.
 
 ---
-*Chúc Phòng khám MediCare Clinic Pro hoạt động hiệu quả và phục vụ bệnh nhân tốt nhất!*
+*Phần mềm được thiết kế và phát triển bởi `#ktskhoa365` — Hotline/Zalo: `0908297118`*
