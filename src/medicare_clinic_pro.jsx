@@ -1,0 +1,5369 @@
+import React, { useState, useMemo, useEffect, useRef } from 'react';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
+
+if (typeof window !== 'undefined') {
+  window.html2canvas = html2canvas;
+  window.jspdf = { jsPDF };
+}
+
+    const makeIcon = (pathD) => ({ className = "w-4 h-4" }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        {pathD}
+      </svg>
+    );
+
+    const Users = makeIcon(<><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></>);
+    const UserCheck = makeIcon(<><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></>);
+    const Search = makeIcon(<><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></>);
+    const Plus = makeIcon(<><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></>);
+    const Calendar = makeIcon(<><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></>);
+    const Phone = makeIcon(<><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></>);
+    const MapPin = makeIcon(<><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></>);
+    const Briefcase = makeIcon(<><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></>);
+    const Activity = makeIcon(<><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></>);
+    const AlertTriangle = makeIcon(<><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></>);
+    const FileText = makeIcon(<><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></>);
+    const Pill = makeIcon(<><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></>);
+    const Stethoscope = makeIcon(<><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></>);
+    const CreditCard = makeIcon(<><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></>);
+    const Printer = makeIcon(<><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></>);
+    const CheckCircle2 = makeIcon(<><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></>);
+    const Clock = makeIcon(<><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></>);
+    const ChevronRight = makeIcon(<><polyline points="9 18 15 12 9 6"/></>);
+    const Trash2 = makeIcon(<><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></>);
+    const Save = makeIcon(<><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></>);
+    const Database = makeIcon(<><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></>);
+    const RefreshCw = makeIcon(<><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></>);
+    const FileSpreadsheet = makeIcon(<><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h2"/><path d="M8 17h2"/><path d="M14 13h2"/><path d="M14 17h2"/></>);
+    const HeartPulse = makeIcon(<><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></>);
+    const Scale = makeIcon(<><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></>);
+    const Ruler = makeIcon(<><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></>);
+    const Eye = makeIcon(<><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></>);
+    const X = makeIcon(<><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></>);
+    const ClipboardList = makeIcon(<><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></>);
+    const FlaskConical = makeIcon(<><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/></>);
+    const ImageIcon = makeIcon(<><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></>);
+    const Copy = makeIcon(<><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></>);
+    const Check = makeIcon(<><polyline points="20 6 9 17 4 12"/></>);
+    const RotateCcw = makeIcon(<><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></>);
+    const Layers = makeIcon(<><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></>);
+    const Download = makeIcon(<><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></>);
+    const FolderOpen = makeIcon(<><path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"/><path d="M18 10V5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4"/></>);
+    const ExternalLink = makeIcon(<><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></>);
+
+
+// --- DỮ LIỆU MẪU BAN ĐẦU ---
+    const Lock = makeIcon(<><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></>);
+    const Unlock = makeIcon(<><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></>);
+    const KeyRound = makeIcon(<><path d="M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z"/><circle cx="16.5" cy="7.5" r=".5"/></>);
+    const ShieldCheck = makeIcon(<><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></>);
+    const Archive = makeIcon(<><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></>);
+
+const INITIAL_PATIENTS = [
+  {
+    id: 'BN0001',
+    name: 'Nguyễn Văn An',
+    dob: '1978-05-14',
+    gender: 'Nam',
+    phone: '0903123456',
+    relativePhone: '0903123456 (Bản thân)',
+    initialWeight: 72,
+    occupation: 'Kỹ sư xây dựng',
+    address: '124 Nguyễn Thị Minh Khai, Quận 3, TP.HCM',
+    medicalHistory: 'Tăng huyết áp vô căn (phát hiện 3 năm), Rối loạn lipid máu',
+    allergies: 'Dị ứng kháng sinh nhóm Penicillin',
+    pastParaclinical: 'X-Quang tim phổi thẳng (2024), ECG nhịp xoang 82 lần/phút',
+    pastMedications: 'Amlodipin 5mg, Lipanthyl 145mg',
+    imageFolderUrl: 'https://drive.google.com/drive/folders/demo-anh-bn0001',
+    createdAt: '2026-08-10'
+  },
+  {
+    id: 'BN0002',
+    name: 'Trần Thị Bích Ngọc',
+    dob: '1992-11-22',
+    gender: 'Nữ',
+    phone: '0918765432',
+    relativePhone: '0918765432 (Bản thân)',
+    initialWeight: 51,
+    occupation: 'Giáo viên tiểu học',
+    address: '45 Lê Văn Sỹ, Quận Phú Nhuận, TP.HCM',
+    medicalHistory: 'Viêm dạ dày tá tràng mạn tính, Trào ngược dạ dày thực quản (GERD)',
+    allergies: 'Không ghi nhận dị ứng',
+    pastParaclinical: 'Nội soi dạ dày (2025: Viêm hang vị xung huyết, Test HP -)',
+    pastMedications: 'Nexium 40mg, Phosphalugel',
+    imageFolderUrl: '',
+    createdAt: '2026-09-05'
+  },
+  {
+    id: 'BN0003',
+    name: 'Lê Hoàng Minh',
+    dob: '1965-02-18',
+    gender: 'Nam',
+    phone: '0989112233',
+    relativePhone: '0989112233 (Vợ: Mai 0989334455)',
+    initialWeight: 68,
+    occupation: 'Hưu trí',
+    address: '88 Phan Xích Long, Quận Bình Thạnh, TP.HCM',
+    medicalHistory: 'Đái tháo đường tuýp 2, Thoái hóa khớp gối 2 bên',
+    allergies: 'Dị ứng Ibuprofen (nổi mề đay)',
+    pastParaclinical: 'X-Quang khớp gối phải thẳng nghiêng, HbA1c 6.5%',
+    pastMedications: 'Glucophage 850mg, Glucosamin 1500mg',
+    imageFolderUrl: 'https://drive.google.com/drive/folders/demo-anh-bn0003',
+    createdAt: '2026-09-12'
+  },
+  {
+    id: 'BN0004',
+    name: 'Phạm Mai Phương',
+    dob: '2001-07-30',
+    gender: 'Nữ',
+    phone: '0934556677',
+    relativePhone: '0934556677 (Mẹ: Lan 0934112233)',
+    initialWeight: 50,
+    occupation: 'Nhân viên thiết kế',
+    address: '19 Nguyễn Hữu Cảnh, Quận Bình Thạnh, TP.HCM',
+    medicalHistory: 'Viêm mũi dị ứng thời tiết',
+    allergies: 'Hải sản, Phấn hoa',
+    pastParaclinical: 'Nội soi tai mũi họng',
+    pastMedications: 'Telfast 180mg, Avamys xịt mũi',
+    imageFolderUrl: '',
+    createdAt: '2026-10-18'
+  },
+  {
+    id: 'BN0005',
+    name: 'Võ Quốc Tuấn',
+    dob: '1984-04-09',
+    gender: 'Nam',
+    phone: '0977889900',
+    relativePhone: '0977889900 (Bản thân)',
+    initialWeight: 79,
+    occupation: 'Kinh doanh tự do',
+    address: '312 Cộng Hòa, Quận Tân Bình, TP.HCM',
+    medicalHistory: 'Gan nhiễm mỡ độ 1, Tăng acid uric máu',
+    allergies: 'Không ghi nhận dị ứng',
+    pastParaclinical: 'Siêu âm bụng tổng quát màu, Acid Uric máu (485 µmol/L)',
+    pastMedications: 'Feburic 40mg, Silymarin 140mg',
+    imageFolderUrl: 'https://drive.google.com/drive/folders/demo-anh-bn0005',
+    createdAt: '2026-10-20'
+  }
+];
+
+const INITIAL_VISITS = [
+  {
+    visitId: 'LK261025-01',
+    patientId: 'BN0001',
+    visitDate: '2026-10-25',
+    height: 168,
+    weight: 72,
+    bp: '145/90',
+    pulse: 82,
+    symptoms: 'Đau đầu vùng chẩm buổi sáng, chóng mặt nhẹ khi thay đổi tư thế',
+    diagnosis: 'Tăng huyết áp độ 1 - Rối loạn tiền đình ngoại biên',
+    diseaseCategory: 'Tim mạch - Huyết áp',
+    followUpDate: '2026-11-08',
+    doctorNotes: 'Hạn chế ăn mặn, tập đi bộ nhẹ 30 phút/ngày, đo huyết áp tại nhà sáng/tối',
+    verbatimTreatment: 'Amlodipin 5mg x14j, Betahistin 16mg x14j, Ginkgo Biloba 120mg x14j = 310k',
+    consultationFee: 150000,
+    paymentStatus: 'Đã thu',
+    prescriptions: [
+      { id: 'T1', drugName: 'Amlodipin 5mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 0, days: 14, price: 3500, note: 'Uống sau ăn sáng' },
+      { id: 'T2', drugName: 'Betahistin 16mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 1, days: 14, price: 4200, note: 'Uống sau ăn sáng - tối' },
+      { id: 'T3', drugName: 'Ginkgo Biloba 120mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 1, evening: 0, days: 14, price: 5000, note: 'Uống sau ăn' }
+    ],
+    labs: [
+      { id: 'XN1', type: 'Thử máu', name: 'Xét nghiệm mỡ máu (Cholesterol, Triglyceride, HDL, LDL)', result: 'Cholesterol toàn phần: 5.8 mmol/L (tăng nhẹ), Triglyceride: 2.3 mmol/L', cost: 220000, status: 'Đã có KQ', attachment: 'KQ_MoMau_BN0001.pdf' },
+      { id: 'XN2', type: 'Điện tim', name: 'Điện tâm đồ (ECG) 12 chuyển đạo', result: 'Nhịp xoang đều 82 lần/phút, trục trung gian', cost: 100000, status: 'Đã có KQ', attachment: 'ECG_BN0001.png' }
+    ]
+  },
+  {
+    visitId: 'LK260920-01',
+    patientId: 'BN0001',
+    visitDate: '2026-09-20',
+    height: 168,
+    weight: 73,
+    bp: '150/95',
+    pulse: 84,
+    symptoms: 'Mệt mỏi, nặng đầu về chiều',
+    diagnosis: 'Tăng huyết áp vô căn',
+    diseaseCategory: 'Tim mạch - Huyết áp',
+    followUpDate: '2026-10-25',
+    doctorNotes: 'Theo dõi đáp ứng thuốc hạ áp tuần đầu',
+    consultationFee: 150000,
+    paymentStatus: 'Đã thu',
+    prescriptions: [
+      { id: 'T4', drugName: 'Amlodipin 5mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 0, days: 30, price: 3500, note: 'Uống sau ăn sáng' }
+    ],
+    labs: []
+  },
+  {
+    visitId: 'LK261025-02',
+    patientId: 'BN0002',
+    visitDate: '2026-10-25',
+    height: 158,
+    weight: 51,
+    bp: '110/70',
+    pulse: 76,
+    symptoms: 'Đau âm ỉ vùng thượng vị, ợ chua nhiều về đêm, đầy bụng khó tiêu',
+    diagnosis: 'Trào ngược dạ dày thực quản (GERD) - Viêm hang vị dạ dày',
+    diseaseCategory: 'Tiêu hóa - Gan mật',
+    followUpDate: '2026-11-01',
+    doctorNotes: 'Kiêng đồ chua cay, cà phê, nước có gas; không nằm ngay sau khi ăn 2 tiếng',
+    verbatimTreatment: 'Esomeprazol 40mg x14j, Domperidon 10mg x7j, Phosphalugel x7j = 190k',
+    consultationFee: 150000,
+    paymentStatus: 'Chưa thu',
+    prescriptions: [
+      { id: 'T5', drugName: 'Esomeprazol 40mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 0, days: 14, price: 8500, note: 'Uống trước ăn sáng 30 phút' },
+      { id: 'T6', drugName: 'Domperidon 10mg', unit: 'Viên', morning: 1, noon: 1, afternoon: 0, evening: 1, days: 7, price: 2500, note: 'Uống trước ăn 15 phút' },
+      { id: 'T7', drugName: 'Phosphalugel (Sữa dạ dày)', unit: 'Gói', morning: 0, noon: 1, afternoon: 0, evening: 1, days: 7, price: 6500, note: 'Uống sau ăn 1 giờ hoặc khi đau' }
+    ],
+    labs: [
+      { id: 'XN3', type: 'Xét nghiệm', name: 'Test hơi thở tìm vi khuẩn H.Pylori (C13)', result: 'Âm tính (-)', cost: 350000, status: 'Đã có KQ', attachment: 'Test_HP_BN0002.pdf' }
+    ]
+  },
+  {
+    visitId: 'LK261024-01',
+    patientId: 'BN0003',
+    visitDate: '2026-10-24',
+    height: 165,
+    weight: 68,
+    bp: '130/80',
+    pulse: 78,
+    symptoms: 'Đau khớp gối phải khi lên cầu thang, lục cục khớp, tê nhẹ bàn chân',
+    diagnosis: 'Thoái hóa khớp gối phải - Đái tháo đường tuýp 2 ổn định',
+    diseaseCategory: 'Cơ xương khớp - Nội tiết',
+    followUpDate: '2026-10-25',
+    doctorNotes: 'Tái khám đọc kết quả X-quang khớp gối và xét nghiệm HbA1c',
+    verbatimTreatment: 'Metformin 850mg x15j, Glucosamin 1500mg x15j, Celecoxib 200mg x5j = 270k',
+    consultationFee: 150000,
+    paymentStatus: 'Đã thu',
+    prescriptions: [
+      { id: 'T8', drugName: 'Metformin 850mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 1, days: 15, price: 3200, note: 'Uống ngay sau ăn' },
+      { id: 'T9', drugName: 'Glucosamin Sulfate 1500mg', unit: 'Gói', morning: 1, noon: 0, afternoon: 0, evening: 0, days: 15, price: 9000, note: 'Pha nước uống sau ăn sáng' },
+      { id: 'T10', drugName: 'Celecoxib 200mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 0, days: 5, price: 7500, note: 'Uống sau ăn no' }
+    ],
+    labs: [
+      { id: 'XN4', type: 'Chụp X-Quang', name: 'X-Quang khớp gối phải (Thẳng - Nghiêng)', result: 'Hẹp khe khớp đùi chày trong, gai xương nhỏ bờ khớp', cost: 180000, status: 'Đã có KQ', attachment: 'XQuang_GoiP_BN0003.jpg' },
+      { id: 'XN5', type: 'Thử máu', name: 'Đường huyết đói (Glucose) & HbA1c', result: 'Glucose: 6.4 mmol/L | HbA1c: 6.5% (Kiểm soát tốt)', cost: 250000, status: 'Đã có KQ', attachment: 'XN_DuongHuyet_BN0003.pdf' }
+    ]
+  },
+  {
+    visitId: 'LK261022-01',
+    patientId: 'BN0004',
+    visitDate: '2026-10-22',
+    height: 162,
+    weight: 50,
+    bp: '105/65',
+    pulse: 72,
+    symptoms: 'Hắt hơi liên tục buổi sáng, chảy nước mũi trong, ngứa mũi',
+    diagnosis: 'Viêm mũi dị ứng cấp do thời tiết',
+    diseaseCategory: 'Tai Mũi Họng - Hô hấp',
+    followUpDate: '2026-10-29',
+    doctorNotes: 'Rửa mũi bằng nước muối sinh lý ấm mỗi tối, đeo khẩu trang khi ra ngoài',
+    consultationFee: 150000,
+    paymentStatus: 'Đã thu',
+    prescriptions: [
+      { id: 'T11', drugName: 'Fexofenadin 180mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 0, days: 7, price: 5500, note: 'Uống sau ăn sáng (không gây buồn ngủ)' },
+      { id: 'T12', drugName: 'Xịt mũi Fluticason (Avamys)', unit: 'Chai', morning: 1, noon: 0, afternoon: 0, evening: 1, days: 1, price: 185000, note: 'Xịt mỗi bên mũi 1 nhát sáng - tối' }
+    ],
+    labs: []
+  },
+  {
+    visitId: 'LK261020-01',
+    patientId: 'BN0005',
+    visitDate: '2026-10-20',
+    height: 172,
+    weight: 79,
+    bp: '125/80',
+    pulse: 75,
+    symptoms: 'Khám sức khỏe tổng quát, đau nhẹ ngón chân cái bên trái sau ăn tiệc',
+    diagnosis: 'Tăng Acid Uric máu - Theo dõi Gout cấp / Gan nhiễm mỡ độ 1',
+    diseaseCategory: 'Cơ xương khớp - Nội tiết',
+    followUpDate: '2026-11-05',
+    doctorNotes: 'Kiêng rượu bia, hải sản, thịt đỏ, nội tạng động vật; uống đủ 2.5 lít nước/ngày',
+    consultationFee: 150000,
+    paymentStatus: 'Đã thu',
+    prescriptions: [
+      { id: 'T13', drugName: 'Febuxostat 40mg', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 0, days: 15, price: 8000, note: 'Uống sau ăn sáng' },
+      { id: 'T14', drugName: 'Silymarin 140mg (Bổ gan)', unit: 'Viên', morning: 1, noon: 0, afternoon: 0, evening: 1, days: 15, price: 4500, note: 'Uống sau ăn' }
+    ],
+    labs: [
+      { id: 'XN6', type: 'Thử máu', name: 'Acid Uric máu & Men gan (AST, ALT, GGT)', result: 'Acid Uric: 485 µmol/L (Cao) | AST: 42 U/L, ALT: 55 U/L', cost: 240000, status: 'Đã có KQ', attachment: 'XN_SinhHoa_BN0005.pdf' },
+      { id: 'XN7', type: 'Siêu âm', name: 'Siêu âm bụng tổng quát màu', result: 'Gan tăng sáng nhẹ (Gan nhiễm mỡ độ 1), thận không sỏi', cost: 200000, status: 'Đã có KQ', attachment: 'SieuAm_BN0005.jpg' }
+    ]
+  }
+];
+
+// Danh mục thuốc mẫu giúp bác sĩ chọn nhanh
+const DRUG_CATALOG = [
+  { name: 'Amlodipin 5mg', unit: 'Viên', price: 3500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Atorvastatin 20mg (Lipitor)', unit: 'Viên', price: 14000, defaultNote: 'Uống sau ăn tối', m: 0, n: 0, a: 0, e: 1 },
+  { name: 'Rosuvastatin 10mg (Crestor)', unit: 'Viên', price: 16000, defaultNote: 'Uống sau ăn tối', m: 0, n: 0, a: 0, e: 1 },
+  { name: 'Telmisartan 40mg (Micardis)', unit: 'Viên', price: 9500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Coversyl 5mg (Perindopril)', unit: 'Viên', price: 8000, defaultNote: 'Uống trước ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Concor 2.5mg (Bisoprolol)', unit: 'Viên', price: 5000, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Concor 5mg (Bisoprolol)', unit: 'Viên', price: 6500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Metformin 850mg (Glucophage)', unit: 'Viên', price: 3200, defaultNote: 'Uống ngay sau ăn', m: 1, n: 0, a: 0, e: 1 },
+  { name: 'Glucophage XR 750mg', unit: 'Viên', price: 5500, defaultNote: 'Uống sau ăn tối', m: 0, n: 0, a: 0, e: 1 },
+  { name: 'Diamicron MR 30mg', unit: 'Viên', price: 4200, defaultNote: 'Uống trước ăn sáng 15 phút', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Esomeprazol 40mg (Nexium)', unit: 'Viên', price: 11000, defaultNote: 'Uống trước ăn sáng 30 phút', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Phosphalugel (Sữa dạ dày)', unit: 'Gói', price: 6500, defaultNote: 'Uống sau ăn 1 giờ hoặc khi đau', m: 0, n: 1, a: 0, e: 1 },
+  { name: 'Domperidon 10mg (Motilium)', unit: 'Viên', price: 2500, defaultNote: 'Uống trước ăn 15 phút', m: 1, n: 1, a: 0, e: 1 },
+  { name: 'Betahistin 16mg (Betaserc)', unit: 'Viên', price: 4800, defaultNote: 'Uống sau ăn no', m: 1, n: 0, a: 0, e: 1 },
+  { name: 'Betaserc 24mg', unit: 'Viên', price: 7500, defaultNote: 'Uống sau ăn no', m: 1, n: 0, a: 0, e: 1 },
+  { name: 'Ginkgo Biloba 120mg (Tanakan)', unit: 'Viên', price: 5000, defaultNote: 'Uống sau ăn', m: 1, n: 0, a: 1, e: 0 },
+  { name: 'Medrol 4mg (Methylprednisolon)', unit: 'Viên', price: 2500, defaultNote: 'Uống sau ăn sáng no', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Medrol 16mg (Methylprednisolon)', unit: 'Viên', price: 6000, defaultNote: 'Uống sau ăn sáng no', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Celecoxib 200mg (Celebrex)', unit: 'Viên', price: 7500, defaultNote: 'Uống sau ăn no', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Glucosamin Sulfate 1500mg', unit: 'Gói', price: 9000, defaultNote: 'Pha nước uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Fexofenadin 180mg (Telfast)', unit: 'Viên', price: 5500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Desloratadin 5mg (Aerius)', unit: 'Viên', price: 7500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Augmentin 1g (Amox/Clav)', unit: 'Viên', price: 16000, defaultNote: 'Uống ngay sau ăn no', m: 1, n: 0, a: 0, e: 1 },
+  { name: 'Cefixim 200mg', unit: 'Viên', price: 8000, defaultNote: 'Uống sau ăn sáng - tối', m: 1, n: 0, a: 0, e: 1 },
+  { name: 'Febuxostat 40mg (Feburic)', unit: 'Viên', price: 8500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Lipanthyl 145mg (Fenofibrat)', unit: 'Viên', price: 12500, defaultNote: 'Uống sau ăn chính', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Daflon 500mg', unit: 'Viên', price: 4500, defaultNote: 'Uống sau ăn trưa - tối', m: 0, n: 1, a: 0, e: 1 },
+  { name: 'Paracetamol 500mg', unit: 'Viên', price: 1500, defaultNote: 'Uống sau ăn khi đau/sốt > 38.5 độ', m: 1, n: 1, a: 0, e: 1 },
+  { name: 'Vitamin 3B (B1-B6-B12)', unit: 'Viên', price: 2000, defaultNote: 'Uống sau ăn sáng - trưa', m: 1, n: 1, a: 0, e: 0 }
+];
+
+// Danh mục xét nghiệm / X-Quang mẫu
+const LAB_CATALOG = [
+  { type: 'Thử máu', name: 'Công thức máu 18 thông số (CBC)', cost: 120000 },
+  { type: 'Thử máu', name: 'Xét nghiệm mỡ máu (Cholesterol, Triglyceride, HDL, LDL)', cost: 220000 },
+  { type: 'Thử máu', name: 'Đường huyết đói (Glucose) & HbA1c', cost: 250000 },
+  { type: 'Thử máu', name: 'Acid Uric máu & Chức năng gan thận (AST, ALT, Creatinin)', cost: 240000 },
+  { type: 'Chụp X-Quang', name: 'X-Quang tim phổi thẳng kỹ thuật số', cost: 160000 },
+  { type: 'Chụp X-Quang', name: 'X-Quang cột sống thắt lưng (Thẳng - Nghiêng)', cost: 190000 },
+  { type: 'Chụp X-Quang', name: 'X-Quang khớp gối (Thẳng - Nghiêng)', cost: 180000 },
+  { type: 'Siêu âm', name: 'Siêu âm bụng tổng quát màu', cost: 200000 },
+  { type: 'Điện tim', name: 'Điện tâm đồ (ECG) 12 chuyển đạo', cost: 100000 },
+  { type: 'Xét nghiệm', name: 'Test hơi thở tìm vi khuẩn H.Pylori (C13)', cost: 350000 }
+];
+
+// Hàm hỗ trợ định dạng tiền tệ VNĐ
+const formatVND = (amount) => {
+  return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount || 0);
+};
+
+// Hàm tính tuổi từ ngày sinh
+const calculateAge = (dobString) => {
+  if (!dobString) return '--';
+  const birthYear = new Date(dobString).getFullYear();
+  const currentYear = 2026;
+  return currentYear - birthYear;
+};
+
+// Style chuẩn cho giao diện Desktop WinForms Full Màn Hình (chữ to, rõ, dễ đọc)
+const WIN_INPUT =
+  'w-full bg-white border border-[#7F9DB9] px-2.5 py-1.5 text-[14px] text-slate-900 rounded-none focus:outline-none focus:border-[#003399] focus:bg-[#FFFFF0]';
+const WIN_LABEL = 'text-[13px] text-[#00156E] font-medium whitespace-nowrap select-none';
+const WIN_BTN =
+  'inline-flex items-center justify-center gap-1.5 px-4 py-1.5 text-[13px] font-medium text-slate-900 bg-gradient-to-b from-[#FFFFFF] via-[#F0F4F9] to-[#DCE4EF] border border-[#003C74] rounded-[3px] shadow-[inset_0_1px_0_#fff] hover:from-[#FFFDF5] hover:to-[#FCE6A6] hover:border-[#E59700] active:bg-[#DCE4EF] transition cursor-pointer';
+const WIN_BTN_PRIMARY =
+  'inline-flex items-center justify-center gap-1.5 px-4 py-1.5 text-[13px] font-bold text-[#00156E] bg-gradient-to-b from-[#FFFFFF] via-[#E5F1FB] to-[#C4DCF3] border-2 border-[#003C74] rounded-[3px] shadow-[inset_0_1px_0_#fff] hover:from-[#FFFDF5] hover:to-[#FCE6A6] hover:border-[#E59700] cursor-pointer';
+
+function MediCareClinicApp() {
+  // Điểm phục hồi giao diện: 'winforms' (Giao diện theo ảnh mẫu) | 'modern' (Điểm phục hồi gốc)
+  const [uiStyle, setUiStyle] = useState('winforms');
+  // Chế độ Admin (#ktskhoa365): Chỉ hiển thị 2 nút công cụ thiết kế trên máy Admin.
+  // Khi gửi cho người dùng (hoặc khi tắt chế độ Admin), 2 nút này sẽ hoàn toàn ẩn đi.
+  const [isAdminMode, setIsAdminMode] = useState(() => {
+    try {
+      if (typeof window !== 'undefined' && window.location.search.includes('user=1')) return false;
+      const saved = localStorage.getItem('MEDICARE_ADMIN_MODE_V1');
+      return saved !== null ? JSON.parse(saved) : true;
+    } catch {
+      return true;
+    }
+  });
+
+  const handleToggleAdminMode = () => {
+    const next = !isAdminMode;
+    setIsAdminMode(next);
+    try {
+      localStorage.setItem('MEDICARE_ADMIN_MODE_V1', JSON.stringify(next));
+    } catch {}
+    showToast(
+      next
+        ? 'Đã bật chế độ Admin (#ktskhoa365): Hiển thị 2 nút công cụ thiết kế.'
+        : 'Đã ẩn 2 nút công cụ Admin (Giao diện Người dùng). Click đúp vào dòng bản quyền #ktskhoa365 ở góc dưới phải để bật lại!'
+    );
+  };
+
+  // ==========================================================================
+  // BẢO MẬT ĐĂNG NHẬP, KHÓA MÃ PIN & GHI NHẬT KÝ NGƯỜI DÙNG (CÁCH A)
+  // ==========================================================================
+  const [clinicAccount, setClinicAccount] = useState(() => {
+    try {
+      const saved = localStorage.getItem('MEDICARE_CLINIC_ACCOUNT_V1');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  // Trạng thái khóa màn hình: Mặc định mở sẵn trong phiên xem trước nhưng có thể Bấm "Khóa (PIN)" bất kỳ lúc nào,
+  // hoặc tự động khóa khi mới mở lại trình duyệt nếu bác sĩ bật "Yêu cầu PIN khi mở App".
+  const [isScreenLocked, setIsScreenLocked] = useState(() => {
+    try {
+      const savedAcc = localStorage.getItem('MEDICARE_CLINIC_ACCOUNT_V1');
+      const unlockedSession = sessionStorage.getItem('MEDICARE_UNLOCKED_SESSION_V1');
+      if (savedAcc && !unlockedSession) {
+        const parsed = JSON.parse(savedAcc);
+        return Boolean(parsed?.requirePinOnStart);
+      }
+      return false;
+    } catch {
+      return false;
+    }
+  });
+
+  // Modal Đăng nhập / Đổi mã PIN / Cấu hình bảo mật
+  const [isSecurityModalOpen, setIsSecurityModalOpen] = useState(false);
+  const [pinInput, setPinInput] = useState('');
+  const [pinError, setPinError] = useState('');
+  const [autoLockMinutes, setAutoLockMinutes] = useState(() => {
+    try {
+      return Number(localStorage.getItem('MEDICARE_AUTOLOCK_MIN_V1')) || 15;
+    } catch {
+      return 15;
+    }
+  });
+
+  // Form thiết lập tài khoản Phòng khám + Mã PIN (Cách A: Thoải mái sử dụng + Ghi nhận danh sách người dùng)
+  const [setupForm, setSetupForm] = useState(() => ({
+    doctorName: clinicAccount?.doctorName || 'BS. Nguyễn Khoa',
+    clinicName: clinicAccount?.clinicName || 'Phòng khám Chuyên khoa Nội MediCare',
+    phone: clinicAccount?.phone || '0908297118',
+    pin: clinicAccount?.pin || '1234',
+    requirePinOnStart: clinicAccount?.requirePinOnStart ?? true
+  }));
+
+  // Link Google Apps Script Web App nhận nhật ký người dùng của Admin (#ktskhoa365)
+  const [adminTrackerUrl, setAdminTrackerUrl] = useState(() => {
+    try {
+      return localStorage.getItem('MEDICARE_ADMIN_TRACKER_URL_V1') || '';
+    } catch {
+      return '';
+    }
+  });
+
+  // Nhật ký đăng nhập/sử dụng lưu cục bộ & đồng bộ lên Sheet Nhat_Ky_Su_Dung
+  const [usageLogs, setUsageLogs] = useState(() => {
+    try {
+      const saved = localStorage.getItem('MEDICARE_USAGE_LOGS_V1');
+      return saved
+        ? JSON.parse(saved)
+        : [
+            {
+              id: 'LOG-01',
+              doctorName: 'BS. Nguyễn Khoa (#ktskhoa365)',
+              clinicName: 'Phòng khám Chuyên khoa Nội MediCare',
+              phone: '0908297118',
+              action: 'Khởi tạo & Đăng nhập hệ thống',
+              patientCount: 5,
+              device: 'Windows Desktop - Chrome',
+              time: '26/10/2026 18:30:00'
+            }
+          ];
+    } catch {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('MEDICARE_USAGE_LOGS_V1', JSON.stringify(usageLogs));
+    } catch {}
+  }, [usageLogs]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('MEDICARE_ADMIN_TRACKER_URL_V1', adminTrackerUrl);
+    } catch {}
+  }, [adminTrackerUrl]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('MEDICARE_AUTOLOCK_MIN_V1', String(autoLockMinutes));
+    } catch {}
+  }, [autoLockMinutes]);
+
+  // Tự động khóa màn hình nếu không thao tác chuột/bàn phím sau N phút
+  useEffect(() => {
+    if (!clinicAccount?.pin || isScreenLocked || autoLockMinutes <= 0) return;
+    let timerId;
+    const resetTimer = () => {
+      clearTimeout(timerId);
+      timerId = setTimeout(() => {
+        setIsScreenLocked(true);
+        setPinInput('');
+        setPinError('');
+      }, autoLockMinutes * 60 * 1000);
+    };
+    const events = ['mousemove', 'keydown', 'mousedown', 'touchstart'];
+    events.forEach((ev) => window.addEventListener(ev, resetTimer));
+    resetTimer();
+    return () => {
+      clearTimeout(timerId);
+      events.forEach((ev) => window.removeEventListener(ev, resetTimer));
+    };
+  }, [clinicAccount, isScreenLocked, autoLockMinutes]);
+
+  const [activeTab, setActiveTab] = useState('tab1');
+  const [patients, setPatients] = useState(() => {
+    try {
+      const saved = localStorage.getItem('MEDICARE_PATIENTS_V1');
+      return saved ? JSON.parse(saved) : INITIAL_PATIENTS;
+    } catch (e) {
+      return INITIAL_PATIENTS;
+    }
+  });
+  const [visits, setVisits] = useState(() => {
+    try {
+      const saved = localStorage.getItem('MEDICARE_VISITS_V1');
+      return saved ? JSON.parse(saved) : INITIAL_VISITS;
+    } catch (e) {
+      return INITIAL_VISITS;
+    }
+  });
+  const [sheetWebAppUrl, setSheetWebAppUrl] = useState(() => {
+    try {
+      return localStorage.getItem('MEDICARE_SHEET_URL_V1') || '';
+    } catch (e) {
+      return '';
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('MEDICARE_PATIENTS_V1', JSON.stringify(patients));
+    } catch (e) {}
+  }, [patients]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('MEDICARE_VISITS_V1', JSON.stringify(visits));
+    } catch (e) {}
+  }, [visits]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('MEDICARE_SHEET_URL_V1', sheetWebAppUrl);
+    } catch (e) {}
+  }, [sheetWebAppUrl]);
+
+  // State bộ lọc Tab 1
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterMode, setFilterMode] = useState('all'); // 'all' | 'today' | 'followup_today' | 'unpaid'
+
+  // State bệnh nhân & lượt khám đang chọn ở Tab 2 & Tab 3
+  const [selectedPatientId, setSelectedPatientId] = useState('BN0001');
+  const [selectedVisitId, setSelectedVisitId] = useState('LK261025-01');
+  const [isDeletePatientModalOpen, setIsDeletePatientModalOpen] = useState(false);
+
+  // State modal thêm bệnh nhân mới
+  const [isNewPatientModalOpen, setIsNewPatientModalOpen] = useState(false);
+  const [newPatientForm, setNewPatientForm] = useState({
+    name: '',
+    dob: '1985-01-01',
+    gender: 'Nam',
+    phone: '',
+    relativePhone: '',
+    initialWeight: '',
+    occupation: '',
+    address: '',
+    medicalHistory: '',
+    allergies: '',
+    pastParaclinical: '',
+    pastMedications: '',
+    imageFolderUrl: ''
+  });
+
+  // State modal xem trước Google Sheets & Apps Script
+  const [isSheetModalOpen, setIsSheetModalOpen] = useState(false);
+  const [sheetPreviewTab, setSheetPreviewTab] = useState('Benh_Nhan');
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [lastSyncTime, setLastSyncTime] = useState('23:10:02 - 25/10/2026');
+  const [toastMessage, setToastMessage] = useState(null);
+  const [copiedCode, setCopiedCode] = useState(false);
+
+  // State modal in đơn thuốc / phiếu thu
+  const [isPrintModalOpen, setIsPrintModalOpen] = useState(false);
+  // Tùy chọn xuất đơn thuốc: 'image' (ảnh PNG gửi Zalo) hoặc 'pdf' (file PDF). Tự động ghi nhớ lần chọn sau cùng
+  const [exportPref, setExportPref] = useState(() => {
+    try {
+      return localStorage.getItem('MEDICARE_EXPORT_PREF_V1') || 'image';
+    } catch {
+      return 'image';
+    }
+  });
+
+  const handleUpdateExportPref = (pref) => {
+    setExportPref(pref);
+    try {
+      localStorage.setItem('MEDICARE_EXPORT_PREF_V1', pref);
+    } catch {}
+    showToast(`Đã lưu tùy chọn xuất mặc định: ${pref === 'image' ? 'File Ảnh (gửi Zalo)' : 'File PDF'}`);
+  };
+
+  // Hàm xuất đơn thuốc thành file Ảnh (.png) hoặc file PDF (.pdf)
+  const handleExportPrescription = async (overridePref = null) => {
+    const targetPref = overridePref || exportPref;
+    const printArea = document.getElementById('prescription-print-area');
+    if (!printArea) {
+      showToast('Không tìm thấy vùng đơn thuốc để xuất!');
+      return;
+    }
+
+    const patientName = (selectedPatient?.name || 'BenhNhan').replace(/\s+/g, '_');
+    const pId = selectedPatient?.id || 'BN';
+    const vDate = currentVisit?.visitDate ? currentVisit.visitDate.replace(/-/g, '') : '20261025';
+    const fileName = `DonThuoc_${pId}_${patientName}_${vDate}`;
+
+    if (targetPref === 'image') {
+      try {
+        showToast('Đang tạo file ảnh đơn thuốc chất lượng cao (gửi Zalo)...');
+        if (typeof html2canvas === 'undefined') {
+          showToast('Đang tải thư viện ảnh, anh vui lòng thử lại sau 2 giây...');
+          return;
+        }
+        const canvas = await html2canvas(printArea, {
+          scale: 2.5,
+          useCORS: true,
+          backgroundColor: '#ffffff'
+        });
+        const imgUrl = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.download = `${fileName}.png`;
+        link.href = imgUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        showToast(`Đã tải file ảnh ${fileName}.png! Anh có thể gửi trực tiếp cho bệnh nhân qua Zalo.`);
+      } catch (err) {
+        showToast('Lỗi khi xuất ảnh: ' + err.message);
+      }
+    } else {
+      try {
+        showToast('Đang tạo file PDF đơn thuốc khổ A5...');
+        if (typeof html2canvas === 'undefined' || typeof window.jspdf === 'undefined') {
+          window.print();
+          return;
+        }
+        const canvas = await html2canvas(printArea, {
+          scale: 2.5,
+          useCORS: true,
+          backgroundColor: '#ffffff'
+        });
+        const imgData = canvas.toDataURL('image/png');
+        const { jsPDF } = window.jspdf;
+        // Khổ A5 chuẩn: 148 x 210 mm
+        const pdf = new jsPDF('p', 'mm', 'a5');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, Math.min(pdfHeight, 210));
+        pdf.save(`${fileName}.pdf`);
+        showToast(`Đã tải file PDF ${fileName}.pdf! Anh có thể gửi qua Zalo hoặc Email.`);
+      } catch (err) {
+        showToast('Lỗi khi xuất PDF, đang mở hộp thoại in...');
+        window.print();
+      }
+    }
+  };
+
+  // State form thêm thuốc mới vào đơn
+  const [drugDraft, setDrugDraft] = useState({
+    drugName: '',
+    unit: 'Viên',
+    morning: 1,
+    noon: 0,
+    afternoon: 0,
+    evening: 1,
+    days: 7,
+    price: 3500,
+    note: 'Uống sau ăn'
+  });
+
+  // State form thêm xét nghiệm / X-quang mới
+  const [labDraft, setLabDraft] = useState({
+    type: 'Thử máu',
+    name: '',
+    result: '',
+    cost: 150000,
+    status: 'Đã có KQ',
+    attachment: ''
+  });
+
+  // Hiển thị thông báo nhanh (Toast)
+  const showToast = (msg) => {
+    setToastMessage(msg);
+    setTimeout(() => {
+      setToastMessage(null);
+    }, 3200);
+  };
+
+  // Hàm ghi nhận Nhật ký người dùng (Cách A: Tự động báo về Google Sheet của Admin/Phòng khám)
+  const recordUserAccessLog = async (accInfo, actionLabel) => {
+    const now = new Date();
+    const timeFormatted = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+    const deviceInfo =
+      typeof navigator !== 'undefined'
+        ? `${navigator.platform || 'Desktop'} (${navigator.language || 'vi-VN'})`
+        : 'Desktop Browser';
+
+    const logEntry = {
+      id: `LOG-${Date.now()}`,
+      doctorName: accInfo.doctorName || 'Bác sĩ',
+      clinicName: accInfo.clinicName || 'Phòng khám tư nhân',
+      phone: accInfo.phone || '--',
+      action: actionLabel,
+      patientCount: patients.length,
+      device: deviceInfo,
+      time: timeFormatted
+    };
+
+    setUsageLogs((prev) => [logEntry, ...prev.slice(0, 49)]);
+
+    // Gửi âm thầm về Google Sheet (Sheet của người dùng hoặc Sheet Quản lý người dùng của Admin #ktskhoa365)
+    const targetUrls = [sheetWebAppUrl, adminTrackerUrl]
+      .map((u) => (u || '').trim())
+      .filter((u, idx, arr) => u.startsWith('https://script.google.com') && arr.indexOf(u) === idx);
+
+    for (const url of targetUrls) {
+      try {
+        fetch(url, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'LOG_ACCESS',
+            log: logEntry
+          })
+        });
+      } catch {}
+    }
+  };
+
+  // Lưu thông tin Đăng ký / Cài đặt Mã PIN bảo mật
+  const handleSaveClinicSecurity = (e) => {
+    e.preventDefault();
+    if (!setupForm.doctorName.trim() || !setupForm.pin.trim()) {
+      setPinError('Vui lòng nhập Tên Bác sĩ/Phòng khám và Mã PIN bảo mật!');
+      return;
+    }
+    const savedAcc = {
+      doctorName: setupForm.doctorName.trim(),
+      clinicName: setupForm.clinicName.trim() || 'Phòng khám tư nhân',
+      phone: setupForm.phone.trim() || 'Chưa cập nhật',
+      pin: setupForm.pin.trim(),
+      requirePinOnStart: Boolean(setupForm.requirePinOnStart),
+      updatedAt: new Date().toISOString()
+    };
+    setClinicAccount(savedAcc);
+    try {
+      localStorage.setItem('MEDICARE_CLINIC_ACCOUNT_V1', JSON.stringify(savedAcc));
+      sessionStorage.setItem('MEDICARE_UNLOCKED_SESSION_V1', 'true');
+    } catch {}
+    setIsScreenLocked(false);
+    setIsSecurityModalOpen(false);
+    setPinInput('');
+    setPinError('');
+    recordUserAccessLog(savedAcc, 'Thiết lập tài khoản & Mã PIN bảo mật');
+    showToast(`Đã lưu bảo mật cho ${savedAcc.doctorName} (Mã PIN: ${'*'.repeat(savedAcc.pin.length)})!`);
+  };
+
+  // Mở khóa màn hình bằng Mã PIN
+  const handleUnlockWithPin = (e) => {
+    e.preventDefault();
+    const activePin = clinicAccount?.pin || '1234';
+    // Cho phép mở bằng mã PIN của bác sĩ hoặc mã khẩn cấp 0908297118 (SĐT Admin #ktskhoa365) nếu bác sĩ quên PIN
+    if (pinInput.trim() === activePin || pinInput.trim() === '0908297118') {
+      setIsScreenLocked(false);
+      setPinInput('');
+      setPinError('');
+      try {
+        sessionStorage.setItem('MEDICARE_UNLOCKED_SESSION_V1', 'true');
+      } catch {}
+      recordUserAccessLog(
+        clinicAccount || setupForm,
+        pinInput.trim() === '0908297118' ? 'Mở khóa bằng mã khôi phục Admin' : 'Đăng nhập mở khóa PIN'
+      );
+      showToast(`Xin chào ${clinicAccount?.doctorName || 'Bác sĩ'}! Đã mở khóa dữ liệu phòng khám.`);
+    } else {
+      setPinError('Mã PIN không đúng! (Nếu quên PIN, nhập SĐT hỗ trợ 0908297118 để mở)');
+    }
+  };
+
+  // Khóa màn hình ngay lập tức khi bác sĩ rời bàn làm việc
+  const handleLockScreenNow = () => {
+    if (!clinicAccount) {
+      // Nếu chưa tạo PIN lần nào, tạo mặc định từ setupForm rồi khóa ngay
+      const defaultAcc = {
+        doctorName: setupForm.doctorName || 'BS. Phòng khám',
+        clinicName: setupForm.clinicName || 'Phòng khám MediCare',
+        phone: setupForm.phone || '',
+        pin: setupForm.pin || '1234',
+        requirePinOnStart: true
+      };
+      setClinicAccount(defaultAcc);
+      try {
+        localStorage.setItem('MEDICARE_CLINIC_ACCOUNT_V1', JSON.stringify(defaultAcc));
+      } catch {}
+    }
+    setPinInput('');
+    setPinError('');
+    setIsScreenLocked(true);
+    try {
+      sessionStorage.removeItem('MEDICARE_UNLOCKED_SESSION_V1');
+    } catch {}
+  };
+
+  // Đồng bộ dữ liệu (Lưu tự động vào trình duyệt + Gửi lên Google Sheets Web App nếu đã cấu hình URL)
+  const handleSyncToGoogleSheets = async () => {
+    setIsSyncing(true);
+    const now = new Date();
+    const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')} - ${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+
+    if (sheetWebAppUrl && sheetWebAppUrl.trim().startsWith('https://script.google.com')) {
+      try {
+        await fetch(sheetWebAppUrl.trim(), {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'SYNC_ALL',
+            patients,
+            visits,
+            usageLogs,
+            clinicAccount: clinicAccount || setupForm,
+            timestamp: new Date().toISOString()
+          })
+        });
+        setIsSyncing(false);
+        setLastSyncTime(timeStr);
+        showToast('Đã đồng bộ dữ liệu lên Google Sheets & lưu an toàn vào trình duyệt!');
+        return;
+      } catch (err) {
+        setIsSyncing(false);
+        showToast('Đã lưu vào bộ nhớ máy! (Kiểm tra lại kết nối mạng/URL Google Sheet)');
+        return;
+      }
+    }
+
+    setTimeout(() => {
+      setIsSyncing(false);
+      setLastSyncTime(timeStr);
+      showToast('Đã lưu dữ liệu vào bộ nhớ máy tính & cập nhật bảng Google Sheets!');
+    }, 500);
+  };
+
+  // Xuất file JSON sao lưu dự phòng về máy tính
+  const handleExportBackupFile = () => {
+    const payload = {
+      version: '2.10',
+      exportedAt: new Date().toISOString(),
+      patients,
+      visits
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `SaoLuu_PhongKham_MediCare_${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('Đã tải file sao lưu dữ liệu (.json) về máy tính!');
+  };
+
+  // Tải trực tiếp file ứng dụng chạy độc lập (.html) về máy (để lưu vào J:\AI-LAB\app-quan-ly-benh-nhan)
+  const handleDownloadStandaloneApp = () => {
+    try {
+      let htmlContent = document.documentElement.outerHTML;
+      htmlContent = htmlContent.replace("localStorage.getItem('MEDICARE_ADMIN_MODE_V1')", "'false'");
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'MediCare_Clinic_Pro_Standalone.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Đã tải file MediCare_Clinic_Pro_Standalone.html! Anh hãy chọn lưu vào J:\AI-LAB\app-quan-ly-benh-nhan');
+    } catch (e) {
+      showToast('Anh có thể nhấn Ctrl + S (Lưu trang) vào thư mục J:\AI-LAB\app-quan-ly-benh-nhan');
+    }
+  };
+
+  // Nhập lại file JSON sao lưu
+  const handleImportBackupFile = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const parsed = JSON.parse(event.target.result);
+        if (Array.isArray(parsed.patients) && Array.isArray(parsed.visits)) {
+          setPatients(parsed.patients);
+          setVisits(parsed.visits);
+          if (parsed.patients[0]) setSelectedPatientId(parsed.patients[0].id);
+          if (parsed.visits[0]) setSelectedVisitId(parsed.visits[0].visitId);
+          showToast(`Đã nạp thành công ${parsed.patients.length} bệnh nhân & ${parsed.visits.length} lượt khám!`);
+        } else {
+          showToast('File sao lưu không đúng định dạng!');
+        }
+      } catch {
+        showToast('Không thể đọc file sao lưu!');
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  // Lấy bệnh nhân đang chọn
+  const selectedPatient = useMemo(() => {
+    return patients.find((p) => p.id === selectedPatientId) || patients[0];
+  }, [patients, selectedPatientId]);
+
+  // Lấy danh sách các lượt khám của bệnh nhân đang chọn (mới nhất lên đầu)
+  const patientVisits = useMemo(() => {
+    return visits
+      .filter((v) => v.patientId === selectedPatient?.id)
+      .sort((a, b) => b.visitDate.localeCompare(a.visitDate));
+  }, [visits, selectedPatient]);
+
+  // Lượt khám đang chọn
+  const currentVisit = useMemo(() => {
+    const found = patientVisits.find((v) => v.visitId === selectedVisitId);
+    return found || patientVisits[0] || null;
+  }, [patientVisits, selectedVisitId]);
+
+  // Khi click vào tên bệnh nhân ở Tab 1 -> chuyển sang Tab 2
+  // Nếu bệnh nhân đang nằm trong Kho lưu trữ mà quay lại tái khám, tự động mở lại trạng thái "Đang điều trị"
+  const handleSelectPatientFromList = (patientId, autoReactivate = false) => {
+    if (autoReactivate) {
+      setPatients((prev) =>
+        prev.map((p) => (p.id === patientId ? { ...p, isArchived: false } : p))
+      );
+      const target = patients.find((p) => p.id === patientId);
+      if (target?.isArchived) {
+        showToast(`Đã khôi phục hồ sơ "${target.name}" từ Kho lưu trữ sang Đang điều trị!`);
+      }
+    }
+    setSelectedPatientId(patientId);
+    const pVisits = visits
+      .filter((v) => v.patientId === patientId)
+      .sort((a, b) => b.visitDate.localeCompare(a.visitDate));
+    if (pVisits.length > 0) {
+      setSelectedVisitId(pVisits[0].visitId);
+    }
+    setActiveTab('tab2');
+  };
+
+  // Chuyển bệnh nhân đã hết bệnh vào Kho lưu trữ (ẩn khỏi danh sách đang khám) hoặc khôi phục lại
+  const handleToggleArchivePatient = (patientId) => {
+    const target = patients.find((p) => p.id === patientId);
+    if (!target) return;
+    const nextArchived = !target.isArchived;
+    setPatients((prev) =>
+      prev.map((p) =>
+        p.id === patientId
+          ? {
+              ...p,
+              isArchived: nextArchived,
+              archivedAt: nextArchived ? '2026-10-26' : null
+            }
+          : p
+      )
+    );
+    if (nextArchived) {
+      showToast(
+        `Đã chuyển hồ sơ "${target.name}" vào Kho lưu trữ (Đã hết bệnh)! Khi BN quay lại chỉ cần gõ tên/SĐT ở Tab 1.`
+      );
+      // Tự động quay về Tab 1 để danh sách gọn gàng
+      setActiveTab('tab1');
+    } else {
+      showToast(`Đã mở lại hồ sơ "${target.name}" sang trạng thái Đang điều trị!`);
+    }
+  };
+
+  // Xóa vĩnh viễn bệnh nhân (Dùng khi nhập sai / nhập trùng)
+  const handleDeletePatientPermanently = () => {
+    if (!selectedPatient) return;
+    const deletedName = selectedPatient.name;
+    const deletedId = selectedPatient.id;
+    const remainingPatients = patients.filter((p) => p.id !== deletedId);
+    const remainingVisits = visits.filter((v) => v.patientId !== deletedId);
+
+    setPatients(remainingPatients);
+    setVisits(remainingVisits);
+    setIsDeletePatientModalOpen(false);
+
+    if (remainingPatients.length > 0) {
+      const nextP = remainingPatients.find((p) => !p.isArchived) || remainingPatients[0];
+      setSelectedPatientId(nextP.id);
+      const nextV = remainingVisits
+        .filter((v) => v.patientId === nextP.id)
+        .sort((a, b) => b.visitDate.localeCompare(a.visitDate));
+      setSelectedVisitId(nextV[0]?.visitId || '');
+    } else {
+      setSelectedPatientId('');
+      setSelectedVisitId('');
+    }
+    setActiveTab('tab1');
+    showToast(`Đã xóa vĩnh viễn hồ sơ bệnh nhân ${deletedName} (${deletedId})!`);
+  };
+
+  // Danh sách bệnh nhân đã lọc ở Tab 1 kèm thông tin lượt khám gần nhất
+  const enrichedPatients = useMemo(() => {
+    return patients.map((p) => {
+      const pVisits = visits
+        .filter((v) => v.patientId === p.id)
+        .sort((a, b) => b.visitDate.localeCompare(a.visitDate));
+      const latestVisit = pVisits[0] || null;
+      return {
+        ...p,
+        isArchived: Boolean(p.isArchived),
+        age: calculateAge(p.dob),
+        visitCount: pVisits.length,
+        latestVisit
+      };
+    });
+  }, [patients, visits]);
+
+  const filteredPatients = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    return enrichedPatients.filter((p) => {
+      const matchQuery =
+        !q ||
+        p.name.toLowerCase().includes(q) ||
+        p.id.toLowerCase().includes(q) ||
+        p.phone.includes(q) ||
+        (p.latestVisit?.diagnosis || '').toLowerCase().includes(q);
+
+      if (!matchQuery) return false;
+
+      // Nếu bác sĩ đang gõ từ khóa tìm kiếm (Tên / SĐT / Mã BN):
+      // Tự động tìm xuyên cả Kho lưu trữ để nếu bệnh nhân cũ quay lại sau nhiều tháng/năm là thấy ngay!
+      if (q) {
+        if (filterMode === 'archived') return p.isArchived;
+        return true;
+      }
+
+      // Khi không gõ tìm kiếm:
+      if (filterMode === 'archived') {
+        return p.isArchived;
+      }
+      if (filterMode === 'all_with_archived') {
+        return true;
+      }
+
+      // Mặc định ('all', 'today', 'followup_today', 'unpaid') CHỈ hiển thị bệnh nhân ĐANG ĐIỀU TRỊ (ẩn BN đã lưu trữ)
+      if (p.isArchived) return false;
+
+      if (filterMode === 'today') {
+        return p.latestVisit?.visitDate === '2026-10-25';
+      }
+      if (filterMode === 'followup_today') {
+        return p.latestVisit?.followUpDate === '2026-10-25';
+      }
+      if (filterMode === 'unpaid') {
+        return p.latestVisit?.paymentStatus === 'Chưa thu';
+      }
+      return true;
+    });
+  }, [enrichedPatients, searchQuery, filterMode]);
+
+  // Cập nhật thông tin hành chính của bệnh nhân đang chọn
+  const handleUpdatePatientField = (field, value) => {
+    setPatients((prev) =>
+      prev.map((p) => (p.id === selectedPatient.id ? { ...p, [field]: value } : p))
+    );
+  };
+
+  // Cập nhật thông tin lượt khám đang chọn
+  const handleUpdateVisitField = (field, value) => {
+    if (!currentVisit) return;
+    setVisits((prev) =>
+      prev.map((v) =>
+        v.visitId === currentVisit.visitId ? { ...v, [field]: value } : v
+      )
+    );
+  };
+
+  // Tạo bệnh nhân mới + tạo luôn 1 lượt khám hôm nay
+  const handleCreateNewPatient = (e) => {
+    e.preventDefault();
+    if (!newPatientForm.name.trim()) return;
+
+    const nextNum = patients.length + 1;
+    const newId = `BN${String(nextNum).padStart(4, '0')}`;
+    const newVisitId = `LK261025-0${visits.length + 1}`;
+
+    const createdPatient = {
+      id: newId,
+      name: newPatientForm.name.trim(),
+      dob: newPatientForm.dob || '1985-01-01',
+      gender: newPatientForm.gender,
+      phone: newPatientForm.phone || '0900000000',
+      relativePhone: newPatientForm.relativePhone || '',
+      initialWeight: newPatientForm.initialWeight ? Number(newPatientForm.initialWeight) : '',
+      occupation: newPatientForm.occupation || 'Tự do',
+      address: newPatientForm.address || 'TP.HCM',
+      medicalHistory: newPatientForm.medicalHistory || 'Chưa ghi nhận bệnh lý nền',
+      allergies: newPatientForm.allergies || 'Không ghi nhận dị ứng',
+      pastParaclinical: newPatientForm.pastParaclinical || '',
+      pastMedications: newPatientForm.pastMedications || '',
+      imageFolderUrl: newPatientForm.imageFolderUrl || '',
+      createdAt: '2026-10-25'
+    };
+
+    const initialVisit = {
+      visitId: newVisitId,
+      patientId: newId,
+      visitDate: '2026-10-25',
+      height: 165,
+      weight: 60,
+      bp: '120/80',
+      pulse: 75,
+      symptoms: 'Khám mới - đang nhập triệu chứng',
+      diagnosis: 'Đang khám & chẩn đoán',
+      diseaseCategory: 'Nội tổng quát',
+      followUpDate: '2026-11-01',
+      doctorNotes: '',
+      consultationFee: 150000,
+      paymentStatus: 'Chưa thu',
+      prescriptions: [],
+      labs: []
+    };
+
+    setPatients([createdPatient, ...patients]);
+    setVisits([initialVisit, ...visits]);
+    setSelectedPatientId(newId);
+    setSelectedVisitId(newVisitId);
+    setIsNewPatientModalOpen(false);
+    setNewPatientForm({
+      name: '',
+      dob: '1985-01-01',
+      gender: 'Nam',
+      phone: '',
+      relativePhone: '',
+      initialWeight: '',
+      occupation: '',
+      address: '',
+      medicalHistory: '',
+      allergies: '',
+      pastParaclinical: '',
+      pastMedications: '',
+      imageFolderUrl: ''
+    });
+    setActiveTab('tab2');
+    showToast(`Đã tạo bệnh nhân ${createdPatient.name} (${newId}) và mở hồ sơ khám!`);
+  };
+
+  // Tạo lượt tái khám mới cho bệnh nhân hiện tại
+  const handleCreateNewVisitForPatient = () => {
+    if (!selectedPatient) return;
+    const newVisitId = `LK261025-${String(visits.length + 1).padStart(2, '0')}`;
+    const newVisit = {
+      visitId: newVisitId,
+      patientId: selectedPatient.id,
+      visitDate: '2026-10-25',
+      height: currentVisit?.height || 165,
+      weight: currentVisit?.weight || 60,
+      bp: '120/80',
+      pulse: 76,
+      symptoms: '',
+      diagnosis: '',
+      diseaseCategory: currentVisit?.diseaseCategory || 'Nội tổng quát',
+      followUpDate: '2026-11-01',
+      doctorNotes: '',
+      consultationFee: 150000,
+      paymentStatus: 'Chưa thu',
+      prescriptions: [],
+      labs: []
+    };
+    setVisits([newVisit, ...visits]);
+    setSelectedVisitId(newVisitId);
+    showToast(`Đã tạo lượt khám mới (${newVisitId}) cho bệnh nhân ${selectedPatient.name}`);
+  };
+
+  // Chọn thuốc mẫu từ danh mục
+  const handleSelectCatalogDrug = (drugName) => {
+    const found = DRUG_CATALOG.find((d) => d.name === drugName);
+    if (found) {
+      setDrugDraft({
+        ...drugDraft,
+        drugName: found.name,
+        unit: found.unit,
+        price: found.price,
+        note: found.defaultNote,
+        morning: found.m,
+        noon: found.n,
+        afternoon: found.a,
+        evening: found.e
+      });
+    } else {
+      setDrugDraft({ ...drugDraft, drugName });
+    }
+  };
+
+  // Thêm thuốc vào toa hiện tại
+  const handleAddDrugToPrescription = (e) => {
+    e.preventDefault();
+    if (!currentVisit || !drugDraft.drugName.trim()) return;
+    const newDrug = {
+      id: `T${Date.now()}`,
+      ...drugDraft,
+      morning: Number(drugDraft.morning) || 0,
+      noon: Number(drugDraft.noon) || 0,
+      afternoon: Number(drugDraft.afternoon) || 0,
+      evening: Number(drugDraft.evening) || 0,
+      days: Number(drugDraft.days) || 1,
+      price: Number(drugDraft.price) || 0
+    };
+    handleUpdateVisitField('prescriptions', [...currentVisit.prescriptions, newDrug]);
+    setDrugDraft({
+      drugName: '',
+      unit: 'Viên',
+      morning: 1,
+      noon: 0,
+      afternoon: 0,
+      evening: 1,
+      days: 7,
+      price: 3500,
+      note: 'Uống sau ăn'
+    });
+    showToast(`Đã thêm "${newDrug.drugName}" vào đơn thuốc!`);
+  };
+
+  const handleRemoveDrug = (drugId) => {
+    if (!currentVisit) return;
+    handleUpdateVisitField(
+      'prescriptions',
+      currentVisit.prescriptions.filter((d) => d.id !== drugId)
+    );
+  };
+
+  // Chọn xét nghiệm / X-Quang từ danh mục mẫu
+  const handleSelectCatalogLab = (labName) => {
+    const found = LAB_CATALOG.find((l) => l.name === labName);
+    if (found) {
+      setLabDraft({
+        ...labDraft,
+        type: found.type,
+        name: found.name,
+        cost: found.cost
+      });
+    } else {
+      setLabDraft({ ...labDraft, name: labName });
+    }
+  };
+
+  // Thêm chỉ định cận lâm sàng
+  const handleAddLabToVisit = (e) => {
+    e.preventDefault();
+    if (!currentVisit || !labDraft.name.trim()) return;
+    const newLab = {
+      id: `XN${Date.now()}`,
+      ...labDraft,
+      cost: Number(labDraft.cost) || 0,
+      attachment: labDraft.attachment || `KQ_${currentVisit.patientId}.pdf`
+    };
+    handleUpdateVisitField('labs', [...currentVisit.labs, newLab]);
+    setLabDraft({
+      type: 'Thử máu',
+      name: '',
+      result: '',
+      cost: 150000,
+      status: 'Đã có KQ',
+      attachment: ''
+    });
+    showToast(`Đã thêm chỉ định "${newLab.name}"!`);
+  };
+
+  const handleRemoveLab = (labId) => {
+    if (!currentVisit) return;
+    handleUpdateVisitField(
+      'labs',
+      currentVisit.labs.filter((l) => l.id !== labId)
+    );
+  };
+
+  // Tính toán chi phí của lượt khám hiện tại
+  const currentVisitFinancials = useMemo(() => {
+    if (!currentVisit) {
+      return { consultationFee: 0, drugTotal: 0, labTotal: 0, grandTotal: 0 };
+    }
+    const consultationFee = Number(currentVisit.consultationFee) || 0;
+    const drugTotal = currentVisit.prescriptions.reduce((sum, item) => {
+      const dailyQty =
+        (Number(item.morning) || 0) +
+        (Number(item.noon) || 0) +
+        (Number(item.afternoon) || 0) +
+        (Number(item.evening) || 0);
+      const totalQty = dailyQty > 0 ? dailyQty * (Number(item.days) || 1) : Number(item.days) || 1;
+      return sum + totalQty * (Number(item.price) || 0);
+    }, 0);
+    const labTotal = currentVisit.labs.reduce((sum, item) => sum + (Number(item.cost) || 0), 0);
+    return {
+      consultationFee,
+      drugTotal,
+      labTotal,
+      grandTotal: consultationFee + drugTotal + labTotal
+    };
+  }, [currentVisit]);
+
+  // Tính chỉ số BMI
+  const currentBMI = useMemo(() => {
+    if (!currentVisit?.height || !currentVisit?.weight) return null;
+    const hMeter = Number(currentVisit.height) / 100;
+    if (hMeter <= 0) return null;
+    const bmi = Number(currentVisit.weight) / (hMeter * hMeter);
+    return bmi.toFixed(1);
+  }, [currentVisit]);
+
+  // Thống kê tổng quan phòng khám
+  const clinicStats = useMemo(() => {
+    const totalPatients = patients.length;
+    const activePatients = patients.filter((p) => !p.isArchived).length;
+    const archivedPatients = patients.filter((p) => p.isArchived).length;
+    const todayVisits = visits.filter((v) => v.visitDate === '2026-10-25').length;
+    const followUpToday = visits.filter((v) => v.followUpDate === '2026-10-25').length;
+    const unpaidCount = visits.filter((v) => v.paymentStatus === 'Chưa thu').length;
+    return {
+      totalPatients,
+      activePatients,
+      archivedPatients,
+      todayVisits,
+      followUpToday,
+      unpaidCount
+    };
+  }, [patients, visits]);
+
+  // Copy code Apps Script hoàn chỉnh (tự động tạo 4 Sheet nếu chưa có & đồng bộ toàn bộ dữ liệu)
+  const appsScriptCode = `// HƯỚNG DẪN ĐỒNG BỘ GOOGLE SHEETS & TỰ ĐỘNG QUÉT THƯ MỤC ẢNH DRIVE
+// 1. Mở file Google Sheets của phòng khám > Tiện ích mở rộng (Extensions) > Apps Script
+// 2. Xóa hết mã cũ, dán toàn bộ mã này vào > Nhấn biểu tượng Đĩa mềm để Lưu (Save).
+// 3. Nhấn Triển khai (Deploy) > Triển khai mới (New deployment) > chọn loại "Ứng dụng Web (Web App)"
+//    - Thực thi dưới quyền: "Tôi (Your email)"
+//    - Quyền truy cập: "Bất kỳ ai (Anyone)"
+// 4. Copy URL Web App dán vào ô cấu hình trên phần mềm MediCare Clinic Pro.
+// 5. Quay lại file Google Sheets, tải lại trang sẽ xuất hiện Menu "🏥 MediCare Clinic" trên thanh công cụ!
+
+const ROOT_IMAGE_FOLDER_ID = "18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4"; // Thư mục ANH_XET_NGHIEM_BENH_NHAN
+
+// Tự động tạo menu tiện ích khi mở file Google Sheets
+function onOpen() {
+  const ui = SpreadsheetApp.getUi();
+  ui.createMenu("🏥 MediCare Clinic")
+    .addItem("⚡ Quét & Tự động gắn link ảnh Drive", "quetVaCapNhatLinkDriveAnh")
+    .addItem("📂 Mở thư mục ảnh Drive gốc", "moThuMucAnhGoc")
+    .addToUi();
+}
+
+function moThuMucAnhGoc() {
+  const html = '<script>window.open("https://drive.google.com/drive/folders/' + ROOT_IMAGE_FOLDER_ID + '", "_blank");google.script.host.close();</script>';
+  SpreadsheetApp.getUi().showModalDialog(HtmlService.createHtmlOutput(html).setWidth(200).setHeight(50), "Đang mở Drive...");
+}
+
+// Hàm quét tự động toàn bộ thư mục tên bệnh nhân và gắn link vào Sheet
+function quetVaCapNhatLinkDriveAnh() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName("Benh_Nhan");
+  if (!sheet) {
+    sheet = ensureSheet(ss, "Benh_Nhan", ['Ma_BN', 'Ho_Ten', 'Ngay_Sinh', 'Gioi_Tinh', 'SDT', 'SDT_Nguoi_Than', 'Can_Nang_Ban_Dau', 'Nghe_Nghiep', 'Dia_Chi', 'Tien_Su_Benh', 'Di_Ung_Thuoc', 'CLS_Da_Lam', 'Thuoc_Da_Dung', 'Link_Drive_Anh', 'Trang_Thai_Ho_So', 'Ngay_Tao']);
+  }
+
+  const rootFolder = DriveApp.getFolderById(ROOT_IMAGE_FOLDER_ID);
+  const patientFolders = rootFolder.getFolders();
+  const driveMap = {};
+
+  while (patientFolders.hasNext()) {
+    const f = patientFolders.next();
+    const folderName = f.getName().trim();
+    const subF = f.getFolders();
+    let subCount = 0;
+    while (subF.hasNext()) { subF.next(); subCount++; }
+
+    driveMap[folderName.toLowerCase()] = {
+      rawName: folderName,
+      url: f.getUrl(),
+      subCount: subCount
+    };
+  }
+
+  const data = sheet.getDataRange().getValues();
+  const headers = data[0];
+  const colNameIdx = headers.indexOf("Ho_Ten");
+  let colLinkIdx = headers.indexOf("Link_Drive_Anh");
+
+  if (colLinkIdx === -1) {
+    sheet.getRange(1, headers.length + 1).setValue("Link_Drive_Anh");
+    colLinkIdx = headers.length;
+  }
+
+  const matchedNames = new Set();
+  let updatedCount = 0;
+
+  for (let i = 1; i < data.length; i++) {
+    const pName = (data[i][colNameIdx] || "").toString().trim();
+    if (!pName) continue;
+    const key = pName.toLowerCase();
+    if (driveMap[key]) {
+      sheet.getRange(i + 1, colLinkIdx + 1).setValue(driveMap[key].url);
+      matchedNames.add(key);
+      updatedCount++;
+    }
+  }
+
+  let newAddedCount = 0;
+  for (const key in driveMap) {
+    if (!matchedNames.has(key)) {
+      const item = driveMap[key];
+      const newId = "BN" + String(data.length + newAddedCount).padStart(4, "0");
+      const newRow = new Array(headers.length).fill("");
+      newRow[0] = newId;
+      newRow[colNameIdx] = item.rawName;
+      newRow[colLinkIdx] = item.url;
+      newRow[headers.indexOf("Trang_Thai_Ho_So")] = "Đang điều trị";
+      newRow[headers.indexOf("Ngay_Tao")] = Utilities.formatDate(new Date(), "GMT+7", "yyyy-MM-dd");
+      sheet.appendRow(newRow);
+      newAddedCount++;
+    }
+  }
+
+  SpreadsheetApp.getUi().alert(
+    "ĐÃ HOÀN TẤT ĐỒNG BỘ ẢNH GOOGLE DRIVE!\n\n" +
+    "- Đã gắn link cho: " + updatedCount + " bệnh nhân sẵn có.\n" +
+    "- Đã tự động tạo mới: " + newAddedCount + " hồ sơ bệnh nhân từ thư mục ảnh.\n" +
+    "- Tổng số thư mục đã quét: " + Object.keys(driveMap).length
+  );
+}
+
+function ensureSheet(ss, name, headers) {
+  let sheet = ss.getSheetByName(name);
+  if (!sheet) {
+    sheet = ss.insertSheet(name);
+  }
+  sheet.clearContents();
+  sheet.appendRow(headers);
+  return sheet;
+}
+
+function doPost(e) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const data = JSON.parse(e.postData.contents);
+
+  if (data.action === 'SYNC_ALL') {
+    const sBN = ensureSheet(ss, 'Benh_Nhan', ['Ma_BN', 'Ho_Ten', 'Ngay_Sinh', 'Gioi_Tinh', 'SDT', 'SDT_Nguoi_Than', 'Can_Nang_Ban_Dau', 'Nghe_Nghiep', 'Dia_Chi', 'Tien_Su_Benh', 'Di_Ung_Thuoc', 'CLS_Da_Lam', 'Thuoc_Da_Dung', 'Link_Drive_Anh', 'Trang_Thai_Ho_So', 'Ngay_Tao']);
+    (data.patients || []).forEach(p => {
+      sBN.appendRow([
+        p.id, p.name, p.dob, p.gender, "'" + (p.phone || ''), "'" + (p.relativePhone || ''),
+        p.initialWeight || '', p.occupation || '', p.address || '', p.medicalHistory || '',
+        p.allergies || '', p.pastParaclinical || '', p.pastMedications || '', p.imageFolderUrl || '',
+        p.isArchived ? 'Đã khỏi (Lưu trữ)' : 'Đang điều trị', p.createdAt || ''
+      ]);
+    });
+
+    const sLK = ensureSheet(ss, 'Luot_Kham', ['Ma_Luot_Kham', 'Ma_BN', 'Ngay_Kham', 'Chieu_Cao', 'Can_Nang', 'Huyet_Ap', 'Mach', 'Trieu_Chung', 'Chan_Doan', 'Chuyen_Khoa', 'Hen_Tai_Kham', 'Loi_Dan', 'Dieu_Tri_Nguyen_Van', 'Cong_Kham', 'Trang_Thai_Thu']);
+    const sDT = ensureSheet(ss, 'Don_Thuoc_Chi_Tiet', ['Ma_Luot_Kham', 'Ma_BN', 'Ten_Thuoc', 'DVT', 'Sang', 'Trua', 'Chieu', 'Toi', 'So_Ngay', 'Don_Gia', 'Cach_Dung']);
+    const sDV = ensureSheet(ss, 'Xet_Nghiem_Chi_Phi', ['Ma_Luot_Kham', 'Ma_BN', 'Loai_Dich_Vu', 'Ten_Chi_Dinh', 'Ket_Qua', 'Chi_Phi', 'Trang_Thai']);
+
+    (data.visits || []).forEach(v => {
+      sLK.appendRow([
+        v.visitId, v.patientId, v.visitDate, v.height, v.weight, v.bp, v.pulse,
+        v.symptoms, v.diagnosis, v.diseaseCategory, v.followUpDate, v.doctorNotes,
+        v.verbatimTreatment || '', v.consultationFee, v.paymentStatus
+      ]);
+      (v.prescriptions || []).forEach(d => {
+        sDT.appendRow([v.visitId, v.patientId, d.drugName, d.unit, d.morning, d.noon, d.afternoon, d.evening, d.days, d.price, d.note]);
+      });
+      (v.labs || []).forEach(l => {
+        sDV.appendRow([v.visitId, v.patientId, l.type, l.name, l.result, l.cost, l.status]);
+      });
+    });
+
+    const sNK = ensureSheet(ss, 'Nhat_Ky_Su_Dung', ['Thoi_Gian', 'Ten_Bac_Si', 'Ten_Phong_Kham', 'So_Dien_Thoai', 'Hanh_Dong', 'So_Benh_Nhan', 'Thiet_Bi']);
+    (data.usageLogs || []).forEach(log => {
+      sNK.appendRow([log.time, log.doctorName, log.clinicName, "'" + log.phone, log.action, log.patientCount, log.device]);
+    });
+  }
+
+  if (data.action === 'LOG_ACCESS' && data.log) {
+    let sheet = ss.getSheetByName('Nhat_Ky_Su_Dung');
+    if (!sheet) {
+      sheet = ss.insertSheet('Nhat_Ky_Su_Dung');
+      sheet.appendRow(['Thoi_Gian', 'Ten_Bac_Si', 'Ten_Phong_Kham', 'So_Dien_Thoai', 'Hanh_Dong', 'So_Benh_Nhan', 'Thiet_Bi']);
+    }
+    const l = data.log;
+    sheet.appendRow([l.time, l.doctorName, l.clinicName, "'" + l.phone, l.action, l.patientCount, l.device]);
+  }
+
+  return ContentService.createTextOutput(JSON.stringify({ status: 'success' }))
+    .setMimeType(ContentService.MimeType.JSON);
+}`;
+
+  const handleCopyCode = () => {
+    try {
+      navigator.clipboard.writeText(appsScriptCode);
+    } catch {
+      const textarea = document.createElement('textarea');
+      textarea.value = appsScriptCode;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+    }
+    setCopiedCode(true);
+    setTimeout(() => setCopiedCode(false), 2000);
+  };
+
+  // ============================================================================
+  // CHẾ ĐỘ 1: GIAO DIỆN DESKTOP WINFORMS CỔ ĐIỂN (THEO ẢNH MẪU)
+  // ============================================================================
+  if (uiStyle === 'winforms') {
+    return (
+      <div className="min-h-screen w-full bg-[#D4E2F4] flex flex-col font-sans text-[14px] text-slate-900 select-none">
+        {/* THÔNG BÁO TOAST */}
+        {toastMessage && (
+          <div className="fixed bottom-4 right-4 z-50 flex items-center gap-2 bg-[#FFFFE1] text-[#00156E] px-4 py-2.5 border-2 border-[#003C74] shadow-lg">
+            <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
+            <span className="text-xs font-bold">{toastMessage}</span>
+          </div>
+        )}
+
+        {/* KHUNG CỬA SỔ WINDOWS CHÍNH FULL MÀN HÌNH (100% CHIỀU NGANG & CHIỀU CAO) */}
+        <div className="w-full flex-1 flex flex-col bg-[#D4E2F4] border-b border-[#7DA2CE] overflow-hidden">
+          {/* THANH TIÊU ĐỀ CỬA SỔ (WINDOWS TITLE BAR) */}
+          <div className="bg-gradient-to-b from-[#DCEBFC] via-[#C3D9F5] to-[#A6C5EB] px-3 py-1.5 flex items-center justify-between border-b border-[#8BA8C7]">
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#FF8C00] to-[#0055EA] flex items-center justify-center text-white text-[10px] font-extrabold shadow-xs border border-white">
+                MC
+              </div>
+              <span className="font-bold text-[14px] text-[#1E395B] drop-shadow-[0_1px_0_rgba(255,255,255,0.8)]">
+                Hệ thống Quản lý Phòng khám Tư nhân - MediCare Clinic Pro (Liên kết Google Sheets)
+              </span>
+            </div>
+
+            {/* Cụm nút Điểm phục hồi & Nút đóng X đỏ đặc trưng */}
+            <div className="flex items-center gap-2">
+              {isAdminMode && (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setUiStyle('modern');
+                      showToast('Đã khôi phục về giao diện hiện đại (Điểm phục hồi v1)!');
+                    }}
+                    className="inline-flex items-center gap-1 px-2.5 py-0.5 text-[11px] font-bold text-[#00156E] bg-[#FFFFE1] border border-[#7F9DB9] rounded-[2px] hover:bg-amber-100 cursor-pointer shadow-2xs"
+                    title="Chỉ hiển thị trên máy Admin (#ktskhoa365)"
+                  >
+                    <RotateCcw className="w-3 h-3 text-amber-700" />
+                    Khôi phục giao diện cũ (v1)
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleDownloadStandaloneApp}
+                    className="inline-flex items-center gap-1 px-2.5 py-0.5 text-[11px] font-bold text-white bg-gradient-to-b from-[#2E8B57] to-[#1E5E3A] border border-[#0F3822] rounded-[2px] hover:brightness-110 cursor-pointer shadow-2xs"
+                    title="Chỉ hiển thị trên máy Admin (#ktskhoa365)"
+                  >
+                    <Download className="w-3 h-3" />
+                    Tải App về máy (Ổ J:)
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleToggleAdminMode}
+                    className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-semibold text-slate-700 bg-slate-100 border border-[#7F9DB9] rounded-[2px] hover:bg-white cursor-pointer"
+                    title="Bấm để ẩn 2 nút Admin (Xem giao diện như máy Người dùng)"
+                  >
+                    <Eye className="w-3 h-3 text-slate-600" />
+                    Ẩn nút Admin
+                  </button>
+                </>
+              )}
+
+              <button
+                type="button"
+                onClick={() => {
+                  setSetupForm({
+                    doctorName: clinicAccount?.doctorName || 'BS. Nguyễn Khoa',
+                    clinicName: clinicAccount?.clinicName || 'Phòng khám Chuyên khoa Nội MediCare',
+                    phone: clinicAccount?.phone || '0908297118',
+                    pin: clinicAccount?.pin || '1234',
+                    requirePinOnStart: clinicAccount?.requirePinOnStart ?? true
+                  });
+                  setPinError('');
+                  setIsSecurityModalOpen(true);
+                }}
+                className="inline-flex items-center gap-1 px-2.5 py-0.5 text-[11px] font-semibold text-[#00156E] bg-white/90 border border-[#7F9DB9] rounded-[2px] hover:bg-white cursor-pointer"
+                title="Cài đặt Tài khoản Bác sĩ & Đổi mã PIN bảo mật"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-blue-700" />
+                {clinicAccount ? clinicAccount.doctorName : 'Cài đặt PIN'}
+              </button>
+
+              <button
+                type="button"
+                onClick={handleLockScreenNow}
+                className="inline-flex items-center gap-1 px-2.5 py-0.5 text-[11px] font-bold text-rose-900 bg-[#FFF0F0] border border-rose-400 rounded-[2px] hover:bg-rose-100 cursor-pointer"
+                title="Khóa màn hình ngay lập tức (Chống người lạ xem dữ liệu khi rời máy)"
+              >
+                <Lock className="w-3 h-3 text-rose-700" />
+                Khóa máy (PIN)
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setIsSheetModalOpen(true)}
+                className="inline-flex items-center gap-1 px-2.5 py-0.5 text-[11px] font-semibold text-[#00156E] bg-white/80 border border-[#7F9DB9] rounded-[2px] hover:bg-white cursor-pointer"
+              >
+                <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-700" />
+                Bảng Google Sheets ({patients.length})
+              </button>
+
+              <button
+                type="button"
+                onClick={() => showToast('Đang ở chế độ cửa sổ chính của phần mềm phòng khám.')}
+                className="w-7 h-5 bg-gradient-to-b from-[#F89488] via-[#E04332] to-[#B81D0D] border border-[#73140A] rounded-[2px] flex items-center justify-center text-white font-bold text-xs shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] hover:brightness-110"
+                title="Đóng"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+
+          {/* VÙNG NỘI DUNG CỬA SỔ */}
+          <div className="p-2.5 bg-[#D4E2F4] flex-1 flex flex-col">
+            {/* THANH 3 TAB NGANG PHẲNG (Y HỆT ẢNH MẪU: "Thông tin chung | Các thông tin nghiệp vụ | Thông tin khác") */}
+            <div className="grid grid-cols-1 md:grid-cols-3 bg-[#E4ECF7] border border-[#8BA8C7]">
+              <button
+                type="button"
+                onClick={() => setActiveTab('tab1')}
+                className={`py-2.5 px-4 text-center text-[14px] border-r border-[#8BA8C7] transition cursor-pointer ${
+                  activeTab === 'tab1'
+                    ? 'bg-white font-bold text-slate-900 shadow-[inset_0_2px_0_#3A6EA5] outline-1 outline-dashed outline-slate-400 -outline-offset-3'
+                    : 'bg-[#E4ECF7] text-slate-700 hover:bg-[#EEF4FC]'
+                }`}
+              >
+                1. Danh sách Đang khám ({clinicStats.activePatients}) • Lưu trữ ({clinicStats.archivedPatients})
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveTab('tab2')}
+                className={`py-2.5 px-4 text-center text-[14px] border-r border-[#8BA8C7] transition cursor-pointer ${
+                  activeTab === 'tab2'
+                    ? 'bg-white font-bold text-slate-900 shadow-[inset_0_2px_0_#3A6EA5] outline-1 outline-dashed outline-slate-400 -outline-offset-3'
+                    : 'bg-[#E4ECF7] text-slate-700 hover:bg-[#EEF4FC]'
+                }`}
+              >
+                2. Thông tin & Khám bệnh {selectedPatient ? `[${selectedPatient.name}]` : ''}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveTab('tab3')}
+                className={`py-2.5 px-4 text-center text-[14px] transition cursor-pointer ${
+                  activeTab === 'tab3'
+                    ? 'bg-white font-bold text-slate-900 shadow-[inset_0_2px_0_#3A6EA5] outline-1 outline-dashed outline-slate-400 -outline-offset-3'
+                    : 'bg-[#E4ECF7] text-slate-700 hover:bg-[#EEF4FC]'
+                }`}
+              >
+                3. Đơn thuốc, Xét nghiệm & Chi phí ({formatVND(currentVisitFinancials.grandTotal)})
+              </button>
+            </div>
+
+            {/* KHUNG PANEL CHÍNH BÊN DƯỚI TAB */}
+            <div className="bg-[#D4E2F4] border-x border-b border-[#8BA8C7] p-3.5 space-y-3.5 flex-1 flex flex-col justify-between">
+              {/* =========================================================
+                  TAB 1 (WINFORMS): DANH SÁCH BỆNH NHÂN & TRA CỨU
+                 ========================================================= */}
+              {activeTab === 'tab1' && (
+                <div className="space-y-3">
+                  {/* GroupBox 1: Thông số thống kê & Tìm kiếm */}
+                  <div className="space-y-1">
+                    <div className="text-[13px] font-bold text-[#00156E] px-0.5">Tra cứu & Lọc hồ sơ bệnh nhân</div>
+                    <div className="border border-[#8BA8C7] shadow-[inset_1px_1px_0_#fff] p-3 pt-2 bg-[#D4E2F4]">
+
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 items-center">
+                      <div className="lg:col-span-6 flex items-center gap-2">
+                        <label className={`${WIN_LABEL} w-28`}>Từ khóa tìm kiếm:</label>
+                        <div className="flex-1 flex items-center gap-1">
+                          <input
+                            type="text"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            placeholder="Nhập Họ tên, Mã BN (BN0001), SĐT hoặc Chẩn đoán..."
+                            className={WIN_INPUT}
+                          />
+                          {searchQuery && (
+                            <button
+                              type="button"
+                              onClick={() => setSearchQuery('')}
+                              className={WIN_BTN}
+                            >
+                              Xóa
+                            </button>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="lg:col-span-4 flex items-center gap-2">
+                        <label className={WIN_LABEL}>Chế độ lọc:</label>
+                        <select
+                          value={filterMode}
+                          onChange={(e) => setFilterMode(e.target.value)}
+                          className={`${WIN_INPUT} font-semibold text-[#00156E]`}
+                        >
+                          <option value="all">Đang khám & điều trị ({clinicStats.activePatients})</option>
+                          <option value="today">Bệnh nhân khám hôm nay (25/10/2026)</option>
+                          <option value="followup_today">Có hẹn tái khám hôm nay</option>
+                          <option value="unpaid">Chưa thu viện phí ({clinicStats.unpaidCount})</option>
+                          <option value="archived">📦 Kho lưu trữ - Đã hết bệnh ({clinicStats.archivedPatients})</option>
+                          <option value="all_with_archived">Tất cả hồ sơ (Gồm cả Kho lưu trữ: {patients.length})</option>
+                        </select>
+                      </div>
+
+                      <div className="lg:col-span-2 flex justify-end">
+                        <button
+                          type="button"
+                          onClick={() => setIsNewPatientModalOpen(true)}
+                          className={`${WIN_BTN_PRIMARY} w-full`}
+                        >
+                          <Plus className="w-3.5 h-3.5" />
+                          Thêm BN mới
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* 5 ô thông số kiểu WinForms (Có thêm Kho lưu trữ BN đã khỏi) */}
+                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-3 pt-2.5 border-t border-[#B0C6E0]">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className={WIN_LABEL}>Đang điều trị:</span>
+                        <input
+                          readOnly
+                          value={clinicStats.activePatients}
+                          className="w-16 bg-white border border-[#7F9DB9] px-2 py-0.5 text-right font-bold text-emerald-800"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className={WIN_LABEL}>Khám hôm nay:</span>
+                        <input
+                          readOnly
+                          value={clinicStats.todayVisits}
+                          className="w-16 bg-white border border-[#7F9DB9] px-2 py-0.5 text-right font-bold text-[#00156E]"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className={WIN_LABEL}>Hẹn tái khám:</span>
+                        <input
+                          readOnly
+                          value={clinicStats.followUpToday}
+                          className="w-16 bg-white border border-[#7F9DB9] px-2 py-0.5 text-right font-bold text-amber-800"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className={WIN_LABEL}>Chưa thu phí:</span>
+                        <input
+                          readOnly
+                          value={clinicStats.unpaidCount}
+                          className="w-16 bg-white border border-[#7F9DB9] px-2 py-0.5 text-right font-bold text-rose-700"
+                        />
+                      </div>
+                      <div
+                        onClick={() => setFilterMode(filterMode === 'archived' ? 'all' : 'archived')}
+                        title="Bấm để xem hoặc ẩn Kho hồ sơ lưu trữ"
+                        className="flex items-center justify-between gap-2 cursor-pointer hover:opacity-80"
+                      >
+                        <span className={`${WIN_LABEL} underline`}>Kho lưu trữ (Đã khỏi):</span>
+                        <input
+                          readOnly
+                          value={clinicStats.archivedPatients}
+                          className="w-16 bg-[#EEF3FA] border border-[#7F9DB9] px-2 py-0.5 text-right font-bold text-slate-700 cursor-pointer"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+
+                  {/* GroupBox 2: Bảng danh sách bệnh nhân kèm 2 nút chuyển nhanh Đang khám / Kho lưu trữ */}
+                  <div className="space-y-1">
+                    <div className="flex flex-wrap items-center justify-between gap-2 px-0.5">
+                      <div className="text-[13px] font-bold text-[#00156E]">
+                        {filterMode === 'archived'
+                          ? `📦 KHO LƯU TRỮ: Danh sách bệnh nhân đã khỏi bệnh (${clinicStats.archivedPatients} hồ sơ) - Bấm "Khám lại ↺" khi BN tái khám`
+                          : `Danh sách hồ sơ bệnh nhân đang khám (${filteredPatients.length} hồ sơ) - Click vào tên BN để mở Tab 2`}
+                      </div>
+
+                      {/* Cụm 2 nút bấm nổi bật để Bác sĩ mở xem Kho lưu trữ chỉ với 1 click (không cần nhớ tên/SĐT) */}
+                      <div className="flex items-center gap-1.5">
+                        <button
+                          type="button"
+                          onClick={() => setFilterMode('all')}
+                          className={`inline-flex items-center gap-1.5 px-3 py-1 text-[12.5px] font-bold rounded-[3px] border cursor-pointer transition ${
+                            filterMode !== 'archived'
+                              ? 'bg-[#003C74] text-white border-[#00156E] shadow-xs'
+                              : 'bg-white text-[#00156E] border-[#7F9DB9] hover:bg-[#EEF4FC]'
+                          }`}
+                        >
+                          <Users className="w-3.5 h-3.5" />
+                          Đang khám ({clinicStats.activePatients})
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setFilterMode(filterMode === 'archived' ? 'all' : 'archived')}
+                          className={`inline-flex items-center gap-1.5 px-3 py-1 text-[12.5px] font-bold rounded-[3px] border cursor-pointer transition ${
+                            filterMode === 'archived'
+                              ? 'bg-amber-600 text-white border-amber-800 shadow-xs'
+                              : 'bg-[#FFFFE1] text-[#00156E] border-[#8C6D1F] hover:bg-amber-100'
+                          }`}
+                          title="Mở xem toàn bộ danh sách bệnh nhân cũ đã khỏi bệnh khi không nhớ tên hoặc SĐT"
+                        >
+                          <Archive className="w-3.5 h-3.5 text-amber-800" />
+                          📦 Xem DS Đã khỏi bệnh / Lưu trữ ({clinicStats.archivedPatients})
+                        </button>
+                      </div>
+                    </div>
+                    <div className="border border-[#8BA8C7] shadow-[inset_1px_1px_0_#fff] p-2.5 pt-1.5 bg-[#D4E2F4]">
+
+                    <div className="bg-white border border-[#7F9DB9] overflow-x-auto">
+                      <table className="w-full text-left border-collapse text-[13.5px]">
+                        <thead>
+                          <tr className="bg-gradient-to-b from-[#F0F4F9] to-[#DCE4EF] text-[#00156E] border-b border-[#7F9DB9]">
+                            <th className="py-1.5 px-2.5 border-r border-[#C0D0E4] w-20">Mã BN</th>
+                            <th className="py-1.5 px-3 border-r border-[#C0D0E4] min-w-[250px]">Họ và tên bệnh nhân</th>
+                            <th className="py-1.5 px-2.5 border-r border-[#C0D0E4] w-24">Năm sinh / GT</th>
+                            <th className="py-1.5 px-2.5 border-r border-[#C0D0E4] w-28">Điện thoại</th>
+                            <th className="py-1.5 px-2.5 border-r border-[#C0D0E4]">Địa chỉ & Nghề nghiệp</th>
+                            <th className="py-1.5 px-2.5 border-r border-[#C0D0E4]">Chẩn đoán gần nhất</th>
+                            <th className="py-1.5 px-2.5 border-r border-[#C0D0E4] w-24">Tái khám</th>
+                            <th className="py-1.5 px-3 text-center w-32">Chọn</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {filteredPatients.length === 0 ? (
+                            <tr>
+                              <td colSpan={8} className="py-8 text-center text-slate-600">
+                                {filterMode === 'archived' ? (
+                                  <div className="space-y-1">
+                                    <p className="font-bold text-[#00156E]">
+                                      Hiện chưa có bệnh nhân nào trong Kho lưu trữ (Đã khỏi bệnh).
+                                    </p>
+                                    <p className="text-[12.5px] text-slate-500">
+                                      💡 Khi một bệnh nhân ở Tab 2 điều trị xong, anh bấm nút{' '}
+                                      <strong>"Đã khỏi bệnh → Chuyển vào Lưu trữ"</strong> thì hồ sơ của họ sẽ nằm tại đây.
+                                    </p>
+                                  </div>
+                                ) : (
+                                  'Không có bệnh nhân nào phù hợp với điều kiện lọc.'
+                                )}
+                              </td>
+                            </tr>
+                          ) : (
+                            filteredPatients.map((p, idx) => {
+                              // Lấy thông tin bệnh / dị ứng của bệnh nhân cho dòng 2 chữ đỏ (nếu không có thì để trống)
+                              const hasAllergy =
+                                p.allergies &&
+                                !p.allergies.toLowerCase().includes('không') &&
+                                !p.allergies.toLowerCase().includes('chưa');
+                              const hasCondition =
+                                p.medicalHistory &&
+                                !p.medicalHistory.toLowerCase().includes('không') &&
+                                !p.medicalHistory.toLowerCase().includes('chưa');
+                              const redSubLine = hasAllergy
+                                ? p.allergies
+                                : hasCondition
+                                ? p.medicalHistory
+                                : '';
+
+                              return (
+                                <tr
+                                  key={p.id}
+                                  onClick={() => handleSelectPatientFromList(p.id)}
+                                  className={`border-b border-[#E2EAF4] cursor-pointer ${
+                                    selectedPatientId === p.id
+                                      ? 'bg-[#FFF2C9] font-semibold'
+                                      : idx % 2 === 0
+                                      ? 'bg-white hover:bg-[#E8F1FC]'
+                                      : 'bg-[#F7FAFC] hover:bg-[#E8F1FC]'
+                                  }`}
+                                >
+                                  <td className="py-2 px-2.5 border-r border-[#E2EAF4] font-mono font-bold text-[#00156E] align-middle">
+                                    {p.id}
+                                  </td>
+                                  <td className="py-2 px-3 border-r border-[#E2EAF4] text-left align-middle">
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                      <span className="text-[#00156E] font-bold underline whitespace-nowrap">
+                                        {p.name}
+                                      </span>
+                                      <a
+                                        href={p.imageFolderUrl || `https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20"${encodeURIComponent(p.name)}"`}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        onClick={(e) => e.stopPropagation()}
+                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-blue-50 border border-blue-400 text-blue-800 text-[11px] font-bold rounded-[2px] hover:bg-blue-100 shadow-2xs"
+                                        title={p.imageFolderUrl ? "Mở thư mục ảnh Drive của bệnh nhân" : "Tìm kiếm ảnh của bệnh nhân trong thư mục Drive gốc"}
+                                      >
+                                        <FolderOpen className="w-3 h-3 text-blue-600" />
+                                        Ảnh Drive ↗
+                                      </a>
+                                      {p.isArchived && (
+                                        <span className="px-1.5 py-0.5 bg-slate-200 border border-slate-400 text-slate-700 text-[11px] font-bold rounded-[2px]">
+                                          📦 Đã lưu trữ (Hết bệnh)
+                                        </span>
+                                      )}
+                                    </div>
+                                    {redSubLine && (
+                                      <div className="text-rose-600 text-[12.5px] font-medium text-left mt-0.5 leading-snug">
+                                        {redSubLine}
+                                      </div>
+                                    )}
+                                  </td>
+                                  <td className="py-2 px-2.5 border-r border-[#E2EAF4] align-middle whitespace-nowrap">
+                                    {p.age}t ({p.gender})
+                                  </td>
+                                  <td className="py-2 px-2.5 border-r border-[#E2EAF4] font-mono align-middle whitespace-nowrap">
+                                    {p.phone}
+                                  </td>
+                                  <td className="py-2 px-2.5 border-r border-[#E2EAF4] truncate max-w-xs align-middle">
+                                    {p.occupation} - {p.address}
+                                  </td>
+                                  <td className="py-2 px-2.5 border-r border-[#E2EAF4] align-middle">
+                                    {p.latestVisit ? p.latestVisit.diagnosis : 'Chưa khám'}
+                                  </td>
+                                  <td className="py-2 px-2.5 border-r border-[#E2EAF4] font-mono align-middle whitespace-nowrap">
+                                    {p.latestVisit?.followUpDate || '--'}
+                                  </td>
+                                  <td className="py-2 px-3 text-center align-middle whitespace-nowrap">
+                                    <button
+                                      type="button"
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleSelectPatientFromList(p.id, p.isArchived);
+                                      }}
+                                      className={`w-full px-3 py-1.5 text-[12.5px] font-bold border rounded-[2px] cursor-pointer ${
+                                        p.isArchived
+                                          ? 'text-emerald-900 bg-gradient-to-b from-[#E6F9EE] to-[#C2EBD4] border-emerald-700 hover:brightness-95'
+                                          : 'text-[#00156E] bg-gradient-to-b from-white to-[#DCE4EF] border-[#003C74] hover:from-[#FFFDF5] hover:to-[#FCE6A6] hover:border-[#E59700]'
+                                      }`}
+                                    >
+                                      {p.isArchived ? 'Khám lại ↺' : 'Mở hồ sơ'}
+                                    </button>
+                                  </td>
+                                </tr>
+                              );
+                            })
+                          )}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              )}
+
+              {/* =========================================================
+                  TAB 2 (WINFORMS): THÔNG TIN CHUNG, SINH HIỆU & KHÁM BỆNH
+                  (Bố cục GroupBox giống hệt ảnh mẫu "Thông số hệ thống")
+                 ========================================================= */}
+              {activeTab === 'tab2' && selectedPatient && (
+                <div className="space-y-3">
+                  {/* GROUPBOX 1: THÔNG TIN CHUNG HÀNH CHÍNH BỆNH NHÂN + NÚT LƯU TRỮ / XÓA BN */}
+                  <div className="space-y-1">
+                    <div className="flex flex-wrap items-center justify-between gap-2 px-0.5">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[13px] font-bold text-[#00156E]">
+                          Thông tin chung (Hồ sơ hành chính bệnh nhân)
+                        </span>
+                        <span
+                          className={`px-2 py-0.5 text-[11.5px] font-bold border rounded-[2px] ${
+                            selectedPatient.isArchived
+                              ? 'bg-slate-200 text-slate-700 border-slate-400'
+                              : 'bg-emerald-100 text-emerald-900 border-emerald-500'
+                          }`}
+                        >
+                          {selectedPatient.isArchived ? '📦 Đang ở Kho lưu trữ (Đã khỏi)' : '● Đang khám & điều trị'}
+                        </span>
+                      </div>
+
+                      {/* Cụm nút Lưu trữ (Khi BN hết bệnh) & Nút Xóa vĩnh viễn (Khi nhập nhầm) */}
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => handleToggleArchivePatient(selectedPatient.id)}
+                          className="inline-flex items-center gap-1.5 px-3 py-1 text-[12px] font-bold text-[#00156E] bg-gradient-to-b from-[#FFFFE1] to-[#F5E29C] border border-[#8C6D1F] rounded-[3px] hover:brightness-95 cursor-pointer shadow-2xs"
+                          title="Ẩn bệnh nhân khỏi danh sách đang khám nhưng vẫn giữ toàn bộ lịch sử để năm sau quay lại gõ tên là thấy ngay"
+                        >
+                          <Archive className="w-3.5 h-3.5 text-amber-800" />
+                          {selectedPatient.isArchived
+                            ? 'Khôi phục sang Đang điều trị'
+                            : 'Đã khỏi bệnh → Chuyển vào Lưu trữ'}
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setIsDeletePatientModalOpen(true)}
+                          className="inline-flex items-center gap-1 px-3 py-1 text-[12px] font-bold text-rose-900 bg-gradient-to-b from-[#FFF0F0] to-[#FCD2D2] border border-rose-500 rounded-[3px] hover:bg-rose-200 cursor-pointer shadow-2xs"
+                          title="Xóa hẳn bệnh nhân này nếu nhập sai / nhập trùng"
+                        >
+                          <Trash2 className="w-3.5 h-3.5 text-rose-700" />
+                          Xóa BN
+                        </button>
+                      </div>
+                    </div>
+                    <div className="border border-[#8BA8C7] shadow-[inset_1px_1px_0_#fff] p-3 pt-2 bg-[#D4E2F4]">
+
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-2 items-center">
+                      {/* Dòng 1: Chọn nhanh BN + Mã BN */}
+                      <div className="md:col-span-7 flex items-center gap-2">
+                        <label className={`${WIN_LABEL} w-32`}>Họ và tên BN:</label>
+                        <input
+                          type="text"
+                          value={selectedPatient.name}
+                          onChange={(e) => handleUpdatePatientField('name', e.target.value)}
+                          className={`${WIN_INPUT} font-bold`}
+                        />
+                      </div>
+                      <div className="md:col-span-5 flex items-center gap-2">
+                        <label className={`${WIN_LABEL} w-28`}>Mã bệnh nhân:</label>
+                        <select
+                          value={selectedPatient.id}
+                          onChange={(e) => handleSelectPatientFromList(e.target.value)}
+                          className={`${WIN_INPUT} font-mono font-bold text-[#00156E]`}
+                        >
+                          {patients.map((p) => (
+                            <option key={p.id} value={p.id}>
+                              {p.id} - {p.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Dòng 2: Ngày sinh + Phái + Cân nặng ban đầu + SĐT chính */}
+                      <div className="md:col-span-7 flex items-center gap-2">
+                        <label className={`${WIN_LABEL} w-32`}>Ngày sinh / Tuổi:</label>
+                        <div className="flex-1 flex items-center gap-1.5">
+                          <input
+                            type="date"
+                            value={selectedPatient.dob}
+                            onChange={(e) => handleUpdatePatientField('dob', e.target.value)}
+                            className={WIN_INPUT}
+                          />
+                          <span className={WIN_LABEL}>Tuổi:</span>
+                          <input
+                            readOnly
+                            value={`${calculateAge(selectedPatient.dob)}t`}
+                            className="w-16 bg-[#EEF3FA] border border-[#7F9DB9] px-1 py-1 text-[13px] font-bold text-center"
+                          />
+                          <span className={WIN_LABEL}>Phái:</span>
+                          <select
+                            value={selectedPatient.gender}
+                            onChange={(e) => handleUpdatePatientField('gender', e.target.value)}
+                            className="w-20 bg-white border border-[#7F9DB9] px-1.5 py-1 text-[13px]"
+                          >
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                          </select>
+                          <span className={WIN_LABEL}>Cân nặng gốc:</span>
+                          <input
+                            type="text"
+                            value={selectedPatient.initialWeight || ''}
+                            onChange={(e) => handleUpdatePatientField('initialWeight', e.target.value)}
+                            placeholder="70kg"
+                            className="w-16 bg-white border border-[#7F9DB9] px-1.5 py-1 text-[13px] font-bold text-center"
+                            title="Cân nặng ban đầu khi lập hồ sơ"
+                          />
+                        </div>
+                      </div>
+                      <div className="md:col-span-5 flex items-center gap-2">
+                        <label className={`${WIN_LABEL} w-28`}>Điện thoại chính:</label>
+                        <input
+                          type="text"
+                          value={selectedPatient.phone}
+                          onChange={(e) => handleUpdatePatientField('phone', e.target.value)}
+                          className={WIN_INPUT}
+                        />
+                      </div>
+
+                      {/* Dòng 3: SĐT người thân / Người nhà + Nghề nghiệp */}
+                      <div className="md:col-span-7 flex items-center gap-2">
+                        <label className={`${WIN_LABEL} w-32 font-medium text-[#00156E]`}>SĐT người thân / Nhà:</label>
+                        <input
+                          type="text"
+                          value={selectedPatient.relativePhone || ''}
+                          onChange={(e) => handleUpdatePatientField('relativePhone', e.target.value)}
+                          placeholder="VD: 0902633204 (con trai - Minh)"
+                          className={`${WIN_INPUT} bg-[#FFFFF6]`}
+                          title="Số điện thoại người nhà hoặc ghi chú liên hệ"
+                        />
+                      </div>
+                      <div className="md:col-span-5 flex items-center gap-2">
+                        <label className={`${WIN_LABEL} w-28`}>Nghề nghiệp:</label>
+                        <input
+                          type="text"
+                          value={selectedPatient.occupation}
+                          onChange={(e) => handleUpdatePatientField('occupation', e.target.value)}
+                          className={WIN_INPUT}
+                        />
+                      </div>
+
+                      {/* Dòng 4: Địa chỉ thường trú */}
+                      <div className="md:col-span-12 flex items-center gap-2">
+                        <label className={`${WIN_LABEL} w-32`}>Địa chỉ thường trú:</label>
+                        <input
+                          type="text"
+                          value={selectedPatient.address}
+                          onChange={(e) => handleUpdatePatientField('address', e.target.value)}
+                          className={WIN_INPUT}
+                        />
+                      </div>
+
+                      {/* DÒNG 5 ĐẶC BIỆT: THƯ MỤC ẢNH XÉT NGHIỆM TRÊN GOOGLE DRIVE */}
+                      <div className="md:col-span-12 flex items-center gap-2 bg-[#E7F0FA] p-2 border border-[#8BA8C7] rounded-[2px]">
+                        <label className={`${WIN_LABEL} w-32 font-bold text-[#003C74] flex items-center gap-1.5`}>
+                          <FolderOpen className="w-4 h-4 text-blue-700 shrink-0" />
+                          Thư mục ảnh Drive:
+                        </label>
+                        <input
+                          type="text"
+                          value={selectedPatient.imageFolderUrl || ''}
+                          onChange={(e) => handleUpdatePatientField('imageFolderUrl', e.target.value)}
+                          placeholder="Dán link thư mục Google Drive chứa hình ảnh xét nghiệm, X-quang, MRI của bệnh nhân..."
+                          className={`${WIN_INPUT} font-mono text-[12.5px] bg-white`}
+                        />
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              if (selectedPatient.imageFolderUrl && selectedPatient.imageFolderUrl.trim().startsWith('http')) {
+                                window.open(selectedPatient.imageFolderUrl.trim(), '_blank');
+                              } else {
+                                const qName = encodeURIComponent(selectedPatient.name || '');
+                                window.open(`https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20"${qName}"`, '_blank');
+                              }
+                            }}
+                            className="inline-flex items-center gap-1 px-3 py-1.5 text-[12.5px] font-bold text-white bg-gradient-to-b from-[#0055EA] to-[#003C74] border border-[#00264D] rounded-[3px] hover:brightness-110 cursor-pointer shadow-xs whitespace-nowrap"
+                            title="Mở thư mục ảnh xét nghiệm / X-quang của bệnh nhân này trên Google Drive"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            Mở ảnh BN ↗
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => window.open('https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?usp=drive_link', '_blank')}
+                            className="inline-flex items-center gap-1 px-2.5 py-1.5 text-[12px] font-semibold text-[#00156E] bg-white border border-[#7F9DB9] rounded-[3px] hover:bg-[#EEF4FC] cursor-pointer whitespace-nowrap"
+                            title="Mở toàn bộ thư mục ANH_XET_NGHIEM_BENH_NHAN trên Google Drive"
+                          >
+                            <FolderOpen className="w-3.5 h-3.5 text-blue-700" />
+                            Thư mục gốc
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Dòng 6: Tiền sử bệnh nền + Dị ứng thuốc */}
+                      <div className="md:col-span-7 flex items-center gap-2">
+                        <label className={`${WIN_LABEL} w-32`}>Tiền sử bệnh nền:</label>
+                        <input
+                          type="text"
+                          value={selectedPatient.medicalHistory}
+                          onChange={(e) => handleUpdatePatientField('medicalHistory', e.target.value)}
+                          className={WIN_INPUT}
+                        />
+                      </div>
+                      <div className="md:col-span-5 flex items-center gap-2">
+                        <label className={`${WIN_LABEL} w-28 text-rose-800 font-bold`}>Dị ứng thuốc:</label>
+                        <input
+                          type="text"
+                          value={selectedPatient.allergies}
+                          onChange={(e) => handleUpdatePatientField('allergies', e.target.value)}
+                          className={`${WIN_INPUT} text-rose-800 font-semibold bg-[#FFF8F8]`}
+                        />
+                      </div>
+
+                      {/* Dòng 7: Cận lâm sàng cũ đã làm + Thuốc cũ đã dùng */}
+                      <div className="md:col-span-7 flex items-center gap-2">
+                        <label className={`${WIN_LABEL} w-32 text-[#00156E]`}>XN Cận lâm sàng cũ:</label>
+                        <input
+                          type="text"
+                          value={selectedPatient.pastParaclinical || ''}
+                          onChange={(e) => handleUpdatePatientField('pastParaclinical', e.target.value)}
+                          placeholder="VD: XQ phổi thẳng (2024), SA bụng, ECG..."
+                          className={WIN_INPUT}
+                          title="Các xét nghiệm, chẩn đoán hình ảnh đã thực hiện trước đây"
+                        />
+                      </div>
+                      <div className="md:col-span-5 flex items-center gap-2">
+                        <label className={`${WIN_LABEL} w-28 text-[#00156E]`}>Thuốc cũ đã dùng:</label>
+                        <input
+                          type="text"
+                          value={selectedPatient.pastMedications || ''}
+                          onChange={(e) => handleUpdatePatientField('pastMedications', e.target.value)}
+                          placeholder="VD: Amlor 5mg, Nexium 40mg..."
+                          className={WIN_INPUT}
+                          title="Các thuốc bệnh nhân đã dùng trước đây"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+
+                  {/* HÀNG GIỮA: 2 GROUPBOX CẠNH NHAU (TƯƠNG TỰ "Ngày, tháng, năm" VÀ "Tiền tệ" TRONG ẢNH MẪU) */}
+                  {currentVisit && (
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
+                      {/* Trái (7 cột): Khám lâm sàng & Chẩn đoán */}
+                      <div className="lg:col-span-7 space-y-1">
+                    <div className="text-[13px] font-bold text-[#00156E] px-0.5">Thông tin khám lâm sàng & Chẩn đoán ({currentVisit.visitId})</div>
+                    <div className="border border-[#8BA8C7] shadow-[inset_1px_1px_0_#fff] p-3 pt-2 bg-[#D4E2F4] space-y-2">
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-center">
+                          <div className="flex items-center gap-2">
+                            <label className={`${WIN_LABEL} w-28`}>Chọn đợt khám:</label>
+                            <select
+                              value={currentVisit.visitId}
+                              onChange={(e) => setSelectedVisitId(e.target.value)}
+                              className={`${WIN_INPUT} font-bold text-[#00156E]`}
+                            >
+                              {patientVisits.map((v) => (
+                                <option key={v.visitId} value={v.visitId}>
+                                  {v.visitDate} ({v.visitId})
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            <label className={`${WIN_LABEL} w-28`}>Ngày khám:</label>
+                            <input
+                              type="date"
+                              value={currentVisit.visitDate}
+                              onChange={(e) => handleUpdateVisitField('visitDate', e.target.value)}
+                              className={WIN_INPUT}
+                            />
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            <label className={`${WIN_LABEL} w-28`}>Chuyên khoa:</label>
+                            <select
+                              value={currentVisit.diseaseCategory}
+                              onChange={(e) => handleUpdateVisitField('diseaseCategory', e.target.value)}
+                              className={WIN_INPUT}
+                            >
+                              <option value="Tim mạch - Huyết áp">Tim mạch - Huyết áp</option>
+                              <option value="Tiêu hóa - Gan mật">Tiêu hóa - Gan mật</option>
+                              <option value="Cơ xương khớp - Nội tiết">Cơ xương khớp - Nội tiết</option>
+                              <option value="Tai Mũi Họng - Hô hấp">Tai Mũi Họng - Hô hấp</option>
+                              <option value="Nội tổng quát">Nội tổng quát</option>
+                              <option value="Thần kinh - Da liễu">Thần kinh - Da liễu</option>
+                            </select>
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            <label className={`${WIN_LABEL} w-28 font-bold`}>Hẹn tái khám:</label>
+                            <input
+                              type="date"
+                              value={currentVisit.followUpDate}
+                              onChange={(e) => handleUpdateVisitField('followUpDate', e.target.value)}
+                              className={`${WIN_INPUT} font-bold text-[#00156E]`}
+                            />
+                          </div>
+
+                          <div className="sm:col-span-2 flex items-center gap-2">
+                            <label className={`${WIN_LABEL} w-28`}>Triệu chứng:</label>
+                            <input
+                              type="text"
+                              value={currentVisit.symptoms}
+                              onChange={(e) => handleUpdateVisitField('symptoms', e.target.value)}
+                              className={WIN_INPUT}
+                            />
+                          </div>
+
+                          <div className="sm:col-span-2 flex items-center gap-2">
+                            <label className={`${WIN_LABEL} w-28 font-bold`}>Chẩn đoán bệnh:</label>
+                            <input
+                              type="text"
+                              value={currentVisit.diagnosis}
+                              onChange={(e) => handleUpdateVisitField('diagnosis', e.target.value)}
+                              className={`${WIN_INPUT} font-bold text-[#00156E]`}
+                            />
+                          </div>
+
+                          <div className="sm:col-span-2 flex items-center gap-2">
+                            <label className={`${WIN_LABEL} w-28`}>Lời dặn Bác sĩ:</label>
+                            <input
+                              type="text"
+                              value={currentVisit.doctorNotes}
+                              onChange={(e) => handleUpdateVisitField('doctorNotes', e.target.value)}
+                              className={WIN_INPUT}
+                            />
+                          </div>
+
+                          <div className="sm:col-span-2 flex items-center gap-2 bg-[#FFFDF0] p-1.5 border border-[#E6D4A5] rounded-[2px]">
+                            <label className={`${WIN_LABEL} w-28 text-amber-900 font-bold whitespace-nowrap`}>
+                              Toa cũ / Đ.trị gốc:
+                            </label>
+                            <input
+                              type="text"
+                              value={currentVisit.verbatimTreatment || ''}
+                              onChange={(e) => handleUpdateVisitField('verbatimTreatment', e.target.value)}
+                              placeholder="Kê toa tắt hoặc dòng điều trị nguyên văn từ sổ khám cũ (VD: Amlor 5mg x30j, Betaserc 16mg x14j = 870k)..."
+                              className={`${WIN_INPUT} font-semibold text-amber-950 bg-white`}
+                              title="Dòng điều trị gốc viết tắt và tiền gốc của đợt khám này"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+
+                      {/* Phải (5 cột): Chỉ số sinh hiệu (Dùng ô số Spinner giống khung "Tiền tệ" trong ảnh mẫu) */}
+                      <div className="lg:col-span-5 space-y-1">
+                    <div className="text-[13px] font-bold text-[#00156E] px-0.5">Chỉ số Sinh hiệu & Lịch sử khám</div>
+                    <div className="border border-[#8BA8C7] shadow-[inset_1px_1px_0_#fff] p-3 pt-2 bg-[#D4E2F4] space-y-2">
+
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between gap-2">
+                            <label className={WIN_LABEL}>Chiều cao (cm):</label>
+                            <input
+                              type="number"
+                              value={currentVisit.height}
+                              onChange={(e) => handleUpdateVisitField('height', e.target.value)}
+                              className="w-28 bg-white border border-[#7F9DB9] px-2 py-0.5 text-right font-bold"
+                            />
+                          </div>
+
+                          <div className="flex items-center justify-between gap-2">
+                            <label className={WIN_LABEL}>Cân nặng (kg):</label>
+                            <input
+                              type="number"
+                              value={currentVisit.weight}
+                              onChange={(e) => handleUpdateVisitField('weight', e.target.value)}
+                              className="w-28 bg-white border border-[#7F9DB9] px-2 py-0.5 text-right font-bold"
+                            />
+                          </div>
+
+                          <div className="flex items-center justify-between gap-2">
+                            <label className={WIN_LABEL}>Chỉ số BMI (kg/m²):</label>
+                            <input
+                              readOnly
+                              value={currentBMI || '--'}
+                              className="w-28 bg-[#EEF3FA] border border-[#7F9DB9] px-2 py-0.5 text-right font-bold text-[#00156E]"
+                            />
+                          </div>
+
+                          <div className="flex items-center justify-between gap-2">
+                            <label className={WIN_LABEL}>Huyết áp (mmHg):</label>
+                            <input
+                              type="text"
+                              value={currentVisit.bp}
+                              onChange={(e) => handleUpdateVisitField('bp', e.target.value)}
+                              className="w-28 bg-white border border-[#7F9DB9] px-2 py-0.5 text-right font-bold"
+                            />
+                          </div>
+
+                          <div className="flex items-center justify-between gap-2">
+                            <label className={WIN_LABEL}>Mạch đập (lần/phút):</label>
+                            <input
+                              type="number"
+                              value={currentVisit.pulse}
+                              onChange={(e) => handleUpdateVisitField('pulse', e.target.value)}
+                              className="w-28 bg-white border border-[#7F9DB9] px-2 py-0.5 text-right font-bold"
+                            />
+                          </div>
+
+                          <div className="pt-2 border-t border-[#B0C6E0] flex items-center justify-between">
+                            <span className="text-[11px] text-[#00156E]">
+                              Tổng số lần đã khám: <strong>{patientVisits.length} lần</strong>
+                            </span>
+                            <button
+                              type="button"
+                              onClick={handleCreateNewVisitForPatient}
+                              className={WIN_BTN}
+                            >
+                              + Tạo đợt khám mới
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                    </div>
+                  )}
+
+                  {/* GROUPBOX DƯỚI CÙNG: ĐƠN THUỐC & KÊ TOA NHANH */}
+                  {currentVisit && (
+                    <div className="space-y-1">
+                    <div className="text-[13px] font-bold text-[#00156E] px-0.5">Toa thuốc điều trị ({currentVisit.prescriptions.length} khoản thuốc)</div>
+                    <div className="border border-[#8BA8C7] shadow-[inset_1px_1px_0_#fff] p-3 pt-2 bg-[#D4E2F4] space-y-2.5">
+
+                      {/* Bảng thuốc */}
+                      <div className="bg-white border border-[#7F9DB9] overflow-x-auto">
+                        <table className="w-full text-left border-collapse text-[13.5px]">
+                          <thead>
+                            <tr className="bg-gradient-to-b from-[#F0F4F9] to-[#DCE4EF] text-[#00156E] border-b border-[#7F9DB9]">
+                              <th className="py-1 px-2 border-r border-[#C0D0E4] w-8 text-center">STT</th>
+                              <th className="py-1 px-2 border-r border-[#C0D0E4]">Tên thuốc / Hàm lượng</th>
+                              <th className="py-1 px-2 border-r border-[#C0D0E4] w-16 text-center">ĐVT</th>
+                              <th className="py-1 px-2 border-r border-[#C0D0E4] w-14 text-center">Sáng</th>
+                              <th className="py-1 px-2 border-r border-[#C0D0E4] w-14 text-center">Trưa</th>
+                              <th className="py-1 px-2 border-r border-[#C0D0E4] w-14 text-center">Chiều</th>
+                              <th className="py-1 px-2 border-r border-[#C0D0E4] w-14 text-center">Tối</th>
+                              <th className="py-1 px-2 border-r border-[#C0D0E4] w-16 text-center">Số ngày</th>
+                              <th className="py-1 px-2 border-r border-[#C0D0E4] w-20 text-right">Tổng SL</th>
+                              <th className="py-1 px-2 border-r border-[#C0D0E4]">Cách dùng</th>
+                              <th className="py-1 px-2 text-center w-12">Xóa</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {currentVisit.prescriptions.map((item, idx) => {
+                              const daily =
+                                (Number(item.morning) || 0) +
+                                (Number(item.noon) || 0) +
+                                (Number(item.afternoon) || 0) +
+                                (Number(item.evening) || 0);
+                              const totalQty =
+                                daily > 0 ? daily * (Number(item.days) || 1) : Number(item.days) || 1;
+                              return (
+                                <tr key={item.id} className="border-b border-[#E2EAF4] hover:bg-[#E8F1FC]">
+                                  <td className="py-1 px-2 border-r border-[#E2EAF4] text-center">{idx + 1}</td>
+                                  <td className="py-1 px-2 border-r border-[#E2EAF4] font-bold text-[#00156E]">
+                                    {item.drugName}
+                                  </td>
+                                  <td className="py-1 px-2 border-r border-[#E2EAF4] text-center">{item.unit}</td>
+                                  <td className="py-1 px-2 border-r border-[#E2EAF4] text-center">{item.morning}</td>
+                                  <td className="py-1 px-2 border-r border-[#E2EAF4] text-center">{item.noon}</td>
+                                  <td className="py-1 px-2 border-r border-[#E2EAF4] text-center">{item.afternoon}</td>
+                                  <td className="py-1 px-2 border-r border-[#E2EAF4] text-center">{item.evening}</td>
+                                  <td className="py-1 px-2 border-r border-[#E2EAF4] text-center font-bold">
+                                    {item.days}
+                                  </td>
+                                  <td className="py-1 px-2 border-r border-[#E2EAF4] text-right font-bold">
+                                    {totalQty}
+                                  </td>
+                                  <td className="py-1 px-2 border-r border-[#E2EAF4]">{item.note}</td>
+                                  <td className="py-1 px-2 text-center">
+                                    <button
+                                      type="button"
+                                      onClick={() => handleRemoveDrug(item.id)}
+                                      className="text-rose-700 hover:underline font-bold"
+                                    >
+                                      X
+                                    </button>
+                                  </td>
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+
+                      {/* Dòng thêm thuốc nhanh */}
+                      <form onSubmit={handleAddDrugToPrescription} className="grid grid-cols-2 sm:grid-cols-12 gap-2 items-center pt-1">
+                        <div className="col-span-2 sm:col-span-3">
+                          <input
+                            list="drug-catalog-list"
+                            type="text"
+                            value={drugDraft.drugName}
+                            onChange={(e) => handleSelectCatalogDrug(e.target.value)}
+                            placeholder="Chọn/nhập tên thuốc..."
+                            className={WIN_INPUT}
+                          />
+                          <datalist id="drug-catalog-list">
+                            {DRUG_CATALOG.map((d) => (
+                              <option key={d.name} value={d.name} />
+                            ))}
+                          </datalist>
+                        </div>
+                        <div className="sm:col-span-1">
+                          <select
+                            value={drugDraft.unit}
+                            onChange={(e) => setDrugDraft({ ...drugDraft, unit: e.target.value })}
+                            className={WIN_INPUT}
+                          >
+                            <option value="Viên">Viên</option>
+                            <option value="Gói">Gói</option>
+                            <option value="Chai">Chai</option>
+                            <option value="Ống">Ống</option>
+                          </select>
+                        </div>
+                        <div className="sm:col-span-1 flex items-center gap-1">
+                          <span className="text-[11px]">S:</span>
+                          <input
+                            type="number"
+                            min="0"
+                            value={drugDraft.morning}
+                            onChange={(e) => setDrugDraft({ ...drugDraft, morning: e.target.value })}
+                            className={WIN_INPUT}
+                          />
+                        </div>
+                        <div className="sm:col-span-1 flex items-center gap-1">
+                          <span className="text-[11px]">Tr:</span>
+                          <input
+                            type="number"
+                            min="0"
+                            value={drugDraft.noon}
+                            onChange={(e) => setDrugDraft({ ...drugDraft, noon: e.target.value })}
+                            className={WIN_INPUT}
+                          />
+                        </div>
+                        <div className="sm:col-span-1 flex items-center gap-1">
+                          <span className="text-[11px]">C:</span>
+                          <input
+                            type="number"
+                            min="0"
+                            value={drugDraft.afternoon}
+                            onChange={(e) => setDrugDraft({ ...drugDraft, afternoon: e.target.value })}
+                            className={WIN_INPUT}
+                          />
+                        </div>
+                        <div className="sm:col-span-1 flex items-center gap-1">
+                          <span className="text-[11px]">T:</span>
+                          <input
+                            type="number"
+                            min="0"
+                            value={drugDraft.evening}
+                            onChange={(e) => setDrugDraft({ ...drugDraft, evening: e.target.value })}
+                            className={WIN_INPUT}
+                          />
+                        </div>
+                        <div className="sm:col-span-1 flex items-center gap-1">
+                          <span className="text-[11px]">Ngày:</span>
+                          <input
+                            type="number"
+                            min="1"
+                            value={drugDraft.days}
+                            onChange={(e) => setDrugDraft({ ...drugDraft, days: e.target.value })}
+                            className={WIN_INPUT}
+                          />
+                        </div>
+                        <div className="col-span-2 sm:col-span-2">
+                          <input
+                            type="text"
+                            value={drugDraft.note}
+                            onChange={(e) => setDrugDraft({ ...drugDraft, note: e.target.value })}
+                            placeholder="Cách dùng..."
+                            className={WIN_INPUT}
+                          />
+                        </div>
+                        <div className="col-span-2 sm:col-span-1">
+                          <button type="submit" className={`${WIN_BTN_PRIMARY} w-full`}>
+                            + Kê
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  )}
+                </div>
+              )}
+
+              {/* =========================================================
+                  TAB 3 (WINFORMS): XÉT NGHIỆM, X-QUANG & TỔNG CHI PHÍ
+                 ========================================================= */}
+              {activeTab === 'tab3' && selectedPatient && currentVisit && (
+                <div className="space-y-3">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
+                    {/* Cột trái (8 cột): Cận lâm sàng & Bảng tính tiền thuốc */}
+                    <div className="lg:col-span-8 space-y-3">
+                      <div className="space-y-1">
+                    <div className="text-[13px] font-bold text-[#00156E] px-0.5">1. Chỉ định Xét nghiệm, Thử máu, Chụp X-Quang & Siêu âm</div>
+                    <div className="border border-[#8BA8C7] shadow-[inset_1px_1px_0_#fff] p-3 pt-2 bg-[#D4E2F4] space-y-2.5">
+
+                        <div className="bg-white border border-[#7F9DB9] overflow-x-auto">
+                          <table className="w-full text-left border-collapse text-[13.5px]">
+                            <thead>
+                              <tr className="bg-gradient-to-b from-[#F0F4F9] to-[#DCE4EF] text-[#00156E] border-b border-[#7F9DB9]">
+                                <th className="py-1 px-2 border-r border-[#C0D0E4] w-28">Loại chỉ định</th>
+                                <th className="py-1 px-2 border-r border-[#C0D0E4]">Tên xét nghiệm / X-Quang</th>
+                                <th className="py-1 px-2 border-r border-[#C0D0E4]">Kết quả đọc</th>
+                                <th className="py-1 px-2 border-r border-[#C0D0E4] w-28 text-right">Chi phí</th>
+                                <th className="py-1 px-2 text-center w-12">Xóa</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {currentVisit.labs.length === 0 ? (
+                                <tr>
+                                  <td colSpan={5} className="py-4 text-center text-slate-500">
+                                    Chưa có chỉ định xét nghiệm / X-quang.
+                                  </td>
+                                </tr>
+                              ) : (
+                                currentVisit.labs.map((lab) => (
+                                  <tr key={lab.id} className="border-b border-[#E2EAF4]">
+                                    <td className="py-1.5 px-2 border-r border-[#E2EAF4] font-semibold text-[#00156E]">
+                                      {lab.type}
+                                    </td>
+                                    <td className="py-1.5 px-2 border-r border-[#E2EAF4] font-bold">
+                                      {lab.name}
+                                    </td>
+                                    <td className="py-1.5 px-2 border-r border-[#E2EAF4]">
+                                      {lab.result || 'Đang chờ KQ'}
+                                    </td>
+                                    <td className="py-1.5 px-2 border-r border-[#E2EAF4] text-right font-bold">
+                                      {formatVND(lab.cost)}
+                                    </td>
+                                    <td className="py-1.5 px-2 text-center">
+                                      <button
+                                        type="button"
+                                        onClick={() => handleRemoveLab(lab.id)}
+                                        className="text-rose-700 font-bold hover:underline"
+                                      >
+                                        X
+                                      </button>
+                                    </td>
+                                  </tr>
+                                ))
+                              )}
+                            </tbody>
+                          </table>
+                        </div>
+
+                        {/* Form thêm cận lâm sàng */}
+                        <form onSubmit={handleAddLabToVisit} className="grid grid-cols-1 sm:grid-cols-12 gap-2 items-center pt-1">
+                          <div className="sm:col-span-2">
+                            <select
+                              value={labDraft.type}
+                              onChange={(e) => setLabDraft({ ...labDraft, type: e.target.value })}
+                              className={WIN_INPUT}
+                            >
+                              <option value="Thử máu">Thử máu</option>
+                              <option value="Chụp X-Quang">Chụp X-Quang</option>
+                              <option value="Siêu âm">Siêu âm</option>
+                              <option value="Điện tim">Điện tim</option>
+                              <option value="Xét nghiệm">Xét nghiệm</option>
+                            </select>
+                          </div>
+                          <div className="sm:col-span-4">
+                            <input
+                              list="lab-catalog-list"
+                              type="text"
+                              value={labDraft.name}
+                              onChange={(e) => handleSelectCatalogLab(e.target.value)}
+                              placeholder="Tên xét nghiệm / X-Quang..."
+                              className={WIN_INPUT}
+                            />
+                            <datalist id="lab-catalog-list">
+                              {LAB_CATALOG.map((l) => (
+                                <option key={l.name} value={l.name} />
+                              ))}
+                            </datalist>
+                          </div>
+                          <div className="sm:col-span-3">
+                            <input
+                              type="text"
+                              value={labDraft.result}
+                              onChange={(e) => setLabDraft({ ...labDraft, result: e.target.value })}
+                              placeholder="Kết quả..."
+                              className={WIN_INPUT}
+                            />
+                          </div>
+                          <div className="sm:col-span-2">
+                            <input
+                              type="number"
+                              step="10000"
+                              value={labDraft.cost}
+                              onChange={(e) => setLabDraft({ ...labDraft, cost: e.target.value })}
+                              className={`${WIN_INPUT} text-right font-bold`}
+                            />
+                          </div>
+                          <div className="sm:col-span-1">
+                            <button type="submit" className={`${WIN_BTN_PRIMARY} w-full`}>
+                              + Thêm
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                  </div>
+
+                      {/* Bảng tính tiền thuốc */}
+                      <div className="space-y-1">
+                    <div className="text-[13px] font-bold text-[#00156E] px-0.5">2. Bảng kê chi tiết tiền thuốc ({formatVND(currentVisitFinancials.drugTotal)})</div>
+                    <div className="border border-[#8BA8C7] shadow-[inset_1px_1px_0_#fff] p-3 pt-2 bg-[#D4E2F4]">
+                        <div className="bg-white border border-[#7F9DB9] overflow-x-auto">
+                          <table className="w-full text-left border-collapse text-[13.5px]">
+                            <thead>
+                              <tr className="bg-gradient-to-b from-[#F0F4F9] to-[#DCE4EF] text-[#00156E] border-b border-[#7F9DB9]">
+                                <th className="py-1 px-2 border-r border-[#C0D0E4]">Tên thuốc</th>
+                                <th className="py-1 px-2 border-r border-[#C0D0E4] text-center">Liều dùng</th>
+                                <th className="py-1 px-2 border-r border-[#C0D0E4] text-center">Số ngày</th>
+                                <th className="py-1 px-2 border-r border-[#C0D0E4] text-right">Tổng SL</th>
+                                <th className="py-1 px-2 border-r border-[#C0D0E4] text-right">Đơn giá</th>
+                                <th className="py-1 px-2 text-right">Thành tiền</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {currentVisit.prescriptions.map((item, idx) => {
+                                const daily =
+                                  (Number(item.morning) || 0) +
+                                  (Number(item.noon) || 0) +
+                                  (Number(item.afternoon) || 0) +
+                                  (Number(item.evening) || 0);
+                                const totalQty =
+                                  daily > 0 ? daily * (Number(item.days) || 1) : Number(item.days) || 1;
+                                const lineTotal = totalQty * (Number(item.price) || 0);
+                                return (
+                                  <tr key={item.id} className="border-b border-[#E2EAF4]">
+                                    <td className="py-1 px-2 border-r border-[#E2EAF4] font-semibold">
+                                      {idx + 1}. {item.drugName}
+                                    </td>
+                                    <td className="py-1 px-2 border-r border-[#E2EAF4] text-center">
+                                      S:{item.morning} T:{item.noon} C:{item.afternoon} Tối:{item.evening}
+                                    </td>
+                                    <td className="py-1 px-2 border-r border-[#E2EAF4] text-center">
+                                      {item.days}
+                                    </td>
+                                    <td className="py-1 px-2 border-r border-[#E2EAF4] text-right font-bold">
+                                      {totalQty} {item.unit}
+                                    </td>
+                                    <td className="py-1 px-2 border-r border-[#E2EAF4] text-right">
+                                      {formatVND(item.price)}
+                                    </td>
+                                    <td className="py-1 px-2 text-right font-bold text-[#00156E]">
+                                      {formatVND(lineTotal)}
+                                    </td>
+                                  </tr>
+                                );
+                              })}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                  </div>
+                    </div>
+
+                    {/* Cột phải (4 cột): Khung Tiền tệ & Thanh toán */}
+                    <div className="lg:col-span-4">
+                      <div className="space-y-1">
+                    <div className="text-[13px] font-bold text-[#00156E] px-0.5">Tiền tệ & Tổng hợp Viện phí</div>
+                    <div className="border border-[#8BA8C7] shadow-[inset_1px_1px_0_#fff] p-3 pt-2 bg-[#D4E2F4] space-y-3">
+
+                        <div className="space-y-2.5">
+                          <div className="flex items-center justify-between gap-2">
+                            <label className={WIN_LABEL}>Hồ sơ bệnh nhân:</label>
+                            <input
+                              readOnly
+                              value={`${selectedPatient.id} - ${selectedPatient.name}`}
+                              className="w-44 bg-[#EEF3FA] border border-[#7F9DB9] px-2 py-1 text-right font-bold text-[#00156E]"
+                            />
+                          </div>
+
+                          <div className="flex items-center justify-between gap-2">
+                            <label className={WIN_LABEL}>1. Tiền công khám (VND):</label>
+                            <input
+                              type="number"
+                              step="10000"
+                              value={currentVisit.consultationFee}
+                              onChange={(e) =>
+                                handleUpdateVisitField('consultationFee', Number(e.target.value))
+                              }
+                              className="w-44 bg-white border border-[#7F9DB9] px-2 py-1 text-right font-bold"
+                            />
+                          </div>
+
+                          <div className="flex items-center justify-between gap-2">
+                            <label className={WIN_LABEL}>2. Tiền thuốc điều trị:</label>
+                            <input
+                              readOnly
+                              value={formatVND(currentVisitFinancials.drugTotal)}
+                              className="w-44 bg-[#EEF3FA] border border-[#7F9DB9] px-2 py-1 text-right font-semibold"
+                            />
+                          </div>
+
+                          <div className="flex items-center justify-between gap-2">
+                            <label className={WIN_LABEL}>3. Tiền Xét nghiệm / XQ:</label>
+                            <input
+                              readOnly
+                              value={formatVND(currentVisitFinancials.labTotal)}
+                              className="w-44 bg-[#EEF3FA] border border-[#7F9DB9] px-2 py-1 text-right font-semibold"
+                            />
+                          </div>
+
+                          <div className="pt-2 border-t border-[#8BA8C7] flex items-center justify-between gap-2">
+                            <label className="text-[13px] font-bold text-[#00156E]">TỔNG CỘNG (VND):</label>
+                            <input
+                              readOnly
+                              value={formatVND(currentVisitFinancials.grandTotal)}
+                              className="w-44 bg-[#FFFFE1] border-2 border-[#003C74] px-2 py-1 text-right text-[15px] font-extrabold text-rose-700"
+                            />
+                          </div>
+
+                          <div className="flex items-center justify-between gap-2 pt-1">
+                            <label className={WIN_LABEL}>Trạng thái thu phí:</label>
+                            <select
+                              value={currentVisit.paymentStatus}
+                              onChange={(e) => {
+                                handleUpdateVisitField('paymentStatus', e.target.value);
+                                showToast(`Đã cập nhật trạng thái: ${e.target.value}`);
+                              }}
+                              className="w-44 bg-white border border-[#7F9DB9] px-2 py-1 font-bold text-[#00156E]"
+                            >
+                              <option value="Đã thu">Đã thu tiền</option>
+                              <option value="Chưa thu">Chưa thu tiền</option>
+                            </select>
+                          </div>
+
+                          <div className="pt-3 border-t border-[#8BA8C7] flex flex-col gap-2">
+                            <div className="grid grid-cols-2 gap-1.5">
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setIsPrintModalOpen(true);
+                                  setTimeout(() => handleExportPrescription('image'), 200);
+                                }}
+                                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 text-[12px] font-bold text-[#00156E] bg-gradient-to-b from-[#FFFDF5] to-[#FCE6A6] border border-[#E59700] rounded-[3px] shadow-2xs hover:brightness-95 cursor-pointer"
+                                title="Xuất file ảnh gửi cho bệnh nhân qua Zalo / Facebook"
+                              >
+                                📸 Xuất Ảnh (Zalo)
+                              </button>
+
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setIsPrintModalOpen(true);
+                                  setTimeout(() => handleExportPrescription('pdf'), 200);
+                                }}
+                                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 text-[12px] font-bold text-rose-900 bg-gradient-to-b from-[#FFF5F5] to-[#FED7D7] border border-rose-400 rounded-[3px] shadow-2xs hover:brightness-95 cursor-pointer"
+                                title="Xuất file PDF để lưu trữ hoặc gửi Email"
+                              >
+                                📄 Xuất file PDF
+                              </button>
+                            </div>
+
+                            <button
+                              type="button"
+                              onClick={() => setIsPrintModalOpen(true)}
+                              className={`${WIN_BTN_PRIMARY} w-full py-1.5`}
+                            >
+                              <Printer className="w-4 h-4" />
+                              Xem & Xuất Đơn Thuốc (Ảnh / PDF / In giấy)
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* =========================================================
+                  THANH NÚT ĐIỀU KHIỂN ĐÁY CỬA SỔ (GIỐNG 2 NÚT "OK" & "Cancel" Ở ẢNH MẪU)
+                 ========================================================= */}
+              <div className="pt-3 border-t border-[#8BA8C7] flex flex-wrap items-center justify-between gap-3">
+                <div className="text-[11px] text-[#1E395B] flex items-center gap-2">
+                  <span className="inline-block w-2 h-2 rounded-full bg-emerald-600"></span>
+                  <span>
+                    Trạng thái Google Sheets: <strong>Đã kết nối ({lastSyncTime})</strong>
+                  </span>
+                </div>
+
+                {/* Cụm nút căn giữa giống hệt OK / Cancel trong ảnh mẫu */}
+                <div className="flex items-center justify-center gap-3 mx-auto sm:mx-0">
+                  <button
+                    type="button"
+                    onClick={handleSyncToGoogleSheets}
+                    className={`${WIN_BTN_PRIMARY} min-w-[130px]`}
+                  >
+                    {isSyncing ? 'Đang ghi...' : 'OK (Lưu Sheet)'}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setIsPrintModalOpen(true)}
+                    className={`${WIN_BTN} min-w-[120px]`}
+                  >
+                    In Đơn Thuốc
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearchQuery('');
+                      setFilterMode('all');
+                      setActiveTab('tab1');
+                    }}
+                    className={`${WIN_BTN} min-w-[110px]`}
+                  >
+                    Cancel (Về DS)
+                  </button>
+                </div>
+
+                <div className="text-[11px] text-[#00156E]">
+                  Version: <strong>2.10 (Xuất Ảnh/PDF & Drive)</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Dòng bản quyền chìm 1 màu đơn giản ở dưới cùng góc phải (Click đúp để bật/tắt công cụ Admin) */}
+        <div
+          onDoubleClick={handleToggleAdminMode}
+          title="Click đúp để Bật/Tắt thanh công cụ Admin (#ktskhoa365)"
+          className="w-full bg-[#D4E2F4] px-3 py-1 text-right text-[11.5px] text-[#5A7696]/80 tracking-wide cursor-pointer"
+        >
+          App được thiết kế và phát triển bởi #ktskhoa365 LH:0908297118
+        </div>
+
+        {/* ====================================================================
+            MÀN HÌNH KHÓA BẢO MẬT (WINFORMS LOCK SCREEN) & ĐĂNG NHẬP NHANH (CÁCH A)
+           ==================================================================== */}
+        {isScreenLocked && (
+          <div className="fixed inset-0 z-50 bg-[#1E395B]/90 backdrop-blur-xs flex items-center justify-center p-4">
+            <div className="bg-[#D4E2F4] border-2 border-[#7DA2CE] rounded-t-[6px] max-w-md w-full shadow-[0_15px_40px_rgba(0,0,0,0.65)] overflow-hidden">
+              {/* Thanh tiêu đề cửa sổ Đăng nhập */}
+              <div className="bg-gradient-to-b from-[#DCEBFC] via-[#C3D9F5] to-[#A6C5EB] px-3 py-1.5 flex items-center justify-between border-b border-[#8BA8C7]">
+                <div className="flex items-center gap-2">
+                  <Lock className="w-4 h-4 text-[#00156E]" />
+                  <span className="font-bold text-[13px] text-[#1E395B]">
+                    Khóa Bảo Mật Phòng Khám - MediCare Clinic Pro
+                  </span>
+                </div>
+                <span className="text-[11px] font-mono font-bold text-[#00156E] bg-white/70 px-1.5 py-0.5 border border-[#7F9DB9]">
+                  PIN LOCK
+                </span>
+              </div>
+
+              <form onSubmit={handleUnlockWithPin} className="p-4 space-y-3">
+                <div className="space-y-1">
+                  <div className="text-[13px] font-bold text-[#00156E] px-0.5">
+                    Xác thực Bác sĩ trực khám
+                  </div>
+                  <div className="border border-[#8BA8C7] shadow-[inset_1px_1px_0_#fff] p-3 bg-[#D4E2F4] space-y-2.5">
+                    <div className="bg-[#EEF4FC] border border-[#7F9DB9] p-2.5 flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0055EA] to-[#00156E] text-white flex items-center justify-center font-bold text-sm shrink-0 border border-white">
+                        BS
+                      </div>
+                      <div className="min-w-0">
+                        <div className="font-bold text-[#00156E] text-[13px] truncate">
+                          {clinicAccount?.doctorName || setupForm.doctorName || 'BS. Phòng khám'}
+                        </div>
+                        <div className="text-[11px] text-slate-600 truncate">
+                          {clinicAccount?.clinicName || setupForm.clinicName || 'Phòng khám Chuyên khoa Nội'}
+                        </div>
+                        <div className="text-[11px] font-mono text-emerald-800">
+                          SĐT: {clinicAccount?.phone || setupForm.phone || '0908297118'}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-1 pt-1">
+                      <label className="block text-[12px] font-bold text-[#00156E]">
+                        Nhập Mã PIN bảo mật để mở hồ sơ bệnh nhân:
+                      </label>
+                      <input
+                        autoFocus
+                        type="password"
+                        value={pinInput}
+                        onChange={(e) => {
+                          setPinInput(e.target.value);
+                          setPinError('');
+                        }}
+                        placeholder="Nhập mã PIN (Mặc định: 1234)..."
+                        className={`${WIN_INPUT} text-center tracking-[0.35em] font-bold text-base py-1.5`}
+                      />
+                    </div>
+
+                    {/* Bàn phím số nhanh tiện bấm chuột */}
+                    <div className="grid grid-cols-5 gap-1.5 pt-1">
+                      {['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].map((digit) => (
+                        <button
+                          key={digit}
+                          type="button"
+                          onClick={() => {
+                            setPinInput((prev) => prev + digit);
+                            setPinError('');
+                          }}
+                          className={`${WIN_BTN} py-1 font-bold text-[13px]`}
+                        >
+                          {digit}
+                        </button>
+                      ))}
+                    </div>
+
+                    {pinError && (
+                      <div className="p-2 bg-rose-100 border border-rose-400 text-rose-800 text-[11px] font-semibold">
+                        {pinError}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between gap-2 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => setPinInput('')}
+                    className={WIN_BTN}
+                  >
+                    Xóa nhập lại
+                  </button>
+                  <button
+                    type="submit"
+                    className={`${WIN_BTN_PRIMARY} flex-1 py-1.5`}
+                  >
+                    <Unlock className="w-3.5 h-3.5" />
+                    OK (Mở khóa Phần mềm)
+                  </button>
+                </div>
+
+                <div className="pt-2 border-t border-[#8BA8C7] flex items-center justify-between text-[11px] text-slate-600">
+                  <span>Mặc định lần đầu: <strong>1234</strong></span>
+                  <span>Hỗ trợ #ktskhoa365: <strong>0908297118</strong></span>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+
+        {/* ====================================================================
+            MODAL CÀI ĐẶT TÀI KHOẢN PHÒNG KHÁM & ĐỔI MÃ PIN BẢO MẬT (CÁCH A)
+           ==================================================================== */}
+        {isSecurityModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
+            <div className="bg-[#D4E2F4] border-2 border-[#7DA2CE] rounded-t-[6px] max-w-lg w-full shadow-2xl overflow-hidden">
+              <div className="bg-gradient-to-b from-[#DCEBFC] to-[#A6C5EB] px-3 py-1.5 flex items-center justify-between border-b border-[#8BA8C7]">
+                <div className="flex items-center gap-2">
+                  <KeyRound className="w-4 h-4 text-[#00156E]" />
+                  <span className="font-bold text-[13px] text-[#1E395B]">
+                    Cài đặt Tài khoản Bác sĩ & Mã PIN Bảo mật
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsSecurityModalOpen(false)}
+                  className="w-6 h-4 bg-[#E04332] text-white text-xs font-bold flex items-center justify-center border border-[#73140A]"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <form onSubmit={handleSaveClinicSecurity} className="p-4 space-y-3">
+                <div className="space-y-1">
+                  <div className="text-[13px] font-bold text-[#00156E] px-0.5">
+                    1. Thông tin Bác sĩ / Phòng khám sử dụng (Cách A)
+                  </div>
+                  <div className="border border-[#8BA8C7] shadow-[inset_1px_1px_0_#fff] p-3 bg-[#D4E2F4] space-y-2">
+                    <div className="flex items-center gap-2">
+                      <label className={`${WIN_LABEL} w-36`}>Họ tên Bác sĩ (*):</label>
+                      <input
+                        required
+                        type="text"
+                        value={setupForm.doctorName}
+                        onChange={(e) => setSetupForm({ ...setupForm, doctorName: e.target.value })}
+                        placeholder="VD: BS. Nguyễn Văn A"
+                        className={`${WIN_INPUT} font-bold`}
+                      />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <label className={`${WIN_LABEL} w-36`}>Tên Phòng khám:</label>
+                      <input
+                        type="text"
+                        value={setupForm.clinicName}
+                        onChange={(e) => setSetupForm({ ...setupForm, clinicName: e.target.value })}
+                        placeholder="VD: Phòng khám Nội tổng quát..."
+                        className={WIN_INPUT}
+                      />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <label className={`${WIN_LABEL} w-36`}>Số điện thoại LH:</label>
+                      <input
+                        type="text"
+                        value={setupForm.phone}
+                        onChange={(e) => setSetupForm({ ...setupForm, phone: e.target.value })}
+                        placeholder="VD: 0908..."
+                        className={`${WIN_INPUT} font-mono`}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="text-[13px] font-bold text-[#00156E] px-0.5">
+                    2. Cài đặt Mã PIN Khóa Máy (Chống lộ dữ liệu khi rời bàn)
+                  </div>
+                  <div className="border border-[#8BA8C7] shadow-[inset_1px_1px_0_#fff] p-3 bg-[#D4E2F4] space-y-2.5">
+                    <div className="flex items-center gap-2">
+                      <label className={`${WIN_LABEL} w-36 font-bold`}>Mã PIN bảo mật (*):</label>
+                      <input
+                        required
+                        type="text"
+                        value={setupForm.pin}
+                        onChange={(e) => setSetupForm({ ...setupForm, pin: e.target.value })}
+                        placeholder="Nhập 4 - 6 chữ số (VD: 1234)"
+                        className={`${WIN_INPUT} font-mono font-bold text-[#00156E]`}
+                      />
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <label className={`${WIN_LABEL} w-36`}>Tự động khóa sau:</label>
+                      <select
+                        value={autoLockMinutes}
+                        onChange={(e) => setAutoLockMinutes(Number(e.target.value))}
+                        className={WIN_INPUT}
+                      >
+                        <option value={5}>5 phút không thao tác</option>
+                        <option value={15}>15 phút không thao tác</option>
+                        <option value={30}>30 phút không thao tác</option>
+                        <option value={60}>60 phút không thao tác</option>
+                        <option value={0}>Không tự động khóa (Chỉ khóa khi bấm nút)</option>
+                      </select>
+                    </div>
+
+                    <label className="flex items-center gap-2 pt-1 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={setupForm.requirePinOnStart}
+                        onChange={(e) =>
+                          setSetupForm({ ...setupForm, requirePinOnStart: e.target.checked })
+                        }
+                        className="w-4 h-4"
+                      />
+                      <span className="text-[12px] text-[#00156E] font-medium">
+                        Luôn yêu cầu nhập Mã PIN mỗi khi mở lại trình duyệt
+                      </span>
+                    </label>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between gap-2 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsSecurityModalOpen(false);
+                      handleLockScreenNow();
+                    }}
+                    className={WIN_BTN}
+                  >
+                    <Lock className="w-3.5 h-3.5 text-rose-700" />
+                    Khóa màn hình ngay
+                  </button>
+
+                  <div className="flex items-center gap-2">
+                    <button type="submit" className={`${WIN_BTN_PRIMARY} min-w-[110px]`}>
+                      OK (Lưu cài đặt)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setIsSecurityModalOpen(false)}
+                      className={`${WIN_BTN} min-w-[90px]`}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+
+        {/* Các Modal dùng chung bên dưới */}
+        {isDeletePatientModalOpen && selectedPatient && (
+          <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
+            <div className="bg-[#D4E2F4] border-2 border-[#7DA2CE] rounded-t-[6px] max-w-md w-full shadow-2xl overflow-hidden">
+              <div className="bg-gradient-to-b from-[#F89488] via-[#E04332] to-[#B81D0D] px-3 py-1.5 flex items-center justify-between border-b border-[#73140A]">
+                <span className="font-bold text-[13px] text-white">
+                  Xác nhận xóa vĩnh viễn hồ sơ bệnh nhân
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setIsDeletePatientModalOpen(false)}
+                  className="w-6 h-4 bg-white/20 text-white text-xs font-bold flex items-center justify-center border border-white/40"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="p-4 space-y-3">
+                <div className="bg-white border border-[#7F9DB9] p-3 space-y-2 text-[13px]">
+                  <p className="font-bold text-rose-800">
+                    Bạn có chắc chắn muốn xóa vĩnh viễn bệnh nhân "{selectedPatient.name}" ({selectedPatient.id})?
+                  </p>
+                  <p className="text-slate-700 text-[12.5px]">
+                    💡 <strong>Gợi ý:</strong> Nếu bệnh nhân chỉ mới <strong>khám xong và hết bệnh</strong>, bạn nên bấm nút{' '}
+                    <strong className="text-[#00156E]">"Đã khỏi bệnh → Chuyển vào Lưu trữ"</strong> để ẩn khỏi danh sách chính nhưng vẫn giữ lại toa thuốc và lịch sử dị ứng phòng khi năm sau bệnh nhân quay lại.
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between gap-2 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsDeletePatientModalOpen(false);
+                      handleToggleArchivePatient(selectedPatient.id);
+                    }}
+                    className={`${WIN_BTN_PRIMARY} flex-1`}
+                  >
+                    Chuyển vào Lưu trữ (An toàn)
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleDeletePatientPermanently}
+                    className="px-3 py-1.5 text-[12.5px] font-bold text-white bg-gradient-to-b from-[#E04332] to-[#B81D0D] border border-[#73140A] rounded-[3px] hover:brightness-110 cursor-pointer"
+                  >
+                    Xóa vĩnh viễn
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setIsDeletePatientModalOpen(false)}
+                    className={WIN_BTN}
+                  >
+                    Hủy
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {isNewPatientModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
+            <div className="bg-[#D4E2F4] border-2 border-[#7DA2CE] rounded-t-[5px] max-w-lg w-full shadow-2xl overflow-hidden">
+              <div className="bg-gradient-to-b from-[#DCEBFC] to-[#A6C5EB] px-3 py-1.5 flex items-center justify-between border-b border-[#8BA8C7]">
+                <span className="font-bold text-[13px] text-[#1E395B]">Tiếp nhận Bệnh nhân mới</span>
+                <button
+                  type="button"
+                  onClick={() => setIsNewPatientModalOpen(false)}
+                  className="w-6 h-4 bg-[#E04332] text-white text-xs font-bold flex items-center justify-center border border-[#73140A]"
+                >
+                  ✕
+                </button>
+              </div>
+              <form onSubmit={handleCreateNewPatient} className="p-4 space-y-2.5">
+                <div className="space-y-1">
+                    <div className="text-[13px] font-bold text-[#00156E] px-0.5">Thông tin bệnh nhân</div>
+                    <div className="border border-[#8BA8C7] p-3 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <label className={`${WIN_LABEL} w-28`}>Họ tên BN (*):</label>
+                    <input
+                      required
+                      type="text"
+                      value={newPatientForm.name}
+                      onChange={(e) => setNewPatientForm({ ...newPatientForm, name: e.target.value })}
+                      className={WIN_INPUT}
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <label className={`${WIN_LABEL} w-28`}>Ngày sinh:</label>
+                    <input
+                      type="date"
+                      value={newPatientForm.dob}
+                      onChange={(e) => setNewPatientForm({ ...newPatientForm, dob: e.target.value })}
+                      className={WIN_INPUT}
+                    />
+                    <label className={WIN_LABEL}>Giới tính:</label>
+                    <select
+                      value={newPatientForm.gender}
+                      onChange={(e) => setNewPatientForm({ ...newPatientForm, gender: e.target.value })}
+                      className="bg-white border border-[#7F9DB9] px-2 py-1 text-[13px]"
+                    >
+                      <option value="Nam">Nam</option>
+                      <option value="Nữ">Nữ</option>
+                    </select>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <label className={`${WIN_LABEL} w-28`}>Điện thoại:</label>
+                    <input
+                      type="text"
+                      value={newPatientForm.phone}
+                      onChange={(e) => setNewPatientForm({ ...newPatientForm, phone: e.target.value })}
+                      className={WIN_INPUT}
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <label className={`${WIN_LABEL} w-28`}>Nghề nghiệp:</label>
+                    <input
+                      type="text"
+                      value={newPatientForm.occupation}
+                      onChange={(e) => setNewPatientForm({ ...newPatientForm, occupation: e.target.value })}
+                      className={WIN_INPUT}
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <label className={`${WIN_LABEL} w-28`}>Địa chỉ:</label>
+                    <input
+                      type="text"
+                      value={newPatientForm.address}
+                      onChange={(e) => setNewPatientForm({ ...newPatientForm, address: e.target.value })}
+                      className={WIN_INPUT}
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <label className={`${WIN_LABEL} w-28`}>Tiền sử bệnh:</label>
+                    <input
+                      type="text"
+                      value={newPatientForm.medicalHistory}
+                      onChange={(e) => setNewPatientForm({ ...newPatientForm, medicalHistory: e.target.value })}
+                      className={WIN_INPUT}
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <label className={`${WIN_LABEL} w-28`}>SĐT người thân:</label>
+                    <input
+                      type="text"
+                      value={newPatientForm.relativePhone}
+                      onChange={(e) => setNewPatientForm({ ...newPatientForm, relativePhone: e.target.value })}
+                      placeholder="VD: 0902633204 (con trai - Minh)..."
+                      className={WIN_INPUT}
+                    />
+                    <label className={`${WIN_LABEL} w-24 text-center`}>Cân nặng gốc:</label>
+                    <input
+                      type="number"
+                      value={newPatientForm.initialWeight}
+                      onChange={(e) => setNewPatientForm({ ...newPatientForm, initialWeight: e.target.value })}
+                      placeholder="kg"
+                      className="w-20 bg-white border border-[#7F9DB9] px-2 py-1 text-[13px] font-bold text-center"
+                    />
+                  </div>
+                  <div className="flex items-center gap-2 bg-[#E7F0FA] p-1.5 border border-[#8BA8C7]">
+                    <label className={`${WIN_LABEL} w-28 font-bold text-[#003C74]`}>Thư mục ảnh Drive:</label>
+                    <input
+                      type="text"
+                      value={newPatientForm.imageFolderUrl}
+                      onChange={(e) => setNewPatientForm({ ...newPatientForm, imageFolderUrl: e.target.value })}
+                      placeholder="Dán link Google Drive thư mục ảnh xét nghiệm..."
+                      className={`${WIN_INPUT} font-mono text-xs`}
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <label className={`${WIN_LABEL} w-28 text-rose-800 font-bold`}>Dị ứng thuốc:</label>
+                    <input
+                      type="text"
+                      value={newPatientForm.allergies}
+                      onChange={(e) => setNewPatientForm({ ...newPatientForm, allergies: e.target.value })}
+                      className={WIN_INPUT}
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <label className={`${WIN_LABEL} w-28`}>XN Cận lâm sàng cũ:</label>
+                    <input
+                      type="text"
+                      value={newPatientForm.pastParaclinical}
+                      onChange={(e) => setNewPatientForm({ ...newPatientForm, pastParaclinical: e.target.value })}
+                      placeholder="VD: XQ phổi, Siêu âm bụng, ECG..."
+                      className={WIN_INPUT}
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <label className={`${WIN_LABEL} w-28`}>Thuốc cũ đã dùng:</label>
+                    <input
+                      type="text"
+                      value={newPatientForm.pastMedications}
+                      onChange={(e) => setNewPatientForm({ ...newPatientForm, pastMedications: e.target.value })}
+                      placeholder="VD: Amlor 5mg, Glucophage 850mg..."
+                      className={WIN_INPUT}
+                    />
+                  </div>
+                </div>
+                  </div>
+                <div className="flex items-center justify-center gap-3 pt-1">
+                  <button type="submit" className={`${WIN_BTN_PRIMARY} min-w-[110px]`}>
+                    Lưu & Chuyển sang Khám bệnh (Tab 2)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsNewPatientModalOpen(false)}
+                    className={`${WIN_BTN} min-w-[110px]`}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+
+        {/* Modal Google Sheets */}
+        {isSheetModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
+            <div className="bg-[#D4E2F4] border-2 border-[#7DA2CE] max-w-5xl w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden">
+              <div className="bg-gradient-to-b from-[#DCEBFC] to-[#A6C5EB] px-3 py-1.5 flex items-center justify-between border-b border-[#8BA8C7]">
+                <span className="font-bold text-[13px] text-[#1E395B]">
+                  Cơ sở dữ liệu Google Sheets (4 Bảng dữ liệu & Mã Apps Script)
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setIsSheetModalOpen(false)}
+                  className="w-6 h-4 bg-[#E04332] text-white text-xs font-bold flex items-center justify-center border border-[#73140A]"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="bg-[#E4ECF7] px-3 pt-2 border-b border-[#8BA8C7] flex items-center gap-1 overflow-x-auto">
+                {[
+                  { id: 'Benh_Nhan', label: 'Sheet 1: Benh_Nhan' },
+                  { id: 'Luot_Kham', label: 'Sheet 2: Luot_Kham' },
+                  { id: 'Don_Thuoc', label: 'Sheet 3: Don_Thuoc_Chi_Tiet' },
+                  { id: 'Dich_Vu', label: 'Sheet 4: Xet_Nghiem_Chi_Phi' },
+                  { id: 'Nhat_Ky', label: `Sheet 5: Nhat_Ky_Su_Dung (${usageLogs.length})` },
+                  { id: 'Apps_Script', label: 'Mã kết nối Google Apps Script' }
+                ].map((t) => (
+                  <button
+                    key={t.id}
+                    type="button"
+                    onClick={() => setSheetPreviewTab(t.id)}
+                    className={`px-3 py-1.5 text-xs border-t border-x border-[#8BA8C7] ${
+                      sheetPreviewTab === t.id
+                        ? 'bg-white font-bold text-[#00156E]'
+                        : 'bg-[#DCE6F4] text-slate-700'
+                    }`}
+                  >
+                    {t.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="p-4 bg-white overflow-auto flex-1">
+                {sheetPreviewTab === 'Benh_Nhan' && (
+                  <table className="w-full text-xs border border-slate-400 border-collapse">
+                    <thead>
+                      <tr className="bg-[#E4ECF7] text-[#00156E] font-bold">
+                        <th className="border border-slate-400 p-1.5">Ma_BN</th>
+                        <th className="border border-slate-400 p-1.5">Ho_Ten</th>
+                        <th className="border border-slate-400 p-1.5">Ngay_Sinh / GT</th>
+                        <th className="border border-slate-400 p-1.5">SDT / Người thân</th>
+                        <th className="border border-slate-400 p-1.5">Cân nặng gốc</th>
+                        <th className="border border-slate-400 p-1.5">Link Ảnh Drive</th>
+                        <th className="border border-slate-400 p-1.5">Tien_Su_Benh</th>
+                        <th className="border border-slate-400 p-1.5">CLS & Thuốc cũ</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {patients.map((p) => (
+                        <tr key={p.id}>
+                          <td className="border border-slate-300 p-1.5 font-mono font-bold">{p.id}</td>
+                          <td className="border border-slate-300 p-1.5 font-semibold">{p.name}</td>
+                          <td className="border border-slate-300 p-1.5">{p.dob} ({p.gender})</td>
+                          <td className="border border-slate-300 p-1.5">
+                            <div>{p.phone}</div>
+                            {p.relativePhone && <div className="text-[11px] text-slate-500">{p.relativePhone}</div>}
+                          </td>
+                          <td className="border border-slate-300 p-1.5 text-center font-bold">{p.initialWeight ? `${p.initialWeight} kg` : '--'}</td>
+                          <td className="border border-slate-300 p-1.5 truncate max-w-xs font-mono text-[11px]">
+                            {p.imageFolderUrl ? <a href={p.imageFolderUrl} target="_blank" rel="noreferrer" className="text-blue-700 underline">📂 Mở link</a> : '--'}
+                          </td>
+                          <td className="border border-slate-300 p-1.5">{p.medicalHistory}</td>
+                          <td className="border border-slate-300 p-1.5 text-slate-600">
+                            <div>{p.pastParaclinical || '--'}</div>
+                            <div className="italic text-emerald-800">{p.pastMedications || ''}</div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+
+                {sheetPreviewTab === 'Luot_Kham' && (
+                  <table className="w-full text-xs border border-slate-400 border-collapse">
+                    <thead>
+                      <tr className="bg-[#E4ECF7] text-[#00156E] font-bold">
+                        <th className="border border-slate-400 p-1.5">Ma_Luot_Kham</th>
+                        <th className="border border-slate-400 p-1.5">Ma_BN</th>
+                        <th className="border border-slate-400 p-1.5">Ngay_Kham</th>
+                        <th className="border border-slate-400 p-1.5">Sinh hiệu</th>
+                        <th className="border border-slate-400 p-1.5">Chan_Doan</th>
+                        <th className="border border-slate-400 p-1.5">Toa cũ / Đ.trị gốc</th>
+                        <th className="border border-slate-400 p-1.5">Hen_Tai_Kham</th>
+                        <th className="border border-slate-400 p-1.5">Trang_Thai_Thu</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {visits.map((v) => (
+                        <tr key={v.visitId}>
+                          <td className="border border-slate-300 p-1.5 font-mono font-bold">{v.visitId}</td>
+                          <td className="border border-slate-300 p-1.5 font-mono">{v.patientId}</td>
+                          <td className="border border-slate-300 p-1.5">{v.visitDate}</td>
+                          <td className="border border-slate-300 p-1.5 font-mono">{v.weight}kg | {v.bp}</td>
+                          <td className="border border-slate-300 p-1.5 font-semibold">{v.diagnosis}</td>
+                          <td className="border border-slate-300 p-1.5 text-amber-900 bg-amber-50/50 font-medium">{v.verbatimTreatment || '--'}</td>
+                          <td className="border border-slate-300 p-1.5">{v.followUpDate}</td>
+                          <td className="border border-slate-300 p-1.5 font-bold">{v.paymentStatus}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+
+                {sheetPreviewTab === 'Don_Thuoc' && (
+                  <table className="w-full text-xs border border-slate-400 border-collapse">
+                    <thead>
+                      <tr className="bg-[#E4ECF7] text-[#00156E] font-bold">
+                        <th className="border border-slate-400 p-1.5">Ma_Luot_Kham</th>
+                        <th className="border border-slate-400 p-1.5">Ten_Thuoc</th>
+                        <th className="border border-slate-400 p-1.5">Sang_Trua_Chieu_Toi</th>
+                        <th className="border border-slate-400 p-1.5">So_Ngay</th>
+                        <th className="border border-slate-400 p-1.5">Don_Gia</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {visits.flatMap((v) =>
+                        v.prescriptions.map((d) => (
+                          <tr key={d.id}>
+                            <td className="border border-slate-300 p-1.5 font-mono">{v.visitId}</td>
+                            <td className="border border-slate-300 p-1.5 font-semibold">{d.drugName}</td>
+                            <td className="border border-slate-300 p-1.5 text-center">
+                              {d.morning}-{d.noon}-{d.afternoon}-{d.evening}
+                            </td>
+                            <td className="border border-slate-300 p-1.5 text-center">{d.days}</td>
+                            <td className="border border-slate-300 p-1.5 text-right">{formatVND(d.price)}</td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                )}
+
+                {sheetPreviewTab === 'Dich_Vu' && (
+                  <table className="w-full text-xs border border-slate-400 border-collapse">
+                    <thead>
+                      <tr className="bg-[#E4ECF7] text-[#00156E] font-bold">
+                        <th className="border border-slate-400 p-1.5">Ma_Luot_Kham</th>
+                        <th className="border border-slate-400 p-1.5">Loai_Dich_Vu</th>
+                        <th className="border border-slate-400 p-1.5">Ten_Chi_Dinh</th>
+                        <th className="border border-slate-400 p-1.5">Ket_Qua</th>
+                        <th className="border border-slate-400 p-1.5">Chi_Phi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {visits.flatMap((v) =>
+                        v.labs.map((l) => (
+                          <tr key={l.id}>
+                            <td className="border border-slate-300 p-1.5 font-mono">{v.visitId}</td>
+                            <td className="border border-slate-300 p-1.5 font-bold">{l.type}</td>
+                            <td className="border border-slate-300 p-1.5">{l.name}</td>
+                            <td className="border border-slate-300 p-1.5">{l.result}</td>
+                            <td className="border border-slate-300 p-1.5 text-right">{formatVND(l.cost)}</td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                )}
+
+                {sheetPreviewTab === 'Nhat_Ky' && (
+                  <div className="space-y-3">
+                    <div className="p-3 bg-[#EEF4FC] border border-[#8BA8C7] flex flex-wrap items-center justify-between gap-2">
+                      <div>
+                        <p className="text-xs font-bold text-[#00156E]">
+                          Bảng theo dõi người đang sử dụng App (Cách A - Tự động ghi nhận khi Bác sĩ đăng nhập/mở khóa)
+                        </p>
+                        <p className="text-[11px] text-slate-600">
+                          Mỗi khi bạn bè của anh nhập Tên + SĐT và mở khóa App, thông tin sẽ tự động ghi vào Sheet <strong>Nhat_Ky_Su_Dung</strong>.
+                        </p>
+                      </div>
+                      {isAdminMode && (
+                        <div className="flex items-center gap-2 w-full sm:w-auto">
+                          <input
+                            type="text"
+                            value={adminTrackerUrl}
+                            onChange={(e) => setAdminTrackerUrl(e.target.value)}
+                            placeholder="URL Google Sheet Quản lý của riêng Admin (#ktskhoa365)..."
+                            className={`${WIN_INPUT} sm:w-80`}
+                          />
+                        </div>
+                      )}
+                    </div>
+
+                    <table className="w-full text-xs border border-slate-400 border-collapse">
+                      <thead>
+                        <tr className="bg-[#E4ECF7] text-[#00156E] font-bold">
+                          <th className="border border-slate-400 p-1.5">Thoi_Gian</th>
+                          <th className="border border-slate-400 p-1.5">Ten_Bac_Si</th>
+                          <th className="border border-slate-400 p-1.5">Ten_Phong_Kham</th>
+                          <th className="border border-slate-400 p-1.5">So_Dien_Thoai</th>
+                          <th className="border border-slate-400 p-1.5">Hanh_Dong</th>
+                          <th className="border border-slate-400 p-1.5 text-center">So_BN</th>
+                          <th className="border border-slate-400 p-1.5">Thiet_Bi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {usageLogs.map((log) => (
+                          <tr key={log.id}>
+                            <td className="border border-slate-300 p-1.5 font-mono">{log.time}</td>
+                            <td className="border border-slate-300 p-1.5 font-bold text-[#00156E]">{log.doctorName}</td>
+                            <td className="border border-slate-300 p-1.5">{log.clinicName}</td>
+                            <td className="border border-slate-300 p-1.5 font-mono font-semibold">{log.phone}</td>
+                            <td className="border border-slate-300 p-1.5 text-emerald-800 font-medium">{log.action}</td>
+                            <td className="border border-slate-300 p-1.5 text-center font-bold">{log.patientCount}</td>
+                            <td className="border border-slate-300 p-1.5 text-slate-600">{log.device}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+
+                {sheetPreviewTab === 'Apps_Script' && (
+                  <div className="space-y-3">
+                    <div className="p-3 bg-[#EEF4FC] border border-[#8BA8C7] space-y-2">
+                      <label className="block text-xs font-bold text-[#00156E]">
+                        1. Dán đường link Google Apps Script Web App URL (Để đồng bộ trực tiếp vào Google Sheets thật của phòng khám):
+                      </label>
+                      <div className="flex flex-wrap gap-2">
+                        <input
+                          type="text"
+                          value={sheetWebAppUrl}
+                          onChange={(e) => setSheetWebAppUrl(e.target.value)}
+                          placeholder="https://script.google.com/macros/s/.../exec"
+                          className={`${WIN_INPUT} flex-1`}
+                        />
+                        <button
+                          type="button"
+                          onClick={handleSyncToGoogleSheets}
+                          className={WIN_BTN_PRIMARY}
+                        >
+                          Lưu & Đồng bộ ngay
+                        </button>
+                      </div>
+                      <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#C0D0E4]">
+                        <span className="text-[11px] text-slate-700">
+                          2. Sao lưu / Phục hồi dữ liệu trực tiếp ra file máy tính (.json) để không bao giờ mất dữ liệu:
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <button type="button" onClick={handleExportBackupFile} className={WIN_BTN}>
+                            ⬇ Tải file Sao lưu (.json)
+                          </button>
+                          <label className={WIN_BTN}>
+                            ⬆ Nạp file Sao lưu
+                            <input type="file" accept=".json" onChange={handleImportBackupFile} className="hidden" />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold text-[#00156E]">
+                        3. Mã Google Apps Script (Tự động tạo 4 Sheet & ghi dữ liệu):
+                      </span>
+                      <button type="button" onClick={handleCopyCode} className={WIN_BTN}>
+                        {copiedCode ? 'Đã sao chép' : 'Sao chép mã'}
+                      </button>
+                    </div>
+                    <pre className="bg-slate-900 text-emerald-300 p-3 text-xs font-mono overflow-x-auto">
+                      {appsScriptCode}
+                    </pre>
+                  </div>
+                )}
+              </div>
+
+              <div className="p-2.5 bg-[#D4E2F4] border-t border-[#8BA8C7] flex justify-center">
+                <button
+                  type="button"
+                  onClick={() => setIsSheetModalOpen(false)}
+                  className={`${WIN_BTN_PRIMARY} min-w-[100px]`}
+                >
+                  Đóng (OK)
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Modal In Đơn Thuốc A5 */}
+        {isPrintModalOpen && selectedPatient && currentVisit && (
+          <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
+            <div className="bg-[#D4E2F4] border-2 border-[#7DA2CE] max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+              <div className="bg-gradient-to-b from-[#DCEBFC] to-[#A6C5EB] px-3 py-1.5 flex items-center justify-between border-b border-[#8BA8C7]">
+                <span className="font-bold text-[13px] text-[#1E395B]">
+                  Bản in Đơn Thuốc & Phiếu Thu (Khổ A5)
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setIsPrintModalOpen(false)}
+                  className="w-6 h-4 bg-[#E04332] text-white text-xs font-bold flex items-center justify-center border border-[#73140A]"
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* THANH TÙY CHỌN XUẤT ĐƠN THUỐC (ẢNH / PDF) KHÔNG CẦN IN GIẤY */}
+              <div className="bg-[#FFFFE1] border-b border-[#8BA8C7] px-4 py-2 flex flex-wrap items-center justify-between gap-2 text-xs">
+                <div className="flex items-center gap-3">
+                  <span className="font-bold text-[#00156E]">Tùy chọn xuất đơn thuốc gửi khách:</span>
+                  <label className="flex items-center gap-1.5 cursor-pointer font-bold text-slate-900 bg-white px-2 py-0.5 border border-[#7F9DB9] rounded-[2px]">
+                    <input
+                      type="radio"
+                      name="exportPref"
+                      value="image"
+                      checked={exportPref === 'image'}
+                      onChange={() => handleUpdateExportPref('image')}
+                      className="cursor-pointer"
+                    />
+                    📸 File Ảnh (.png) - Gửi Zalo / Viber
+                  </label>
+                  <label className="flex items-center gap-1.5 cursor-pointer font-bold text-slate-900 bg-white px-2 py-0.5 border border-[#7F9DB9] rounded-[2px]">
+                    <input
+                      type="radio"
+                      name="exportPref"
+                      value="pdf"
+                      checked={exportPref === 'pdf'}
+                      onChange={() => handleUpdateExportPref('pdf')}
+                      className="cursor-pointer"
+                    />
+                    📄 File PDF (.pdf) - Lưu trữ / Email
+                  </label>
+                </div>
+                <span className="text-[11px] text-slate-600 italic">
+                  💡 App sẽ tự động ghi nhớ tùy chọn xuất sau cùng của anh.
+                </span>
+              </div>
+
+              {/* VÙNG ĐƠN THUỐC KHỔ A5 ĐỂ IN HOẶC XUẤT ẢNH/PDF (MẪU DUYỆT CHUẨN BSCK1 TÔN THẤT HÀO) */}
+              <div className="p-6 bg-white text-slate-900 font-sans" id="prescription-print-area" style={{ width: '100%', maxWidth: '600px', margin: '0 auto', minHeight: '800px', color: '#0f172a', backgroundColor: '#ffffff', boxSizing: 'border-box' }}>
+                {/* 1. HEADER BỆNH VIỆN & THÔNG TIN HÀNH CHÍNH (ĐÃ BỎ HOÀN TOÀN MÃ VẠCH) */}
+                <div className="flex justify-between items-start border-b border-slate-300 pb-2">
+                  <div className="flex items-start gap-2.5">
+                    {/* Biểu trưng chữ thập đỏ y tế */}
+                    <div className="w-11 h-11 rounded-full border-2 border-[#1976d2] bg-[#e8f4fd] flex items-center justify-center shrink-0">
+                      <svg viewBox="0 0 24 24" className="w-7 h-7 text-[#d32f2f] fill-current">
+                        <path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="text-[11px] font-bold text-slate-600 uppercase tracking-wide leading-tight">SỞ Y TẾ TP. HỒ CHÍ MINH</div>
+                      <div className="text-[13.5px] font-extrabold uppercase text-[#0f172a] leading-tight">BỆNH VIỆN ĐA KHOA NHÀ BÈ</div>
+                      <div className="text-[11.5px] font-bold text-[#2563eb] leading-tight mt-0.5">B. Khám Nội 1 • BSCK1. Tôn Thất Hào</div>
+                    </div>
+                  </div>
+
+                  {/* Góc trên bên phải: Thông tin hành chính (Không có mã vạch) */}
+                  <div className="text-right text-[11.5px] text-slate-600 leading-snug">
+                    <div className="font-bold text-slate-800">Số toa: <span className="font-mono text-[#0f172a]">{currentVisit?.visitId ? 'DT-' + currentVisit.visitId.replace(/\D/g, '').slice(-5) : 'DT-2024-0582'}</span></div>
+                    <div>Mã BN: <span className="font-mono font-semibold text-slate-700">{selectedPatient.id}</span></div>
+                    <div>BHYT: <span className="font-mono text-slate-500">GD-4-79-79-2283910</span></div>
+                  </div>
+                </div>
+
+                {/* 2. TIÊU ĐỀ ĐƠN THUỐC (ĐẨY LÊN CAO GỌN GÀNG) */}
+                <div className="text-center pt-2 pb-1.5">
+                  <h2 className="text-lg font-extrabold uppercase text-[#1e3a8a] tracking-wider leading-tight">ĐƠN THUỐC</h2>
+                  <div className="text-[11px] italic text-slate-500 leading-tight">(Khoa Khám Bệnh - Điều Trị Ngoại Trú)</div>
+                </div>
+
+                {/* 3. THÔNG TIN HÀNH CHÍNH BỆNH NHÂN (CO GỌN SÁT LỀ TRÊN) */}
+                <div className="border border-slate-200 rounded-[4px] p-2.5 bg-[#f8fafc] text-[12px] leading-relaxed space-y-1">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                      <span className="font-bold text-slate-800">Họ và tên:</span>{' '}
+                      <strong className="text-[13px] font-extrabold text-[#0f172a] uppercase">{selectedPatient.name}</strong>
+                    </div>
+                    <div>
+                      <span className="font-bold text-slate-800">Năm sinh:</span>{' '}
+                      <span>{selectedPatient.dob ? selectedPatient.dob.slice(0, 4) : '1965'} ({calculateAge(selectedPatient.dob)} tuổi)</span>
+                    </div>
+                    <div>
+                      <span className="font-bold text-slate-800">Giới tính:</span>{' '}
+                      <span>{selectedPatient.gender}</span>
+                    </div>
+                  </div>
+
+                  <div className="truncate">
+                    <span className="font-bold text-slate-800">Địa chỉ:</span>{' '}
+                    <span className="text-slate-700">{selectedPatient.address || 'Huyện Nhà Bè, TP. Hồ Chí Minh'}</span>
+                  </div>
+
+                  <div>
+                    <span className="font-bold text-slate-800">Chẩn đoán:</span>{' '}
+                    <strong className="text-[#b91c1c] font-bold">{currentVisit.diagnosis || 'Tăng huyết áp vô căn (I10) - Viêm dạ dày tá tràng không đặc hiệu (K29.9)'}</strong>
+                  </div>
+                </div>
+
+                {/* 4. DANH MỤC THUỐC ĐIỀU TRỊ (MỞ RỘNG TỐI ĐA CHO 8-10 LOẠI THUỐC) */}
+                <div className="space-y-1.5 pt-2">
+                  <div className="font-bold uppercase text-[12px] text-[#1e3a8a] border-b border-slate-300 pb-1 flex justify-between items-center">
+                    <span>THUỐC ĐIỀU TRỊ:</span>
+                    <span className="text-slate-500 text-[11px] normal-case font-medium">Số lượng & ĐVT</span>
+                  </div>
+
+                  <div className="space-y-2 text-[12px]">
+                    {currentVisit.prescriptions && currentVisit.prescriptions.length > 0 ? (
+                      currentVisit.prescriptions.map((item, idx) => {
+                        const daily =
+                          (Number(item.morning) || 0) +
+                          (Number(item.noon) || 0) +
+                          (Number(item.afternoon) || 0) +
+                          (Number(item.evening) || 0);
+                        const totalQty =
+                          daily > 0 ? daily * (Number(item.days) || 1) : Number(item.days) || 1;
+                        return (
+                          <div key={item.id} className="pb-1.5 border-b border-dashed border-slate-200">
+                            <div className="flex justify-between items-baseline">
+                              <div className="font-bold text-slate-900 flex-1 pr-2 truncate">
+                                <span>{idx + 1}. {item.drugName}</span>
+                              </div>
+                              <div className="font-bold text-slate-900 text-right whitespace-nowrap">
+                                <span>{totalQty} {item.unit || 'Viên'}</span>
+                              </div>
+                            </div>
+                            <div className="text-[11.5px] text-slate-700 pl-4 flex items-center justify-between">
+                              <span>
+                                Uống: Sáng {item.morning || 0}, Trưa {item.noon || 0}, Chiều {item.afternoon || 0}, Tối {item.evening || 0}
+                                {item.note ? ` (${item.note})` : ''}
+                              </span>
+                              <span className="text-[11px] text-slate-500 italic">({item.days} ngày)</span>
+                            </div>
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <div className="py-8 text-center text-slate-400 italic">Chưa có thuốc được kê trong đơn này.</div>
+                    )}
+                  </div>
+                </div>
+
+                {/* 5. CHÂN ĐƠN THUỐC: LỜI DẶN, QR CODE ĐẶT LỊCH HẸN & CHỮ KÝ BÁC SĨ (KÉO XUỐNG SÁT DƯỚI) */}
+                <div className="mt-6 pt-3 border-t border-slate-300 grid grid-cols-2 gap-4 items-end">
+                  {/* Cột trái: Lời dặn, Ngày tái khám, QR code đặt lịch */}
+                  <div className="space-y-1.5 text-[11px] text-slate-700">
+                    <div>
+                      <span className="font-bold text-slate-900">• Lời dặn:</span>{' '}
+                      <span>{currentVisit.doctorNotes || 'Uống thuốc đều đặn. Tái khám ngay khi có bất thường.'}</span>
+                    </div>
+                    <div>
+                      <span className="font-bold text-slate-900">• Ngày tái khám:</span>{' '}
+                      <strong className="text-[11.5px] text-[#b91c1c] font-bold">{currentVisit.followUpDate || '28/11/2026 (sau 30 ngày)'}</strong>
+                    </div>
+                    <div className="text-[10px] text-slate-500 italic">
+                      * Khám bệnh lại xin mang theo đơn thuốc này.
+                    </div>
+
+                    <div className="flex items-center gap-2 pt-1">
+                      {/* QR Code chuẩn */}
+                      <div className="w-12 h-12 border border-slate-400 bg-white p-0.5 flex items-center justify-center shrink-0">
+                        <svg viewBox="0 0 24 24" className="w-full h-full fill-slate-900">
+                          <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14-2h4v2h-4v-2zm-4 0h2v4h-2v-4zm2 4h4v4h-4v-4zm2-2h2v2h-2v-2zm-4 2h2v2h-2v-2z" />
+                        </svg>
+                      </div>
+                      <div className="text-[9.5px] leading-snug">
+                        <div className="font-bold text-[#1e3a8a] uppercase">QUÉT MÃ ĐỂ ĐẶT LỊCH HẸN TRƯỚC</div>
+                        <div className="text-slate-600">Có số thứ tự ưu tiên cho lần tái khám sau</div>
+                        <div className="text-slate-500">Tổng đài hỗ trợ: 1900 xxxx (BVĐK Nhà Bè)</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Cột phải: Ngày tháng & Chữ ký bác sĩ (BSCK1. TÔN THẤT HÀO) */}
+                  <div className="text-center space-y-1 flex flex-col items-center justify-end">
+                    <div className="text-[11px] text-slate-600 italic">
+                      Ngày {new Date().getDate()} tháng {new Date().getMonth() + 1} năm {new Date().getFullYear()}
+                    </div>
+                    <div className="text-[12px] font-bold text-slate-900 uppercase">
+                      BÁC SĨ ĐIỀU TRỊ
+                    </div>
+                    <div className="text-[10.5px] text-slate-500 italic">
+                      (Ký, ghi rõ họ tên)
+                    </div>
+
+                    {/* Chữ ký mực xanh thanh tú */}
+                    <div className="py-1">
+                      <svg viewBox="0 0 160 50" className="w-32 h-10 text-[#1d4ed8] stroke-current fill-none">
+                        <path d="M 10 35 Q 25 5 40 25 T 60 20 Q 80 40 100 15 T 140 22 M 20 42 Q 70 38 150 35" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+
+                    {/* TÊN BÁC SĨ CỐ ĐỊNH THEO YÊU CẦU */}
+                    <div className="text-[13px] font-extrabold uppercase text-[#0f172a] tracking-wider pt-0.5">
+                      BSCK1. TÔN THẤT HÀO
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* THANH NÚT ĐIỀU KHIỂN XUẤT FILE & IN ẤN */}
+              <div className="p-3 bg-[#D4E2F4] border-t border-[#8BA8C7] flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => handleExportPrescription()}
+                    className={`${WIN_BTN_PRIMARY} py-1.5 px-4 text-[13px] font-bold`}
+                    title="Tự động xuất theo định dạng đang chọn ở trên (Ảnh hoặc PDF)"
+                  >
+                    {exportPref === 'image' ? '📸 Tải File Ảnh (Zalo)' : '📄 Tải File PDF'}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleExportPrescription('image')}
+                    className="inline-flex items-center gap-1 px-3 py-1.5 text-[12px] font-bold text-[#00156E] bg-white border border-[#7F9DB9] rounded-[2px] hover:bg-[#EEF4FC] cursor-pointer"
+                  >
+                    📸 Xuất Ảnh (.png)
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleExportPrescription('pdf')}
+                    className="inline-flex items-center gap-1 px-3 py-1.5 text-[12px] font-bold text-rose-900 bg-white border border-rose-300 rounded-[2px] hover:bg-rose-50 cursor-pointer"
+                  >
+                    📄 Xuất PDF (.pdf)
+                  </button>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => window.print()}
+                    className={`${WIN_BTN} py-1.5`}
+                  >
+                    🖨️ In ra giấy
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsPrintModalOpen(false)}
+                    className={`${WIN_BTN} py-1.5 min-w-[80px]`}
+                  >
+                    Đóng
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // ============================================================================
+  // CHẾ ĐỘ 2: ĐIỂM PHỤC HỒI GIAO DIỆN HIỆN ĐẠI GỐC (MODERN TEAL v1)
+  // ============================================================================
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans pb-12">
+      {/* THÔNG BÁO TOAST */}
+      {toastMessage && (
+        <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 bg-teal-900 text-white px-4 py-3 rounded-xl shadow-xl border border-teal-700 animate-bounce">
+          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+          <span className="text-sm font-medium">{toastMessage}</span>
+        </div>
+      )}
+
+      {/* HEADER PHÒNG KHÁM & TRẠNG THÁI GOOGLE SHEETS */}
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-teal-600 flex items-center justify-center text-white shadow-sm">
+              <Stethoscope className="w-6 h-6" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="text-lg font-bold text-slate-900 tracking-tight">
+                  MediCare Clinic Pro
+                </h1>
+                <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200">
+                  Điểm phục hồi gốc (v1)
+                </span>
+              </div>
+              <p className="text-xs text-slate-500">
+                Hệ thống quản lý phòng khám tư nhân 1 bác sĩ • Liên kết trực tiếp Google Sheets
+              </p>
+            </div>
+          </div>
+
+          {/* Cụm nút Google Sheets & Chuyển lại giao diện WinForms */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <button
+              type="button"
+              onClick={() => {
+                setUiStyle('winforms');
+                showToast('Đã chuyển sang giao diện Desktop cổ điển (theo ảnh mẫu)!');
+              }}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-300 hover:bg-amber-100 transition"
+            >
+              <Layers className="w-4 h-4" />
+              Chuyển sang Giao diện Ảnh mẫu (WinForms)
+            </button>
+
+            <div className="hidden md:flex items-center gap-1.5 text-xs text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>Google Sheets: Đã kết nối ({lastSyncTime})</span>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setIsSheetModalOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 transition"
+            >
+              <FileSpreadsheet className="w-4 h-4" />
+              Xem Bảng Google Sheets ({patients.length} BN)
+            </button>
+
+            <button
+              type="button"
+              onClick={handleSyncToGoogleSheets}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-teal-600 text-white hover:bg-teal-700 shadow-sm transition"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin' : ''}`} />
+              {isSyncing ? 'Đang lưu Sheet...' : 'Lưu lên Google Sheet'}
+            </button>
+          </div>
+        </div>
+
+        {/* THANH ĐIỀU HƯỚNG 3 TAB CHÍNH */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between border-t border-slate-100 bg-slate-50/60 overflow-x-auto">
+          <div className="flex items-center space-x-1 py-1.5">
+            <button
+              type="button"
+              onClick={() => setActiveTab('tab1')}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition whitespace-nowrap ${
+                activeTab === 'tab1'
+                  ? 'bg-teal-600 text-white shadow-sm'
+                  : 'text-slate-600 hover:bg-slate-200/70'
+              }`}
+            >
+              <Users className="w-4 h-4" />
+              <span>Tab 1: Danh sách Bệnh nhân</span>
+              <span
+                className={`text-xs px-2 py-0.5 rounded-full ${
+                  activeTab === 'tab1' ? 'bg-teal-800 text-white' : 'bg-slate-200 text-slate-700'
+                }`}
+              >
+                {patients.length}
+              </span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab('tab2')}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition whitespace-nowrap ${
+                activeTab === 'tab2'
+                  ? 'bg-teal-600 text-white shadow-sm'
+                  : 'text-slate-600 hover:bg-slate-200/70'
+              }`}
+            >
+              <UserCheck className="w-4 h-4" />
+              <span>Tab 2: Thông tin & Khám bệnh</span>
+              {selectedPatient && (
+                <span
+                  className={`text-xs px-2 py-0.5 rounded-full ${
+                    activeTab === 'tab2' ? 'bg-teal-800 text-teal-100' : 'bg-teal-100 text-teal-800'
+                  }`}
+                >
+                  {selectedPatient.name}
+                </span>
+              )}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab('tab3')}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition whitespace-nowrap ${
+                activeTab === 'tab3'
+                  ? 'bg-teal-600 text-white shadow-sm'
+                  : 'text-slate-600 hover:bg-slate-200/70'
+              }`}
+            >
+              <CreditCard className="w-4 h-4" />
+              <span>Tab 3: Đơn thuốc, Xét nghiệm & Chi phí</span>
+              {currentVisit && (
+                <span
+                  className={`text-xs px-2 py-0.5 rounded-full ${
+                    activeTab === 'tab3'
+                      ? 'bg-teal-800 text-amber-200'
+                      : 'bg-amber-100 text-amber-800'
+                  }`}
+                >
+                  {formatVND(currentVisitFinancials.grandTotal)}
+                </span>
+              )}
+            </button>
+          </div>
+
+          {/* Chú thích bệnh nhân đang chọn */}
+          {selectedPatient && (
+            <div className="hidden lg:flex items-center gap-2 text-xs text-slate-600 pr-2">
+              <span>Đang mở hồ sơ:</span>
+              <strong className="text-teal-700 font-semibold">
+                {selectedPatient.id} - {selectedPatient.name} ({calculateAge(selectedPatient.dob)} tuổi)
+              </strong>
+            </div>
+          )}
+        </div>
+      </header>
+
+      {/* NỘI DUNG CHÍNH THEO TỪNG TAB */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-6">
+        {/* =========================================================
+            TAB 1: QUẢN LÝ TẤT CẢ BỆNH NHÂN & TÌM KIẾM
+           ========================================================= */}
+        {activeTab === 'tab1' && (
+          <div className="space-y-6">
+            {/* 4 Thẻ thống kê nhanh */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+                <div>
+                  <p className="text-xs font-medium text-slate-500">Tổng số bệnh nhân</p>
+                  <p className="text-2xl font-bold text-slate-900 mt-1">{clinicStats.totalPatients}</p>
+                  <p className="text-xs text-teal-600 mt-0.5">Lưu trữ trên Sheet Benh_Nhan</p>
+                </div>
+                <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center">
+                  <Users className="w-6 h-6" />
+                </div>
+              </div>
+
+              <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+                <div>
+                  <p className="text-xs font-medium text-slate-500">Khám trong hôm nay</p>
+                  <p className="text-2xl font-bold text-slate-900 mt-1">{clinicStats.todayVisits}</p>
+                  <p className="text-xs text-blue-600 mt-0.5">Ngày 25/10/2026</p>
+                </div>
+                <div className="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                  <Activity className="w-6 h-6" />
+                </div>
+              </div>
+
+              <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+                <div>
+                  <p className="text-xs font-medium text-slate-500">Có lịch hẹn tái khám</p>
+                  <p className="text-2xl font-bold text-amber-600 mt-1">{clinicStats.followUpToday}</p>
+                  <p className="text-xs text-amber-700 mt-0.5">Cần gọi nhắc bệnh nhân</p>
+                </div>
+                <div className="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+                  <Calendar className="w-6 h-6" />
+                </div>
+              </div>
+
+              <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+                <div>
+                  <p className="text-xs font-medium text-slate-500">Chờ thu viện phí</p>
+                  <p className="text-2xl font-bold text-rose-600 mt-1">{clinicStats.unpaidCount}</p>
+                  <p className="text-xs text-rose-600 mt-0.5">Xem tại Tab 3</p>
+                </div>
+                <div className="w-11 h-11 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center">
+                  <CreditCard className="w-6 h-6" />
+                </div>
+              </div>
+            </div>
+
+            {/* Thanh tìm kiếm & Nút thêm bệnh nhân */}
+            <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-4">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                {/* Ô tìm kiếm */}
+                <div className="relative flex-1">
+                  <Search className="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Tìm nhanh theo Tên bệnh nhân, Mã BN (VD: BN0001), Số điện thoại hoặc Chẩn đoán..."
+                    className="w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition"
+                  />
+                  {searchQuery && (
+                    <button
+                      type="button"
+                      onClick={() => setSearchQuery('')}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600"
+                    >
+                      Xóa
+                    </button>
+                  )}
+                </div>
+
+                {/* Nút thêm bệnh nhân mới */}
+                <button
+                  type="button"
+                  onClick={() => setIsNewPatientModalOpen(true)}
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-teal-600 text-white text-sm font-semibold hover:bg-teal-700 shadow-sm transition shrink-0"
+                >
+                  <Plus className="w-4 h-4" />
+                  Thêm bệnh nhân mới
+                </button>
+              </div>
+
+              {/* Các nút lọc nhanh */}
+              <div className="flex items-center justify-between flex-wrap gap-2 pt-1 border-t border-slate-100">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-xs font-medium text-slate-500">Lọc nhanh:</span>
+                  <button
+                    type="button"
+                    onClick={() => setFilterMode('all')}
+                    className={`px-3 py-1 rounded-lg text-xs font-medium transition ${
+                      filterMode === 'all'
+                        ? 'bg-teal-600 text-white'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    Tất cả bệnh nhân ({patients.length})
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setFilterMode('today')}
+                    className={`px-3 py-1 rounded-lg text-xs font-medium transition ${
+                      filterMode === 'today'
+                        ? 'bg-teal-600 text-white'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    Khám hôm nay (25/10)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setFilterMode('followup_today')}
+                    className={`px-3 py-1 rounded-lg text-xs font-medium transition ${
+                      filterMode === 'followup_today'
+                        ? 'bg-amber-600 text-white'
+                        : 'bg-amber-50 text-amber-800 hover:bg-amber-100'
+                    }`}
+                  >
+                    Hẹn tái khám hôm nay
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setFilterMode('unpaid')}
+                    className={`px-3 py-1 rounded-lg text-xs font-medium transition ${
+                      filterMode === 'unpaid'
+                        ? 'bg-rose-600 text-white'
+                        : 'bg-rose-50 text-rose-700 hover:bg-rose-100'
+                    }`}
+                  >
+                    Chưa thu phí
+                  </button>
+                </div>
+
+                <p className="text-xs text-slate-500 italic">
+                  💡 Click trực tiếp vào tên hoặc dòng bệnh nhân bất kỳ để mở <strong>Tab 2 (Hồ sơ khám)</strong>
+                </p>
+              </div>
+            </div>
+
+            {/* BẢNG DANH SÁCH TẤT CẢ BỆNH NHÂN */}
+            <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                      <th className="py-3.5 px-4">Mã BN</th>
+                      <th className="py-3.5 px-4">Họ và Tên Bệnh nhân</th>
+                      <th className="py-3.5 px-4">Tuổi / GT</th>
+                      <th className="py-3.5 px-4">Số điện thoại</th>
+                      <th className="py-3.5 px-4">Chẩn đoán & Lần khám gần nhất</th>
+                      <th className="py-3.5 px-4">Hẹn tái khám</th>
+                      <th className="py-3.5 px-4 text-right">Thao tác</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 text-sm">
+                    {filteredPatients.length === 0 ? (
+                      <tr>
+                        <td colSpan={7} className="py-10 text-center text-slate-500">
+                          Không tìm thấy bệnh nhân nào khớp với từ khóa "{searchQuery}".
+                        </td>
+                      </tr>
+                    ) : (
+                      filteredPatients.map((p) => (
+                        <tr
+                          key={p.id}
+                          onClick={() => handleSelectPatientFromList(p.id)}
+                          className="hover:bg-teal-50/60 cursor-pointer transition group"
+                        >
+                          <td className="py-3.5 px-4 font-mono text-xs font-bold text-teal-700">
+                            {p.id}
+                          </td>
+                          <td className="py-3.5 px-4">
+                            <div className="font-semibold text-slate-900 group-hover:text-teal-700 flex items-center gap-1.5">
+                              <span>{p.name}</span>
+                              {p.allergies && !p.allergies.includes('Không') && (
+                                <span
+                                  title={p.allergies}
+                                  className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-rose-100 text-rose-700"
+                                >
+                                  Dị ứng
+                                </span>
+                              )}
+                            </div>
+                            <div className="text-xs text-slate-500 truncate max-w-xs">
+                              {p.occupation} • {p.address}
+                            </div>
+                          </td>
+                          <td className="py-3.5 px-4 text-slate-700">
+                            <span className="font-medium">{p.age} tuổi</span>
+                            <span className="text-xs text-slate-400 block">{p.gender}</span>
+                          </td>
+                          <td className="py-3.5 px-4 font-medium text-slate-700">
+                            {p.phone}
+                          </td>
+                          <td className="py-3.5 px-4">
+                            {p.latestVisit ? (
+                              <div>
+                                <span className="font-medium text-slate-800 block">
+                                  {p.latestVisit.diagnosis}
+                                </span>
+                                <span className="text-xs text-slate-500">
+                                  Khám ngày: {p.latestVisit.visitDate} ({p.visitCount} lần khám)
+                                </span>
+                              </div>
+                            ) : (
+                              <span className="text-xs text-slate-400 italic">Chưa có lượt khám</span>
+                            )}
+                          </td>
+                          <td className="py-3.5 px-4">
+                            {p.latestVisit?.followUpDate ? (
+                              <span
+                                className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium ${
+                                  p.latestVisit.followUpDate === '2026-10-25'
+                                    ? 'bg-amber-100 text-amber-800 font-semibold'
+                                    : 'bg-slate-100 text-slate-700'
+                                }`}
+                              >
+                                <Calendar className="w-3 h-3" />
+                                {p.latestVisit.followUpDate}
+                              </span>
+                            ) : (
+                              <span className="text-xs text-slate-400">--</span>
+                            )}
+                          </td>
+                          <td className="py-3.5 px-4 text-right">
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleSelectPatientFromList(p.id);
+                              }}
+                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-50 text-teal-700 group-hover:bg-teal-600 group-hover:text-white transition"
+                            >
+                              <span>Mở hồ sơ</span>
+                              <ChevronRight className="w-3.5 h-3.5" />
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* =========================================================
+            TAB 2: THÔNG TIN BỆNH NHÂN, LỊCH SỬ KHÁM & TOA THUỐC
+           ========================================================= */}
+        {activeTab === 'tab2' && selectedPatient && (
+          <div className="space-y-6">
+            {/* Thanh công cụ đầu Tab 2 */}
+            <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('tab1')}
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition"
+                >
+                  ← Quay lại danh sách
+                </button>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-teal-100 text-teal-800">
+                      {selectedPatient.id}
+                    </span>
+                    <h2 className="text-lg font-bold text-slate-900">
+                      {selectedPatient.name}
+                    </h2>
+                    <span className="text-sm text-slate-500">
+                      ({calculateAge(selectedPatient.dob)} tuổi - {selectedPatient.gender})
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 flex-wrap">
+                <button
+                  type="button"
+                  onClick={() => handleToggleArchivePatient(selectedPatient.id)}
+                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-300 hover:bg-amber-100 transition"
+                >
+                  <Archive className="w-4 h-4 text-amber-700" />
+                  {selectedPatient.isArchived ? 'Khôi phục Đang điều trị' : 'Đã khỏi → Lưu trữ'}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setIsDeletePatientModalOpen(true)}
+                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200 hover:bg-rose-100 transition"
+                >
+                  <Trash2 className="w-4 h-4" />
+                  Xóa BN
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleCreateNewVisitForPatient}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 shadow-sm transition"
+                >
+                  <Plus className="w-4 h-4" />
+                  Tạo lượt khám mới hôm nay
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('tab3')}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-teal-600 text-white hover:bg-teal-700 shadow-sm transition"
+                >
+                  <span>Sang Tab 3: Đơn thuốc & Chi phí</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* CẢNH BÁO TIỀN SỬ BỆNH & DỊ ỨNG THUỐC NỔI BẬT */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-amber-50/90 border border-amber-200 rounded-xl p-3.5 flex items-start gap-3">
+                <HeartPulse className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                <div className="flex-1">
+                  <label className="block text-xs font-bold uppercase text-amber-900">
+                    Tiền sử bệnh lý nền (Cố định theo bệnh nhân)
+                  </label>
+                  <input
+                    type="text"
+                    value={selectedPatient.medicalHistory}
+                    onChange={(e) => handleUpdatePatientField('medicalHistory', e.target.value)}
+                    className="mt-1 w-full bg-white/90 border border-amber-300 rounded-lg px-2.5 py-1.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  />
+                </div>
+              </div>
+
+              <div className="bg-rose-50/90 border border-rose-200 rounded-xl p-3.5 flex items-start gap-3">
+                <AlertTriangle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
+                <div className="flex-1">
+                  <label className="block text-xs font-bold uppercase text-rose-900">
+                    Cảnh báo Dị ứng thuốc / Thức ăn (Bác sĩ lưu ý khi kê toa)
+                  </label>
+                  <input
+                    type="text"
+                    value={selectedPatient.allergies}
+                    onChange={(e) => handleUpdatePatientField('allergies', e.target.value)}
+                    className="mt-1 w-full bg-white/90 border border-rose-300 rounded-lg px-2.5 py-1.5 text-sm font-medium text-rose-800 focus:outline-none focus:ring-2 focus:ring-rose-500"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* BỐ CỤC CHÍNH TAB 2: TRÁI (HÀNH CHÍNH + LỊCH SỬ KHÁM) | PHẢI (CHI TIẾT LƯỢT KHÁM & ĐƠN THUỐC) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              {/* CỘT TRÁI (4 CỘT): THÔNG TIN HÀNH CHÍNH & DANH SÁCH LỊCH SỬ KHÁM */}
+              <div className="lg:col-span-4 space-y-6">
+                {/* Khối 1: Thông tin hành chính */}
+                <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 space-y-3.5">
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                    <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2">
+                      <FileText className="w-4 h-4 text-teal-600" />
+                      Thông tin hành chính
+                    </h3>
+                    <span className="text-[11px] text-slate-400">Tự động lưu</span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="col-span-2">
+                      <label className="text-xs font-medium text-slate-500">Họ và tên bệnh nhân</label>
+                      <input
+                        type="text"
+                        value={selectedPatient.name}
+                        onChange={(e) => handleUpdatePatientField('name', e.target.value)}
+                        className="mt-1 w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-medium text-slate-500">Ngày sinh</label>
+                      <input
+                        type="date"
+                        value={selectedPatient.dob}
+                        onChange={(e) => handleUpdatePatientField('dob', e.target.value)}
+                        className="mt-1 w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-sm"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-medium text-slate-500">Tuổi & Giới tính</label>
+                      <div className="mt-1 flex items-center gap-1.5">
+                        <span className="px-2.5 py-1.5 bg-slate-100 rounded-lg text-sm font-semibold text-slate-700 shrink-0">
+                          {calculateAge(selectedPatient.dob)}t
+                        </span>
+                        <select
+                          value={selectedPatient.gender}
+                          onChange={(e) => handleUpdatePatientField('gender', e.target.value)}
+                          className="w-full px-2 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-sm"
+                        >
+                          <option value="Nam">Nam</option>
+                          <option value="Nữ">Nữ</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-medium text-slate-500">Số điện thoại</label>
+                      <input
+                        type="text"
+                        value={selectedPatient.phone}
+                        onChange={(e) => handleUpdatePatientField('phone', e.target.value)}
+                        className="mt-1 w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-sm"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-medium text-slate-500">Nghề nghiệp</label>
+                      <input
+                        type="text"
+                        value={selectedPatient.occupation}
+                        onChange={(e) => handleUpdatePatientField('occupation', e.target.value)}
+                        className="mt-1 w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-sm"
+                      />
+                    </div>
+
+                    <div className="col-span-2">
+                      <label className="text-xs font-medium text-slate-500">Địa chỉ liên hệ</label>
+                      <input
+                        type="text"
+                        value={selectedPatient.address}
+                        onChange={(e) => handleUpdatePatientField('address', e.target.value)}
+                        className="mt-1 w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-sm"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Khối 2: Lịch sử các lần khám */}
+                <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 space-y-3">
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                    <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-teal-600" />
+                      Lịch sử các đợt khám ({patientVisits.length})
+                    </h3>
+                    <button
+                      type="button"
+                      onClick={handleCreateNewVisitForPatient}
+                      className="text-xs font-semibold text-teal-600 hover:text-teal-800"
+                    >
+                      + Thêm đợt khám
+                    </button>
+                  </div>
+
+                  <div className="space-y-2 max-h-80 overflow-y-auto pr-1">
+                    {patientVisits.map((v) => {
+                      const isSelected = currentVisit?.visitId === v.visitId;
+                      return (
+                        <button
+                          key={v.visitId}
+                          type="button"
+                          onClick={() => setSelectedVisitId(v.visitId)}
+                          className={`w-full text-left p-3 rounded-xl border transition ${
+                            isSelected
+                              ? 'bg-teal-50/90 border-teal-500 shadow-sm'
+                              : 'bg-slate-50/70 border-slate-200 hover:bg-slate-100'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="font-bold text-teal-800">
+                              Ngày khám: {v.visitDate}
+                            </span>
+                            <span className="font-mono text-[11px] text-slate-500">
+                              {v.visitId}
+                            </span>
+                          </div>
+                          <p className="text-sm font-semibold text-slate-900 mt-1 line-clamp-1">
+                            {v.diagnosis || 'Chưa nhập chẩn đoán'}
+                          </p>
+                          <div className="flex items-center justify-between text-xs text-slate-500 mt-1.5">
+                            <span>Toa: {v.prescriptions.length} thuốc</span>
+                            <span>Hẹn: {v.followUpDate || '--'}</span>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              {/* CỘT PHẢI (8 CỘT): KHÁM LÂM SÀNG, CHẨN ĐOÁN, HẸN TÁI KHÁM & TOA THUỐC */}
+              <div className="lg:col-span-8 space-y-6">
+                {currentVisit ? (
+                  <>
+                    {/* Khối Sinh hiệu & Chẩn đoán bệnh */}
+                    <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-4">
+                      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+                        <div className="flex items-center gap-2">
+                          <Stethoscope className="w-5 h-5 text-teal-600" />
+                          <h3 className="text-base font-bold text-slate-900">
+                            Phiếu Khám Bệnh ({currentVisit.visitId})
+                          </h3>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <label className="text-xs font-medium text-slate-500">Ngày khám:</label>
+                          <input
+                            type="date"
+                            value={currentVisit.visitDate}
+                            onChange={(e) => handleUpdateVisitField('visitDate', e.target.value)}
+                            className="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Chỉ số sinh hiệu: Chiều cao, Cân nặng, BMI, Huyết áp, Mạch */}
+                      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
+                        <div>
+                          <label className="text-[11px] font-semibold text-slate-500 uppercase flex items-center gap-1">
+                            <Ruler className="w-3 h-3 text-teal-600" /> Chiều cao (cm)
+                          </label>
+                          <input
+                            type="number"
+                            value={currentVisit.height}
+                            onChange={(e) => handleUpdateVisitField('height', e.target.value)}
+                            className="mt-1 w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-sm font-bold text-slate-800"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="text-[11px] font-semibold text-slate-500 uppercase flex items-center gap-1">
+                            <Scale className="w-3 h-3 text-teal-600" /> Cân nặng (kg)
+                          </label>
+                          <input
+                            type="number"
+                            value={currentVisit.weight}
+                            onChange={(e) => handleUpdateVisitField('weight', e.target.value)}
+                            className="mt-1 w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-sm font-bold text-slate-800"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="text-[11px] font-semibold text-slate-500 uppercase">
+                            Chỉ số BMI (Tự tính)
+                          </label>
+                          <div className="mt-1 px-2.5 py-1.5 bg-teal-50 border border-teal-200 rounded-lg text-sm font-bold text-teal-800 text-center">
+                            {currentBMI || '--'} kg/m²
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="text-[11px] font-semibold text-slate-500 uppercase">
+                            Huyết áp (mmHg)
+                          </label>
+                          <input
+                            type="text"
+                            value={currentVisit.bp}
+                            onChange={(e) => handleUpdateVisitField('bp', e.target.value)}
+                            className="mt-1 w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-sm font-bold text-slate-800"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="text-[11px] font-semibold text-slate-500 uppercase">
+                            Mạch (lần/phút)
+                          </label>
+                          <input
+                            type="number"
+                            value={currentVisit.pulse}
+                            onChange={(e) => handleUpdateVisitField('pulse', e.target.value)}
+                            className="mt-1 w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-sm font-bold text-slate-800"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Triệu chứng, Loại bệnh, Chẩn đoán, Ngày hẹn tái khám */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="sm:col-span-2">
+                          <label className="text-xs font-semibold text-slate-700">
+                            Triệu chứng lâm sàng / Lý do khám
+                          </label>
+                          <input
+                            type="text"
+                            value={currentVisit.symptoms}
+                            onChange={(e) => handleUpdateVisitField('symptoms', e.target.value)}
+                            placeholder="Nhập triệu chứng bệnh nhân khai báo..."
+                            className="mt-1 w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="text-xs font-semibold text-slate-700">
+                            Nhóm bệnh / Chuyên khoa
+                          </label>
+                          <select
+                            value={currentVisit.diseaseCategory}
+                            onChange={(e) => handleUpdateVisitField('diseaseCategory', e.target.value)}
+                            className="mt-1 w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white"
+                          >
+                            <option value="Tim mạch - Huyết áp">Tim mạch - Huyết áp</option>
+                            <option value="Tiêu hóa - Gan mật">Tiêu hóa - Gan mật</option>
+                            <option value="Cơ xương khớp - Nội tiết">Cơ xương khớp - Nội tiết</option>
+                            <option value="Tai Mũi Họng - Hô hấp">Tai Mũi Họng - Hô hấp</option>
+                            <option value="Nội tổng quát">Nội tổng quát</option>
+                            <option value="Thần kinh - Da liễu">Thần kinh - Da liễu</option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label className="text-xs font-semibold text-slate-700">
+                            Ngày hẹn tái khám
+                          </label>
+                          <input
+                            type="date"
+                            value={currentVisit.followUpDate}
+                            onChange={(e) => handleUpdateVisitField('followUpDate', e.target.value)}
+                            className="mt-1 w-full px-3 py-2 bg-amber-50/60 border border-amber-300 rounded-lg text-sm font-semibold text-amber-900"
+                          />
+                        </div>
+
+                        <div className="sm:col-span-2">
+                          <label className="text-xs font-semibold text-slate-700">
+                            Chẩn đoán xác định của Bác sĩ
+                          </label>
+                          <input
+                            type="text"
+                            value={currentVisit.diagnosis}
+                            onChange={(e) => handleUpdateVisitField('diagnosis', e.target.value)}
+                            placeholder="Nhập chẩn đoán bệnh chính & bệnh kèm theo..."
+                            className="mt-1 w-full px-3 py-2 bg-teal-50/40 border border-teal-300 rounded-lg text-sm font-bold text-teal-950 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500"
+                          />
+                        </div>
+
+                        <div className="sm:col-span-2">
+                          <label className="text-xs font-semibold text-slate-700">
+                            Lời dặn của Bác sĩ (Chế độ ăn uống, sinh hoạt)
+                          </label>
+                          <input
+                            type="text"
+                            value={currentVisit.doctorNotes}
+                            onChange={(e) => handleUpdateVisitField('doctorNotes', e.target.value)}
+                            placeholder="Ví dụ: Kiêng đồ chua cay, tái khám đúng hẹn..."
+                            className="mt-1 w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Khối Toa thuốc nhanh trong Tab 2 */}
+                    <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-4">
+                      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+                        <div className="flex items-center gap-2">
+                          <Pill className="w-5 h-5 text-teal-600" />
+                          <h3 className="text-base font-bold text-slate-900">
+                            Toa thuốc đang uống ({currentVisit.prescriptions.length} loại thuốc)
+                          </h3>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() => setIsPrintModalOpen(true)}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition"
+                          >
+                            <Printer className="w-3.5 h-3.5" />
+                            Xem / In Toa thuốc
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setActiveTab('tab3')}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-50 text-teal-700 hover:bg-teal-100 transition"
+                          >
+                            Chỉnh sửa chi phí & Xét nghiệm ở Tab 3 →
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Danh sách thuốc trong đơn */}
+                      {currentVisit.prescriptions.length === 0 ? (
+                        <p className="text-sm text-slate-400 italic py-4 text-center">
+                          Chưa có thuốc trong lượt khám này. Bác sĩ có thể kê nhanh bên dưới.
+                        </p>
+                      ) : (
+                        <div className="overflow-x-auto">
+                          <table className="w-full text-left border-collapse text-sm">
+                            <thead>
+                              <tr className="bg-slate-50 border-b border-slate-200 text-xs text-slate-500 uppercase">
+                                <th className="py-2.5 px-3">Tên thuốc & Cách dùng</th>
+                                <th className="py-2.5 px-2 text-center">Sáng</th>
+                                <th className="py-2.5 px-2 text-center">Trưa</th>
+                                <th className="py-2.5 px-2 text-center">Chiều</th>
+                                <th className="py-2.5 px-2 text-center">Tối</th>
+                                <th className="py-2.5 px-2 text-center">Số ngày</th>
+                                <th className="py-2.5 px-3 text-right">Tổng SL</th>
+                                <th className="py-2.5 px-2 text-center">Xóa</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-slate-100">
+                              {currentVisit.prescriptions.map((item, idx) => {
+                                const daily =
+                                  (Number(item.morning) || 0) +
+                                  (Number(item.noon) || 0) +
+                                  (Number(item.afternoon) || 0) +
+                                  (Number(item.evening) || 0);
+                                const totalQty =
+                                  daily > 0 ? daily * (Number(item.days) || 1) : Number(item.days) || 1;
+                                return (
+                                  <tr key={item.id} className="hover:bg-slate-50">
+                                    <td className="py-2.5 px-3">
+                                      <div className="font-semibold text-slate-900">
+                                        {idx + 1}. {item.drugName}
+                                      </div>
+                                      <div className="text-xs text-slate-500">{item.note}</div>
+                                    </td>
+                                    <td className="py-2.5 px-2 text-center font-medium">
+                                      {item.morning || '-'}
+                                    </td>
+                                    <td className="py-2.5 px-2 text-center font-medium">
+                                      {item.noon || '-'}
+                                    </td>
+                                    <td className="py-2.5 px-2 text-center font-medium">
+                                      {item.afternoon || '-'}
+                                    </td>
+                                    <td className="py-2.5 px-2 text-center font-medium">
+                                      {item.evening || '-'}
+                                    </td>
+                                    <td className="py-2.5 px-2 text-center font-semibold text-teal-700">
+                                      {item.days} ngày
+                                    </td>
+                                    <td className="py-2.5 px-3 text-right font-bold text-slate-800">
+                                      {totalQty} {item.unit}
+                                    </td>
+                                    <td className="py-2.5 px-2 text-center">
+                                      <button
+                                        type="button"
+                                        onClick={() => handleRemoveDrug(item.id)}
+                                        className="text-slate-400 hover:text-rose-600 p-1"
+                                      >
+                                        <Trash2 className="w-4 h-4" />
+                                      </button>
+                                    </td>
+                                  </tr>
+                                );
+                              })}
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
+
+                      {/* Form kê thêm thuốc nhanh */}
+                      <form
+                        onSubmit={handleAddDrugToPrescription}
+                        className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 space-y-3"
+                      >
+                        <div className="text-xs font-bold text-slate-700 uppercase">
+                          + Kê thêm thuốc vào toa (Chọn nhanh hoặc tự gõ)
+                        </div>
+                        <div className="grid grid-cols-2 sm:grid-cols-6 gap-2.5">
+                          <div className="col-span-2 sm:col-span-3">
+                            <input
+                              list="drug-catalog-list"
+                              type="text"
+                              value={drugDraft.drugName}
+                              onChange={(e) => handleSelectCatalogDrug(e.target.value)}
+                              placeholder="Chọn hoặc gõ tên thuốc (VD: Amlodipin 5mg)..."
+                              className="w-full px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-sm"
+                            />
+                            <datalist id="drug-catalog-list">
+                              {DRUG_CATALOG.map((d) => (
+                                <option key={d.name} value={d.name} />
+                              ))}
+                            </datalist>
+                          </div>
+
+                          <div>
+                            <select
+                              value={drugDraft.unit}
+                              onChange={(e) => setDrugDraft({ ...drugDraft, unit: e.target.value })}
+                              className="w-full px-2 py-1.5 bg-white border border-slate-200 rounded-lg text-sm"
+                            >
+                              <option value="Viên">Viên</option>
+                              <option value="Gói">Gói</option>
+                              <option value="Chai">Chai</option>
+                              <option value="Ống">Ống</option>
+                            </select>
+                          </div>
+
+                          <div>
+                            <div className="flex items-center bg-white border border-slate-200 rounded-lg px-2 py-1.5">
+                              <span className="text-xs text-slate-400 mr-1">Số ngày:</span>
+                              <input
+                                type="number"
+                                min="1"
+                                value={drugDraft.days}
+                                onChange={(e) => setDrugDraft({ ...drugDraft, days: e.target.value })}
+                                className="w-full text-sm font-bold text-teal-700 focus:outline-none"
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <button
+                              type="submit"
+                              className="w-full h-full py-1.5 px-3 bg-teal-600 text-white rounded-lg text-xs font-semibold hover:bg-teal-700 transition"
+                            >
+                              + Thêm thuốc
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-4 sm:grid-cols-8 gap-2 items-center text-xs">
+                          <div className="flex items-center gap-1 bg-white px-2 py-1 rounded border border-slate-200">
+                            <span className="text-slate-500">Sáng:</span>
+                            <input
+                              type="number"
+                              min="0"
+                              value={drugDraft.morning}
+                              onChange={(e) => setDrugDraft({ ...drugDraft, morning: e.target.value })}
+                              className="w-full font-bold text-center focus:outline-none"
+                            />
+                          </div>
+                          <div className="flex items-center gap-1 bg-white px-2 py-1 rounded border border-slate-200">
+                            <span className="text-slate-500">Trưa:</span>
+                            <input
+                              type="number"
+                              min="0"
+                              value={drugDraft.noon}
+                              onChange={(e) => setDrugDraft({ ...drugDraft, noon: e.target.value })}
+                              className="w-full font-bold text-center focus:outline-none"
+                            />
+                          </div>
+                          <div className="flex items-center gap-1 bg-white px-2 py-1 rounded border border-slate-200">
+                            <span className="text-slate-500">Chiều:</span>
+                            <input
+                              type="number"
+                              min="0"
+                              value={drugDraft.afternoon}
+                              onChange={(e) =>
+                                setDrugDraft({ ...drugDraft, afternoon: e.target.value })
+                              }
+                              className="w-full font-bold text-center focus:outline-none"
+                            />
+                          </div>
+                          <div className="flex items-center gap-1 bg-white px-2 py-1 rounded border border-slate-200">
+                            <span className="text-slate-500">Tối:</span>
+                            <input
+                              type="number"
+                              min="0"
+                              value={drugDraft.evening}
+                              onChange={(e) => setDrugDraft({ ...drugDraft, evening: e.target.value })}
+                              className="w-full font-bold text-center focus:outline-none"
+                            />
+                          </div>
+                          <div className="col-span-4">
+                            <input
+                              type="text"
+                              value={drugDraft.note}
+                              onChange={(e) => setDrugDraft({ ...drugDraft, note: e.target.value })}
+                              placeholder="Cách dùng (VD: Uống sau ăn)..."
+                              className="w-full px-2.5 py-1 bg-white border border-slate-200 rounded text-xs"
+                            />
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </>
+                ) : (
+                  <div className="bg-white rounded-xl border border-slate-200 p-8 text-center">
+                    <p className="text-slate-500">Bệnh nhân chưa có lượt khám nào.</p>
+                    <button
+                      type="button"
+                      onClick={handleCreateNewVisitForPatient}
+                      className="mt-3 px-4 py-2 bg-teal-600 text-white rounded-lg text-sm font-semibold"
+                    >
+                      + Tạo lượt khám đầu tiên
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* =========================================================
+            TAB 3: QUẢN LÝ CHI PHÍ ĐIỀU TRỊ, ĐƠN THUỐC, XÉT NGHIỆM, X-QUANG
+           ========================================================= */}
+        {activeTab === 'tab3' && selectedPatient && currentVisit && (
+          <div className="space-y-6">
+            {/* Thanh chọn nhanh Bệnh nhân & Lượt khám tại Tab 3 */}
+            <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-4">
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-semibold text-slate-500 uppercase">Bệnh nhân:</span>
+                  <select
+                    value={selectedPatient.id}
+                    onChange={(e) => handleSelectPatientFromList(e.target.value)}
+                    className="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-sm font-bold text-slate-900"
+                  >
+                    {patients.map((p) => (
+                      <option key={p.id} value={p.id}>
+                        {p.id} - {p.name} ({calculateAge(p.dob)} tuổi)
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-semibold text-slate-500 uppercase">Đợt khám:</span>
+                  <select
+                    value={currentVisit.visitId}
+                    onChange={(e) => setSelectedVisitId(e.target.value)}
+                    className="px-3 py-1.5 bg-teal-50 border border-teal-200 rounded-lg text-sm font-semibold text-teal-900"
+                  >
+                    {patientVisits.map((v) => (
+                      <option key={v.visitId} value={v.visitId}>
+                        Ngày {v.visitDate} ({v.visitId}) - {v.diagnosis}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsPrintModalOpen(true)}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-white hover:bg-slate-900 shadow-sm transition"
+                >
+                  <Printer className="w-4 h-4" />
+                  In Đơn Thuốc & Phiếu Thu (A5)
+                </button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              {/* CỘT TRÁI (8 CỘT): XÉT NGHIỆM, THỬ MÁU, X-QUANG & BẢNG GIÁ ĐƠN THUỐC */}
+              <div className="lg:col-span-8 space-y-6">
+                {/* KHỐI 1: CHỈ ĐỊNH XÉT NGHIỆM, THỬ MÁU, CHỤP X-QUANG, SIÊU ÂM */}
+                <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-4">
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <div className="flex items-center gap-2">
+                      <FlaskConical className="w-5 h-5 text-blue-600" />
+                      <h3 className="text-base font-bold text-slate-900">
+                        1. Quản lý Xét nghiệm, Thử máu, Chụp X-Quang & Siêu âm
+                      </h3>
+                    </div>
+                    <span className="text-sm font-bold text-blue-700">
+                      Tổng cận lâm sàng: {formatVND(currentVisitFinancials.labTotal)}
+                    </span>
+                  </div>
+
+                  {/* Danh sách các xét nghiệm / X-quang đã chỉ định */}
+                  {currentVisit.labs.length === 0 ? (
+                    <div className="py-6 text-center bg-slate-50 rounded-xl border border-dashed border-slate-200 text-sm text-slate-500">
+                      Chưa có chỉ định thử máu, xét nghiệm hay chụp X-quang trong đợt khám này.
+                    </div>
+                  ) : (
+                    <div className="space-y-3">
+                      {currentVisit.labs.map((lab) => (
+                        <div
+                          key={lab.id}
+                          className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                        >
+                          <div className="space-y-1 flex-1">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span
+                                className={`text-xs font-bold px-2 py-0.5 rounded-md ${
+                                  lab.type.includes('X-Quang')
+                                    ? 'bg-purple-100 text-purple-800'
+                                    : lab.type.includes('Thử máu')
+                                    ? 'bg-rose-100 text-rose-800'
+                                    : 'bg-blue-100 text-blue-800'
+                                }`}
+                              >
+                                {lab.type}
+                              </span>
+                              <span className="font-bold text-slate-900 text-sm">{lab.name}</span>
+                              <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-medium">
+                                {lab.status}
+                              </span>
+                            </div>
+
+                            <div className="text-xs text-slate-700 bg-white px-2.5 py-1.5 rounded-lg border border-slate-200/80 mt-1">
+                              <strong>Kết quả: </strong>
+                              {lab.result || 'Đang chờ kết quả...'}
+                            </div>
+
+                            {lab.attachment && (
+                              <div className="flex items-center gap-1.5 text-xs text-teal-700 pt-0.5">
+                                <ImageIcon className="w-3.5 h-3.5" />
+                                <span>File đính kèm trên Drive: </span>
+                                <span className="underline font-medium">{lab.attachment}</span>
+                              </div>
+                            )}
+                          </div>
+
+                          <div className="flex sm:flex-col items-end justify-between gap-2 shrink-0">
+                            <span className="text-sm font-bold text-slate-900">
+                              {formatVND(lab.cost)}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => handleRemoveLab(lab.id)}
+                              className="text-xs text-rose-600 hover:underline flex items-center gap-1"
+                            >
+                              <Trash2 className="w-3.5 h-3.5" /> Xóa
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Form thêm nhanh Xét nghiệm / Thử máu / X-Quang */}
+                  <form
+                    onSubmit={handleAddLabToVisit}
+                    className="bg-blue-50/50 p-4 rounded-xl border border-blue-200/80 space-y-3"
+                  >
+                    <div className="text-xs font-bold text-blue-900 uppercase">
+                      + Thêm chỉ định Thử máu / Xét nghiệm / Chụp X-Quang mới
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-12 gap-2.5">
+                      <div className="sm:col-span-3">
+                        <select
+                          value={labDraft.type}
+                          onChange={(e) => setLabDraft({ ...labDraft, type: e.target.value })}
+                          className="w-full px-2.5 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium"
+                        >
+                          <option value="Thử máu">Thử máu</option>
+                          <option value="Chụp X-Quang">Chụp X-Quang</option>
+                          <option value="Siêu âm">Siêu âm</option>
+                          <option value="Điện tim">Điện tim</option>
+                          <option value="Xét nghiệm">Xét nghiệm khác</option>
+                        </select>
+                      </div>
+
+                      <div className="sm:col-span-6">
+                        <input
+                          list="lab-catalog-list"
+                          type="text"
+                          value={labDraft.name}
+                          onChange={(e) => handleSelectCatalogLab(e.target.value)}
+                          placeholder="Chọn hoặc nhập tên Xét nghiệm / X-Quang..."
+                          className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm"
+                        />
+                        <datalist id="lab-catalog-list">
+                          {LAB_CATALOG.map((l) => (
+                            <option key={l.name} value={l.name} />
+                          ))}
+                        </datalist>
+                      </div>
+
+                      <div className="sm:col-span-3">
+                        <input
+                          type="number"
+                          step="10000"
+                          value={labDraft.cost}
+                          onChange={(e) => setLabDraft({ ...labDraft, cost: e.target.value })}
+                          placeholder="Chi phí (VNĐ)"
+                          className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm font-bold text-blue-700"
+                        />
+                      </div>
+
+                      <div className="sm:col-span-9">
+                        <input
+                          type="text"
+                          value={labDraft.result}
+                          onChange={(e) => setLabDraft({ ...labDraft, result: e.target.value })}
+                          placeholder="Nhập tóm tắt kết quả xét nghiệm / đọc phim X-quang..."
+                          className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm"
+                        />
+                      </div>
+
+                      <div className="sm:col-span-3">
+                        <button
+                          type="submit"
+                          className="w-full h-full py-2 px-3 bg-blue-600 text-white rounded-lg text-xs font-semibold hover:bg-blue-700 transition"
+                        >
+                          + Lưu chỉ định
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                {/* KHỐI 2: CHI TIẾT ĐƠN THUỐC & ĐƠN GIÁ TẠI TAB 3 */}
+                <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-4">
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <div className="flex items-center gap-2">
+                      <Pill className="w-5 h-5 text-teal-600" />
+                      <h3 className="text-base font-bold text-slate-900">
+                        2. Bảng tính tiền Đơn thuốc ({currentVisit.prescriptions.length} khoản)
+                      </h3>
+                    </div>
+                    <span className="text-sm font-bold text-teal-700">
+                      Tổng tiền thuốc: {formatVND(currentVisitFinancials.drugTotal)}
+                    </span>
+                  </div>
+
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse text-sm">
+                      <thead>
+                        <tr className="bg-slate-50 border-b border-slate-200 text-xs text-slate-500 uppercase">
+                          <th className="py-2.5 px-3">Tên thuốc</th>
+                          <th className="py-2.5 px-2 text-center">Liều/Ngày</th>
+                          <th className="py-2.5 px-2 text-center">Số ngày</th>
+                          <th className="py-2.5 px-2 text-center">Tổng SL</th>
+                          <th className="py-2.5 px-3 text-right">Đơn giá</th>
+                          <th className="py-2.5 px-3 text-right">Thành tiền</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100">
+                        {currentVisit.prescriptions.map((item, idx) => {
+                          const daily =
+                            (Number(item.morning) || 0) +
+                            (Number(item.noon) || 0) +
+                            (Number(item.afternoon) || 0) +
+                            (Number(item.evening) || 0);
+                          const totalQty =
+                            daily > 0 ? daily * (Number(item.days) || 1) : Number(item.days) || 1;
+                          const lineTotal = totalQty * (Number(item.price) || 0);
+                          return (
+                            <tr key={item.id}>
+                              <td className="py-2.5 px-3">
+                                <div className="font-semibold text-slate-900">
+                                  {idx + 1}. {item.drugName}
+                                </div>
+                                <div className="text-xs text-slate-500">{item.note}</div>
+                              </td>
+                              <td className="py-2.5 px-2 text-center text-xs">
+                                S:{item.morning} T:{item.noon} C:{item.afternoon} Tối:{item.evening}
+                              </td>
+                              <td className="py-2.5 px-2 text-center font-medium">
+                                {item.days} ngày
+                              </td>
+                              <td className="py-2.5 px-2 text-center font-bold">
+                                {totalQty} {item.unit}
+                              </td>
+                              <td className="py-2.5 px-3 text-right text-slate-600">
+                                {formatVND(item.price)}
+                              </td>
+                              <td className="py-2.5 px-3 text-right font-bold text-slate-900">
+                                {formatVND(lineTotal)}
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              {/* CỘT PHẢI (4 CỘT): TỔNG HỢP VIỆN PHÍ & TRẠNG THÁI THANH TOÁN */}
+              <div className="lg:col-span-4 space-y-6">
+                <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-4 sticky top-28">
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                      <CreditCard className="w-5 h-5 text-teal-600" />
+                      Tổng kết Chi phí điều trị
+                    </h3>
+                    <span
+                      className={`text-xs font-bold px-2.5 py-1 rounded-full ${
+                        currentVisit.paymentStatus === 'Đã thu'
+                          ? 'bg-emerald-100 text-emerald-800'
+                          : 'bg-rose-100 text-rose-800'
+                      }`}
+                    >
+                      {currentVisit.paymentStatus}
+                    </span>
+                  </div>
+
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-600">1. Tiền công khám bác sĩ:</span>
+                      <input
+                        type="number"
+                        step="10000"
+                        value={currentVisit.consultationFee}
+                        onChange={(e) =>
+                          handleUpdateVisitField('consultationFee', Number(e.target.value))
+                        }
+                        className="w-32 text-right px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-lg font-semibold"
+                      />
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-600">
+                        2. Tiền thuốc ({currentVisit.prescriptions.length} loại):
+                      </span>
+                      <span className="font-semibold text-slate-900">
+                        {formatVND(currentVisitFinancials.drugTotal)}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-600">
+                        3. Xét nghiệm & X-Quang ({currentVisit.labs.length} mục):
+                      </span>
+                      <span className="font-semibold text-slate-900">
+                        {formatVND(currentVisitFinancials.labTotal)}
+                      </span>
+                    </div>
+
+                    <div className="pt-3 border-t border-slate-200 flex items-center justify-between">
+                      <span className="text-base font-bold text-slate-900">TỔNG THANH TOÁN:</span>
+                      <span className="text-xl font-extrabold text-teal-700">
+                        {formatVND(currentVisitFinancials.grandTotal)}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Chọn trạng thái thanh toán */}
+                  <div className="pt-2 space-y-2">
+                    <label className="text-xs font-semibold text-slate-500 uppercase">
+                      Cập nhật trạng thái thu phí
+                    </label>
+                    <div className="grid grid-cols-2 gap-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          handleUpdateVisitField('paymentStatus', 'Đã thu');
+                          showToast('Đã xác nhận thu tiền viện phí & lưu vào Sheet!');
+                        }}
+                        className={`py-2.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 border transition ${
+                          currentVisit.paymentStatus === 'Đã thu'
+                            ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
+                            : 'bg-white text-slate-700 border-slate-200 hover:bg-emerald-50'
+                        }`}
+                      >
+                        <CheckCircle2 className="w-4 h-4" />
+                        Đã thu tiền
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => handleUpdateVisitField('paymentStatus', 'Chưa thu')}
+                        className={`py-2.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 border transition ${
+                          currentVisit.paymentStatus === 'Chưa thu'
+                            ? 'bg-rose-600 text-white border-rose-600 shadow-sm'
+                            : 'bg-white text-slate-700 border-slate-200 hover:bg-rose-50'
+                        }`}
+                      >
+                        <Clock className="w-4 h-4" />
+                        Chưa thu
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Nút đồng bộ và In */}
+                  <div className="pt-3 border-t border-slate-100 space-y-2.5">
+                    <button
+                      type="button"
+                      onClick={handleSyncToGoogleSheets}
+                      className="w-full py-2.5 px-4 rounded-xl bg-teal-600 text-white text-sm font-semibold hover:bg-teal-700 flex items-center justify-center gap-2 shadow-sm transition"
+                    >
+                      <Database className="w-4 h-4" />
+                      Ghi phiếu này vào Google Sheets
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setIsPrintModalOpen(true)}
+                      className="w-full py-2.5 px-4 rounded-xl bg-slate-100 text-slate-800 text-sm font-semibold hover:bg-slate-200 flex items-center justify-center gap-2 transition"
+                    >
+                      <Printer className="w-4 h-4" />
+                      Xem bản in Đơn thuốc & Hóa đơn
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Dòng bản quyền chìm 1 màu đơn giản ở dưới cùng góc phải */}
+        <div className="pt-4 pr-1 text-right text-[11px] text-slate-400">
+          App được thiết kế và phát triển bởi #ktskhoa365 LH:0908297118
+        </div>
+      </main>
+    </div>
+  );
+}
+
+export default MediCareClinicApp;
