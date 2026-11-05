@@ -61,37 +61,1011 @@ if (typeof window !== 'undefined') {
     const ShieldCheck = makeIcon(<><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></>);
     const Archive = makeIcon(<><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></>);
 
-// Danh mục thuốc mẫu phục vụ kê toa nhanh
+// Khóa bảo mật API đồng bộ Google Sheets (Chống người lạ can thiệp hoặc sửa xóa dữ liệu trái phép)
+export const API_SECRET_KEY = "MEDICARE_SECURE_TOKEN_2026_HAO_CLINIC_998877";
+
+// Danh mục 100 loại thuốc thực tế thường dùng nhất của BSCK1 Tôn Thất Hào (Chuyên khoa Da liễu & Đa khoa)
 export const DRUG_CATALOG = [
-  { name: 'Amlodipin 5mg', unit: 'Viên', price: 3500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Atorvastatin 20mg (Lipitor)', unit: 'Viên', price: 14000, defaultNote: 'Uống sau ăn tối', m: 0, n: 0, a: 0, e: 1 },
-  { name: 'Rosuvastatin 10mg (Crestor)', unit: 'Viên', price: 16000, defaultNote: 'Uống sau ăn tối', m: 0, n: 0, a: 0, e: 1 },
-  { name: 'Telmisartan 40mg (Micardis)', unit: 'Viên', price: 9500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Coversyl 5mg (Perindopril)', unit: 'Viên', price: 8000, defaultNote: 'Uống trước ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Concor 2.5mg (Bisoprolol)', unit: 'Viên', price: 5000, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Concor 5mg (Bisoprolol)', unit: 'Viên', price: 6500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Metformin 850mg (Glucophage)', unit: 'Viên', price: 3200, defaultNote: 'Uống ngay sau ăn', m: 1, n: 0, a: 0, e: 1 },
-  { name: 'Glucophage XR 750mg', unit: 'Viên', price: 5500, defaultNote: 'Uống sau ăn tối', m: 0, n: 0, a: 0, e: 1 },
-  { name: 'Diamicron MR 30mg', unit: 'Viên', price: 4200, defaultNote: 'Uống trước ăn sáng 15 phút', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Esomeprazol 40mg (Nexium)', unit: 'Viên', price: 11000, defaultNote: 'Uống trước ăn sáng 30 phút', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Phosphalugel (Sữa dạ dày)', unit: 'Gói', price: 6500, defaultNote: 'Uống sau ăn 1 giờ hoặc khi đau', m: 0, n: 1, a: 0, e: 1 },
-  { name: 'Domperidon 10mg (Motilium)', unit: 'Viên', price: 2500, defaultNote: 'Uống trước ăn 15 phút', m: 1, n: 1, a: 0, e: 1 },
-  { name: 'Betahistin 16mg (Betaserc)', unit: 'Viên', price: 4800, defaultNote: 'Uống sau ăn no', m: 1, n: 0, a: 0, e: 1 },
-  { name: 'Betaserc 24mg', unit: 'Viên', price: 7500, defaultNote: 'Uống sau ăn no', m: 1, n: 0, a: 0, e: 1 },
-  { name: 'Ginkgo Biloba 120mg (Tanakan)', unit: 'Viên', price: 5000, defaultNote: 'Uống sau ăn', m: 1, n: 0, a: 1, e: 0 },
-  { name: 'Medrol 4mg (Methylprednisolon)', unit: 'Viên', price: 2500, defaultNote: 'Uống sau ăn sáng no', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Medrol 16mg (Methylprednisolon)', unit: 'Viên', price: 6000, defaultNote: 'Uống sau ăn sáng no', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Celecoxib 200mg (Celebrex)', unit: 'Viên', price: 7500, defaultNote: 'Uống sau ăn no', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Glucosamin Sulfate 1500mg', unit: 'Gói', price: 9000, defaultNote: 'Pha nước uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Fexofenadin 180mg (Telfast)', unit: 'Viên', price: 5500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Desloratadin 5mg (Aerius)', unit: 'Viên', price: 7500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Augmentin 1g (Amox/Clav)', unit: 'Viên', price: 16000, defaultNote: 'Uống ngay sau ăn no', m: 1, n: 0, a: 0, e: 1 },
-  { name: 'Cefixim 200mg', unit: 'Viên', price: 8000, defaultNote: 'Uống sau ăn sáng - tối', m: 1, n: 0, a: 0, e: 1 },
-  { name: 'Febuxostat 40mg (Feburic)', unit: 'Viên', price: 8500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Lipanthyl 145mg (Fenofibrat)', unit: 'Viên', price: 12500, defaultNote: 'Uống sau ăn chính', m: 1, n: 0, a: 0, e: 0 },
-  { name: 'Daflon 500mg', unit: 'Viên', price: 4500, defaultNote: 'Uống sau ăn trưa - tối', m: 0, n: 1, a: 0, e: 1 },
-  { name: 'Paracetamol 500mg', unit: 'Viên', price: 1500, defaultNote: 'Uống sau ăn khi đau/sốt > 38.5 độ', m: 1, n: 1, a: 0, e: 1 },
-  { name: 'Vitamin 3B (B1-B6-B12)', unit: 'Viên', price: 2000, defaultNote: 'Uống sau ăn sáng - trưa', m: 1, n: 1, a: 0, e: 0 }
+  {
+    "name": "Nizoral 2% Cream 5g (Ketoconazole)",
+    "unit": "Tuýp",
+    "price": 42000,
+    "defaultNote": "Bôi vùng da nấm 2 lần/ngày sau khi vệ sinh",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Gentrisone Cream 10g (Betamethason/Clotrimazol/Gentamicin)",
+    "unit": "Tuýp",
+    "price": 25000,
+    "defaultNote": "Thoa mỏng vùng da viêm dị ứng nhiễm khuẩn 2 lần/ngày",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Acyclovir 5% Cream 5g (Kháng virus Herpes/Zona)",
+    "unit": "Tuýp",
+    "price": 22000,
+    "defaultNote": "Thoa tổn thương mụn nước Herpes/Zona 4-5 lần/ngày",
+    "m": 1,
+    "n": 1,
+    "a": 1,
+    "e": 1
+  },
+  {
+    "name": "Bepanthen Ointment 5% 30g (Dexpanthenol)",
+    "unit": "Tuýp",
+    "price": 85000,
+    "defaultNote": "Thoa dưỡng ẩm, dịu da, phục hồi tổn thương 2-3 lần/ngày",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Contractubex Gel 10g (Trị sẹo lồi, sẹo thâm)",
+    "unit": "Tuýp",
+    "price": 165000,
+    "defaultNote": "Thoa nhẹ lên mô sẹo 2-3 lần/ngày",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Dermovate Cream 15g (Clobetasol propionate 0.05%)",
+    "unit": "Tuýp",
+    "price": 95000,
+    "defaultNote": "Thoa mỏng vùng chàm mạn, vảy nến buổi tối (tránh thoa mặt)",
+    "m": 0,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Fucidin 2% Cream 15g (Acid Fusidic)",
+    "unit": "Tuýp",
+    "price": 110000,
+    "defaultNote": "Thoa nhiễm trùng da, viêm nang lông, chốc lở 2 lần/ngày",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Fucicort Cream 15g (Acid Fusidic + Betamethason)",
+    "unit": "Tuýp",
+    "price": 125000,
+    "defaultNote": "Thoa chàm nhiễm khuẩn 2 lần/ngày trong 7-10 ngày",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Klenzit MS 15g (Adapalene 0.1% - Trị mụn ẩn, mụn viêm)",
+    "unit": "Tuýp",
+    "price": 135000,
+    "defaultNote": "Thoa mỏng toàn mặt vào buổi tối trước khi ngủ",
+    "m": 0,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Kem Ery nghệ 10g (Erythromycin + Nghệ trị mụn)",
+    "unit": "Tuýp",
+    "price": 28000,
+    "defaultNote": "Chấm mụn bọc, mụn viêm buổi tối",
+    "m": 0,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Sastid 100ml (Sữa tắm trị mụn lưng, nấm da, gàu ngứa)",
+    "unit": "Chai",
+    "price": 185000,
+    "defaultNote": "Tắm xoa đều vùng da bệnh, lưu 3 phút rồi xả sạch",
+    "m": 0,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Cồn chống nấm Antimycose 18ml",
+    "unit": "Chai",
+    "price": 15000,
+    "defaultNote": "Chấm rửa vùng da nấm kẽ chân, lang ben ngày 2 lần",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Povidine 10% 20ml (Dung dịch sát trùng da)",
+    "unit": "Chai",
+    "price": 12000,
+    "defaultNote": "Sát khuẩn vết thương ngoài da bằng tăm bông sạch",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Flucinar Ointment 15g (Fluocinolone acetonide)",
+    "unit": "Tuýp",
+    "price": 45000,
+    "defaultNote": "Thoa mỏng vùng viêm da dị ứng ngày 1-2 lần",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Silkron Cream 10g (Clotrimazole, Betamethasone, Gentamicin)",
+    "unit": "Tuýp",
+    "price": 28000,
+    "defaultNote": "Thoa vùng nấm da kèm nhiễm khuẩn ngày 2 lần",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Eumovate Cream 15g (Clobetasone butyrate 0.05%)",
+    "unit": "Tuýp",
+    "price": 78000,
+    "defaultNote": "Thoa chàm sữa, viêm da cơ địa trẻ em và người lớn 2 lần/ngày",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Dung dịch Milian 20ml (Xanh Methylen + Tím Gentian)",
+    "unit": "Chai",
+    "price": 8000,
+    "defaultNote": "Chấm tổn thương chốc lở, mụn nước zona ngày 2-3 lần",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Erythromycin dung dịch 4% 30ml (Trị mụn trứng cá)",
+    "unit": "Chai",
+    "price": 45000,
+    "defaultNote": "Thoa vùng da mụn 2 lần/ngày",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Canesten 1% Cream 20g (Clotrimazole)",
+    "unit": "Tuýp",
+    "price": 62000,
+    "defaultNote": "Thoa vùng nấm da, hắc lào, nấm bẹn 2 lần/ngày",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Diprosalic Ointment 15g (Betamethasone + Acid Salicylic)",
+    "unit": "Tuýp",
+    "price": 95000,
+    "defaultNote": "Thoa vùng vảy nến, dày sừng lòng bàn tay chân ngày 2 lần",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Daivobet Ointment 15g (Calcipotriol + Betamethasone)",
+    "unit": "Tuýp",
+    "price": 320000,
+    "defaultNote": "Thoa mỏng mảng vảy nến 1 lần/ngày vào buổi tối",
+    "m": 0,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Differin 0.1% Gel 30g (Adapalene)",
+    "unit": "Tuýp",
+    "price": 295000,
+    "defaultNote": "Thoa mỏng vùng mụn mặt buổi tối sau khi rửa sạch",
+    "m": 0,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Hiruscar Gel 20g (Trị sẹo thâm, mụn)",
+    "unit": "Tuýp",
+    "price": 210000,
+    "defaultNote": "Xoa nhẹ nhàng lên sẹo mụn 2-3 lần/ngày",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Thuốc mỡ Kẽm Oxyd 10% 15g",
+    "unit": "Tuýp",
+    "price": 15000,
+    "defaultNote": "Bôi làm dịu da bỏng nhẹ, hăm tã, viêm da ngày 2 lần",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Cồn 70 độ 60ml (Sát khuẩn y tế)",
+    "unit": "Chai",
+    "price": 6000,
+    "defaultNote": "Sát khuẩn da trước khi thao tác",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Telfast 180mg (Fexofenadine)",
+    "unit": "Viên",
+    "price": 6500,
+    "defaultNote": "Uống sau ăn sáng",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Telfast 60mg (Fexofenadine)",
+    "unit": "Viên",
+    "price": 4500,
+    "defaultNote": "Uống sau ăn sáng - tối",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Aerius 5mg (Desloratadine)",
+    "unit": "Viên",
+    "price": 8000,
+    "defaultNote": "Uống sau ăn sáng",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Zyrtec 10mg (Cetirizine)",
+    "unit": "Viên",
+    "price": 7500,
+    "defaultNote": "Uống tối sau ăn",
+    "m": 0,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Clarityne 10mg (Loratadine)",
+    "unit": "Viên",
+    "price": 9000,
+    "defaultNote": "Uống sáng sau ăn",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Xyzal 5mg (Levocetirizine)",
+    "unit": "Viên",
+    "price": 9500,
+    "defaultNote": "Uống tối sau ăn",
+    "m": 0,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Atarax 25mg (Hydroxyzine - Chống ngứa mề đay đêm)",
+    "unit": "Viên",
+    "price": 4500,
+    "defaultNote": "Uống 1 viên trước khi ngủ",
+    "m": 0,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Phenergan 25mg (Promethazine)",
+    "unit": "Viên",
+    "price": 1500,
+    "defaultNote": "Uống tối chống ngứa dị ứng",
+    "m": 0,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Clorpheniramin 4mg",
+    "unit": "Viên",
+    "price": 500,
+    "defaultNote": "Uống khi dị ứng, ngứa, hắt hơi",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Cinnarizin 25mg (Stugeron)",
+    "unit": "Viên",
+    "price": 1500,
+    "defaultNote": "Uống sau ăn sáng - tối",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Betaserc 16mg (Betahistine)",
+    "unit": "Viên",
+    "price": 5500,
+    "defaultNote": "Uống sau ăn no",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Betaserc 24mg (Betahistine)",
+    "unit": "Viên",
+    "price": 8000,
+    "defaultNote": "Uống sau ăn no",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Dimenhydrinat 50mg (Chống say xe, chóng mặt)",
+    "unit": "Viên",
+    "price": 1000,
+    "defaultNote": "Uống trước khi đi tàu xe 30 phút",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Loratadin 10mg",
+    "unit": "Viên",
+    "price": 1800,
+    "defaultNote": "Uống sáng sau ăn",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Fexofenadin 120mg",
+    "unit": "Viên",
+    "price": 4000,
+    "defaultNote": "Uống sáng sau ăn",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Curam 1000mg (Amoxicillin + Clavulanate)",
+    "unit": "Viên",
+    "price": 18000,
+    "defaultNote": "Uống ngay đầu bữa ăn no",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Curam 625mg (Amoxicillin + Clavulanate)",
+    "unit": "Viên",
+    "price": 12000,
+    "defaultNote": "Uống ngay đầu bữa ăn no",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Augmentin 1g (Amoxicillin/Acid Clavulanic)",
+    "unit": "Viên",
+    "price": 18500,
+    "defaultNote": "Uống đầu bữa ăn sáng - tối",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Cefixim 200mg",
+    "unit": "Viên",
+    "price": 8000,
+    "defaultNote": "Uống sau ăn sáng - tối",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Zinnat 500mg (Cefuroxime axetil)",
+    "unit": "Viên",
+    "price": 19000,
+    "defaultNote": "Uống sau ăn no sáng - tối",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Doxycycline 100mg (Kháng sinh trị mụn, nhiễm khuẩn da)",
+    "unit": "Viên",
+    "price": 3500,
+    "defaultNote": "Uống nhiều nước sau ăn no, không nằm ngay sau uống",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Ciprofloxacin 500mg",
+    "unit": "Viên",
+    "price": 6500,
+    "defaultNote": "Uống xa bữa ăn 2 giờ",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Klacid 500mg (Clarithromycin)",
+    "unit": "Viên",
+    "price": 21000,
+    "defaultNote": "Uống sau ăn sáng - tối",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Azithromycin 500mg (Zithromax)",
+    "unit": "Viên",
+    "price": 17000,
+    "defaultNote": "Uống 1 giờ trước hoặc 2 giờ sau ăn",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Metronidazol 250mg",
+    "unit": "Viên",
+    "price": 1200,
+    "defaultNote": "Uống trong hoặc sau bữa ăn",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Itraconazole 100mg (Sporal - Kháng nấm toàn thân)",
+    "unit": "Viên",
+    "price": 18000,
+    "defaultNote": "Uống ngay sau bữa ăn trưa nhiều dầu mỡ",
+    "m": 0,
+    "n": 1,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Fluconazole 150mg (Diflucan - Trị nấm Candida)",
+    "unit": "Viên",
+    "price": 25000,
+    "defaultNote": "Uống 1 liều duy nhất hoặc theo lịch hẹn",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Terbinafine 250mg (Lamisil - Trị nấm móng, nấm tóc)",
+    "unit": "Viên",
+    "price": 28000,
+    "defaultNote": "Uống 1 viên sau ăn mỗi ngày",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Clindamycin 300mg (Trị mụn viêm nặng)",
+    "unit": "Viên",
+    "price": 7000,
+    "defaultNote": "Uống sau ăn với nhiều nước",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Levofloxacin 500mg (Cravit)",
+    "unit": "Viên",
+    "price": 16000,
+    "defaultNote": "Uống cách xa bữa ăn",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Medrol 4mg (Methylprednisolon)",
+    "unit": "Viên",
+    "price": 2500,
+    "defaultNote": "Uống sau ăn sáng thật no",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Medrol 16mg (Methylprednisolon)",
+    "unit": "Viên",
+    "price": 6000,
+    "defaultNote": "Uống sau ăn sáng thật no",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Prednisolon 5mg",
+    "unit": "Viên",
+    "price": 1000,
+    "defaultNote": "Uống sáng sau ăn no",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Dexamethason 0.5mg",
+    "unit": "Viên",
+    "price": 800,
+    "defaultNote": "Uống sau ăn sáng",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Alphachymotrypsine Choay (Kháng viêm, tan phù nề)",
+    "unit": "Viên",
+    "price": 2800,
+    "defaultNote": "Ngậm dưới lưỡi hoặc uống sau ăn",
+    "m": 2,
+    "n": 0,
+    "a": 0,
+    "e": 2
+  },
+  {
+    "name": "Danzen 10mg (Serratiopeptidase - Giảm sưng nề)",
+    "unit": "Viên",
+    "price": 3200,
+    "defaultNote": "Uống sau ăn 3 lần/ngày",
+    "m": 1,
+    "n": 1,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Medo Alpha 21 (Chymotrypsin)",
+    "unit": "Viên",
+    "price": 2500,
+    "defaultNote": "Ngậm dưới lưỡi 2 viên/lần",
+    "m": 2,
+    "n": 0,
+    "a": 0,
+    "e": 2
+  },
+  {
+    "name": "Methylprednisolon 16mg",
+    "unit": "Viên",
+    "price": 4500,
+    "defaultNote": "Uống sau ăn sáng no",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Hapacol 650mg (Paracetamol)",
+    "unit": "Viên",
+    "price": 2000,
+    "defaultNote": "Uống khi sốt > 38.5°C hoặc đau nhức (cách 4-6h)",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Paracetamol 500mg",
+    "unit": "Viên",
+    "price": 1500,
+    "defaultNote": "Uống sau ăn khi đau/sốt",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Efferalgan 500mg (Viên sủi hạ sốt)",
+    "unit": "Viên",
+    "price": 4500,
+    "defaultNote": "Hòa tan vào 1 cốc nước uống khi sốt",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Celebrex 200mg (Celecoxib)",
+    "unit": "Viên",
+    "price": 8000,
+    "defaultNote": "Uống sau ăn no",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Arcoxia 60mg (Etoricoxib)",
+    "unit": "Viên",
+    "price": 16000,
+    "defaultNote": "Uống sau ăn sáng",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Arcoxia 90mg (Etoricoxib)",
+    "unit": "Viên",
+    "price": 19000,
+    "defaultNote": "Uống sau ăn sáng",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Mobic 7.5mg (Meloxicam)",
+    "unit": "Viên",
+    "price": 9000,
+    "defaultNote": "Uống sau ăn no",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Voltaren 50mg (Diclofenac)",
+    "unit": "Viên",
+    "price": 5500,
+    "defaultNote": "Uống ngay sau ăn no",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Voltaren 75mg/3ml (Ống tiêm bắp giảm đau cấp)",
+    "unit": "Ống",
+    "price": 35000,
+    "defaultNote": "Tiêm bắp sâu theo chỉ định",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Tilcotil 20mg (Tenoxicam)",
+    "unit": "Viên",
+    "price": 11000,
+    "defaultNote": "Uống sau ăn trưa hoặc tối",
+    "m": 0,
+    "n": 1,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Glucosamin Sulfate 1500mg",
+    "unit": "Gói",
+    "price": 9000,
+    "defaultNote": "Pha nước uống sau ăn sáng",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Mydocalm 150mg (Tolperisone - Giãn cơ giảm co cứng)",
+    "unit": "Viên",
+    "price": 4500,
+    "defaultNote": "Uống sau ăn 2 lần/ngày",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Nexium 40mg (Esomeprazol)",
+    "unit": "Viên",
+    "price": 12000,
+    "defaultNote": "Uống trước ăn sáng 30-60 phút",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Nexium 20mg (Esomeprazol)",
+    "unit": "Viên",
+    "price": 9000,
+    "defaultNote": "Uống trước ăn sáng 30 phút",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Pariet 20mg (Rabeprazol)",
+    "unit": "Viên",
+    "price": 14000,
+    "defaultNote": "Uống trước ăn sáng 30 phút",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Phosphalugel (Gel dạ dày chữ P)",
+    "unit": "Gói",
+    "price": 6500,
+    "defaultNote": "Uống sau ăn 1-2 giờ hoặc khi đau rát dạ dày",
+    "m": 0,
+    "n": 1,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Gaviscon Dual Action (Gói trị trào ngược dạ dày)",
+    "unit": "Gói",
+    "price": 9500,
+    "defaultNote": "Uống sau 3 bữa ăn chính và trước khi ngủ",
+    "m": 1,
+    "n": 1,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Motilium 10mg (Domperidon - Chống nôn, đầy bụng)",
+    "unit": "Viên",
+    "price": 2500,
+    "defaultNote": "Uống trước ăn 15-30 phút",
+    "m": 1,
+    "n": 1,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Debridat 100mg (Trimebutin - Điều hòa co bóp ruột)",
+    "unit": "Viên",
+    "price": 3800,
+    "defaultNote": "Uống trước bữa ăn",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Silymarin 140mg (Bổ gan, hạ men gan)",
+    "unit": "Viên",
+    "price": 4500,
+    "defaultNote": "Uống sau ăn sáng - tối",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Boganic (Bổ gan thảo dược)",
+    "unit": "Viên",
+    "price": 2000,
+    "defaultNote": "Uống sau ăn 2 lần/ngày",
+    "m": 2,
+    "n": 0,
+    "a": 0,
+    "e": 2
+  },
+  {
+    "name": "Enterogermina (Men vi sinh dạng ống 5ml)",
+    "unit": "Ống",
+    "price": 11000,
+    "defaultNote": "Uống cách kháng sinh 2 giờ",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Amlor 5mg (Amlodipin)",
+    "unit": "Viên",
+    "price": 8500,
+    "defaultNote": "Uống sau ăn sáng",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Micardis 40mg (Telmisartan)",
+    "unit": "Viên",
+    "price": 9500,
+    "defaultNote": "Uống sau ăn sáng",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Micardis Plus (Telmisartan 40mg + HCTZ 12.5mg)",
+    "unit": "Viên",
+    "price": 11500,
+    "defaultNote": "Uống sáng sau ăn",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Coversyl 5mg (Perindopril)",
+    "unit": "Viên",
+    "price": 8000,
+    "defaultNote": "Uống trước ăn sáng",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Concor 2.5mg (Bisoprolol)",
+    "unit": "Viên",
+    "price": 5000,
+    "defaultNote": "Uống sáng sau ăn",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Concor 5mg (Bisoprolol)",
+    "unit": "Viên",
+    "price": 6500,
+    "defaultNote": "Uống sáng sau ăn",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Lipitor 20mg (Atorvastatin - Hạ mỡ máu)",
+    "unit": "Viên",
+    "price": 14000,
+    "defaultNote": "Uống sau ăn tối",
+    "m": 0,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Crestor 10mg (Rosuvastatin - Hạ mỡ máu)",
+    "unit": "Viên",
+    "price": 16000,
+    "defaultNote": "Uống sau ăn tối",
+    "m": 0,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  },
+  {
+    "name": "Plavix 75mg (Clopidogrel - Chống đông máu)",
+    "unit": "Viên",
+    "price": 17500,
+    "defaultNote": "Uống sau ăn sáng",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Aspirin pH8 81mg (Chống huyết khối)",
+    "unit": "Viên",
+    "price": 1000,
+    "defaultNote": "Uống sau ăn no",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Cevit 500mg (Vitamin C - Tăng sức đề kháng, sáng da)",
+    "unit": "Viên",
+    "price": 2000,
+    "defaultNote": "Uống sau ăn sáng",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Berocca Effervescent (Viên sủi Multivitamin khoáng chất)",
+    "unit": "Viên",
+    "price": 9500,
+    "defaultNote": "Hòa tan 1 viên vào 200ml nước uống sáng",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Enat 400 (Vitamin E thiên nhiên - Chống oxy hóa da)",
+    "unit": "Viên",
+    "price": 5000,
+    "defaultNote": "Uống sau ăn chính",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Magne B6 (Magnesi lactat + Pyridoxin)",
+    "unit": "Viên",
+    "price": 2500,
+    "defaultNote": "Uống sau ăn sáng - trưa",
+    "m": 1,
+    "n": 1,
+    "a": 0,
+    "e": 0
+  },
+  {
+    "name": "Tanakan 120mg (Ginkgo Biloba - Tuần hoàn não, chóng mặt)",
+    "unit": "Viên",
+    "price": 6500,
+    "defaultNote": "Uống sau ăn sáng - tối",
+    "m": 1,
+    "n": 0,
+    "a": 0,
+    "e": 1
+  }
 ];
 
 // Danh mục xét nghiệm / X-Quang mẫu
@@ -548,6 +1522,7 @@ function MediCareClinicApp() {
           mode: 'no-cors',
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({
+            apiKey: API_SECRET_KEY,
             action: 'LOG_ACCESS',
             log: logEntry
           })
@@ -650,6 +1625,7 @@ function MediCareClinicApp() {
           mode: 'no-cors',
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({
+            apiKey: API_SECRET_KEY,
             action: 'SAVE_VISIT',
             patient: selectedPatient,
             visit: currentVisit,
@@ -693,6 +1669,7 @@ function MediCareClinicApp() {
           mode: 'no-cors',
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({
+            apiKey: API_SECRET_KEY,
             action: 'SYNC_ALL',
             patients,
             visits,
@@ -1225,167 +2202,674 @@ function MediCareClinicApp() {
   }, [patients, visits]);
 
   // Copy code Apps Script hoàn chỉnh (tự động tạo 4 Sheet nếu chưa có & đồng bộ toàn bộ dữ liệu)
-  const appsScriptCode = `// HƯỚNG DẪN ĐỒNG BỘ GOOGLE SHEETS & TỰ ĐỘNG QUÉT THƯ MỤC ẢNH DRIVE
-// 1. Mở file Google Sheets của phòng khám > Tiện ích mở rộng (Extensions) > Apps Script
-// 2. Xóa hết mã cũ, dán toàn bộ mã này vào > Nhấn biểu tượng Đĩa mềm để Lưu (Save).
-// 3. Nhấn Triển khai (Deploy) > Triển khai mới (New deployment) > chọn loại "Ứng dụng Web (Web App)"
-//    - Thực thi dưới quyền: "Tôi (Your email)"
-//    - Quyền truy cập: "Bất kỳ ai (Anyone)"
-// 4. Copy URL Web App dán vào ô cấu hình trên phần mềm MediCare Clinic Pro.
-// 5. Quay lại file Google Sheets, tải lại trang sẽ xuất hiện Menu "🏥 MediCare Clinic" trên thanh công cụ!
+  const appsScriptCode = `/**
+ * ==============================================================================
+ * HỆ THỐNG QUẢN LÝ PHÒNG KHÁM MEDICARE CLINIC PRO (v2.10)
+ * Google Apps Script Web App API & Bảng Điều Khiển Tự Động Hóa (#ktskhoa365)
+ * ==============================================================================
+ * TÍNH NĂNG NỔI BẬT:
+ * 1. SMART MERGE / UPSERT: Tự động cập nhật nếu đã có, thêm mới nếu chưa có.
+ *    -> TUYỆT ĐỐI KHÔNG DÙNG sheet.clearContent() gây mất dữ liệu.
+ * 2. BẢO TOÀN LINK GOOGLE DRIVE:
+ *    -> Nếu trên Sheets đã có Link Drive ảnh xét nghiệm mà bản gửi lên bị trống,
+ *       hệ thống giữ nguyên 100% link cũ quý giá của Bác sĩ!
+ * 3. HỖ TRỢ ĐỌC/GHI 2 CHIỀU (doGet & doPost) tương thích Web App Vercel & script tiện ích.
+ * 4. TÍCH HỢP QUÉT THƯ MỤC GOOGLE DRIVE TỰ ĐỘNG.
+ * ==============================================================================
+ */
 
-const ROOT_IMAGE_FOLDER_ID = "18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4"; // Thư mục ANH_XET_NGHIEM_BENH_NHAN
+// Khóa bảo mật API bắt buộc (Chỉ ứng dụng MediCare Clinic Pro có khóa này mới được phép đồng bộ/đọc/ghi dữ liệu)
+const API_SECRET_KEY = "MEDICARE_SECURE_TOKEN_2026_HAO_CLINIC_998877";
 
-// Tự động tạo menu tiện ích khi mở file Google Sheets
+// ID Thư mục gốc chứa ảnh cận lâm sàng/xét nghiệm bệnh nhân trên Google Drive
+const ROOT_IMAGE_FOLDER_ID = "18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4";
+
+// Cấu trúc tiêu đề chuẩn cho các Sheets
+const HEADERS_BENH_NHAN = [
+  "Ma_BN", "Ho_Ten", "Ngay_Sinh", "Gioi_Tinh", "SDT", "SDT_Nguoi_Than",
+  "Can_Nang_Ban_Dau", "Nghe_Nghiep", "Dia_Chi", "Tien_Su_Benh", "Di_Ung_Thuoc",
+  "CLS_Da_Lam", "Thuoc_Da_Dung", "Link_Drive_Anh", "Trang_Thai_Ho_So", "Ngay_Tao"
+];
+
+const HEADERS_LUOT_KHAM = [
+  "Ma_Luot_Kham", "Ma_BN", "Ngay_Kham", "Chieu_Cao", "Can_Nang", "Huyet_Ap", "Mach",
+  "Trieu_Chung", "Chan_Doan", "Chuyen_Khoa", "Hen_Tai_Kham", "Loi_Dan",
+  "Dieu_Tri_Nguyen_Van", "Cong_Kham", "Trang_Thai_Thu"
+];
+
+const HEADERS_DON_THUOC = [
+  "Ma_Luot_Kham", "Ma_BN", "Ten_Thuoc", "DVT", "Sang", "Trua", "Chieu", "Toi",
+  "So_Ngay", "Don_Gia", "Cach_Dung"
+];
+
+const HEADERS_XET_NGHIEM = [
+  "Ma_Luot_Kham", "Ma_BN", "Loai_Dich_Vu", "Ten_Chi_Dinh", "Ket_Qua", "Chi_Phi", "Trang_Thai"
+];
+
+const HEADERS_NHAT_KY = [
+  "Thoi_Gian", "Ten_Bac_Si", "Ten_Phong_Kham", "So_Dien_Thoai", "Hanh_Dong", "So_Benh_Nhan", "Thiet_Bi"
+];
+
+// ==============================================================================
+
+// ==============================================================================
+// 1.1 TỰ ĐỘNG TẠO BẢN SAO LƯU DỰ PHÒNG (SNAPSHOT BACKUP)
+// ==============================================================================
+function taoBanSaoLuuDuPhong() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const now = new Date();
+  const timeStr = Utilities.formatDate(now, Session.getScriptTimeZone() || "GMT+7", "yyyyMMdd_HHmm");
+  const backupPrefix = "Backup_" + timeStr;
+
+  let createdCount = 0;
+  const sheetsToBackup = ["Benh_Nhan", "Luot_Kham", "Don_Thuoc_Chi_Tiet"];
+  
+  sheetsToBackup.forEach(function(sheetName) {
+    const s = ss.getSheetByName(sheetName);
+    if (s && s.getLastRow() > 0) {
+      const copy = s.copyTo(ss);
+      copy.setName(sheetName.substring(0, 3) + "_" + backupPrefix);
+      copy.setTabColor("#7FA9DE");
+      createdCount++;
+    }
+  });
+
+  SpreadsheetApp.getUi().alert(
+    "ĐÃ TẠO BẢN SAO LƯU DỰ PHÒNG AN TOÀN!\n\n" +
+    "- Mã bản sao lưu: " + backupPrefix + "\n" +
+    "- Đã nhân bản " + createdCount + " bảng dữ liệu (Bệnh nhân, Lượt khám, Đơn thuốc).\n" +
+    "- Toàn bộ dữ liệu của Bác sĩ đã được đóng băng an toàn thành các Sheet riêng biệt."
+  );
+}
+
+// 1. MENU TIỆN ÍCH TRÊN GOOGLE SHEETS
+// ==============================================================================
 function onOpen() {
   const ui = SpreadsheetApp.getUi();
   ui.createMenu("🏥 MediCare Clinic")
-    .addItem("⚡ Quét & Tự động gắn link ảnh Drive", "quetVaCapNhatLinkDriveAnh")
-    .addItem("📂 Mở thư mục ảnh Drive gốc", "moThuMucAnhGoc")
+    .addItem("⚡ Quét & Gắn Link Drive Ảnh Bệnh Nhân", "quetVaCapNhatLinkDriveAnh")
+    .addItem("📂 Mở Thư Mục Ảnh Gốc Trên Drive", "moThuMucAnhGoc")
+    .addItem("🛡️ Tạo Bản Sao Lưu Dự Phòng Tức Thì (Snapshot Backup)", "taoBanSaoLuuDuPhong")
+    .addSeparator()
+    .addItem("🔍 Khởi Tạo & Chuẩn Hóa Cấu Trúc Bảng", "khoiTaoCauTrucSheets")
     .addToUi();
 }
 
 function moThuMucAnhGoc() {
   const html = '<script>window.open("https://drive.google.com/drive/folders/' + ROOT_IMAGE_FOLDER_ID + '", "_blank");google.script.host.close();</script>';
-  SpreadsheetApp.getUi().showModalDialog(HtmlService.createHtmlOutput(html).setWidth(200).setHeight(50), "Đang mở Drive...");
+  SpreadsheetApp.getUi().showModalDialog(HtmlService.createHtmlOutput(html).setWidth(250).setHeight(60), "Đang mở Drive...");
 }
 
-// Hàm quét tự động toàn bộ thư mục tên bệnh nhân và gắn link vào Sheet
-function quetVaCapNhatLinkDriveAnh() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = ss.getSheetByName("Benh_Nhan");
-  if (!sheet) {
-    sheet = ensureSheet(ss, "Benh_Nhan", ['Ma_BN', 'Ho_Ten', 'Ngay_Sinh', 'Gioi_Tinh', 'SDT', 'SDT_Nguoi_Than', 'Can_Nang_Ban_Dau', 'Nghe_Nghiep', 'Dia_Chi', 'Tien_Su_Benh', 'Di_Ung_Thuoc', 'CLS_Da_Lam', 'Thuoc_Da_Dung', 'Link_Drive_Anh', 'Trang_Thai_Ho_So', 'Ngay_Tao']);
+// ==============================================================================
+// 2. HTTP GET API (Đọc dữ liệu từ Google Sheets về App hoặc Script)
+// ==============================================================================
+function doGet(e) {
+  const lock = LockService.getScriptLock();
+  lock.tryLock(15000);
+  const callback = (e && e.parameter && e.parameter.callback) ? e.parameter.callback : null;
+
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const action = (e && e.parameter && e.parameter.action) ? e.parameter.action.toLowerCase() : "read";
+
+    
+    if (action === "ping" || action === "health") {
+      return jsonResponse({
+        status: "success",
+        message: "MediCare Clinic API online và sẵn sàng kết nối!",
+        doctorName: "BSCK1. Tôn Thất Hào",
+        specialty: "Chuyên khoa Da liễu & Thẩm mỹ Da",
+        version: "2.11 - Secure Shield",
+        timestamp: new Date().toISOString()
+      }, callback);
+    }
+
+    // Xác thực khóa bảo mật API_SECRET_KEY (Chống lộ thông tin bệnh nhân ra bên ngoài)
+    const clientKey = (e && e.parameter && (e.parameter.apiKey || e.parameter.key || e.parameter.token)) || "";
+    if (API_SECRET_KEY && clientKey !== API_SECRET_KEY) {
+      return jsonResponse({
+        status: "error",
+        code: 403,
+        message: "Truy cập bị từ chối: Cần có Khóa bảo mật API_SECRET_KEY hợp lệ để đọc dữ liệu bệnh nhân!"
+      }, callback);
+    }
+
+    // Đọc toàn bộ danh sách bệnh nhân, lượt khám, đơn thuốc
+    const patients = readSheetAsJson(ss, "Benh_Nhan", HEADERS_BENH_NHAN);
+    const visits = readSheetAsJson(ss, "Luot_Kham", HEADERS_LUOT_KHAM);
+    const prescriptions = readSheetAsJson(ss, "Don_Thuoc_Chi_Tiet", HEADERS_DON_THUOC);
+    const labs = readSheetAsJson(ss, "Xet_Nghiem_Chi_Phi", HEADERS_XET_NGHIEM);
+
+    return jsonResponse({
+      status: "success",
+      doctorName: "BSCK1. Tôn Thất Hào",
+      clinicName: "Phòng khám Da liễu & Thẩm mỹ Da - BSCK1 Tôn Thất Hào",
+      totalPatients: patients.length,
+      totalVisits: visits.length,
+      totalPrescriptions: prescriptions.length,
+      totalLabs: labs.length,
+      patients: patients,
+      visits: visits,
+      prescriptions: prescriptions,
+      labs: labs,
+      timestamp: new Date().toISOString()
+    }, callback);
+  } catch (err) {
+    return jsonResponse({ status: "error", message: err.toString() }, callback);
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+// ==============================================================================
+// 3. HTTP POST API (Ghi và Hợp nhất dữ liệu thông minh - Smart Upsert)
+// ==============================================================================
+function doPost(e) {
+  const lock = LockService.getScriptLock();
+  // Khóa tối đa 30s để đảm bảo không xung đột khi nhiều thiết bị đồng bộ cùng lúc
+  const hasLock = lock.tryLock(30000);
+  if (!hasLock) {
+    return jsonResponse({ status: "error", message: "Hệ thống đang bận xử lý một lượt đồng bộ khác, vui lòng thử lại sau 5 giây." });
   }
 
-  const rootFolder = DriveApp.getFolderById(ROOT_IMAGE_FOLDER_ID);
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let payload = {};
+
+    if (e && e.postData && e.postData.contents) {
+      payload = JSON.parse(e.postData.contents);
+    } else if (e && e.parameter && e.parameter.data) {
+      payload = JSON.parse(e.parameter.data);
+    }
+
+    
+    const action = (payload.action || "").toUpperCase();
+
+    // 0. BẢO MẬT: XÁC THỰC KHÓA API_SECRET_KEY
+    const clientKey = payload.apiKey || (e && e.parameter && e.parameter.apiKey) || "";
+    if (API_SECRET_KEY && clientKey !== API_SECRET_KEY) {
+      return jsonResponse({
+        status: "error",
+        code: 403,
+        message: "Truy cập bị từ chối: Khóa bảo mật API_SECRET_KEY không hợp lệ hoặc bị thiếu!"
+      });
+    }
+
+    // 0.1 BẢO MẬT: CHẶN TOÀN BỘ CÁC LỆNH XÓA DỮ LIỆU HÀNG LOẠT
+    if (action === "CLEAR" || action === "DELETE" || action === "DROP" || action === "TRUNCATE") {
+      return jsonResponse({
+        status: "error",
+        code: 400,
+        message: "Thao tác xóa hàng loạt bị cấm tuyệt đối vì lý do an toàn dữ liệu phòng khám!"
+      });
+    }
+
+
+    // --------------------------------------------------------------------------
+    // A. ĐỒNG BỘ THÔNG MINH BẢO TOÀN LINK DRIVE (SYNC_ALL / UPSERT / MERGE)
+    // --------------------------------------------------------------------------
+    if (action === "SYNC_ALL" || action === "UPSERT" || action === "MERGE" || action === "WRITE") {
+      const incomingPatients = payload.patients || [];
+      const incomingVisits = payload.visits || [];
+      const incomingUsageLogs = payload.usageLogs || [];
+
+      // 1. XỬ LÝ SHEET BENH_NHAN: SMART UPSERT DỰA TRÊN MA_BN & HO_TEN+NGAY_SINH
+      const sBN = ensureSheetWithHeaders(ss, "Benh_Nhan", HEADERS_BENH_NHAN);
+      const bnResult = smartMergePatients(sBN, incomingPatients);
+
+      // 2. XỬ LÝ LƯỢT KHÁM, ĐƠN THUỐC, XÉT NGHIỆM
+      const sLK = ensureSheetWithHeaders(ss, "Luot_Kham", HEADERS_LUOT_KHAM);
+      const sDT = ensureSheetWithHeaders(ss, "Don_Thuoc_Chi_Tiet", HEADERS_DON_THUOC);
+      const sDV = ensureSheetWithHeaders(ss, "Xet_Nghiem_Chi_Phi", HEADERS_XET_NGHIEM);
+      const visitResult = smartMergeVisits(sLK, sDT, sDV, incomingVisits);
+
+      // 3. GHI NHẬT KÝ ĐỒNG BỘ NẾU CÓ
+      if (incomingUsageLogs.length > 0) {
+        const sNK = ensureSheetWithHeaders(ss, "Nhat_Ky_Su_Dung", HEADERS_NHAT_KY);
+        incomingUsageLogs.forEach(log => {
+          sNK.appendRow([
+            log.time || new Date().toLocaleString("vi-VN"),
+            log.doctorName || "BSCK1 Tôn Thất Hảo",
+            log.clinicName || "Phòng khám MediCare Clinic",
+            "'" + (log.phone || ""),
+            log.action || "Đồng bộ dữ liệu",
+            log.patientCount || incomingPatients.length,
+            log.device || "Web Vercel"
+          ]);
+        });
+      }
+
+      return jsonResponse({
+        status: "success",
+        message: "Hợp nhất dữ liệu thông minh thành công! Bảo toàn toàn bộ Link Drive ảnh xét nghiệm.",
+        details: {
+          patientsUpdated: bnResult.updatedCount,
+          patientsInserted: bnResult.insertedCount,
+          driveLinksPreserved: bnResult.preservedLinksCount,
+          totalPatientsInSheet: bnResult.totalRows,
+          visitsProcessed: visitResult.processedVisits
+        },
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    // --------------------------------------------------------------------------
+    // A2. GHI TỨC THÌ 1 PHIẾU KHÁM & ĐƠN THUỐC (SAVE_VISIT / GHI_PHIEU)
+    // --------------------------------------------------------------------------
+    if (action === "SAVE_VISIT" || action === "GHI_PHIEU") {
+      const patient = payload.patient;
+      const visit = payload.visit;
+      if (!patient || !visit) {
+        return jsonResponse({ status: "error", message: "Thiếu thông tin bệnh nhân hoặc lượt khám" });
+      }
+
+      const sBN = ensureSheetWithHeaders(ss, "Benh_Nhan", HEADERS_BENH_NHAN);
+      const bnResult = smartMergePatients(sBN, [patient]);
+
+      const sLK = ensureSheetWithHeaders(ss, "Luot_Kham", HEADERS_LUOT_KHAM);
+      const sDT = ensureSheetWithHeaders(ss, "Don_Thuoc_Chi_Tiet", HEADERS_DON_THUOC);
+      const sDV = ensureSheetWithHeaders(ss, "Xet_Nghiem_Chi_Phi", HEADERS_XET_NGHIEM);
+      const visitResult = smartMergeVisits(sLK, sDT, sDV, [visit]);
+
+      return jsonResponse({
+        status: "success",
+        message: "Đã ghi nhận phiếu khám bệnh & đơn thuốc thành công vào Google Sheets!",
+        patientName: patient.name,
+        visitId: visit.visitId,
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    // --------------------------------------------------------------------------
+    // B. GHI NHẬT KÝ TRUY CẬP (LOG_ACCESS)
+    // --------------------------------------------------------------------------
+    if (action === "LOG_ACCESS" && payload.log) {
+      const sNK = ensureSheetWithHeaders(ss, "Nhat_Ky_Su_Dung", HEADERS_NHAT_KY);
+      const l = payload.log;
+      sNK.appendRow([
+        l.time || new Date().toLocaleString("vi-VN"),
+        l.doctorName || "",
+        l.clinicName || "",
+        "'" + (l.phone || ""),
+        l.action || "Truy cập ứng dụng",
+        l.patientCount || 0,
+        l.device || "Browser"
+      ]);
+      return jsonResponse({ status: "success", message: "Đã lưu nhật ký" });
+    }
+
+    return jsonResponse({ status: "error", message: "Hành động (action) không hợp lệ: " + action });
+
+  } catch (err) {
+    return jsonResponse({ status: "error", message: err.toString() });
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+// ==============================================================================
+// 4. THUẬT TOÁN HỢP NHẤT THÔNG MINH BẢO TOÀN LINK DRIVE (CORE LOGIC)
+// ==============================================================================
+function smartMergePatients(sheet, incomingPatients) {
+  const data = sheet.getDataRange().getValues();
+  const headers = data[0].map(h => (h || "").toString().trim());
+
+  // Tìm chỉ mục các cột quan trọng
+  const colIdIdx = findColIndex(headers, ["Ma_BN", "Ma BN", "id"]);
+  const colNameIdx = findColIndex(headers, ["Ho_Ten", "Họ và tên", "HoTen", "name"]);
+  const colDobIdx = findColIndex(headers, ["Ngay_Sinh", "Năm sinh", "dob", "birthYear"]);
+  const colLinkIdx = findColIndex(headers, ["Link_Drive_Anh", "Link Google Drive", "driveUrl", "imageFolderUrl"]);
+
+  // Nạp toàn bộ bệnh nhân hiện có trên Google Sheets vào bộ nhớ đệm
+  // Map 1: Theo Mã BN (ví dụ: 'bn0001')
+  // Map 2: Theo Tên + Năm sinh chuẩn hóa (dùng khi Mã BN bị lệch)
+  const existingRowsMapById = new Map();
+  const existingRowsMapByNameDob = new Map();
+
+  const allRows = [];
+  for (let i = 1; i < data.length; i++) {
+    const row = data[i];
+    const rowId = normalizeKey(row[colIdIdx]);
+    const rowName = normalizeKey(row[colNameIdx]);
+    const rowDob = normalizeKey(row[colDobIdx]);
+    const rowObj = { rowIndex: i - 1, rowData: [...row] };
+
+    if (rowId) existingRowsMapById.set(rowId, rowObj);
+    if (rowName) existingRowsMapByNameDob.set(rowName + "_" + rowDob, rowObj);
+    allRows.push([...row]);
+  }
+
+  let updatedCount = 0;
+  let insertedCount = 0;
+  let preservedLinksCount = 0;
+
+  incomingPatients.forEach(p => {
+    const pId = normalizeKey(p.id || p.Ma_BN || "");
+    const pName = normalizeKey(p.name || p.Ho_Ten || "");
+    const pDob = normalizeKey(p.dob || p.Ngay_Sinh || p.birthYear || "");
+    const incomingLink = (p.imageFolderUrl || p.driveUrl || p.Link_Drive_Anh || "").toString().trim();
+
+    // Kiểm tra xem bệnh nhân đã tồn tại trên Sheet hay chưa
+    let existingObj = null;
+    if (pId && existingRowsMapById.has(pId)) {
+      existingObj = existingRowsMapById.get(pId);
+    } else if (pName && existingRowsMapByNameDob.has(pName + "_" + pDob)) {
+      existingObj = existingRowsMapByNameDob.get(pName + "_" + pDob);
+    }
+
+    if (existingObj) {
+      // ------------------------------------------------------------------------
+      // TRƯỜNG HỢP 1: BỆNH NHÂN ĐÃ TỒN TẠI -> THỰC HIỆN SMART UPDATE
+      // ------------------------------------------------------------------------
+      const targetRow = allRows[existingObj.rowIndex];
+      const existingDriveLink = (targetRow[colLinkIdx] || "").toString().trim();
+
+      // NGUYÊN TẮC BẢO TOÀN LINK DRIVE:
+      // - Nếu trên Sheets đã có link và dữ liệu mới gửi lên bị trống -> GIỮ NGUYÊN LINK TRÊN SHEETS!
+      // - Chỉ cập nhật link mới nếu dữ liệu mới THỰC SỰ có đường dẫn hợp lệ.
+      let finalLink = existingDriveLink;
+      if (incomingLink && incomingLink !== "") {
+        finalLink = incomingLink;
+      } else if (existingDriveLink !== "") {
+        preservedLinksCount++;
+      }
+
+      // Cập nhật thông tin y khoa và cá nhân mới
+      setCellByHeader(targetRow, headers, ["Ho_Ten", "Họ và tên"], p.name || p.Ho_Ten || targetRow[colNameIdx]);
+      setCellByHeader(targetRow, headers, ["Ngay_Sinh", "Năm sinh"], p.dob || p.Ngay_Sinh || targetRow[colDobIdx]);
+      setCellByHeader(targetRow, headers, ["Gioi_Tinh", "Giới tính"], p.gender || p.Gioi_Tinh || "");
+      setCellByHeader(targetRow, headers, ["SDT", "Điện thoại"], "'" + (p.phone || p.SDT || ""));
+      setCellByHeader(targetRow, headers, ["SDT_Nguoi_Than"], "'" + (p.relativePhone || p.SDT_Nguoi_Than || ""));
+      setCellByHeader(targetRow, headers, ["Can_Nang_Ban_Dau"], p.initialWeight || p.Can_Nang_Ban_Dau || "");
+      setCellByHeader(targetRow, headers, ["Nghe_Nghiep"], p.occupation || p.Nghe_Nghiep || "");
+      setCellByHeader(targetRow, headers, ["Dia_Chi", "Địa chỉ"], p.address || p.Dia_Chi || "");
+      setCellByHeader(targetRow, headers, ["Tien_Su_Benh", "Tiền sử bệnh"], p.medicalHistory || p.Tien_Su_Benh || "");
+      setCellByHeader(targetRow, headers, ["Di_Ung_Thuoc"], p.allergies || p.Di_Ung_Thuoc || "");
+      setCellByHeader(targetRow, headers, ["CLS_Da_Lam"], p.pastParaclinical || p.CLS_Da_Lam || "");
+      setCellByHeader(targetRow, headers, ["Thuoc_Da_Dung"], p.pastMedications || p.Thuoc_Da_Dung || "");
+      setCellByHeader(targetRow, headers, ["Link_Drive_Anh", "Link Google Drive"], finalLink);
+      setCellByHeader(targetRow, headers, ["Trang_Thai_Ho_So"], p.isArchived ? "Đã khỏi (Lưu trữ)" : (p.Trang_Thai_Ho_So || "Đang điều trị"));
+
+      updatedCount++;
+    } else {
+      // ------------------------------------------------------------------------
+      // TRƯỜNG HỢP 2: BỆNH NHÂN MỚI HOÀN TOÀN -> TẠO DÒNG MỚI (INSERT)
+      // ------------------------------------------------------------------------
+      const newRow = new Array(headers.length).fill("");
+      const generatedId = (p.id || p.Ma_BN) ? (p.id || p.Ma_BN) : ("BN" + String(allRows.length + 1).padStart(4, "0"));
+
+      setCellByHeader(newRow, headers, ["Ma_BN", "Ma BN", "id"], generatedId);
+      setCellByHeader(newRow, headers, ["Ho_Ten", "Họ và tên"], p.name || p.Ho_Ten || "");
+      setCellByHeader(newRow, headers, ["Ngay_Sinh", "Năm sinh"], p.dob || p.Ngay_Sinh || "");
+      setCellByHeader(newRow, headers, ["Gioi_Tinh", "Giới tính"], p.gender || p.Gioi_Tinh || "");
+      setCellByHeader(newRow, headers, ["SDT", "Điện thoại"], "'" + (p.phone || p.SDT || ""));
+      setCellByHeader(newRow, headers, ["SDT_Nguoi_Than"], "'" + (p.relativePhone || p.SDT_Nguoi_Than || ""));
+      setCellByHeader(newRow, headers, ["Can_Nang_Ban_Dau"], p.initialWeight || p.Can_Nang_Ban_Dau || "");
+      setCellByHeader(newRow, headers, ["Nghe_Nghiep"], p.occupation || p.Nghe_Nghiep || "");
+      setCellByHeader(newRow, headers, ["Dia_Chi", "Địa chỉ"], p.address || p.Dia_Chi || "");
+      setCellByHeader(newRow, headers, ["Tien_Su_Benh", "Tiền sử bệnh"], p.medicalHistory || p.Tien_Su_Benh || "");
+      setCellByHeader(newRow, headers, ["Di_Ung_Thuoc"], p.allergies || p.Di_Ung_Thuoc || "");
+      setCellByHeader(newRow, headers, ["CLS_Da_Lam"], p.pastParaclinical || p.CLS_Da_Lam || "");
+      setCellByHeader(newRow, headers, ["Thuoc_Da_Dung"], p.pastMedications || p.Thuoc_Da_Dung || "");
+      setCellByHeader(newRow, headers, ["Link_Drive_Anh", "Link Google Drive"], incomingLink);
+      setCellByHeader(newRow, headers, ["Trang_Thai_Ho_So"], p.isArchived ? "Đã khỏi (Lưu trữ)" : "Đang điều trị");
+      setCellByHeader(newRow, headers, ["Ngay_Tao", "Thời gian cập nhật"], p.createdAt || Utilities.formatDate(new Date(), "GMT+7", "yyyy-MM-dd"));
+
+      allRows.push(newRow);
+
+      const newObj = { rowIndex: allRows.length - 1, rowData: newRow };
+      existingRowsMapById.set(normalizeKey(generatedId), newObj);
+      if (pName) existingRowsMapByNameDob.set(pName + "_" + pDob, newObj);
+
+      insertedCount++;
+    }
+  });
+
+  // Ghi đồng loạt toàn bộ dữ liệu vào Sheet với 1 thao tác duy nhất (Tránh timeout)
+  if (allRows.length > 0) {
+    sheet.getRange(2, 1, allRows.length, headers.length).setValues(allRows);
+  }
+
+  return {
+    updatedCount: updatedCount,
+    insertedCount: insertedCount,
+    preservedLinksCount: preservedLinksCount,
+    totalRows: allRows.length
+  };
+}
+
+// ==============================================================================
+// 5. HỢP NHẤT LƯỢT KHÁM & ĐƠN THUỐC (Upsert theo Ma_Luot_Kham)
+// ==============================================================================
+function smartMergeVisits(sLK, sDT, sDV, incomingVisits) {
+  if (!incomingVisits || incomingVisits.length === 0) {
+    return { processedVisits: 0 };
+  }
+
+  const lkData = sLK.getDataRange().getValues();
+  const lkHeaders = lkData[0].map(h => (h || "").toString().trim());
+  const colVisitIdIdx = findColIndex(lkHeaders, ["Ma_Luot_Kham", "visitId"]);
+
+  const existingVisitMap = new Map();
+  const allVisits = [];
+  for (let i = 1; i < lkData.length; i++) {
+    const vId = normalizeKey(lkData[i][colVisitIdIdx]);
+    if (vId) existingVisitMap.set(vId, i - 1);
+    allVisits.push([...lkData[i]]);
+  }
+
+  const dtRowsToAppend = [];
+  const dvRowsToAppend = [];
+
+  incomingVisits.forEach(v => {
+    const vId = normalizeKey(v.visitId || v.Ma_Luot_Kham || "");
+    const vRow = new Array(lkHeaders.length).fill("");
+
+    setCellByHeader(vRow, lkHeaders, ["Ma_Luot_Kham", "visitId"], v.visitId || v.Ma_Luot_Kham || "");
+    setCellByHeader(vRow, lkHeaders, ["Ma_BN", "patientId"], v.patientId || v.Ma_BN || "");
+    setCellByHeader(vRow, lkHeaders, ["Ngay_Kham", "visitDate"], v.visitDate || v.Ngay_Kham || "");
+    setCellByHeader(vRow, lkHeaders, ["Chieu_Cao", "height"], v.height || v.Chieu_Cao || "");
+    setCellByHeader(vRow, lkHeaders, ["Can_Nang", "weight"], v.weight || v.Can_Nang || "");
+    setCellByHeader(vRow, lkHeaders, ["Huyet_Ap", "bp"], v.bp || v.Huyet_Ap || "");
+    setCellByHeader(vRow, lkHeaders, ["Mach", "pulse"], v.pulse || v.Mach || "");
+    setCellByHeader(vRow, lkHeaders, ["Trieu_Chung", "symptoms"], v.symptoms || v.Trieu_Chung || "");
+    setCellByHeader(vRow, lkHeaders, ["Chan_Doan", "diagnosis"], v.diagnosis || v.Chan_Doan || "");
+    setCellByHeader(vRow, lkHeaders, ["Chuyen_Khoa", "diseaseCategory"], v.diseaseCategory || v.Chuyen_Khoa || "");
+    setCellByHeader(vRow, lkHeaders, ["Hen_Tai_Kham", "followUpDate"], v.followUpDate || v.Hen_Tai_Kham || "");
+    setCellByHeader(vRow, lkHeaders, ["Loi_Dan", "doctorNotes"], v.doctorNotes || v.Loi_Dan || "");
+    setCellByHeader(vRow, lkHeaders, ["Dieu_Tri_Nguyen_Van"], v.verbatimTreatment || v.Dieu_Tri_Nguyen_Van || "");
+    setCellByHeader(vRow, lkHeaders, ["Cong_Kham", "consultationFee"], v.consultationFee || v.Cong_Kham || 0);
+    setCellByHeader(vRow, lkHeaders, ["Trang_Thai_Thu", "paymentStatus"], v.paymentStatus || v.Trang_Thai_Thu || "Đã thu");
+
+    if (vId && existingVisitMap.has(vId)) {
+      allVisits[existingVisitMap.get(vId)] = vRow;
+    } else {
+      allVisits.push(vRow);
+      existingVisitMap.set(vId, allVisits.length - 1);
+    }
+
+    // Thu thập đơn thuốc chi tiết
+    if (v.prescriptions && Array.isArray(v.prescriptions)) {
+      v.prescriptions.forEach(d => {
+        dtRowsToAppend.push([
+          v.visitId || v.Ma_Luot_Kham,
+          v.patientId || v.Ma_BN,
+          d.drugName || d.Ten_Thuoc || "",
+          d.unit || d.DVT || "Viên",
+          d.morning || d.Sang || 0,
+          d.noon || d.Trua || 0,
+          d.afternoon || d.Chieu || 0,
+          d.evening || d.Toi || 0,
+          d.days || d.So_Ngay || 1,
+          d.price || d.Don_Gia || 0,
+          d.note || d.Cach_Dung || ""
+        ]);
+      });
+    }
+
+    // Thu thập xét nghiệm chi tiết
+    if (v.labs && Array.isArray(v.labs)) {
+      v.labs.forEach(l => {
+        dvRowsToAppend.push([
+          v.visitId || v.Ma_Luot_Kham,
+          v.patientId || v.Ma_BN,
+          l.type || l.Loai_Dich_Vu || "Xét nghiệm",
+          l.name || l.Ten_Chi_Dinh || "",
+          l.result || l.Ket_Qua || "",
+          l.cost || l.Chi_Phi || 0,
+          l.status || l.Trang_Thai || "Đã có KQ"
+        ]);
+      });
+    }
+  });
+
+  if (allVisits.length > 0) {
+    sLK.getRange(2, 1, allVisits.length, lkHeaders.length).setValues(allVisits);
+  }
+  if (dtRowsToAppend.length > 0) {
+    sDT.getRange(sDT.getLastRow() + 1, 1, dtRowsToAppend.length, HEADERS_DON_THUOC.length).setValues(dtRowsToAppend);
+  }
+  if (dvRowsToAppend.length > 0) {
+    sDV.getRange(sDV.getLastRow() + 1, 1, dvRowsToAppend.length, HEADERS_XET_NGHIEM.length).setValues(dvRowsToAppend);
+  }
+
+  return { processedVisits: incomingVisits.length };
+}
+
+// ==============================================================================
+// 6. QUÉT TỰ ĐỘNG THƯ MỤC GOOGLE DRIVE ĐỂ GẮN LINK ẢNH XÉT NGHIỆM
+// ==============================================================================
+function quetVaCapNhatLinkDriveAnh() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ensureSheetWithHeaders(ss, "Benh_Nhan", HEADERS_BENH_NHAN);
+
+  let rootFolder;
+  try {
+    rootFolder = DriveApp.getFolderById(ROOT_IMAGE_FOLDER_ID);
+  } catch (err) {
+    SpreadsheetApp.getUi().alert("Lỗi truy cập thư mục Google Drive: " + err.message);
+    return;
+  }
+
   const patientFolders = rootFolder.getFolders();
   const driveMap = {};
 
   while (patientFolders.hasNext()) {
     const f = patientFolders.next();
     const folderName = f.getName().trim();
-    const subF = f.getFolders();
-    let subCount = 0;
-    while (subF.hasNext()) { subF.next(); subCount++; }
-
     driveMap[folderName.toLowerCase()] = {
       rawName: folderName,
-      url: f.getUrl(),
-      subCount: subCount
+      url: f.getUrl()
     };
   }
 
   const data = sheet.getDataRange().getValues();
-  const headers = data[0];
-  const colNameIdx = headers.indexOf("Ho_Ten");
-  let colLinkIdx = headers.indexOf("Link_Drive_Anh");
-
-  if (colLinkIdx === -1) {
-    sheet.getRange(1, headers.length + 1).setValue("Link_Drive_Anh");
-    colLinkIdx = headers.length;
-  }
+  const headers = data[0].map(h => (h || "").toString().trim());
+  const colNameIdx = findColIndex(headers, ["Ho_Ten", "Họ và tên"]);
+  const colLinkIdx = findColIndex(headers, ["Link_Drive_Anh", "Link Google Drive"]);
 
   const matchedNames = new Set();
   let updatedCount = 0;
+  let preservedCount = 0;
 
   for (let i = 1; i < data.length; i++) {
-    const pName = (data[i][colNameIdx] || "").toString().trim();
-    if (!pName) continue;
-    const key = pName.toLowerCase();
-    if (driveMap[key]) {
-      sheet.getRange(i + 1, colLinkIdx + 1).setValue(driveMap[key].url);
-      matchedNames.add(key);
-      updatedCount++;
-    }
-  }
+    const pName = (data[i][colNameIdx] || "").toString().trim().toLowerCase();
+    const currentLink = (data[i][colLinkIdx] || "").toString().trim();
 
-  let newAddedCount = 0;
-  for (const key in driveMap) {
-    if (!matchedNames.has(key)) {
-      const item = driveMap[key];
-      const newId = "BN" + String(data.length + newAddedCount).padStart(4, "0");
-      const newRow = new Array(headers.length).fill("");
-      newRow[0] = newId;
-      newRow[colNameIdx] = item.rawName;
-      newRow[colLinkIdx] = item.url;
-      newRow[headers.indexOf("Trang_Thai_Ho_So")] = "Đang điều trị";
-      newRow[headers.indexOf("Ngay_Tao")] = Utilities.formatDate(new Date(), "GMT+7", "yyyy-MM-dd");
-      sheet.appendRow(newRow);
-      newAddedCount++;
+    if (pName && driveMap[pName]) {
+      // Cập nhật link mới từ Drive folder
+      sheet.getRange(i + 1, colLinkIdx + 1).setValue(driveMap[pName].url);
+      matchedNames.add(pName);
+      updatedCount++;
+    } else if (currentLink !== "") {
+      preservedCount++;
     }
   }
 
   SpreadsheetApp.getUi().alert(
     "ĐÃ HOÀN TẤT ĐỒNG BỘ ẢNH GOOGLE DRIVE!\n\n" +
-    "- Đã gắn link cho: " + updatedCount + " bệnh nhân sẵn có.\n" +
-    "- Đã tự động tạo mới: " + newAddedCount + " hồ sơ bệnh nhân từ thư mục ảnh.\n" +
-    "- Tổng số thư mục đã quét: " + Object.keys(driveMap).length
+    "- Đã gắn link ảnh Drive cho: " + updatedCount + " bệnh nhân.\n" +
+    "- Số bệnh nhân giữ nguyên link cũ: " + preservedCount + "\n" +
+    "- Tổng số thư mục đã quét trong Drive: " + Object.keys(driveMap).length
   );
 }
 
-function ensureSheet(ss, name, headers) {
+// ==============================================================================
+// 7. CÁC HÀM TIỆN ÍCH HỖ TRỢ
+// ==============================================================================
+function ensureSheetWithHeaders(ss, name, headers) {
   let sheet = ss.getSheetByName(name);
   if (!sheet) {
     sheet = ss.insertSheet(name);
+    sheet.appendRow(headers);
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold").setBackground("#EBF2FB");
+    sheet.setFrozenRows(1);
+  } else if (sheet.getLastRow() === 0) {
+    sheet.appendRow(headers);
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold").setBackground("#EBF2FB");
+    sheet.setFrozenRows(1);
   }
-  sheet.clearContents();
-  sheet.appendRow(headers);
   return sheet;
 }
 
-function doPost(e) {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const data = JSON.parse(e.postData.contents);
+function readSheetAsJson(ss, name, fallbackHeaders) {
+  const sheet = ss.getSheetByName(name);
+  if (!sheet || sheet.getLastRow() < 2) return [];
 
-  if (data.action === 'SYNC_ALL') {
-    const sBN = ensureSheet(ss, 'Benh_Nhan', ['Ma_BN', 'Ho_Ten', 'Ngay_Sinh', 'Gioi_Tinh', 'SDT', 'SDT_Nguoi_Than', 'Can_Nang_Ban_Dau', 'Nghe_Nghiep', 'Dia_Chi', 'Tien_Su_Benh', 'Di_Ung_Thuoc', 'CLS_Da_Lam', 'Thuoc_Da_Dung', 'Link_Drive_Anh', 'Trang_Thai_Ho_So', 'Ngay_Tao']);
-    (data.patients || []).forEach(p => {
-      sBN.appendRow([
-        p.id, p.name, p.dob, p.gender, "'" + (p.phone || ''), "'" + (p.relativePhone || ''),
-        p.initialWeight || '', p.occupation || '', p.address || '', p.medicalHistory || '',
-        p.allergies || '', p.pastParaclinical || '', p.pastMedications || '', p.imageFolderUrl || '',
-        p.isArchived ? 'Đã khỏi (Lưu trữ)' : 'Đang điều trị', p.createdAt || ''
-      ]);
+  const data = sheet.getDataRange().getValues();
+  const headers = data[0].map(h => (h || "").toString().trim());
+  const rows = data.slice(1);
+
+  return rows.map(row => {
+    const item = {};
+    headers.forEach((h, idx) => {
+      item[h] = row[idx];
     });
+    return item;
+  });
+}
 
-    const sLK = ensureSheet(ss, 'Luot_Kham', ['Ma_Luot_Kham', 'Ma_BN', 'Ngay_Kham', 'Chieu_Cao', 'Can_Nang', 'Huyet_Ap', 'Mach', 'Trieu_Chung', 'Chan_Doan', 'Chuyen_Khoa', 'Hen_Tai_Kham', 'Loi_Dan', 'Dieu_Tri_Nguyen_Van', 'Cong_Kham', 'Trang_Thai_Thu']);
-    const sDT = ensureSheet(ss, 'Don_Thuoc_Chi_Tiet', ['Ma_Luot_Kham', 'Ma_BN', 'Ten_Thuoc', 'DVT', 'Sang', 'Trua', 'Chieu', 'Toi', 'So_Ngay', 'Don_Gia', 'Cach_Dung']);
-    const sDV = ensureSheet(ss, 'Xet_Nghiem_Chi_Phi', ['Ma_Luot_Kham', 'Ma_BN', 'Loai_Dich_Vu', 'Ten_Chi_Dinh', 'Ket_Qua', 'Chi_Phi', 'Trang_Thai']);
-
-    (data.visits || []).forEach(v => {
-      sLK.appendRow([
-        v.visitId, v.patientId, v.visitDate, v.height, v.weight, v.bp, v.pulse,
-        v.symptoms, v.diagnosis, v.diseaseCategory, v.followUpDate, v.doctorNotes,
-        v.verbatimTreatment || '', v.consultationFee, v.paymentStatus
-      ]);
-      (v.prescriptions || []).forEach(d => {
-        sDT.appendRow([v.visitId, v.patientId, d.drugName, d.unit, d.morning, d.noon, d.afternoon, d.evening, d.days, d.price, d.note]);
-      });
-      (v.labs || []).forEach(l => {
-        sDV.appendRow([v.visitId, v.patientId, l.type, l.name, l.result, l.cost, l.status]);
-      });
-    });
-
-    const sNK = ensureSheet(ss, 'Nhat_Ky_Su_Dung', ['Thoi_Gian', 'Ten_Bac_Si', 'Ten_Phong_Kham', 'So_Dien_Thoai', 'Hanh_Dong', 'So_Benh_Nhan', 'Thiet_Bi']);
-    (data.usageLogs || []).forEach(log => {
-      sNK.appendRow([log.time, log.doctorName, log.clinicName, "'" + log.phone, log.action, log.patientCount, log.device]);
-    });
-  }
-
-  if (data.action === 'LOG_ACCESS' && data.log) {
-    let sheet = ss.getSheetByName('Nhat_Ky_Su_Dung');
-    if (!sheet) {
-      sheet = ss.insertSheet('Nhat_Ky_Su_Dung');
-      sheet.appendRow(['Thoi_Gian', 'Ten_Bac_Si', 'Ten_Phong_Kham', 'So_Dien_Thoai', 'Hanh_Dong', 'So_Benh_Nhan', 'Thiet_Bi']);
+function findColIndex(headers, possibleNames) {
+  for (let i = 0; i < headers.length; i++) {
+    const col = headers[i].toLowerCase();
+    for (let j = 0; j < possibleNames.length; j++) {
+      if (col === possibleNames[j].toLowerCase()) return i;
     }
-    const l = data.log;
-    sheet.appendRow([l.time, l.doctorName, l.clinicName, "'" + l.phone, l.action, l.patientCount, l.device]);
   }
+  return -1;
+}
 
-  return ContentService.createTextOutput(JSON.stringify({ status: 'success' }))
+function setCellByHeader(row, headers, possibleNames, value) {
+  const idx = findColIndex(headers, possibleNames);
+  if (idx !== -1) {
+    row[idx] = value;
+  }
+}
+
+function normalizeKey(str) {
+  if (!str) return "";
+  return str.toString().trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+function jsonResponse(data, callback) {
+  if (callback) {
+    return ContentService.createTextOutput(callback + '(' + JSON.stringify(data) + ');')
+      .setMimeType(ContentService.MimeType.JAVASCRIPT);
+  }
+  return ContentService.createTextOutput(JSON.stringify(data))
     .setMimeType(ContentService.MimeType.JSON);
-}`;
+}
+
+function khoiTaoCauTrucSheets() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  ensureSheetWithHeaders(ss, "Benh_Nhan", HEADERS_BENH_NHAN);
+  ensureSheetWithHeaders(ss, "Luot_Kham", HEADERS_LUOT_KHAM);
+  ensureSheetWithHeaders(ss, "Don_Thuoc_Chi_Tiet", HEADERS_DON_THUOC);
+  ensureSheetWithHeaders(ss, "Xet_Nghiem_Chi_Phi", HEADERS_XET_NGHIEM);
+  ensureSheetWithHeaders(ss, "Nhat_Ky_Su_Dung", HEADERS_NHAT_KY);
+  SpreadsheetApp.getUi().alert("Đã khởi tạo chuẩn 5 bảng dữ liệu cho MediCare Clinic Pro!");
+}
+`;
 
   const handleCopyCode = () => {
     try {
@@ -3512,6 +4996,38 @@ function doPost(e) {
 
                 {sheetPreviewTab === 'Apps_Script' && (
                   <div className="space-y-3">
+                    {/* HỘP BẢO MẬT & BẢO VỆ DỮ LIỆU */}
+                    <div className="p-3 bg-amber-50 border-2 border-amber-300 rounded text-xs space-y-2">
+                      <div className="flex items-center gap-2 font-bold text-amber-900 text-sm">
+                        <span className="text-base">🛡️</span>
+                        <span>HỆ THỐNG BẢO VỆ DỮ LIỆU 3 LỚP (BẢO VỆ GOOGLE DRIVE & GOOGLE SHEETS)</span>
+                        <span className="ml-auto text-[11px] bg-emerald-600 text-white px-2 py-0.5 rounded font-bold">Đang bật bảo vệ</span>
+                      </div>
+                      <p className="text-amber-800 text-[11.5px] leading-relaxed">
+                        Để bảo vệ tuyệt đối dữ liệu phòng khám, chống nguy cơ người lạ có đường link xóa hoặc phá hoại dữ liệu của Bác sĩ:
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-1 text-[11px]">
+                        <div className="bg-white p-2.5 border border-amber-200 rounded shadow-xs">
+                          <div className="font-bold text-slate-800 flex items-center gap-1 mb-1">
+                            <span className="text-emerald-600 font-black">1.</span> Khóa xác thực API riêng:
+                          </div>
+                          <div className="text-slate-600">Đã tích hợp mã bí mật trong App và Google Apps Script. Bất kỳ ai không có khóa này đều bị từ chối 403 Forbidden.</div>
+                          <div className="mt-1 font-mono text-[9.5px] bg-slate-100 p-1 text-slate-700 select-all rounded border border-slate-200">{API_SECRET_KEY}</div>
+                        </div>
+                        <div className="bg-white p-2.5 border border-amber-200 rounded shadow-xs">
+                          <div className="font-bold text-slate-800 flex items-center gap-1 mb-1">
+                            <span className="text-blue-600 font-black">2.</span> Google Sheets: "Hạn chế"
+                          </div>
+                          <div className="text-slate-600">Mở Google Sheets &gt; Chia sẻ &gt; Đặt quyền thành <b>"Hạn chế" (Restricted)</b>. Chỉ có tài khoản BS Hào mới mở được, không ai trên mạng vào xem/sửa được!</div>
+                        </div>
+                        <div className="bg-white p-2.5 border border-amber-200 rounded shadow-xs">
+                          <div className="font-bold text-slate-800 flex items-center gap-1 mb-1">
+                            <span className="text-purple-600 font-black">3.</span> Thư mục Drive: "Người xem"
+                          </div>
+                          <div className="text-slate-600">Mở thư mục ảnh Drive &gt; Chia sẻ &gt; Chọn <b>"Người xem" (Viewer)</b>. Người ngoài có link chỉ được xem và tải ảnh, TUYỆT ĐỐI KHÔNG XÓA ĐƯỢC!</div>
+                        </div>
+                      </div>
+                    </div>
                     <div className="p-3 bg-[#EEF4FC] border border-[#8BA8C7] space-y-2">
                       <label className="block text-xs font-bold text-[#00156E]">
                         1. Dán đường link Google Apps Script Web App URL (Để đồng bộ trực tiếp vào Google Sheets thật của phòng khám):

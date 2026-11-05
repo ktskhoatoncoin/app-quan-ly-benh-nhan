@@ -14,6 +14,9 @@
  * ==============================================================================
  */
 
+// Khóa bảo mật API bắt buộc (Chỉ ứng dụng MediCare Clinic Pro có khóa này mới được phép đồng bộ/đọc/ghi dữ liệu)
+const API_SECRET_KEY = "MEDICARE_SECURE_TOKEN_2026_HAO_CLINIC_998877";
+
 // ID Thư mục gốc chứa ảnh cận lâm sàng/xét nghiệm bệnh nhân trên Google Drive
 const ROOT_IMAGE_FOLDER_ID = "18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4";
 
@@ -44,6 +47,37 @@ const HEADERS_NHAT_KY = [
 ];
 
 // ==============================================================================
+
+// ==============================================================================
+// 1.1 TỰ ĐỘNG TẠO BẢN SAO LƯU DỰ PHÒNG (SNAPSHOT BACKUP)
+// ==============================================================================
+function taoBanSaoLuuDuPhong() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const now = new Date();
+  const timeStr = Utilities.formatDate(now, Session.getScriptTimeZone() || "GMT+7", "yyyyMMdd_HHmm");
+  const backupPrefix = "Backup_" + timeStr;
+
+  let createdCount = 0;
+  const sheetsToBackup = ["Benh_Nhan", "Luot_Kham", "Don_Thuoc_Chi_Tiet"];
+  
+  sheetsToBackup.forEach(function(sheetName) {
+    const s = ss.getSheetByName(sheetName);
+    if (s && s.getLastRow() > 0) {
+      const copy = s.copyTo(ss);
+      copy.setName(sheetName.substring(0, 3) + "_" + backupPrefix);
+      copy.setTabColor("#7FA9DE");
+      createdCount++;
+    }
+  });
+
+  SpreadsheetApp.getUi().alert(
+    "ĐÃ TẠO BẢN SAO LƯU DỰ PHÒNG AN TOÀN!\n\n" +
+    "- Mã bản sao lưu: " + backupPrefix + "\n" +
+    "- Đã nhân bản " + createdCount + " bảng dữ liệu (Bệnh nhân, Lượt khám, Đơn thuốc).\n" +
+    "- Toàn bộ dữ liệu của Bác sĩ đã được đóng băng an toàn thành các Sheet riêng biệt."
+  );
+}
+
 // 1. MENU TIỆN ÍCH TRÊN GOOGLE SHEETS
 // ==============================================================================
 function onOpen() {
@@ -51,6 +85,7 @@ function onOpen() {
   ui.createMenu("🏥 MediCare Clinic")
     .addItem("⚡ Quét & Gắn Link Drive Ảnh Bệnh Nhân", "quetVaCapNhatLinkDriveAnh")
     .addItem("📂 Mở Thư Mục Ảnh Gốc Trên Drive", "moThuMucAnhGoc")
+    .addItem("🛡️ Tạo Bản Sao Lưu Dự Phòng Tức Thì (Snapshot Backup)", "taoBanSaoLuuDuPhong")
     .addSeparator()
     .addItem("🔍 Khởi Tạo & Chuẩn Hóa Cấu Trúc Bảng", "khoiTaoCauTrucSheets")
     .addToUi();
@@ -73,14 +108,25 @@ function doGet(e) {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     const action = (e && e.parameter && e.parameter.action) ? e.parameter.action.toLowerCase() : "read";
 
+    
     if (action === "ping" || action === "health") {
       return jsonResponse({
         status: "success",
         message: "MediCare Clinic API online và sẵn sàng kết nối!",
         doctorName: "BSCK1. Tôn Thất Hào",
         specialty: "Chuyên khoa Da liễu & Thẩm mỹ Da",
-        version: "2.10",
+        version: "2.11 - Secure Shield",
         timestamp: new Date().toISOString()
+      }, callback);
+    }
+
+    // Xác thực khóa bảo mật API_SECRET_KEY (Chống lộ thông tin bệnh nhân ra bên ngoài)
+    const clientKey = (e && e.parameter && (e.parameter.apiKey || e.parameter.key || e.parameter.token)) || "";
+    if (API_SECRET_KEY && clientKey !== API_SECRET_KEY) {
+      return jsonResponse({
+        status: "error",
+        code: 403,
+        message: "Truy cập bị từ chối: Cần có Khóa bảo mật API_SECRET_KEY hợp lệ để đọc dữ liệu bệnh nhân!"
       }, callback);
     }
 
@@ -132,7 +178,28 @@ function doPost(e) {
       payload = JSON.parse(e.parameter.data);
     }
 
+    
     const action = (payload.action || "").toUpperCase();
+
+    // 0. BẢO MẬT: XÁC THỰC KHÓA API_SECRET_KEY
+    const clientKey = payload.apiKey || (e && e.parameter && e.parameter.apiKey) || "";
+    if (API_SECRET_KEY && clientKey !== API_SECRET_KEY) {
+      return jsonResponse({
+        status: "error",
+        code: 403,
+        message: "Truy cập bị từ chối: Khóa bảo mật API_SECRET_KEY không hợp lệ hoặc bị thiếu!"
+      });
+    }
+
+    // 0.1 BẢO MẬT: CHẶN TOÀN BỘ CÁC LỆNH XÓA DỮ LIỆU HÀNG LOẠT
+    if (action === "CLEAR" || action === "DELETE" || action === "DROP" || action === "TRUNCATE") {
+      return jsonResponse({
+        status: "error",
+        code: 400,
+        message: "Thao tác xóa hàng loạt bị cấm tuyệt đối vì lý do an toàn dữ liệu phòng khám!"
+      });
+    }
+
 
     // --------------------------------------------------------------------------
     // A. ĐỒNG BỘ THÔNG MINH BẢO TOÀN LINK DRIVE (SYNC_ALL / UPSERT / MERGE)
