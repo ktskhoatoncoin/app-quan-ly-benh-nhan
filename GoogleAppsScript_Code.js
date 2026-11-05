@@ -70,12 +70,14 @@ function taoBanSaoLuuDuPhong() {
     }
   });
 
-  SpreadsheetApp.getUi().alert(
-    "ĐÃ TẠO BẢN SAO LƯU DỰ PHÒNG AN TOÀN!\n\n" +
-    "- Mã bản sao lưu: " + backupPrefix + "\n" +
-    "- Đã nhân bản " + createdCount + " bảng dữ liệu (Bệnh nhân, Lượt khám, Đơn thuốc).\n" +
+  var msgBackup = [
+    "ĐÃ TẠO BẢN SAO LƯU DỰ PHÒNG AN TOÀN!",
+    "",
+    "- Mã bản sao lưu: " + backupPrefix,
+    "- Đã nhân bản " + createdCount + " bảng dữ liệu (Bệnh nhân, Lượt khám, Đơn thuốc).",
     "- Toàn bộ dữ liệu của Bác sĩ đã được đóng băng an toàn thành các Sheet riêng biệt."
-  );
+  ].join(String.fromCharCode(10));
+  SpreadsheetApp.getUi().alert(msgBackup);
 }
 
 // 1. MENU TIỆN ÍCH TRÊN GOOGLE SHEETS
@@ -582,12 +584,14 @@ function quetVaCapNhatLinkDriveAnh() {
     }
   }
 
-  SpreadsheetApp.getUi().alert(
-    "ĐÃ HOÀN TẤT ĐỒNG BỘ ẢNH GOOGLE DRIVE!\n\n" +
-    "- Đã gắn link ảnh Drive cho: " + updatedCount + " bệnh nhân.\n" +
-    "- Số bệnh nhân giữ nguyên link cũ: " + preservedCount + "\n" +
+  var msgDrive = [
+    "ĐÃ HOÀN TẤT ĐỒNG BỘ ẢNH GOOGLE DRIVE!",
+    "",
+    "- Đã gắn link ảnh Drive cho: " + updatedCount + " bệnh nhân.",
+    "- Số bệnh nhân giữ nguyên link cũ: " + preservedCount,
     "- Tổng số thư mục đã quét trong Drive: " + Object.keys(driveMap).length
-  );
+  ].join(String.fromCharCode(10));
+  SpreadsheetApp.getUi().alert(msgDrive);
 }
 
 // ==============================================================================

@@ -74,7 +74,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Gentrisone Cream 10g (Betamethason/Clotrimazol/Gentamicin)",
@@ -84,7 +86,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Acyclovir 5% Cream 5g (Kháng virus Herpes/Zona)",
@@ -94,7 +98,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 1,
     "a": 1,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Bepanthen Ointment 5% 30g (Dexpanthenol)",
@@ -104,7 +110,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Contractubex Gel 10g (Trị sẹo lồi, sẹo thâm)",
@@ -114,7 +122,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Dermovate Cream 15g (Clobetasol propionate 0.05%)",
@@ -124,7 +134,9 @@ export const DRUG_CATALOG = [
     "m": 0,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Fucidin 2% Cream 15g (Acid Fusidic)",
@@ -134,7 +146,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Fucicort Cream 15g (Acid Fusidic + Betamethason)",
@@ -144,7 +158,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Klenzit MS 15g (Adapalene 0.1% - Trị mụn ẩn, mụn viêm)",
@@ -154,7 +170,9 @@ export const DRUG_CATALOG = [
     "m": 0,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Kem Ery nghệ 10g (Erythromycin + Nghệ trị mụn)",
@@ -164,7 +182,9 @@ export const DRUG_CATALOG = [
     "m": 0,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Sastid 100ml (Sữa tắm trị mụn lưng, nấm da, gàu ngứa)",
@@ -174,7 +194,9 @@ export const DRUG_CATALOG = [
     "m": 0,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Cồn chống nấm Antimycose 18ml",
@@ -184,7 +206,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Povidine 10% 20ml (Dung dịch sát trùng da)",
@@ -194,7 +218,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Flucinar Ointment 15g (Fluocinolone acetonide)",
@@ -204,7 +230,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Silkron Cream 10g (Clotrimazole, Betamethasone, Gentamicin)",
@@ -214,7 +242,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Eumovate Cream 15g (Clobetasone butyrate 0.05%)",
@@ -224,7 +254,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Dung dịch Milian 20ml (Xanh Methylen + Tím Gentian)",
@@ -234,7 +266,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Erythromycin dung dịch 4% 30ml (Trị mụn trứng cá)",
@@ -244,7 +278,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Canesten 1% Cream 20g (Clotrimazole)",
@@ -254,7 +290,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Diprosalic Ointment 15g (Betamethasone + Acid Salicylic)",
@@ -264,7 +302,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Daivobet Ointment 15g (Calcipotriol + Betamethasone)",
@@ -274,7 +314,9 @@ export const DRUG_CATALOG = [
     "m": 0,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Differin 0.1% Gel 30g (Adapalene)",
@@ -284,7 +326,9 @@ export const DRUG_CATALOG = [
     "m": 0,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Hiruscar Gel 20g (Trị sẹo thâm, mụn)",
@@ -294,7 +338,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Thuốc mỡ Kẽm Oxyd 10% 15g",
@@ -304,7 +350,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Cồn 70 độ 60ml (Sát khuẩn y tế)",
@@ -314,7 +362,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "DaLieu",
+    "categoryLabel": "🧴 Da liễu & Bôi ngoài da"
   },
   {
     "name": "Telfast 180mg (Fexofenadine)",
@@ -324,7 +374,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "DiUng",
+    "categoryLabel": "🛡️ Dị ứng & Ngứa da"
   },
   {
     "name": "Telfast 60mg (Fexofenadine)",
@@ -334,7 +386,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DiUng",
+    "categoryLabel": "🛡️ Dị ứng & Ngứa da"
   },
   {
     "name": "Aerius 5mg (Desloratadine)",
@@ -344,7 +398,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "DiUng",
+    "categoryLabel": "🛡️ Dị ứng & Ngứa da"
   },
   {
     "name": "Zyrtec 10mg (Cetirizine)",
@@ -354,7 +410,9 @@ export const DRUG_CATALOG = [
     "m": 0,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DiUng",
+    "categoryLabel": "🛡️ Dị ứng & Ngứa da"
   },
   {
     "name": "Clarityne 10mg (Loratadine)",
@@ -364,7 +422,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "DiUng",
+    "categoryLabel": "🛡️ Dị ứng & Ngứa da"
   },
   {
     "name": "Xyzal 5mg (Levocetirizine)",
@@ -374,7 +434,9 @@ export const DRUG_CATALOG = [
     "m": 0,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DiUng",
+    "categoryLabel": "🛡️ Dị ứng & Ngứa da"
   },
   {
     "name": "Atarax 25mg (Hydroxyzine - Chống ngứa mề đay đêm)",
@@ -384,7 +446,9 @@ export const DRUG_CATALOG = [
     "m": 0,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DiUng",
+    "categoryLabel": "🛡️ Dị ứng & Ngứa da"
   },
   {
     "name": "Phenergan 25mg (Promethazine)",
@@ -394,7 +458,9 @@ export const DRUG_CATALOG = [
     "m": 0,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DiUng",
+    "categoryLabel": "🛡️ Dị ứng & Ngứa da"
   },
   {
     "name": "Clorpheniramin 4mg",
@@ -404,7 +470,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DiUng",
+    "categoryLabel": "🛡️ Dị ứng & Ngứa da"
   },
   {
     "name": "Cinnarizin 25mg (Stugeron)",
@@ -414,7 +482,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DiUng",
+    "categoryLabel": "🛡️ Dị ứng & Ngứa da"
   },
   {
     "name": "Betaserc 16mg (Betahistine)",
@@ -424,7 +494,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DiUng",
+    "categoryLabel": "🛡️ Dị ứng & Ngứa da"
   },
   {
     "name": "Betaserc 24mg (Betahistine)",
@@ -434,7 +506,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "DiUng",
+    "categoryLabel": "🛡️ Dị ứng & Ngứa da"
   },
   {
     "name": "Dimenhydrinat 50mg (Chống say xe, chóng mặt)",
@@ -444,7 +518,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "DiUng",
+    "categoryLabel": "🛡️ Dị ứng & Ngứa da"
   },
   {
     "name": "Loratadin 10mg",
@@ -454,7 +530,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "DiUng",
+    "categoryLabel": "🛡️ Dị ứng & Ngứa da"
   },
   {
     "name": "Fexofenadin 120mg",
@@ -464,7 +542,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "DiUng",
+    "categoryLabel": "🛡️ Dị ứng & Ngứa da"
   },
   {
     "name": "Curam 1000mg (Amoxicillin + Clavulanate)",
@@ -474,7 +554,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "KhangSinh",
+    "categoryLabel": "💊 Kháng sinh & Kháng nấm"
   },
   {
     "name": "Curam 625mg (Amoxicillin + Clavulanate)",
@@ -484,7 +566,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "KhangSinh",
+    "categoryLabel": "💊 Kháng sinh & Kháng nấm"
   },
   {
     "name": "Augmentin 1g (Amoxicillin/Acid Clavulanic)",
@@ -494,7 +578,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "KhangSinh",
+    "categoryLabel": "💊 Kháng sinh & Kháng nấm"
   },
   {
     "name": "Cefixim 200mg",
@@ -504,7 +590,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "KhangSinh",
+    "categoryLabel": "💊 Kháng sinh & Kháng nấm"
   },
   {
     "name": "Zinnat 500mg (Cefuroxime axetil)",
@@ -514,7 +602,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "KhangSinh",
+    "categoryLabel": "💊 Kháng sinh & Kháng nấm"
   },
   {
     "name": "Doxycycline 100mg (Kháng sinh trị mụn, nhiễm khuẩn da)",
@@ -524,7 +614,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "KhangSinh",
+    "categoryLabel": "💊 Kháng sinh & Kháng nấm"
   },
   {
     "name": "Ciprofloxacin 500mg",
@@ -534,7 +626,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "KhangSinh",
+    "categoryLabel": "💊 Kháng sinh & Kháng nấm"
   },
   {
     "name": "Klacid 500mg (Clarithromycin)",
@@ -544,7 +638,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "KhangSinh",
+    "categoryLabel": "💊 Kháng sinh & Kháng nấm"
   },
   {
     "name": "Azithromycin 500mg (Zithromax)",
@@ -554,7 +650,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "KhangSinh",
+    "categoryLabel": "💊 Kháng sinh & Kháng nấm"
   },
   {
     "name": "Metronidazol 250mg",
@@ -564,7 +662,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "KhangSinh",
+    "categoryLabel": "💊 Kháng sinh & Kháng nấm"
   },
   {
     "name": "Itraconazole 100mg (Sporal - Kháng nấm toàn thân)",
@@ -574,7 +674,9 @@ export const DRUG_CATALOG = [
     "m": 0,
     "n": 1,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "KhangSinh",
+    "categoryLabel": "💊 Kháng sinh & Kháng nấm"
   },
   {
     "name": "Fluconazole 150mg (Diflucan - Trị nấm Candida)",
@@ -584,7 +686,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "KhangSinh",
+    "categoryLabel": "💊 Kháng sinh & Kháng nấm"
   },
   {
     "name": "Terbinafine 250mg (Lamisil - Trị nấm móng, nấm tóc)",
@@ -594,7 +698,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "KhangSinh",
+    "categoryLabel": "💊 Kháng sinh & Kháng nấm"
   },
   {
     "name": "Clindamycin 300mg (Trị mụn viêm nặng)",
@@ -604,7 +710,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "KhangSinh",
+    "categoryLabel": "💊 Kháng sinh & Kháng nấm"
   },
   {
     "name": "Levofloxacin 500mg (Cravit)",
@@ -614,7 +722,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "KhangSinh",
+    "categoryLabel": "💊 Kháng sinh & Kháng nấm"
   },
   {
     "name": "Medrol 4mg (Methylprednisolon)",
@@ -624,7 +734,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "KhangViem",
+    "categoryLabel": "⚡ Kháng viêm & Corticoid"
   },
   {
     "name": "Medrol 16mg (Methylprednisolon)",
@@ -634,7 +746,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "KhangViem",
+    "categoryLabel": "⚡ Kháng viêm & Corticoid"
   },
   {
     "name": "Prednisolon 5mg",
@@ -644,7 +758,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "KhangViem",
+    "categoryLabel": "⚡ Kháng viêm & Corticoid"
   },
   {
     "name": "Dexamethason 0.5mg",
@@ -654,7 +770,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "KhangViem",
+    "categoryLabel": "⚡ Kháng viêm & Corticoid"
   },
   {
     "name": "Alphachymotrypsine Choay (Kháng viêm, tan phù nề)",
@@ -664,7 +782,9 @@ export const DRUG_CATALOG = [
     "m": 2,
     "n": 0,
     "a": 0,
-    "e": 2
+    "e": 2,
+    "category": "KhangViem",
+    "categoryLabel": "⚡ Kháng viêm & Corticoid"
   },
   {
     "name": "Danzen 10mg (Serratiopeptidase - Giảm sưng nề)",
@@ -674,7 +794,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 1,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "KhangViem",
+    "categoryLabel": "⚡ Kháng viêm & Corticoid"
   },
   {
     "name": "Medo Alpha 21 (Chymotrypsin)",
@@ -684,7 +806,9 @@ export const DRUG_CATALOG = [
     "m": 2,
     "n": 0,
     "a": 0,
-    "e": 2
+    "e": 2,
+    "category": "KhangViem",
+    "categoryLabel": "⚡ Kháng viêm & Corticoid"
   },
   {
     "name": "Methylprednisolon 16mg",
@@ -694,7 +818,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "KhangViem",
+    "categoryLabel": "⚡ Kháng viêm & Corticoid"
   },
   {
     "name": "Hapacol 650mg (Paracetamol)",
@@ -704,7 +830,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "GiamDau",
+    "categoryLabel": "🦴 Giảm đau & Khớp NSAID"
   },
   {
     "name": "Paracetamol 500mg",
@@ -714,7 +842,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "GiamDau",
+    "categoryLabel": "🦴 Giảm đau & Khớp NSAID"
   },
   {
     "name": "Efferalgan 500mg (Viên sủi hạ sốt)",
@@ -724,7 +854,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "GiamDau",
+    "categoryLabel": "🦴 Giảm đau & Khớp NSAID"
   },
   {
     "name": "Celebrex 200mg (Celecoxib)",
@@ -734,7 +866,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "GiamDau",
+    "categoryLabel": "🦴 Giảm đau & Khớp NSAID"
   },
   {
     "name": "Arcoxia 60mg (Etoricoxib)",
@@ -744,7 +878,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "GiamDau",
+    "categoryLabel": "🦴 Giảm đau & Khớp NSAID"
   },
   {
     "name": "Arcoxia 90mg (Etoricoxib)",
@@ -754,7 +890,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "GiamDau",
+    "categoryLabel": "🦴 Giảm đau & Khớp NSAID"
   },
   {
     "name": "Mobic 7.5mg (Meloxicam)",
@@ -764,7 +902,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "GiamDau",
+    "categoryLabel": "🦴 Giảm đau & Khớp NSAID"
   },
   {
     "name": "Voltaren 50mg (Diclofenac)",
@@ -774,7 +914,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "GiamDau",
+    "categoryLabel": "🦴 Giảm đau & Khớp NSAID"
   },
   {
     "name": "Voltaren 75mg/3ml (Ống tiêm bắp giảm đau cấp)",
@@ -784,7 +926,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "GiamDau",
+    "categoryLabel": "🦴 Giảm đau & Khớp NSAID"
   },
   {
     "name": "Tilcotil 20mg (Tenoxicam)",
@@ -794,7 +938,9 @@ export const DRUG_CATALOG = [
     "m": 0,
     "n": 1,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "GiamDau",
+    "categoryLabel": "🦴 Giảm đau & Khớp NSAID"
   },
   {
     "name": "Glucosamin Sulfate 1500mg",
@@ -804,7 +950,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "GiamDau",
+    "categoryLabel": "🦴 Giảm đau & Khớp NSAID"
   },
   {
     "name": "Mydocalm 150mg (Tolperisone - Giãn cơ giảm co cứng)",
@@ -814,7 +962,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "GiamDau",
+    "categoryLabel": "🦴 Giảm đau & Khớp NSAID"
   },
   {
     "name": "Nexium 40mg (Esomeprazol)",
@@ -824,7 +974,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "TieuHoa",
+    "categoryLabel": "🌿 Tiêu hóa, Dạ dày & Gan"
   },
   {
     "name": "Nexium 20mg (Esomeprazol)",
@@ -834,7 +986,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "TieuHoa",
+    "categoryLabel": "🌿 Tiêu hóa, Dạ dày & Gan"
   },
   {
     "name": "Pariet 20mg (Rabeprazol)",
@@ -844,7 +998,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "TieuHoa",
+    "categoryLabel": "🌿 Tiêu hóa, Dạ dày & Gan"
   },
   {
     "name": "Phosphalugel (Gel dạ dày chữ P)",
@@ -854,7 +1010,9 @@ export const DRUG_CATALOG = [
     "m": 0,
     "n": 1,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "TieuHoa",
+    "categoryLabel": "🌿 Tiêu hóa, Dạ dày & Gan"
   },
   {
     "name": "Gaviscon Dual Action (Gói trị trào ngược dạ dày)",
@@ -864,7 +1022,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 1,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "TieuHoa",
+    "categoryLabel": "🌿 Tiêu hóa, Dạ dày & Gan"
   },
   {
     "name": "Motilium 10mg (Domperidon - Chống nôn, đầy bụng)",
@@ -874,7 +1034,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 1,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "TieuHoa",
+    "categoryLabel": "🌿 Tiêu hóa, Dạ dày & Gan"
   },
   {
     "name": "Debridat 100mg (Trimebutin - Điều hòa co bóp ruột)",
@@ -884,7 +1046,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "TieuHoa",
+    "categoryLabel": "🌿 Tiêu hóa, Dạ dày & Gan"
   },
   {
     "name": "Silymarin 140mg (Bổ gan, hạ men gan)",
@@ -894,7 +1058,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "TieuHoa",
+    "categoryLabel": "🌿 Tiêu hóa, Dạ dày & Gan"
   },
   {
     "name": "Boganic (Bổ gan thảo dược)",
@@ -904,7 +1070,9 @@ export const DRUG_CATALOG = [
     "m": 2,
     "n": 0,
     "a": 0,
-    "e": 2
+    "e": 2,
+    "category": "TieuHoa",
+    "categoryLabel": "🌿 Tiêu hóa, Dạ dày & Gan"
   },
   {
     "name": "Enterogermina (Men vi sinh dạng ống 5ml)",
@@ -914,7 +1082,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "TieuHoa",
+    "categoryLabel": "🌿 Tiêu hóa, Dạ dày & Gan"
   },
   {
     "name": "Amlor 5mg (Amlodipin)",
@@ -924,7 +1094,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "TimMach",
+    "categoryLabel": "❤️ Tim mạch, Huyết áp & Mỡ"
   },
   {
     "name": "Micardis 40mg (Telmisartan)",
@@ -934,7 +1106,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "TimMach",
+    "categoryLabel": "❤️ Tim mạch, Huyết áp & Mỡ"
   },
   {
     "name": "Micardis Plus (Telmisartan 40mg + HCTZ 12.5mg)",
@@ -944,7 +1118,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "TimMach",
+    "categoryLabel": "❤️ Tim mạch, Huyết áp & Mỡ"
   },
   {
     "name": "Coversyl 5mg (Perindopril)",
@@ -954,7 +1130,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "TimMach",
+    "categoryLabel": "❤️ Tim mạch, Huyết áp & Mỡ"
   },
   {
     "name": "Concor 2.5mg (Bisoprolol)",
@@ -964,7 +1142,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "TimMach",
+    "categoryLabel": "❤️ Tim mạch, Huyết áp & Mỡ"
   },
   {
     "name": "Concor 5mg (Bisoprolol)",
@@ -974,7 +1154,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "TimMach",
+    "categoryLabel": "❤️ Tim mạch, Huyết áp & Mỡ"
   },
   {
     "name": "Lipitor 20mg (Atorvastatin - Hạ mỡ máu)",
@@ -984,7 +1166,9 @@ export const DRUG_CATALOG = [
     "m": 0,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "TimMach",
+    "categoryLabel": "❤️ Tim mạch, Huyết áp & Mỡ"
   },
   {
     "name": "Crestor 10mg (Rosuvastatin - Hạ mỡ máu)",
@@ -994,7 +1178,9 @@ export const DRUG_CATALOG = [
     "m": 0,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "TimMach",
+    "categoryLabel": "❤️ Tim mạch, Huyết áp & Mỡ"
   },
   {
     "name": "Plavix 75mg (Clopidogrel - Chống đông máu)",
@@ -1004,7 +1190,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "TimMach",
+    "categoryLabel": "❤️ Tim mạch, Huyết áp & Mỡ"
   },
   {
     "name": "Aspirin pH8 81mg (Chống huyết khối)",
@@ -1014,7 +1202,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "TimMach",
+    "categoryLabel": "❤️ Tim mạch, Huyết áp & Mỡ"
   },
   {
     "name": "Cevit 500mg (Vitamin C - Tăng sức đề kháng, sáng da)",
@@ -1024,7 +1214,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "BoNao",
+    "categoryLabel": "🧠 Vitamin & Thần kinh"
   },
   {
     "name": "Berocca Effervescent (Viên sủi Multivitamin khoáng chất)",
@@ -1034,7 +1226,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "BoNao",
+    "categoryLabel": "🧠 Vitamin & Thần kinh"
   },
   {
     "name": "Enat 400 (Vitamin E thiên nhiên - Chống oxy hóa da)",
@@ -1044,7 +1238,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "BoNao",
+    "categoryLabel": "🧠 Vitamin & Thần kinh"
   },
   {
     "name": "Magne B6 (Magnesi lactat + Pyridoxin)",
@@ -1054,7 +1250,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 1,
     "a": 0,
-    "e": 0
+    "e": 0,
+    "category": "BoNao",
+    "categoryLabel": "🧠 Vitamin & Thần kinh"
   },
   {
     "name": "Tanakan 120mg (Ginkgo Biloba - Tuần hoàn não, chóng mặt)",
@@ -1064,7 +1262,9 @@ export const DRUG_CATALOG = [
     "m": 1,
     "n": 0,
     "a": 0,
-    "e": 1
+    "e": 1,
+    "category": "BoNao",
+    "categoryLabel": "🧠 Vitamin & Thần kinh"
   }
 ];
 
@@ -1375,6 +1575,9 @@ function MediCareClinicApp() {
 
   // State modal in đơn thuốc / phiếu thu
   const [isPrintModalOpen, setIsPrintModalOpen] = useState(false);
+  const [isDrugCatalogModalOpen, setIsDrugCatalogModalOpen] = useState(false);
+  const [drugModalSearch, setDrugModalSearch] = useState('');
+  const [drugModalCategory, setDrugModalCategory] = useState('ALL');
   // Tùy chọn xuất đơn thuốc: 'image' (ảnh PNG gửi Zalo) hoặc 'pdf' (file PDF). Tự động ghi nhớ lần chọn sau cùng
   const [exportPref, setExportPref] = useState(() => {
     try {
@@ -1403,21 +1606,45 @@ function MediCareClinicApp() {
 
     const patientName = (selectedPatient?.name || 'BenhNhan').replace(/\s+/g, '_');
     const pId = selectedPatient?.id || 'BN';
-    const vDate = currentVisit?.visitDate ? currentVisit.visitDate.replace(/-/g, '') : '20261025';
+    const vDate = currentVisit?.visitDate ? currentVisit.visitDate.replace(/-/g, '') : '20261105';
     const fileName = `DonThuoc_${pId}_${patientName}_${vDate}`;
 
     if (targetPref === 'image') {
       try {
-        showToast('Đang tạo file ảnh đơn thuốc chất lượng cao (gửi Zalo)...');
+        showToast('Đang tạo file ảnh đơn thuốc độ phân giải cao...');
         if (typeof html2canvas === 'undefined') {
-          showToast('Đang tải thư viện ảnh, anh vui lòng thử lại sau 2 giây...');
+          showToast('Đang nạp bộ xử lý hình ảnh, vui lòng thử lại sau 2 giây...');
           return;
         }
         const canvas = await html2canvas(printArea, {
-          scale: 3, logging: false,
+          scale: 3,
+          logging: false,
           useCORS: true,
           backgroundColor: '#ffffff'
         });
+
+        // 1. Thử dùng File System Access API để mở hộp thoại Lưu File (Save As) cho bác sĩ chọn thư mục trên ổ cứng
+        if (window.showSaveFilePicker) {
+          try {
+            const blob = await new Promise((res) => canvas.toBlob(res, 'image/png'));
+            const handle = await window.showSaveFilePicker({
+              suggestedName: `${fileName}.png`,
+              types: [{
+                description: 'Hình ảnh đơn thuốc PNG (Gửi Zalo/Viber)',
+                accept: { 'image/png': ['.png'] }
+              }]
+            });
+            const writable = await handle.createWritable();
+            await writable.write(blob);
+            await writable.close();
+            showToast(`Đã lưu file ảnh "${fileName}.png" thành công vào ổ cứng máy tính!`);
+            return;
+          } catch (pickerErr) {
+            if (pickerErr.name === 'AbortError') return; // Người dùng chủ động bấm Hủy
+          }
+        }
+
+        // 2. Dự phòng chuẩn tải file tự động về máy tính
         const imgUrl = canvas.toDataURL('image/png');
         const link = document.createElement('a');
         link.download = `${fileName}.png`;
@@ -1425,7 +1652,7 @@ function MediCareClinicApp() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        showToast(`Đã tải file ảnh ${fileName}.png! Anh có thể gửi trực tiếp cho bệnh nhân qua Zalo.`);
+        showToast(`Đã tải file ảnh "${fileName}.png" về máy tính!`);
       } catch (err) {
         showToast('Lỗi khi xuất ảnh: ' + err.message);
       }
@@ -1437,27 +1664,49 @@ function MediCareClinicApp() {
           return;
         }
         const canvas = await html2canvas(printArea, {
-          scale: 3, logging: false,
+          scale: 3,
+          logging: false,
           useCORS: true,
           backgroundColor: '#ffffff'
         });
         const imgData = canvas.toDataURL('image/png');
         const { jsPDF } = window.jspdf;
-        // Khổ A5 chuẩn: 148 x 210 mm
         const pdf = new jsPDF('p', 'mm', 'a5');
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
         pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, Math.min(pdfHeight, 210));
+
+        // 1. Thử dùng File System Access API để mở hộp thoại Lưu File (Save As) cho bác sĩ chọn thư mục trên ổ cứng
+        if (window.showSaveFilePicker) {
+          try {
+            const pdfBlob = pdf.output('blob');
+            const handle = await window.showSaveFilePicker({
+              suggestedName: `${fileName}.pdf`,
+              types: [{
+                description: 'Tài liệu PDF đơn thuốc',
+                accept: { 'application/pdf': ['.pdf'] }
+              }]
+            });
+            const writable = await handle.createWritable();
+            await writable.write(pdfBlob);
+            await writable.close();
+            showToast(`Đã lưu file PDF "${fileName}.pdf" thành công vào ổ cứng máy tính!`);
+            return;
+          } catch (pickerErr) {
+            if (pickerErr.name === 'AbortError') return; // Bấm Hủy
+          }
+        }
+
+        // 2. Dự phòng tải tự động về máy tính
         pdf.save(`${fileName}.pdf`);
-        showToast(`Đã tải file PDF ${fileName}.pdf! Anh có thể gửi qua Zalo hoặc Email.`);
+        showToast(`Đã tải file PDF "${fileName}.pdf" về máy tính!`);
       } catch (err) {
-        showToast('Lỗi khi xuất PDF, đang mở hộp thoại in...');
+        showToast('Đang mở hộp thoại in của trình duyệt...');
         window.print();
       }
     }
   };
 
-  // State form thêm thuốc mới vào đơn
   const [drugDraft, setDrugDraft] = useState({
     drugName: '',
     unit: 'Viên',
@@ -1612,17 +1861,22 @@ function MediCareClinicApp() {
     const now = new Date();
     const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')} - ${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
 
-    // Lưu ngay vào localStorage
+    // 1. Luôn lưu tức thì vào bộ nhớ trình duyệt máy tính (localStorage) để đảm bảo an toàn tuyệt đối
     try {
       localStorage.setItem('MEDICARE_PATIENTS_V2', JSON.stringify(patients));
       localStorage.setItem('MEDICARE_VISITS_V2', JSON.stringify(visits));
     } catch (e) {}
 
+    // 2. Đồng bộ lên Google Sheets Web App nếu đã cấu hình
     if (sheetWebAppUrl && sheetWebAppUrl.trim().startsWith('https://script.google.com')) {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 8000); // Tối đa 8 giây, chống quay vô tận
+
       try {
         await fetch(sheetWebAppUrl.trim(), {
           method: 'POST',
           mode: 'no-cors',
+          signal: controller.signal,
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({
             apiKey: API_SECRET_KEY,
@@ -1632,13 +1886,16 @@ function MediCareClinicApp() {
             timestamp: new Date().toISOString()
           })
         });
+        clearTimeout(timeoutId);
         setIsSyncing(false);
         setLastSyncTime(timeStr);
-        showToast(`Đã ghi phiếu khám của BN "${selectedPatient.name}" thành công vào Google Sheets!`);
+        showToast(`✅ Đã ghi phiếu khám của BN "${selectedPatient.name}" thành công vào Google Sheets (Bảng [Luot_Kham] & [Don_Thuoc_Chi_Tiet])!`);
         return;
       } catch (err) {
+        clearTimeout(timeoutId);
         setIsSyncing(false);
-        showToast('Đã lưu vào bộ nhớ máy! (Kiểm tra lại kết nối mạng/URL Google Sheets)');
+        setLastSyncTime(timeStr);
+        showToast(`💾 Đã lưu phiếu khám của BN "${selectedPatient.name}" an toàn vào máy tính! (Google Sheets phản hồi chậm hoặc đang cập nhật)`);
         return;
       }
     }
@@ -1646,7 +1903,7 @@ function MediCareClinicApp() {
     setTimeout(() => {
       setIsSyncing(false);
       setLastSyncTime(timeStr);
-      showToast(`Đã lưu phiếu khám của BN "${selectedPatient.name}" vào bộ nhớ máy tính!`);
+      showToast(`💾 Đã lưu phiếu khám của BN "${selectedPatient.name}" vào bộ nhớ máy tính!`);
     }, 400);
   };
 
@@ -1680,10 +1937,12 @@ function MediCareClinicApp() {
         });
         setIsSyncing(false);
         setLastSyncTime(timeStr);
+        clearTimeout(timeoutId);
         showToast(`Đã đồng bộ thành công ${patients.length} bệnh nhân lên Google Sheets & lưu an toàn!`);
         return;
       } catch (err) {
         setIsSyncing(false);
+        clearTimeout(timeoutId);
         showToast('Đã lưu an toàn vào bộ nhớ máy! (Kiểm tra lại kết nối mạng/URL Google Sheet)');
         return;
       }
@@ -2202,674 +2461,7 @@ function MediCareClinicApp() {
   }, [patients, visits]);
 
   // Copy code Apps Script hoàn chỉnh (tự động tạo 4 Sheet nếu chưa có & đồng bộ toàn bộ dữ liệu)
-  const appsScriptCode = `/**
- * ==============================================================================
- * HỆ THỐNG QUẢN LÝ PHÒNG KHÁM MEDICARE CLINIC PRO (v2.10)
- * Google Apps Script Web App API & Bảng Điều Khiển Tự Động Hóa (#ktskhoa365)
- * ==============================================================================
- * TÍNH NĂNG NỔI BẬT:
- * 1. SMART MERGE / UPSERT: Tự động cập nhật nếu đã có, thêm mới nếu chưa có.
- *    -> TUYỆT ĐỐI KHÔNG DÙNG sheet.clearContent() gây mất dữ liệu.
- * 2. BẢO TOÀN LINK GOOGLE DRIVE:
- *    -> Nếu trên Sheets đã có Link Drive ảnh xét nghiệm mà bản gửi lên bị trống,
- *       hệ thống giữ nguyên 100% link cũ quý giá của Bác sĩ!
- * 3. HỖ TRỢ ĐỌC/GHI 2 CHIỀU (doGet & doPost) tương thích Web App Vercel & script tiện ích.
- * 4. TÍCH HỢP QUÉT THƯ MỤC GOOGLE DRIVE TỰ ĐỘNG.
- * ==============================================================================
- */
-
-// Khóa bảo mật API bắt buộc (Chỉ ứng dụng MediCare Clinic Pro có khóa này mới được phép đồng bộ/đọc/ghi dữ liệu)
-const API_SECRET_KEY = "MEDICARE_SECURE_TOKEN_2026_HAO_CLINIC_998877";
-
-// ID Thư mục gốc chứa ảnh cận lâm sàng/xét nghiệm bệnh nhân trên Google Drive
-const ROOT_IMAGE_FOLDER_ID = "18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4";
-
-// Cấu trúc tiêu đề chuẩn cho các Sheets
-const HEADERS_BENH_NHAN = [
-  "Ma_BN", "Ho_Ten", "Ngay_Sinh", "Gioi_Tinh", "SDT", "SDT_Nguoi_Than",
-  "Can_Nang_Ban_Dau", "Nghe_Nghiep", "Dia_Chi", "Tien_Su_Benh", "Di_Ung_Thuoc",
-  "CLS_Da_Lam", "Thuoc_Da_Dung", "Link_Drive_Anh", "Trang_Thai_Ho_So", "Ngay_Tao"
-];
-
-const HEADERS_LUOT_KHAM = [
-  "Ma_Luot_Kham", "Ma_BN", "Ngay_Kham", "Chieu_Cao", "Can_Nang", "Huyet_Ap", "Mach",
-  "Trieu_Chung", "Chan_Doan", "Chuyen_Khoa", "Hen_Tai_Kham", "Loi_Dan",
-  "Dieu_Tri_Nguyen_Van", "Cong_Kham", "Trang_Thai_Thu"
-];
-
-const HEADERS_DON_THUOC = [
-  "Ma_Luot_Kham", "Ma_BN", "Ten_Thuoc", "DVT", "Sang", "Trua", "Chieu", "Toi",
-  "So_Ngay", "Don_Gia", "Cach_Dung"
-];
-
-const HEADERS_XET_NGHIEM = [
-  "Ma_Luot_Kham", "Ma_BN", "Loai_Dich_Vu", "Ten_Chi_Dinh", "Ket_Qua", "Chi_Phi", "Trang_Thai"
-];
-
-const HEADERS_NHAT_KY = [
-  "Thoi_Gian", "Ten_Bac_Si", "Ten_Phong_Kham", "So_Dien_Thoai", "Hanh_Dong", "So_Benh_Nhan", "Thiet_Bi"
-];
-
-// ==============================================================================
-
-// ==============================================================================
-// 1.1 TỰ ĐỘNG TẠO BẢN SAO LƯU DỰ PHÒNG (SNAPSHOT BACKUP)
-// ==============================================================================
-function taoBanSaoLuuDuPhong() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const now = new Date();
-  const timeStr = Utilities.formatDate(now, Session.getScriptTimeZone() || "GMT+7", "yyyyMMdd_HHmm");
-  const backupPrefix = "Backup_" + timeStr;
-
-  let createdCount = 0;
-  const sheetsToBackup = ["Benh_Nhan", "Luot_Kham", "Don_Thuoc_Chi_Tiet"];
-  
-  sheetsToBackup.forEach(function(sheetName) {
-    const s = ss.getSheetByName(sheetName);
-    if (s && s.getLastRow() > 0) {
-      const copy = s.copyTo(ss);
-      copy.setName(sheetName.substring(0, 3) + "_" + backupPrefix);
-      copy.setTabColor("#7FA9DE");
-      createdCount++;
-    }
-  });
-
-  SpreadsheetApp.getUi().alert(
-    "ĐÃ TẠO BẢN SAO LƯU DỰ PHÒNG AN TOÀN!\n\n" +
-    "- Mã bản sao lưu: " + backupPrefix + "\n" +
-    "- Đã nhân bản " + createdCount + " bảng dữ liệu (Bệnh nhân, Lượt khám, Đơn thuốc).\n" +
-    "- Toàn bộ dữ liệu của Bác sĩ đã được đóng băng an toàn thành các Sheet riêng biệt."
-  );
-}
-
-// 1. MENU TIỆN ÍCH TRÊN GOOGLE SHEETS
-// ==============================================================================
-function onOpen() {
-  const ui = SpreadsheetApp.getUi();
-  ui.createMenu("🏥 MediCare Clinic")
-    .addItem("⚡ Quét & Gắn Link Drive Ảnh Bệnh Nhân", "quetVaCapNhatLinkDriveAnh")
-    .addItem("📂 Mở Thư Mục Ảnh Gốc Trên Drive", "moThuMucAnhGoc")
-    .addItem("🛡️ Tạo Bản Sao Lưu Dự Phòng Tức Thì (Snapshot Backup)", "taoBanSaoLuuDuPhong")
-    .addSeparator()
-    .addItem("🔍 Khởi Tạo & Chuẩn Hóa Cấu Trúc Bảng", "khoiTaoCauTrucSheets")
-    .addToUi();
-}
-
-function moThuMucAnhGoc() {
-  const html = '<script>window.open("https://drive.google.com/drive/folders/' + ROOT_IMAGE_FOLDER_ID + '", "_blank");google.script.host.close();</script>';
-  SpreadsheetApp.getUi().showModalDialog(HtmlService.createHtmlOutput(html).setWidth(250).setHeight(60), "Đang mở Drive...");
-}
-
-// ==============================================================================
-// 2. HTTP GET API (Đọc dữ liệu từ Google Sheets về App hoặc Script)
-// ==============================================================================
-function doGet(e) {
-  const lock = LockService.getScriptLock();
-  lock.tryLock(15000);
-  const callback = (e && e.parameter && e.parameter.callback) ? e.parameter.callback : null;
-
-  try {
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
-    const action = (e && e.parameter && e.parameter.action) ? e.parameter.action.toLowerCase() : "read";
-
-    
-    if (action === "ping" || action === "health") {
-      return jsonResponse({
-        status: "success",
-        message: "MediCare Clinic API online và sẵn sàng kết nối!",
-        doctorName: "BSCK1. Tôn Thất Hào",
-        specialty: "Chuyên khoa Da liễu & Thẩm mỹ Da",
-        version: "2.11 - Secure Shield",
-        timestamp: new Date().toISOString()
-      }, callback);
-    }
-
-    // Xác thực khóa bảo mật API_SECRET_KEY (Chống lộ thông tin bệnh nhân ra bên ngoài)
-    const clientKey = (e && e.parameter && (e.parameter.apiKey || e.parameter.key || e.parameter.token)) || "";
-    if (API_SECRET_KEY && clientKey !== API_SECRET_KEY) {
-      return jsonResponse({
-        status: "error",
-        code: 403,
-        message: "Truy cập bị từ chối: Cần có Khóa bảo mật API_SECRET_KEY hợp lệ để đọc dữ liệu bệnh nhân!"
-      }, callback);
-    }
-
-    // Đọc toàn bộ danh sách bệnh nhân, lượt khám, đơn thuốc
-    const patients = readSheetAsJson(ss, "Benh_Nhan", HEADERS_BENH_NHAN);
-    const visits = readSheetAsJson(ss, "Luot_Kham", HEADERS_LUOT_KHAM);
-    const prescriptions = readSheetAsJson(ss, "Don_Thuoc_Chi_Tiet", HEADERS_DON_THUOC);
-    const labs = readSheetAsJson(ss, "Xet_Nghiem_Chi_Phi", HEADERS_XET_NGHIEM);
-
-    return jsonResponse({
-      status: "success",
-      doctorName: "BSCK1. Tôn Thất Hào",
-      clinicName: "Phòng khám Da liễu & Thẩm mỹ Da - BSCK1 Tôn Thất Hào",
-      totalPatients: patients.length,
-      totalVisits: visits.length,
-      totalPrescriptions: prescriptions.length,
-      totalLabs: labs.length,
-      patients: patients,
-      visits: visits,
-      prescriptions: prescriptions,
-      labs: labs,
-      timestamp: new Date().toISOString()
-    }, callback);
-  } catch (err) {
-    return jsonResponse({ status: "error", message: err.toString() }, callback);
-  } finally {
-    lock.releaseLock();
-  }
-}
-
-// ==============================================================================
-// 3. HTTP POST API (Ghi và Hợp nhất dữ liệu thông minh - Smart Upsert)
-// ==============================================================================
-function doPost(e) {
-  const lock = LockService.getScriptLock();
-  // Khóa tối đa 30s để đảm bảo không xung đột khi nhiều thiết bị đồng bộ cùng lúc
-  const hasLock = lock.tryLock(30000);
-  if (!hasLock) {
-    return jsonResponse({ status: "error", message: "Hệ thống đang bận xử lý một lượt đồng bộ khác, vui lòng thử lại sau 5 giây." });
-  }
-
-  try {
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
-    let payload = {};
-
-    if (e && e.postData && e.postData.contents) {
-      payload = JSON.parse(e.postData.contents);
-    } else if (e && e.parameter && e.parameter.data) {
-      payload = JSON.parse(e.parameter.data);
-    }
-
-    
-    const action = (payload.action || "").toUpperCase();
-
-    // 0. BẢO MẬT: XÁC THỰC KHÓA API_SECRET_KEY
-    const clientKey = payload.apiKey || (e && e.parameter && e.parameter.apiKey) || "";
-    if (API_SECRET_KEY && clientKey !== API_SECRET_KEY) {
-      return jsonResponse({
-        status: "error",
-        code: 403,
-        message: "Truy cập bị từ chối: Khóa bảo mật API_SECRET_KEY không hợp lệ hoặc bị thiếu!"
-      });
-    }
-
-    // 0.1 BẢO MẬT: CHẶN TOÀN BỘ CÁC LỆNH XÓA DỮ LIỆU HÀNG LOẠT
-    if (action === "CLEAR" || action === "DELETE" || action === "DROP" || action === "TRUNCATE") {
-      return jsonResponse({
-        status: "error",
-        code: 400,
-        message: "Thao tác xóa hàng loạt bị cấm tuyệt đối vì lý do an toàn dữ liệu phòng khám!"
-      });
-    }
-
-
-    // --------------------------------------------------------------------------
-    // A. ĐỒNG BỘ THÔNG MINH BẢO TOÀN LINK DRIVE (SYNC_ALL / UPSERT / MERGE)
-    // --------------------------------------------------------------------------
-    if (action === "SYNC_ALL" || action === "UPSERT" || action === "MERGE" || action === "WRITE") {
-      const incomingPatients = payload.patients || [];
-      const incomingVisits = payload.visits || [];
-      const incomingUsageLogs = payload.usageLogs || [];
-
-      // 1. XỬ LÝ SHEET BENH_NHAN: SMART UPSERT DỰA TRÊN MA_BN & HO_TEN+NGAY_SINH
-      const sBN = ensureSheetWithHeaders(ss, "Benh_Nhan", HEADERS_BENH_NHAN);
-      const bnResult = smartMergePatients(sBN, incomingPatients);
-
-      // 2. XỬ LÝ LƯỢT KHÁM, ĐƠN THUỐC, XÉT NGHIỆM
-      const sLK = ensureSheetWithHeaders(ss, "Luot_Kham", HEADERS_LUOT_KHAM);
-      const sDT = ensureSheetWithHeaders(ss, "Don_Thuoc_Chi_Tiet", HEADERS_DON_THUOC);
-      const sDV = ensureSheetWithHeaders(ss, "Xet_Nghiem_Chi_Phi", HEADERS_XET_NGHIEM);
-      const visitResult = smartMergeVisits(sLK, sDT, sDV, incomingVisits);
-
-      // 3. GHI NHẬT KÝ ĐỒNG BỘ NẾU CÓ
-      if (incomingUsageLogs.length > 0) {
-        const sNK = ensureSheetWithHeaders(ss, "Nhat_Ky_Su_Dung", HEADERS_NHAT_KY);
-        incomingUsageLogs.forEach(log => {
-          sNK.appendRow([
-            log.time || new Date().toLocaleString("vi-VN"),
-            log.doctorName || "BSCK1 Tôn Thất Hảo",
-            log.clinicName || "Phòng khám MediCare Clinic",
-            "'" + (log.phone || ""),
-            log.action || "Đồng bộ dữ liệu",
-            log.patientCount || incomingPatients.length,
-            log.device || "Web Vercel"
-          ]);
-        });
-      }
-
-      return jsonResponse({
-        status: "success",
-        message: "Hợp nhất dữ liệu thông minh thành công! Bảo toàn toàn bộ Link Drive ảnh xét nghiệm.",
-        details: {
-          patientsUpdated: bnResult.updatedCount,
-          patientsInserted: bnResult.insertedCount,
-          driveLinksPreserved: bnResult.preservedLinksCount,
-          totalPatientsInSheet: bnResult.totalRows,
-          visitsProcessed: visitResult.processedVisits
-        },
-        timestamp: new Date().toISOString()
-      });
-    }
-
-    // --------------------------------------------------------------------------
-    // A2. GHI TỨC THÌ 1 PHIẾU KHÁM & ĐƠN THUỐC (SAVE_VISIT / GHI_PHIEU)
-    // --------------------------------------------------------------------------
-    if (action === "SAVE_VISIT" || action === "GHI_PHIEU") {
-      const patient = payload.patient;
-      const visit = payload.visit;
-      if (!patient || !visit) {
-        return jsonResponse({ status: "error", message: "Thiếu thông tin bệnh nhân hoặc lượt khám" });
-      }
-
-      const sBN = ensureSheetWithHeaders(ss, "Benh_Nhan", HEADERS_BENH_NHAN);
-      const bnResult = smartMergePatients(sBN, [patient]);
-
-      const sLK = ensureSheetWithHeaders(ss, "Luot_Kham", HEADERS_LUOT_KHAM);
-      const sDT = ensureSheetWithHeaders(ss, "Don_Thuoc_Chi_Tiet", HEADERS_DON_THUOC);
-      const sDV = ensureSheetWithHeaders(ss, "Xet_Nghiem_Chi_Phi", HEADERS_XET_NGHIEM);
-      const visitResult = smartMergeVisits(sLK, sDT, sDV, [visit]);
-
-      return jsonResponse({
-        status: "success",
-        message: "Đã ghi nhận phiếu khám bệnh & đơn thuốc thành công vào Google Sheets!",
-        patientName: patient.name,
-        visitId: visit.visitId,
-        timestamp: new Date().toISOString()
-      });
-    }
-
-    // --------------------------------------------------------------------------
-    // B. GHI NHẬT KÝ TRUY CẬP (LOG_ACCESS)
-    // --------------------------------------------------------------------------
-    if (action === "LOG_ACCESS" && payload.log) {
-      const sNK = ensureSheetWithHeaders(ss, "Nhat_Ky_Su_Dung", HEADERS_NHAT_KY);
-      const l = payload.log;
-      sNK.appendRow([
-        l.time || new Date().toLocaleString("vi-VN"),
-        l.doctorName || "",
-        l.clinicName || "",
-        "'" + (l.phone || ""),
-        l.action || "Truy cập ứng dụng",
-        l.patientCount || 0,
-        l.device || "Browser"
-      ]);
-      return jsonResponse({ status: "success", message: "Đã lưu nhật ký" });
-    }
-
-    return jsonResponse({ status: "error", message: "Hành động (action) không hợp lệ: " + action });
-
-  } catch (err) {
-    return jsonResponse({ status: "error", message: err.toString() });
-  } finally {
-    lock.releaseLock();
-  }
-}
-
-// ==============================================================================
-// 4. THUẬT TOÁN HỢP NHẤT THÔNG MINH BẢO TOÀN LINK DRIVE (CORE LOGIC)
-// ==============================================================================
-function smartMergePatients(sheet, incomingPatients) {
-  const data = sheet.getDataRange().getValues();
-  const headers = data[0].map(h => (h || "").toString().trim());
-
-  // Tìm chỉ mục các cột quan trọng
-  const colIdIdx = findColIndex(headers, ["Ma_BN", "Ma BN", "id"]);
-  const colNameIdx = findColIndex(headers, ["Ho_Ten", "Họ và tên", "HoTen", "name"]);
-  const colDobIdx = findColIndex(headers, ["Ngay_Sinh", "Năm sinh", "dob", "birthYear"]);
-  const colLinkIdx = findColIndex(headers, ["Link_Drive_Anh", "Link Google Drive", "driveUrl", "imageFolderUrl"]);
-
-  // Nạp toàn bộ bệnh nhân hiện có trên Google Sheets vào bộ nhớ đệm
-  // Map 1: Theo Mã BN (ví dụ: 'bn0001')
-  // Map 2: Theo Tên + Năm sinh chuẩn hóa (dùng khi Mã BN bị lệch)
-  const existingRowsMapById = new Map();
-  const existingRowsMapByNameDob = new Map();
-
-  const allRows = [];
-  for (let i = 1; i < data.length; i++) {
-    const row = data[i];
-    const rowId = normalizeKey(row[colIdIdx]);
-    const rowName = normalizeKey(row[colNameIdx]);
-    const rowDob = normalizeKey(row[colDobIdx]);
-    const rowObj = { rowIndex: i - 1, rowData: [...row] };
-
-    if (rowId) existingRowsMapById.set(rowId, rowObj);
-    if (rowName) existingRowsMapByNameDob.set(rowName + "_" + rowDob, rowObj);
-    allRows.push([...row]);
-  }
-
-  let updatedCount = 0;
-  let insertedCount = 0;
-  let preservedLinksCount = 0;
-
-  incomingPatients.forEach(p => {
-    const pId = normalizeKey(p.id || p.Ma_BN || "");
-    const pName = normalizeKey(p.name || p.Ho_Ten || "");
-    const pDob = normalizeKey(p.dob || p.Ngay_Sinh || p.birthYear || "");
-    const incomingLink = (p.imageFolderUrl || p.driveUrl || p.Link_Drive_Anh || "").toString().trim();
-
-    // Kiểm tra xem bệnh nhân đã tồn tại trên Sheet hay chưa
-    let existingObj = null;
-    if (pId && existingRowsMapById.has(pId)) {
-      existingObj = existingRowsMapById.get(pId);
-    } else if (pName && existingRowsMapByNameDob.has(pName + "_" + pDob)) {
-      existingObj = existingRowsMapByNameDob.get(pName + "_" + pDob);
-    }
-
-    if (existingObj) {
-      // ------------------------------------------------------------------------
-      // TRƯỜNG HỢP 1: BỆNH NHÂN ĐÃ TỒN TẠI -> THỰC HIỆN SMART UPDATE
-      // ------------------------------------------------------------------------
-      const targetRow = allRows[existingObj.rowIndex];
-      const existingDriveLink = (targetRow[colLinkIdx] || "").toString().trim();
-
-      // NGUYÊN TẮC BẢO TOÀN LINK DRIVE:
-      // - Nếu trên Sheets đã có link và dữ liệu mới gửi lên bị trống -> GIỮ NGUYÊN LINK TRÊN SHEETS!
-      // - Chỉ cập nhật link mới nếu dữ liệu mới THỰC SỰ có đường dẫn hợp lệ.
-      let finalLink = existingDriveLink;
-      if (incomingLink && incomingLink !== "") {
-        finalLink = incomingLink;
-      } else if (existingDriveLink !== "") {
-        preservedLinksCount++;
-      }
-
-      // Cập nhật thông tin y khoa và cá nhân mới
-      setCellByHeader(targetRow, headers, ["Ho_Ten", "Họ và tên"], p.name || p.Ho_Ten || targetRow[colNameIdx]);
-      setCellByHeader(targetRow, headers, ["Ngay_Sinh", "Năm sinh"], p.dob || p.Ngay_Sinh || targetRow[colDobIdx]);
-      setCellByHeader(targetRow, headers, ["Gioi_Tinh", "Giới tính"], p.gender || p.Gioi_Tinh || "");
-      setCellByHeader(targetRow, headers, ["SDT", "Điện thoại"], "'" + (p.phone || p.SDT || ""));
-      setCellByHeader(targetRow, headers, ["SDT_Nguoi_Than"], "'" + (p.relativePhone || p.SDT_Nguoi_Than || ""));
-      setCellByHeader(targetRow, headers, ["Can_Nang_Ban_Dau"], p.initialWeight || p.Can_Nang_Ban_Dau || "");
-      setCellByHeader(targetRow, headers, ["Nghe_Nghiep"], p.occupation || p.Nghe_Nghiep || "");
-      setCellByHeader(targetRow, headers, ["Dia_Chi", "Địa chỉ"], p.address || p.Dia_Chi || "");
-      setCellByHeader(targetRow, headers, ["Tien_Su_Benh", "Tiền sử bệnh"], p.medicalHistory || p.Tien_Su_Benh || "");
-      setCellByHeader(targetRow, headers, ["Di_Ung_Thuoc"], p.allergies || p.Di_Ung_Thuoc || "");
-      setCellByHeader(targetRow, headers, ["CLS_Da_Lam"], p.pastParaclinical || p.CLS_Da_Lam || "");
-      setCellByHeader(targetRow, headers, ["Thuoc_Da_Dung"], p.pastMedications || p.Thuoc_Da_Dung || "");
-      setCellByHeader(targetRow, headers, ["Link_Drive_Anh", "Link Google Drive"], finalLink);
-      setCellByHeader(targetRow, headers, ["Trang_Thai_Ho_So"], p.isArchived ? "Đã khỏi (Lưu trữ)" : (p.Trang_Thai_Ho_So || "Đang điều trị"));
-
-      updatedCount++;
-    } else {
-      // ------------------------------------------------------------------------
-      // TRƯỜNG HỢP 2: BỆNH NHÂN MỚI HOÀN TOÀN -> TẠO DÒNG MỚI (INSERT)
-      // ------------------------------------------------------------------------
-      const newRow = new Array(headers.length).fill("");
-      const generatedId = (p.id || p.Ma_BN) ? (p.id || p.Ma_BN) : ("BN" + String(allRows.length + 1).padStart(4, "0"));
-
-      setCellByHeader(newRow, headers, ["Ma_BN", "Ma BN", "id"], generatedId);
-      setCellByHeader(newRow, headers, ["Ho_Ten", "Họ và tên"], p.name || p.Ho_Ten || "");
-      setCellByHeader(newRow, headers, ["Ngay_Sinh", "Năm sinh"], p.dob || p.Ngay_Sinh || "");
-      setCellByHeader(newRow, headers, ["Gioi_Tinh", "Giới tính"], p.gender || p.Gioi_Tinh || "");
-      setCellByHeader(newRow, headers, ["SDT", "Điện thoại"], "'" + (p.phone || p.SDT || ""));
-      setCellByHeader(newRow, headers, ["SDT_Nguoi_Than"], "'" + (p.relativePhone || p.SDT_Nguoi_Than || ""));
-      setCellByHeader(newRow, headers, ["Can_Nang_Ban_Dau"], p.initialWeight || p.Can_Nang_Ban_Dau || "");
-      setCellByHeader(newRow, headers, ["Nghe_Nghiep"], p.occupation || p.Nghe_Nghiep || "");
-      setCellByHeader(newRow, headers, ["Dia_Chi", "Địa chỉ"], p.address || p.Dia_Chi || "");
-      setCellByHeader(newRow, headers, ["Tien_Su_Benh", "Tiền sử bệnh"], p.medicalHistory || p.Tien_Su_Benh || "");
-      setCellByHeader(newRow, headers, ["Di_Ung_Thuoc"], p.allergies || p.Di_Ung_Thuoc || "");
-      setCellByHeader(newRow, headers, ["CLS_Da_Lam"], p.pastParaclinical || p.CLS_Da_Lam || "");
-      setCellByHeader(newRow, headers, ["Thuoc_Da_Dung"], p.pastMedications || p.Thuoc_Da_Dung || "");
-      setCellByHeader(newRow, headers, ["Link_Drive_Anh", "Link Google Drive"], incomingLink);
-      setCellByHeader(newRow, headers, ["Trang_Thai_Ho_So"], p.isArchived ? "Đã khỏi (Lưu trữ)" : "Đang điều trị");
-      setCellByHeader(newRow, headers, ["Ngay_Tao", "Thời gian cập nhật"], p.createdAt || Utilities.formatDate(new Date(), "GMT+7", "yyyy-MM-dd"));
-
-      allRows.push(newRow);
-
-      const newObj = { rowIndex: allRows.length - 1, rowData: newRow };
-      existingRowsMapById.set(normalizeKey(generatedId), newObj);
-      if (pName) existingRowsMapByNameDob.set(pName + "_" + pDob, newObj);
-
-      insertedCount++;
-    }
-  });
-
-  // Ghi đồng loạt toàn bộ dữ liệu vào Sheet với 1 thao tác duy nhất (Tránh timeout)
-  if (allRows.length > 0) {
-    sheet.getRange(2, 1, allRows.length, headers.length).setValues(allRows);
-  }
-
-  return {
-    updatedCount: updatedCount,
-    insertedCount: insertedCount,
-    preservedLinksCount: preservedLinksCount,
-    totalRows: allRows.length
-  };
-}
-
-// ==============================================================================
-// 5. HỢP NHẤT LƯỢT KHÁM & ĐƠN THUỐC (Upsert theo Ma_Luot_Kham)
-// ==============================================================================
-function smartMergeVisits(sLK, sDT, sDV, incomingVisits) {
-  if (!incomingVisits || incomingVisits.length === 0) {
-    return { processedVisits: 0 };
-  }
-
-  const lkData = sLK.getDataRange().getValues();
-  const lkHeaders = lkData[0].map(h => (h || "").toString().trim());
-  const colVisitIdIdx = findColIndex(lkHeaders, ["Ma_Luot_Kham", "visitId"]);
-
-  const existingVisitMap = new Map();
-  const allVisits = [];
-  for (let i = 1; i < lkData.length; i++) {
-    const vId = normalizeKey(lkData[i][colVisitIdIdx]);
-    if (vId) existingVisitMap.set(vId, i - 1);
-    allVisits.push([...lkData[i]]);
-  }
-
-  const dtRowsToAppend = [];
-  const dvRowsToAppend = [];
-
-  incomingVisits.forEach(v => {
-    const vId = normalizeKey(v.visitId || v.Ma_Luot_Kham || "");
-    const vRow = new Array(lkHeaders.length).fill("");
-
-    setCellByHeader(vRow, lkHeaders, ["Ma_Luot_Kham", "visitId"], v.visitId || v.Ma_Luot_Kham || "");
-    setCellByHeader(vRow, lkHeaders, ["Ma_BN", "patientId"], v.patientId || v.Ma_BN || "");
-    setCellByHeader(vRow, lkHeaders, ["Ngay_Kham", "visitDate"], v.visitDate || v.Ngay_Kham || "");
-    setCellByHeader(vRow, lkHeaders, ["Chieu_Cao", "height"], v.height || v.Chieu_Cao || "");
-    setCellByHeader(vRow, lkHeaders, ["Can_Nang", "weight"], v.weight || v.Can_Nang || "");
-    setCellByHeader(vRow, lkHeaders, ["Huyet_Ap", "bp"], v.bp || v.Huyet_Ap || "");
-    setCellByHeader(vRow, lkHeaders, ["Mach", "pulse"], v.pulse || v.Mach || "");
-    setCellByHeader(vRow, lkHeaders, ["Trieu_Chung", "symptoms"], v.symptoms || v.Trieu_Chung || "");
-    setCellByHeader(vRow, lkHeaders, ["Chan_Doan", "diagnosis"], v.diagnosis || v.Chan_Doan || "");
-    setCellByHeader(vRow, lkHeaders, ["Chuyen_Khoa", "diseaseCategory"], v.diseaseCategory || v.Chuyen_Khoa || "");
-    setCellByHeader(vRow, lkHeaders, ["Hen_Tai_Kham", "followUpDate"], v.followUpDate || v.Hen_Tai_Kham || "");
-    setCellByHeader(vRow, lkHeaders, ["Loi_Dan", "doctorNotes"], v.doctorNotes || v.Loi_Dan || "");
-    setCellByHeader(vRow, lkHeaders, ["Dieu_Tri_Nguyen_Van"], v.verbatimTreatment || v.Dieu_Tri_Nguyen_Van || "");
-    setCellByHeader(vRow, lkHeaders, ["Cong_Kham", "consultationFee"], v.consultationFee || v.Cong_Kham || 0);
-    setCellByHeader(vRow, lkHeaders, ["Trang_Thai_Thu", "paymentStatus"], v.paymentStatus || v.Trang_Thai_Thu || "Đã thu");
-
-    if (vId && existingVisitMap.has(vId)) {
-      allVisits[existingVisitMap.get(vId)] = vRow;
-    } else {
-      allVisits.push(vRow);
-      existingVisitMap.set(vId, allVisits.length - 1);
-    }
-
-    // Thu thập đơn thuốc chi tiết
-    if (v.prescriptions && Array.isArray(v.prescriptions)) {
-      v.prescriptions.forEach(d => {
-        dtRowsToAppend.push([
-          v.visitId || v.Ma_Luot_Kham,
-          v.patientId || v.Ma_BN,
-          d.drugName || d.Ten_Thuoc || "",
-          d.unit || d.DVT || "Viên",
-          d.morning || d.Sang || 0,
-          d.noon || d.Trua || 0,
-          d.afternoon || d.Chieu || 0,
-          d.evening || d.Toi || 0,
-          d.days || d.So_Ngay || 1,
-          d.price || d.Don_Gia || 0,
-          d.note || d.Cach_Dung || ""
-        ]);
-      });
-    }
-
-    // Thu thập xét nghiệm chi tiết
-    if (v.labs && Array.isArray(v.labs)) {
-      v.labs.forEach(l => {
-        dvRowsToAppend.push([
-          v.visitId || v.Ma_Luot_Kham,
-          v.patientId || v.Ma_BN,
-          l.type || l.Loai_Dich_Vu || "Xét nghiệm",
-          l.name || l.Ten_Chi_Dinh || "",
-          l.result || l.Ket_Qua || "",
-          l.cost || l.Chi_Phi || 0,
-          l.status || l.Trang_Thai || "Đã có KQ"
-        ]);
-      });
-    }
-  });
-
-  if (allVisits.length > 0) {
-    sLK.getRange(2, 1, allVisits.length, lkHeaders.length).setValues(allVisits);
-  }
-  if (dtRowsToAppend.length > 0) {
-    sDT.getRange(sDT.getLastRow() + 1, 1, dtRowsToAppend.length, HEADERS_DON_THUOC.length).setValues(dtRowsToAppend);
-  }
-  if (dvRowsToAppend.length > 0) {
-    sDV.getRange(sDV.getLastRow() + 1, 1, dvRowsToAppend.length, HEADERS_XET_NGHIEM.length).setValues(dvRowsToAppend);
-  }
-
-  return { processedVisits: incomingVisits.length };
-}
-
-// ==============================================================================
-// 6. QUÉT TỰ ĐỘNG THƯ MỤC GOOGLE DRIVE ĐỂ GẮN LINK ẢNH XÉT NGHIỆM
-// ==============================================================================
-function quetVaCapNhatLinkDriveAnh() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ensureSheetWithHeaders(ss, "Benh_Nhan", HEADERS_BENH_NHAN);
-
-  let rootFolder;
-  try {
-    rootFolder = DriveApp.getFolderById(ROOT_IMAGE_FOLDER_ID);
-  } catch (err) {
-    SpreadsheetApp.getUi().alert("Lỗi truy cập thư mục Google Drive: " + err.message);
-    return;
-  }
-
-  const patientFolders = rootFolder.getFolders();
-  const driveMap = {};
-
-  while (patientFolders.hasNext()) {
-    const f = patientFolders.next();
-    const folderName = f.getName().trim();
-    driveMap[folderName.toLowerCase()] = {
-      rawName: folderName,
-      url: f.getUrl()
-    };
-  }
-
-  const data = sheet.getDataRange().getValues();
-  const headers = data[0].map(h => (h || "").toString().trim());
-  const colNameIdx = findColIndex(headers, ["Ho_Ten", "Họ và tên"]);
-  const colLinkIdx = findColIndex(headers, ["Link_Drive_Anh", "Link Google Drive"]);
-
-  const matchedNames = new Set();
-  let updatedCount = 0;
-  let preservedCount = 0;
-
-  for (let i = 1; i < data.length; i++) {
-    const pName = (data[i][colNameIdx] || "").toString().trim().toLowerCase();
-    const currentLink = (data[i][colLinkIdx] || "").toString().trim();
-
-    if (pName && driveMap[pName]) {
-      // Cập nhật link mới từ Drive folder
-      sheet.getRange(i + 1, colLinkIdx + 1).setValue(driveMap[pName].url);
-      matchedNames.add(pName);
-      updatedCount++;
-    } else if (currentLink !== "") {
-      preservedCount++;
-    }
-  }
-
-  SpreadsheetApp.getUi().alert(
-    "ĐÃ HOÀN TẤT ĐỒNG BỘ ẢNH GOOGLE DRIVE!\n\n" +
-    "- Đã gắn link ảnh Drive cho: " + updatedCount + " bệnh nhân.\n" +
-    "- Số bệnh nhân giữ nguyên link cũ: " + preservedCount + "\n" +
-    "- Tổng số thư mục đã quét trong Drive: " + Object.keys(driveMap).length
-  );
-}
-
-// ==============================================================================
-// 7. CÁC HÀM TIỆN ÍCH HỖ TRỢ
-// ==============================================================================
-function ensureSheetWithHeaders(ss, name, headers) {
-  let sheet = ss.getSheetByName(name);
-  if (!sheet) {
-    sheet = ss.insertSheet(name);
-    sheet.appendRow(headers);
-    sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold").setBackground("#EBF2FB");
-    sheet.setFrozenRows(1);
-  } else if (sheet.getLastRow() === 0) {
-    sheet.appendRow(headers);
-    sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold").setBackground("#EBF2FB");
-    sheet.setFrozenRows(1);
-  }
-  return sheet;
-}
-
-function readSheetAsJson(ss, name, fallbackHeaders) {
-  const sheet = ss.getSheetByName(name);
-  if (!sheet || sheet.getLastRow() < 2) return [];
-
-  const data = sheet.getDataRange().getValues();
-  const headers = data[0].map(h => (h || "").toString().trim());
-  const rows = data.slice(1);
-
-  return rows.map(row => {
-    const item = {};
-    headers.forEach((h, idx) => {
-      item[h] = row[idx];
-    });
-    return item;
-  });
-}
-
-function findColIndex(headers, possibleNames) {
-  for (let i = 0; i < headers.length; i++) {
-    const col = headers[i].toLowerCase();
-    for (let j = 0; j < possibleNames.length; j++) {
-      if (col === possibleNames[j].toLowerCase()) return i;
-    }
-  }
-  return -1;
-}
-
-function setCellByHeader(row, headers, possibleNames, value) {
-  const idx = findColIndex(headers, possibleNames);
-  if (idx !== -1) {
-    row[idx] = value;
-  }
-}
-
-function normalizeKey(str) {
-  if (!str) return "";
-  return str.toString().trim().toLowerCase().replace(/\s+/g, " ");
-}
-
-function jsonResponse(data, callback) {
-  if (callback) {
-    return ContentService.createTextOutput(callback + '(' + JSON.stringify(data) + ');')
-      .setMimeType(ContentService.MimeType.JAVASCRIPT);
-  }
-  return ContentService.createTextOutput(JSON.stringify(data))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-
-function khoiTaoCauTrucSheets() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  ensureSheetWithHeaders(ss, "Benh_Nhan", HEADERS_BENH_NHAN);
-  ensureSheetWithHeaders(ss, "Luot_Kham", HEADERS_LUOT_KHAM);
-  ensureSheetWithHeaders(ss, "Don_Thuoc_Chi_Tiet", HEADERS_DON_THUOC);
-  ensureSheetWithHeaders(ss, "Xet_Nghiem_Chi_Phi", HEADERS_XET_NGHIEM);
-  ensureSheetWithHeaders(ss, "Nhat_Ky_Su_Dung", HEADERS_NHAT_KY);
-  SpreadsheetApp.getUi().alert("Đã khởi tạo chuẩn 5 bảng dữ liệu cho MediCare Clinic Pro!");
-}
-`;
+  const appsScriptCode = "/**\n * ==============================================================================\n * HỆ THỐNG QUẢN LÝ PHÒNG KHÁM MEDICARE CLINIC PRO (v2.10)\n * Google Apps Script Web App API & Bảng Điều Khiển Tự Động Hóa (#ktskhoa365)\n * ==============================================================================\n * TÍNH NĂNG NỔI BẬT:\n * 1. SMART MERGE / UPSERT: Tự động cập nhật nếu đã có, thêm mới nếu chưa có.\n *    -> TUYỆT ĐỐI KHÔNG DÙNG sheet.clearContent() gây mất dữ liệu.\n * 2. BẢO TOÀN LINK GOOGLE DRIVE:\n *    -> Nếu trên Sheets đã có Link Drive ảnh xét nghiệm mà bản gửi lên bị trống,\n *       hệ thống giữ nguyên 100% link cũ quý giá của Bác sĩ!\n * 3. HỖ TRỢ ĐỌC/GHI 2 CHIỀU (doGet & doPost) tương thích Web App Vercel & script tiện ích.\n * 4. TÍCH HỢP QUÉT THƯ MỤC GOOGLE DRIVE TỰ ĐỘNG.\n * ==============================================================================\n */\n\n// Khóa bảo mật API bắt buộc (Chỉ ứng dụng MediCare Clinic Pro có khóa này mới được phép đồng bộ/đọc/ghi dữ liệu)\nconst API_SECRET_KEY = \"MEDICARE_SECURE_TOKEN_2026_HAO_CLINIC_998877\";\n\n// ID Thư mục gốc chứa ảnh cận lâm sàng/xét nghiệm bệnh nhân trên Google Drive\nconst ROOT_IMAGE_FOLDER_ID = \"18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4\";\n\n// Cấu trúc tiêu đề chuẩn cho các Sheets\nconst HEADERS_BENH_NHAN = [\n  \"Ma_BN\", \"Ho_Ten\", \"Ngay_Sinh\", \"Gioi_Tinh\", \"SDT\", \"SDT_Nguoi_Than\",\n  \"Can_Nang_Ban_Dau\", \"Nghe_Nghiep\", \"Dia_Chi\", \"Tien_Su_Benh\", \"Di_Ung_Thuoc\",\n  \"CLS_Da_Lam\", \"Thuoc_Da_Dung\", \"Link_Drive_Anh\", \"Trang_Thai_Ho_So\", \"Ngay_Tao\"\n];\n\nconst HEADERS_LUOT_KHAM = [\n  \"Ma_Luot_Kham\", \"Ma_BN\", \"Ngay_Kham\", \"Chieu_Cao\", \"Can_Nang\", \"Huyet_Ap\", \"Mach\",\n  \"Trieu_Chung\", \"Chan_Doan\", \"Chuyen_Khoa\", \"Hen_Tai_Kham\", \"Loi_Dan\",\n  \"Dieu_Tri_Nguyen_Van\", \"Cong_Kham\", \"Trang_Thai_Thu\"\n];\n\nconst HEADERS_DON_THUOC = [\n  \"Ma_Luot_Kham\", \"Ma_BN\", \"Ten_Thuoc\", \"DVT\", \"Sang\", \"Trua\", \"Chieu\", \"Toi\",\n  \"So_Ngay\", \"Don_Gia\", \"Cach_Dung\"\n];\n\nconst HEADERS_XET_NGHIEM = [\n  \"Ma_Luot_Kham\", \"Ma_BN\", \"Loai_Dich_Vu\", \"Ten_Chi_Dinh\", \"Ket_Qua\", \"Chi_Phi\", \"Trang_Thai\"\n];\n\nconst HEADERS_NHAT_KY = [\n  \"Thoi_Gian\", \"Ten_Bac_Si\", \"Ten_Phong_Kham\", \"So_Dien_Thoai\", \"Hanh_Dong\", \"So_Benh_Nhan\", \"Thiet_Bi\"\n];\n\n// ==============================================================================\n\n// ==============================================================================\n// 1.1 TỰ ĐỘNG TẠO BẢN SAO LƯU DỰ PHÒNG (SNAPSHOT BACKUP)\n// ==============================================================================\nfunction taoBanSaoLuuDuPhong() {\n  const ss = SpreadsheetApp.getActiveSpreadsheet();\n  const now = new Date();\n  const timeStr = Utilities.formatDate(now, Session.getScriptTimeZone() || \"GMT+7\", \"yyyyMMdd_HHmm\");\n  const backupPrefix = \"Backup_\" + timeStr;\n\n  let createdCount = 0;\n  const sheetsToBackup = [\"Benh_Nhan\", \"Luot_Kham\", \"Don_Thuoc_Chi_Tiet\"];\n  \n  sheetsToBackup.forEach(function(sheetName) {\n    const s = ss.getSheetByName(sheetName);\n    if (s && s.getLastRow() > 0) {\n      const copy = s.copyTo(ss);\n      copy.setName(sheetName.substring(0, 3) + \"_\" + backupPrefix);\n      copy.setTabColor(\"#7FA9DE\");\n      createdCount++;\n    }\n  });\n\n  var msgBackup = [\n    \"ĐÃ TẠO BẢN SAO LƯU DỰ PHÒNG AN TOÀN!\",\n    \"\",\n    \"- Mã bản sao lưu: \" + backupPrefix,\n    \"- Đã nhân bản \" + createdCount + \" bảng dữ liệu (Bệnh nhân, Lượt khám, Đơn thuốc).\",\n    \"- Toàn bộ dữ liệu của Bác sĩ đã được đóng băng an toàn thành các Sheet riêng biệt.\"\n  ].join(String.fromCharCode(10));\n  SpreadsheetApp.getUi().alert(msgBackup);\n}\n\n// 1. MENU TIỆN ÍCH TRÊN GOOGLE SHEETS\n// ==============================================================================\nfunction onOpen() {\n  const ui = SpreadsheetApp.getUi();\n  ui.createMenu(\"🏥 MediCare Clinic\")\n    .addItem(\"⚡ Quét & Gắn Link Drive Ảnh Bệnh Nhân\", \"quetVaCapNhatLinkDriveAnh\")\n    .addItem(\"📂 Mở Thư Mục Ảnh Gốc Trên Drive\", \"moThuMucAnhGoc\")\n    .addItem(\"🛡️ Tạo Bản Sao Lưu Dự Phòng Tức Thì (Snapshot Backup)\", \"taoBanSaoLuuDuPhong\")\n    .addSeparator()\n    .addItem(\"🔍 Khởi Tạo & Chuẩn Hóa Cấu Trúc Bảng\", \"khoiTaoCauTrucSheets\")\n    .addToUi();\n}\n\nfunction moThuMucAnhGoc() {\n  const html = '<script>window.open(\"https://drive.google.com/drive/folders/' + ROOT_IMAGE_FOLDER_ID + '\", \"_blank\");google.script.host.close();</script>';\n  SpreadsheetApp.getUi().showModalDialog(HtmlService.createHtmlOutput(html).setWidth(250).setHeight(60), \"Đang mở Drive...\");\n}\n\n// ==============================================================================\n// 2. HTTP GET API (Đọc dữ liệu từ Google Sheets về App hoặc Script)\n// ==============================================================================\nfunction doGet(e) {\n  const lock = LockService.getScriptLock();\n  lock.tryLock(15000);\n  const callback = (e && e.parameter && e.parameter.callback) ? e.parameter.callback : null;\n\n  try {\n    const ss = SpreadsheetApp.getActiveSpreadsheet();\n    const action = (e && e.parameter && e.parameter.action) ? e.parameter.action.toLowerCase() : \"read\";\n\n    \n    if (action === \"ping\" || action === \"health\") {\n      return jsonResponse({\n        status: \"success\",\n        message: \"MediCare Clinic API online và sẵn sàng kết nối!\",\n        doctorName: \"BSCK1. Tôn Thất Hào\",\n        specialty: \"Chuyên khoa Da liễu & Thẩm mỹ Da\",\n        version: \"2.11 - Secure Shield\",\n        timestamp: new Date().toISOString()\n      }, callback);\n    }\n\n    // Xác thực khóa bảo mật API_SECRET_KEY (Chống lộ thông tin bệnh nhân ra bên ngoài)\n    const clientKey = (e && e.parameter && (e.parameter.apiKey || e.parameter.key || e.parameter.token)) || \"\";\n    if (API_SECRET_KEY && clientKey !== API_SECRET_KEY) {\n      return jsonResponse({\n        status: \"error\",\n        code: 403,\n        message: \"Truy cập bị từ chối: Cần có Khóa bảo mật API_SECRET_KEY hợp lệ để đọc dữ liệu bệnh nhân!\"\n      }, callback);\n    }\n\n    // Đọc toàn bộ danh sách bệnh nhân, lượt khám, đơn thuốc\n    const patients = readSheetAsJson(ss, \"Benh_Nhan\", HEADERS_BENH_NHAN);\n    const visits = readSheetAsJson(ss, \"Luot_Kham\", HEADERS_LUOT_KHAM);\n    const prescriptions = readSheetAsJson(ss, \"Don_Thuoc_Chi_Tiet\", HEADERS_DON_THUOC);\n    const labs = readSheetAsJson(ss, \"Xet_Nghiem_Chi_Phi\", HEADERS_XET_NGHIEM);\n\n    return jsonResponse({\n      status: \"success\",\n      doctorName: \"BSCK1. Tôn Thất Hào\",\n      clinicName: \"Phòng khám Da liễu & Thẩm mỹ Da - BSCK1 Tôn Thất Hào\",\n      totalPatients: patients.length,\n      totalVisits: visits.length,\n      totalPrescriptions: prescriptions.length,\n      totalLabs: labs.length,\n      patients: patients,\n      visits: visits,\n      prescriptions: prescriptions,\n      labs: labs,\n      timestamp: new Date().toISOString()\n    }, callback);\n  } catch (err) {\n    return jsonResponse({ status: \"error\", message: err.toString() }, callback);\n  } finally {\n    lock.releaseLock();\n  }\n}\n\n// ==============================================================================\n// 3. HTTP POST API (Ghi và Hợp nhất dữ liệu thông minh - Smart Upsert)\n// ==============================================================================\nfunction doPost(e) {\n  const lock = LockService.getScriptLock();\n  // Khóa tối đa 30s để đảm bảo không xung đột khi nhiều thiết bị đồng bộ cùng lúc\n  const hasLock = lock.tryLock(30000);\n  if (!hasLock) {\n    return jsonResponse({ status: \"error\", message: \"Hệ thống đang bận xử lý một lượt đồng bộ khác, vui lòng thử lại sau 5 giây.\" });\n  }\n\n  try {\n    const ss = SpreadsheetApp.getActiveSpreadsheet();\n    let payload = {};\n\n    if (e && e.postData && e.postData.contents) {\n      payload = JSON.parse(e.postData.contents);\n    } else if (e && e.parameter && e.parameter.data) {\n      payload = JSON.parse(e.parameter.data);\n    }\n\n    \n    const action = (payload.action || \"\").toUpperCase();\n\n    // 0. BẢO MẬT: XÁC THỰC KHÓA API_SECRET_KEY\n    const clientKey = payload.apiKey || (e && e.parameter && e.parameter.apiKey) || \"\";\n    if (API_SECRET_KEY && clientKey !== API_SECRET_KEY) {\n      return jsonResponse({\n        status: \"error\",\n        code: 403,\n        message: \"Truy cập bị từ chối: Khóa bảo mật API_SECRET_KEY không hợp lệ hoặc bị thiếu!\"\n      });\n    }\n\n    // 0.1 BẢO MẬT: CHẶN TOÀN BỘ CÁC LỆNH XÓA DỮ LIỆU HÀNG LOẠT\n    if (action === \"CLEAR\" || action === \"DELETE\" || action === \"DROP\" || action === \"TRUNCATE\") {\n      return jsonResponse({\n        status: \"error\",\n        code: 400,\n        message: \"Thao tác xóa hàng loạt bị cấm tuyệt đối vì lý do an toàn dữ liệu phòng khám!\"\n      });\n    }\n\n\n    // --------------------------------------------------------------------------\n    // A. ĐỒNG BỘ THÔNG MINH BẢO TOÀN LINK DRIVE (SYNC_ALL / UPSERT / MERGE)\n    // --------------------------------------------------------------------------\n    if (action === \"SYNC_ALL\" || action === \"UPSERT\" || action === \"MERGE\" || action === \"WRITE\") {\n      const incomingPatients = payload.patients || [];\n      const incomingVisits = payload.visits || [];\n      const incomingUsageLogs = payload.usageLogs || [];\n\n      // 1. XỬ LÝ SHEET BENH_NHAN: SMART UPSERT DỰA TRÊN MA_BN & HO_TEN+NGAY_SINH\n      const sBN = ensureSheetWithHeaders(ss, \"Benh_Nhan\", HEADERS_BENH_NHAN);\n      const bnResult = smartMergePatients(sBN, incomingPatients);\n\n      // 2. XỬ LÝ LƯỢT KHÁM, ĐƠN THUỐC, XÉT NGHIỆM\n      const sLK = ensureSheetWithHeaders(ss, \"Luot_Kham\", HEADERS_LUOT_KHAM);\n      const sDT = ensureSheetWithHeaders(ss, \"Don_Thuoc_Chi_Tiet\", HEADERS_DON_THUOC);\n      const sDV = ensureSheetWithHeaders(ss, \"Xet_Nghiem_Chi_Phi\", HEADERS_XET_NGHIEM);\n      const visitResult = smartMergeVisits(sLK, sDT, sDV, incomingVisits);\n\n      // 3. GHI NHẬT KÝ ĐỒNG BỘ NẾU CÓ\n      if (incomingUsageLogs.length > 0) {\n        const sNK = ensureSheetWithHeaders(ss, \"Nhat_Ky_Su_Dung\", HEADERS_NHAT_KY);\n        incomingUsageLogs.forEach(log => {\n          sNK.appendRow([\n            log.time || new Date().toLocaleString(\"vi-VN\"),\n            log.doctorName || \"BSCK1 Tôn Thất Hảo\",\n            log.clinicName || \"Phòng khám MediCare Clinic\",\n            \"'\" + (log.phone || \"\"),\n            log.action || \"Đồng bộ dữ liệu\",\n            log.patientCount || incomingPatients.length,\n            log.device || \"Web Vercel\"\n          ]);\n        });\n      }\n\n      return jsonResponse({\n        status: \"success\",\n        message: \"Hợp nhất dữ liệu thông minh thành công! Bảo toàn toàn bộ Link Drive ảnh xét nghiệm.\",\n        details: {\n          patientsUpdated: bnResult.updatedCount,\n          patientsInserted: bnResult.insertedCount,\n          driveLinksPreserved: bnResult.preservedLinksCount,\n          totalPatientsInSheet: bnResult.totalRows,\n          visitsProcessed: visitResult.processedVisits\n        },\n        timestamp: new Date().toISOString()\n      });\n    }\n\n    // --------------------------------------------------------------------------\n    // A2. GHI TỨC THÌ 1 PHIẾU KHÁM & ĐƠN THUỐC (SAVE_VISIT / GHI_PHIEU)\n    // --------------------------------------------------------------------------\n    if (action === \"SAVE_VISIT\" || action === \"GHI_PHIEU\") {\n      const patient = payload.patient;\n      const visit = payload.visit;\n      if (!patient || !visit) {\n        return jsonResponse({ status: \"error\", message: \"Thiếu thông tin bệnh nhân hoặc lượt khám\" });\n      }\n\n      const sBN = ensureSheetWithHeaders(ss, \"Benh_Nhan\", HEADERS_BENH_NHAN);\n      const bnResult = smartMergePatients(sBN, [patient]);\n\n      const sLK = ensureSheetWithHeaders(ss, \"Luot_Kham\", HEADERS_LUOT_KHAM);\n      const sDT = ensureSheetWithHeaders(ss, \"Don_Thuoc_Chi_Tiet\", HEADERS_DON_THUOC);\n      const sDV = ensureSheetWithHeaders(ss, \"Xet_Nghiem_Chi_Phi\", HEADERS_XET_NGHIEM);\n      const visitResult = smartMergeVisits(sLK, sDT, sDV, [visit]);\n\n      return jsonResponse({\n        status: \"success\",\n        message: \"Đã ghi nhận phiếu khám bệnh & đơn thuốc thành công vào Google Sheets!\",\n        patientName: patient.name,\n        visitId: visit.visitId,\n        timestamp: new Date().toISOString()\n      });\n    }\n\n    // --------------------------------------------------------------------------\n    // B. GHI NHẬT KÝ TRUY CẬP (LOG_ACCESS)\n    // --------------------------------------------------------------------------\n    if (action === \"LOG_ACCESS\" && payload.log) {\n      const sNK = ensureSheetWithHeaders(ss, \"Nhat_Ky_Su_Dung\", HEADERS_NHAT_KY);\n      const l = payload.log;\n      sNK.appendRow([\n        l.time || new Date().toLocaleString(\"vi-VN\"),\n        l.doctorName || \"\",\n        l.clinicName || \"\",\n        \"'\" + (l.phone || \"\"),\n        l.action || \"Truy cập ứng dụng\",\n        l.patientCount || 0,\n        l.device || \"Browser\"\n      ]);\n      return jsonResponse({ status: \"success\", message: \"Đã lưu nhật ký\" });\n    }\n\n    return jsonResponse({ status: \"error\", message: \"Hành động (action) không hợp lệ: \" + action });\n\n  } catch (err) {\n    return jsonResponse({ status: \"error\", message: err.toString() });\n  } finally {\n    lock.releaseLock();\n  }\n}\n\n// ==============================================================================\n// 4. THUẬT TOÁN HỢP NHẤT THÔNG MINH BẢO TOÀN LINK DRIVE (CORE LOGIC)\n// ==============================================================================\nfunction smartMergePatients(sheet, incomingPatients) {\n  const data = sheet.getDataRange().getValues();\n  const headers = data[0].map(h => (h || \"\").toString().trim());\n\n  // Tìm chỉ mục các cột quan trọng\n  const colIdIdx = findColIndex(headers, [\"Ma_BN\", \"Ma BN\", \"id\"]);\n  const colNameIdx = findColIndex(headers, [\"Ho_Ten\", \"Họ và tên\", \"HoTen\", \"name\"]);\n  const colDobIdx = findColIndex(headers, [\"Ngay_Sinh\", \"Năm sinh\", \"dob\", \"birthYear\"]);\n  const colLinkIdx = findColIndex(headers, [\"Link_Drive_Anh\", \"Link Google Drive\", \"driveUrl\", \"imageFolderUrl\"]);\n\n  // Nạp toàn bộ bệnh nhân hiện có trên Google Sheets vào bộ nhớ đệm\n  // Map 1: Theo Mã BN (ví dụ: 'bn0001')\n  // Map 2: Theo Tên + Năm sinh chuẩn hóa (dùng khi Mã BN bị lệch)\n  const existingRowsMapById = new Map();\n  const existingRowsMapByNameDob = new Map();\n\n  const allRows = [];\n  for (let i = 1; i < data.length; i++) {\n    const row = data[i];\n    const rowId = normalizeKey(row[colIdIdx]);\n    const rowName = normalizeKey(row[colNameIdx]);\n    const rowDob = normalizeKey(row[colDobIdx]);\n    const rowObj = { rowIndex: i - 1, rowData: [...row] };\n\n    if (rowId) existingRowsMapById.set(rowId, rowObj);\n    if (rowName) existingRowsMapByNameDob.set(rowName + \"_\" + rowDob, rowObj);\n    allRows.push([...row]);\n  }\n\n  let updatedCount = 0;\n  let insertedCount = 0;\n  let preservedLinksCount = 0;\n\n  incomingPatients.forEach(p => {\n    const pId = normalizeKey(p.id || p.Ma_BN || \"\");\n    const pName = normalizeKey(p.name || p.Ho_Ten || \"\");\n    const pDob = normalizeKey(p.dob || p.Ngay_Sinh || p.birthYear || \"\");\n    const incomingLink = (p.imageFolderUrl || p.driveUrl || p.Link_Drive_Anh || \"\").toString().trim();\n\n    // Kiểm tra xem bệnh nhân đã tồn tại trên Sheet hay chưa\n    let existingObj = null;\n    if (pId && existingRowsMapById.has(pId)) {\n      existingObj = existingRowsMapById.get(pId);\n    } else if (pName && existingRowsMapByNameDob.has(pName + \"_\" + pDob)) {\n      existingObj = existingRowsMapByNameDob.get(pName + \"_\" + pDob);\n    }\n\n    if (existingObj) {\n      // ------------------------------------------------------------------------\n      // TRƯỜNG HỢP 1: BỆNH NHÂN ĐÃ TỒN TẠI -> THỰC HIỆN SMART UPDATE\n      // ------------------------------------------------------------------------\n      const targetRow = allRows[existingObj.rowIndex];\n      const existingDriveLink = (targetRow[colLinkIdx] || \"\").toString().trim();\n\n      // NGUYÊN TẮC BẢO TOÀN LINK DRIVE:\n      // - Nếu trên Sheets đã có link và dữ liệu mới gửi lên bị trống -> GIỮ NGUYÊN LINK TRÊN SHEETS!\n      // - Chỉ cập nhật link mới nếu dữ liệu mới THỰC SỰ có đường dẫn hợp lệ.\n      let finalLink = existingDriveLink;\n      if (incomingLink && incomingLink !== \"\") {\n        finalLink = incomingLink;\n      } else if (existingDriveLink !== \"\") {\n        preservedLinksCount++;\n      }\n\n      // Cập nhật thông tin y khoa và cá nhân mới\n      setCellByHeader(targetRow, headers, [\"Ho_Ten\", \"Họ và tên\"], p.name || p.Ho_Ten || targetRow[colNameIdx]);\n      setCellByHeader(targetRow, headers, [\"Ngay_Sinh\", \"Năm sinh\"], p.dob || p.Ngay_Sinh || targetRow[colDobIdx]);\n      setCellByHeader(targetRow, headers, [\"Gioi_Tinh\", \"Giới tính\"], p.gender || p.Gioi_Tinh || \"\");\n      setCellByHeader(targetRow, headers, [\"SDT\", \"Điện thoại\"], \"'\" + (p.phone || p.SDT || \"\"));\n      setCellByHeader(targetRow, headers, [\"SDT_Nguoi_Than\"], \"'\" + (p.relativePhone || p.SDT_Nguoi_Than || \"\"));\n      setCellByHeader(targetRow, headers, [\"Can_Nang_Ban_Dau\"], p.initialWeight || p.Can_Nang_Ban_Dau || \"\");\n      setCellByHeader(targetRow, headers, [\"Nghe_Nghiep\"], p.occupation || p.Nghe_Nghiep || \"\");\n      setCellByHeader(targetRow, headers, [\"Dia_Chi\", \"Địa chỉ\"], p.address || p.Dia_Chi || \"\");\n      setCellByHeader(targetRow, headers, [\"Tien_Su_Benh\", \"Tiền sử bệnh\"], p.medicalHistory || p.Tien_Su_Benh || \"\");\n      setCellByHeader(targetRow, headers, [\"Di_Ung_Thuoc\"], p.allergies || p.Di_Ung_Thuoc || \"\");\n      setCellByHeader(targetRow, headers, [\"CLS_Da_Lam\"], p.pastParaclinical || p.CLS_Da_Lam || \"\");\n      setCellByHeader(targetRow, headers, [\"Thuoc_Da_Dung\"], p.pastMedications || p.Thuoc_Da_Dung || \"\");\n      setCellByHeader(targetRow, headers, [\"Link_Drive_Anh\", \"Link Google Drive\"], finalLink);\n      setCellByHeader(targetRow, headers, [\"Trang_Thai_Ho_So\"], p.isArchived ? \"Đã khỏi (Lưu trữ)\" : (p.Trang_Thai_Ho_So || \"Đang điều trị\"));\n\n      updatedCount++;\n    } else {\n      // ------------------------------------------------------------------------\n      // TRƯỜNG HỢP 2: BỆNH NHÂN MỚI HOÀN TOÀN -> TẠO DÒNG MỚI (INSERT)\n      // ------------------------------------------------------------------------\n      const newRow = new Array(headers.length).fill(\"\");\n      const generatedId = (p.id || p.Ma_BN) ? (p.id || p.Ma_BN) : (\"BN\" + String(allRows.length + 1).padStart(4, \"0\"));\n\n      setCellByHeader(newRow, headers, [\"Ma_BN\", \"Ma BN\", \"id\"], generatedId);\n      setCellByHeader(newRow, headers, [\"Ho_Ten\", \"Họ và tên\"], p.name || p.Ho_Ten || \"\");\n      setCellByHeader(newRow, headers, [\"Ngay_Sinh\", \"Năm sinh\"], p.dob || p.Ngay_Sinh || \"\");\n      setCellByHeader(newRow, headers, [\"Gioi_Tinh\", \"Giới tính\"], p.gender || p.Gioi_Tinh || \"\");\n      setCellByHeader(newRow, headers, [\"SDT\", \"Điện thoại\"], \"'\" + (p.phone || p.SDT || \"\"));\n      setCellByHeader(newRow, headers, [\"SDT_Nguoi_Than\"], \"'\" + (p.relativePhone || p.SDT_Nguoi_Than || \"\"));\n      setCellByHeader(newRow, headers, [\"Can_Nang_Ban_Dau\"], p.initialWeight || p.Can_Nang_Ban_Dau || \"\");\n      setCellByHeader(newRow, headers, [\"Nghe_Nghiep\"], p.occupation || p.Nghe_Nghiep || \"\");\n      setCellByHeader(newRow, headers, [\"Dia_Chi\", \"Địa chỉ\"], p.address || p.Dia_Chi || \"\");\n      setCellByHeader(newRow, headers, [\"Tien_Su_Benh\", \"Tiền sử bệnh\"], p.medicalHistory || p.Tien_Su_Benh || \"\");\n      setCellByHeader(newRow, headers, [\"Di_Ung_Thuoc\"], p.allergies || p.Di_Ung_Thuoc || \"\");\n      setCellByHeader(newRow, headers, [\"CLS_Da_Lam\"], p.pastParaclinical || p.CLS_Da_Lam || \"\");\n      setCellByHeader(newRow, headers, [\"Thuoc_Da_Dung\"], p.pastMedications || p.Thuoc_Da_Dung || \"\");\n      setCellByHeader(newRow, headers, [\"Link_Drive_Anh\", \"Link Google Drive\"], incomingLink);\n      setCellByHeader(newRow, headers, [\"Trang_Thai_Ho_So\"], p.isArchived ? \"Đã khỏi (Lưu trữ)\" : \"Đang điều trị\");\n      setCellByHeader(newRow, headers, [\"Ngay_Tao\", \"Thời gian cập nhật\"], p.createdAt || Utilities.formatDate(new Date(), \"GMT+7\", \"yyyy-MM-dd\"));\n\n      allRows.push(newRow);\n\n      const newObj = { rowIndex: allRows.length - 1, rowData: newRow };\n      existingRowsMapById.set(normalizeKey(generatedId), newObj);\n      if (pName) existingRowsMapByNameDob.set(pName + \"_\" + pDob, newObj);\n\n      insertedCount++;\n    }\n  });\n\n  // Ghi đồng loạt toàn bộ dữ liệu vào Sheet với 1 thao tác duy nhất (Tránh timeout)\n  if (allRows.length > 0) {\n    sheet.getRange(2, 1, allRows.length, headers.length).setValues(allRows);\n  }\n\n  return {\n    updatedCount: updatedCount,\n    insertedCount: insertedCount,\n    preservedLinksCount: preservedLinksCount,\n    totalRows: allRows.length\n  };\n}\n\n// ==============================================================================\n// 5. HỢP NHẤT LƯỢT KHÁM & ĐƠN THUỐC (Upsert theo Ma_Luot_Kham)\n// ==============================================================================\nfunction smartMergeVisits(sLK, sDT, sDV, incomingVisits) {\n  if (!incomingVisits || incomingVisits.length === 0) {\n    return { processedVisits: 0 };\n  }\n\n  const lkData = sLK.getDataRange().getValues();\n  const lkHeaders = lkData[0].map(h => (h || \"\").toString().trim());\n  const colVisitIdIdx = findColIndex(lkHeaders, [\"Ma_Luot_Kham\", \"visitId\"]);\n\n  const existingVisitMap = new Map();\n  const allVisits = [];\n  for (let i = 1; i < lkData.length; i++) {\n    const vId = normalizeKey(lkData[i][colVisitIdIdx]);\n    if (vId) existingVisitMap.set(vId, i - 1);\n    allVisits.push([...lkData[i]]);\n  }\n\n  const dtRowsToAppend = [];\n  const dvRowsToAppend = [];\n\n  incomingVisits.forEach(v => {\n    const vId = normalizeKey(v.visitId || v.Ma_Luot_Kham || \"\");\n    const vRow = new Array(lkHeaders.length).fill(\"\");\n\n    setCellByHeader(vRow, lkHeaders, [\"Ma_Luot_Kham\", \"visitId\"], v.visitId || v.Ma_Luot_Kham || \"\");\n    setCellByHeader(vRow, lkHeaders, [\"Ma_BN\", \"patientId\"], v.patientId || v.Ma_BN || \"\");\n    setCellByHeader(vRow, lkHeaders, [\"Ngay_Kham\", \"visitDate\"], v.visitDate || v.Ngay_Kham || \"\");\n    setCellByHeader(vRow, lkHeaders, [\"Chieu_Cao\", \"height\"], v.height || v.Chieu_Cao || \"\");\n    setCellByHeader(vRow, lkHeaders, [\"Can_Nang\", \"weight\"], v.weight || v.Can_Nang || \"\");\n    setCellByHeader(vRow, lkHeaders, [\"Huyet_Ap\", \"bp\"], v.bp || v.Huyet_Ap || \"\");\n    setCellByHeader(vRow, lkHeaders, [\"Mach\", \"pulse\"], v.pulse || v.Mach || \"\");\n    setCellByHeader(vRow, lkHeaders, [\"Trieu_Chung\", \"symptoms\"], v.symptoms || v.Trieu_Chung || \"\");\n    setCellByHeader(vRow, lkHeaders, [\"Chan_Doan\", \"diagnosis\"], v.diagnosis || v.Chan_Doan || \"\");\n    setCellByHeader(vRow, lkHeaders, [\"Chuyen_Khoa\", \"diseaseCategory\"], v.diseaseCategory || v.Chuyen_Khoa || \"\");\n    setCellByHeader(vRow, lkHeaders, [\"Hen_Tai_Kham\", \"followUpDate\"], v.followUpDate || v.Hen_Tai_Kham || \"\");\n    setCellByHeader(vRow, lkHeaders, [\"Loi_Dan\", \"doctorNotes\"], v.doctorNotes || v.Loi_Dan || \"\");\n    setCellByHeader(vRow, lkHeaders, [\"Dieu_Tri_Nguyen_Van\"], v.verbatimTreatment || v.Dieu_Tri_Nguyen_Van || \"\");\n    setCellByHeader(vRow, lkHeaders, [\"Cong_Kham\", \"consultationFee\"], v.consultationFee || v.Cong_Kham || 0);\n    setCellByHeader(vRow, lkHeaders, [\"Trang_Thai_Thu\", \"paymentStatus\"], v.paymentStatus || v.Trang_Thai_Thu || \"Đã thu\");\n\n    if (vId && existingVisitMap.has(vId)) {\n      allVisits[existingVisitMap.get(vId)] = vRow;\n    } else {\n      allVisits.push(vRow);\n      existingVisitMap.set(vId, allVisits.length - 1);\n    }\n\n    // Thu thập đơn thuốc chi tiết\n    if (v.prescriptions && Array.isArray(v.prescriptions)) {\n      v.prescriptions.forEach(d => {\n        dtRowsToAppend.push([\n          v.visitId || v.Ma_Luot_Kham,\n          v.patientId || v.Ma_BN,\n          d.drugName || d.Ten_Thuoc || \"\",\n          d.unit || d.DVT || \"Viên\",\n          d.morning || d.Sang || 0,\n          d.noon || d.Trua || 0,\n          d.afternoon || d.Chieu || 0,\n          d.evening || d.Toi || 0,\n          d.days || d.So_Ngay || 1,\n          d.price || d.Don_Gia || 0,\n          d.note || d.Cach_Dung || \"\"\n        ]);\n      });\n    }\n\n    // Thu thập xét nghiệm chi tiết\n    if (v.labs && Array.isArray(v.labs)) {\n      v.labs.forEach(l => {\n        dvRowsToAppend.push([\n          v.visitId || v.Ma_Luot_Kham,\n          v.patientId || v.Ma_BN,\n          l.type || l.Loai_Dich_Vu || \"Xét nghiệm\",\n          l.name || l.Ten_Chi_Dinh || \"\",\n          l.result || l.Ket_Qua || \"\",\n          l.cost || l.Chi_Phi || 0,\n          l.status || l.Trang_Thai || \"Đã có KQ\"\n        ]);\n      });\n    }\n  });\n\n  if (allVisits.length > 0) {\n    sLK.getRange(2, 1, allVisits.length, lkHeaders.length).setValues(allVisits);\n  }\n  if (dtRowsToAppend.length > 0) {\n    sDT.getRange(sDT.getLastRow() + 1, 1, dtRowsToAppend.length, HEADERS_DON_THUOC.length).setValues(dtRowsToAppend);\n  }\n  if (dvRowsToAppend.length > 0) {\n    sDV.getRange(sDV.getLastRow() + 1, 1, dvRowsToAppend.length, HEADERS_XET_NGHIEM.length).setValues(dvRowsToAppend);\n  }\n\n  return { processedVisits: incomingVisits.length };\n}\n\n// ==============================================================================\n// 6. QUÉT TỰ ĐỘNG THƯ MỤC GOOGLE DRIVE ĐỂ GẮN LINK ẢNH XÉT NGHIỆM\n// ==============================================================================\nfunction quetVaCapNhatLinkDriveAnh() {\n  const ss = SpreadsheetApp.getActiveSpreadsheet();\n  const sheet = ensureSheetWithHeaders(ss, \"Benh_Nhan\", HEADERS_BENH_NHAN);\n\n  let rootFolder;\n  try {\n    rootFolder = DriveApp.getFolderById(ROOT_IMAGE_FOLDER_ID);\n  } catch (err) {\n    SpreadsheetApp.getUi().alert(\"Lỗi truy cập thư mục Google Drive: \" + err.message);\n    return;\n  }\n\n  const patientFolders = rootFolder.getFolders();\n  const driveMap = {};\n\n  while (patientFolders.hasNext()) {\n    const f = patientFolders.next();\n    const folderName = f.getName().trim();\n    driveMap[folderName.toLowerCase()] = {\n      rawName: folderName,\n      url: f.getUrl()\n    };\n  }\n\n  const data = sheet.getDataRange().getValues();\n  const headers = data[0].map(h => (h || \"\").toString().trim());\n  const colNameIdx = findColIndex(headers, [\"Ho_Ten\", \"Họ và tên\"]);\n  const colLinkIdx = findColIndex(headers, [\"Link_Drive_Anh\", \"Link Google Drive\"]);\n\n  const matchedNames = new Set();\n  let updatedCount = 0;\n  let preservedCount = 0;\n\n  for (let i = 1; i < data.length; i++) {\n    const pName = (data[i][colNameIdx] || \"\").toString().trim().toLowerCase();\n    const currentLink = (data[i][colLinkIdx] || \"\").toString().trim();\n\n    if (pName && driveMap[pName]) {\n      // Cập nhật link mới từ Drive folder\n      sheet.getRange(i + 1, colLinkIdx + 1).setValue(driveMap[pName].url);\n      matchedNames.add(pName);\n      updatedCount++;\n    } else if (currentLink !== \"\") {\n      preservedCount++;\n    }\n  }\n\n  var msgDrive = [\n    \"ĐÃ HOÀN TẤT ĐỒNG BỘ ẢNH GOOGLE DRIVE!\",\n    \"\",\n    \"- Đã gắn link ảnh Drive cho: \" + updatedCount + \" bệnh nhân.\",\n    \"- Số bệnh nhân giữ nguyên link cũ: \" + preservedCount,\n    \"- Tổng số thư mục đã quét trong Drive: \" + Object.keys(driveMap).length\n  ].join(String.fromCharCode(10));\n  SpreadsheetApp.getUi().alert(msgDrive);\n}\n\n// ==============================================================================\n// 7. CÁC HÀM TIỆN ÍCH HỖ TRỢ\n// ==============================================================================\nfunction ensureSheetWithHeaders(ss, name, headers) {\n  let sheet = ss.getSheetByName(name);\n  if (!sheet) {\n    sheet = ss.insertSheet(name);\n    sheet.appendRow(headers);\n    sheet.getRange(1, 1, 1, headers.length).setFontWeight(\"bold\").setBackground(\"#EBF2FB\");\n    sheet.setFrozenRows(1);\n  } else if (sheet.getLastRow() === 0) {\n    sheet.appendRow(headers);\n    sheet.getRange(1, 1, 1, headers.length).setFontWeight(\"bold\").setBackground(\"#EBF2FB\");\n    sheet.setFrozenRows(1);\n  }\n  return sheet;\n}\n\nfunction readSheetAsJson(ss, name, fallbackHeaders) {\n  const sheet = ss.getSheetByName(name);\n  if (!sheet || sheet.getLastRow() < 2) return [];\n\n  const data = sheet.getDataRange().getValues();\n  const headers = data[0].map(h => (h || \"\").toString().trim());\n  const rows = data.slice(1);\n\n  return rows.map(row => {\n    const item = {};\n    headers.forEach((h, idx) => {\n      item[h] = row[idx];\n    });\n    return item;\n  });\n}\n\nfunction findColIndex(headers, possibleNames) {\n  for (let i = 0; i < headers.length; i++) {\n    const col = headers[i].toLowerCase();\n    for (let j = 0; j < possibleNames.length; j++) {\n      if (col === possibleNames[j].toLowerCase()) return i;\n    }\n  }\n  return -1;\n}\n\nfunction setCellByHeader(row, headers, possibleNames, value) {\n  const idx = findColIndex(headers, possibleNames);\n  if (idx !== -1) {\n    row[idx] = value;\n  }\n}\n\nfunction normalizeKey(str) {\n  if (!str) return \"\";\n  return str.toString().trim().toLowerCase().replace(/\\s+/g, \" \");\n}\n\nfunction jsonResponse(data, callback) {\n  if (callback) {\n    return ContentService.createTextOutput(callback + '(' + JSON.stringify(data) + ');')\n      .setMimeType(ContentService.MimeType.JAVASCRIPT);\n  }\n  return ContentService.createTextOutput(JSON.stringify(data))\n    .setMimeType(ContentService.MimeType.JSON);\n}\n\nfunction khoiTaoCauTrucSheets() {\n  const ss = SpreadsheetApp.getActiveSpreadsheet();\n  ensureSheetWithHeaders(ss, \"Benh_Nhan\", HEADERS_BENH_NHAN);\n  ensureSheetWithHeaders(ss, \"Luot_Kham\", HEADERS_LUOT_KHAM);\n  ensureSheetWithHeaders(ss, \"Don_Thuoc_Chi_Tiet\", HEADERS_DON_THUOC);\n  ensureSheetWithHeaders(ss, \"Xet_Nghiem_Chi_Phi\", HEADERS_XET_NGHIEM);\n  ensureSheetWithHeaders(ss, \"Nhat_Ky_Su_Dung\", HEADERS_NHAT_KY);\n  SpreadsheetApp.getUi().alert(\"Đã khởi tạo chuẩn 5 bảng dữ liệu cho MediCare Clinic Pro!\");\n}\n";
 
   const handleCopyCode = () => {
     try {
@@ -3845,6 +3437,17 @@ function khoiTaoCauTrucSheets() {
                       </div>
 
                       {/* Dòng thêm thuốc nhanh */}
+                      <div className="text-[11.5px] font-semibold text-[#002D62] flex flex-wrap items-center justify-between gap-1 pt-1">
+                        <span>✨ Kê đơn thuốc (100 loại thuốc thực tế BS Hào): Gõ tên thuốc để gợi ý hoặc chọn trực tiếp</span>
+                        <button
+                          type="button"
+                          onClick={() => setIsDrugCatalogModalOpen(true)}
+                          className="px-2 py-0.5 bg-[#E8F1FC] hover:bg-[#D4E6FA] text-[#002D62] border border-[#7F9DB9] rounded font-bold text-xs flex items-center gap-1 shadow-xs cursor-pointer whitespace-nowrap"
+                          title="Xem toàn bộ danh mục 100 loại thuốc thực tế của BSCK1 Tôn Thất Hào"
+                        >
+                          📋 Bảng 100 Thuốc Mẫu (BS Hào)
+                        </button>
+                      </div>
                       <form onSubmit={handleAddDrugToPrescription} className="grid grid-cols-2 sm:grid-cols-12 gap-2 items-center pt-1">
                         <div className="col-span-2 sm:col-span-3">
                           <input
@@ -4248,7 +3851,7 @@ function khoiTaoCauTrucSheets() {
                 <div className="flex items-center justify-center gap-3 mx-auto sm:mx-0">
                   <button
                     type="button"
-                    onClick={handleSyncToGoogleSheets}
+                    onClick={handleSaveCurrentVisitToSheet}
                     className={`${WIN_BTN_PRIMARY} min-w-[130px]`}
                   >
                     {isSyncing ? 'Đang ghi...' : '💾 Ghi phiếu này vào Google Sheets'}
@@ -4272,6 +3875,21 @@ function khoiTaoCauTrucSheets() {
                     className={`${WIN_BTN} min-w-[110px]`}
                   >
                     Cancel (Về DS)
+                  </button>
+                </div>
+
+                {/* VỊ TRÍ NƠI LƯU DỮ LIỆU RÕ RÀNG */}
+                <div className="w-full text-xs text-slate-700 bg-[#E8F1FC] p-2 border border-[#7F9DB9] rounded flex flex-wrap items-center justify-between gap-1 shadow-xs mt-2">
+                  <div>
+                    <span className="font-bold text-[#00156E]">📍 Nơi lưu dữ liệu:</span>
+                    <span> Google Sheets &gt; Bảng <b>[Luot_Kham]</b> & <b>[Don_Thuoc_Chi_Tiet]</b></span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setIsSheetModalOpen(true)}
+                    className="text-[#003C74] hover:underline font-bold text-[11px] cursor-pointer"
+                  >
+                    🔗 Xem bảng dữ liệu Google Sheets
                   </button>
                 </div>
 
@@ -5092,6 +4710,180 @@ function khoiTaoCauTrucSheets() {
           </div>
         )}
 
+        {/* MODAL DANH MỤC 100 LOẠI THUỐC THỰC TẾ BSCK1 TÔN THẤT HÀO */}
+        {isDrugCatalogModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4">
+            <div className="bg-[#D4E2F4] border-2 border-[#7DA2CE] max-w-4xl w-full h-[90vh] max-h-[850px] flex flex-col shadow-2xl overflow-hidden rounded-[3px]">
+              
+              {/* Header Modal */}
+              <div className="bg-gradient-to-b from-[#DCEBFC] to-[#A6C5EB] px-3 py-2 flex items-center justify-between border-b border-[#8BA8C7] shrink-0">
+                <span className="font-bold text-[13.5px] text-[#1E395B] flex items-center gap-2">
+                  📋 DANH MỤC 100 LOẠI THUỐC THƯỜNG DÙNG NHẤT - BSCK1 TÔN THẤT HÀO
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setIsDrugCatalogModalOpen(false)}
+                  className="w-6 h-5 bg-[#E04332] text-white text-xs font-bold flex items-center justify-center border border-[#73140A] hover:bg-[#c93222] cursor-pointer"
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* Toolbar: Tìm kiếm & Phân loại chuyên khoa */}
+              <div className="bg-[#EEF4FC] p-3 border-b border-[#8BA8C7] space-y-2.5 shrink-0">
+                <div className="flex flex-wrap items-center gap-2">
+                  <div className="flex-1 min-w-[240px]">
+                    <input
+                      type="text"
+                      value={drugModalSearch}
+                      onChange={(e) => setDrugModalSearch(e.target.value)}
+                      placeholder="🔍 Tìm nhanh tên thuốc, hoạt chất, cách dùng (VD: Nizoral, Para, Doxy, Bôi...)..."
+                      className="${WIN_INPUT} w-full text-xs py-1.5"
+                      autoFocus
+                    />
+                  </div>
+                  {drugModalSearch && (
+                    <button
+                      type="button"
+                      onClick={() => setDrugModalSearch('')}
+                      className="${WIN_BTN} text-xs py-1"
+                    >
+                      Xóa lọc
+                    </button>
+                  )}
+                  <span className="text-xs text-slate-600 font-semibold">
+                    Hiển thị: <b>{
+                      DRUG_CATALOG.filter(d => {
+                        const matchCat = drugModalCategory === 'ALL' || d.category === drugModalCategory;
+                        const matchSearch = !drugModalSearch.trim() ||
+                          d.name.toLowerCase().includes(drugModalSearch.toLowerCase()) ||
+                          d.defaultNote.toLowerCase().includes(drugModalSearch.toLowerCase()) ||
+                          d.unit.toLowerCase().includes(drugModalSearch.toLowerCase());
+                        return matchCat && matchSearch;
+                      }).length
+                    }</b> / 100 thuốc
+                  </span>
+                </div>
+
+                {/* Các nút phân loại chuyên khoa */}
+                <div className="flex flex-wrap gap-1.5 text-xs">
+                  {[
+                    { id: 'ALL', label: 'Tất cả (100)' },
+                    { id: 'DaLieu', label: '🧴 Da liễu & Bôi (25)' },
+                    { id: 'DiUng', label: '🛡️ Dị ứng & Ngứa (15)' },
+                    { id: 'KhangSinh', label: '💊 Kháng sinh & Nấm (15)' },
+                    { id: 'KhangViem', label: '⚡ Kháng viêm (8)' },
+                    { id: 'GiamDau', label: '🦴 Giảm đau & Khớp (12)' },
+                    { id: 'TieuHoa', label: '🌿 Tiêu hóa & Gan (10)' },
+                    { id: 'TimMach', label: '❤️ Tim mạch (10)' },
+                    { id: 'BoNao', label: '🧠 Bổ não & Vitamin (5)' }
+                  ].map((cat) => (
+                    <button
+                      key={cat.id}
+                      type="button"
+                      onClick={() => setDrugModalCategory(cat.id)}
+                      className={`px-2.5 py-1 rounded-[2px] border text-[11.5px] font-bold cursor-pointer transition ${
+                        drugModalCategory === cat.id
+                          ? 'bg-[#002D62] text-white border-[#00156E] shadow-xs'
+                          : 'bg-white text-slate-700 border-[#7F9DB9] hover:bg-[#DCEBFC]'
+                      }`}
+                    >
+                      {cat.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Bảng danh sách 100 thuốc cuộn mượt mà */}
+              <div className="flex-1 overflow-y-auto p-2 bg-white">
+                <table className="w-full text-left text-xs border-collapse">
+                  <thead className="bg-[#EBF2FB] text-[#002D62] sticky top-0 border-b border-[#7F9DB9] font-bold z-10">
+                    <tr>
+                      <th className="p-2 border-r border-[#B8CFE5] w-10 text-center">STT</th>
+                      <th className="p-2 border-r border-[#B8CFE5] min-w-[220px]">Tên biệt dược & Hoạt chất</th>
+                      <th className="p-2 border-r border-[#B8CFE5] w-20 text-center">Phân loại</th>
+                      <th className="p-2 border-r border-[#B8CFE5] w-16 text-center">ĐVT</th>
+                      <th className="p-2 border-r border-[#B8CFE5] w-24 text-right">Đơn giá</th>
+                      <th className="p-2 border-r border-[#B8CFE5] min-w-[240px]">Cách dùng & Hướng dẫn</th>
+                      <th className="p-2 border-r border-[#B8CFE5] w-24 text-center">Liều S-Tr-C-T</th>
+                      <th className="p-2 text-center w-28">Thao tác</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {DRUG_CATALOG.filter(d => {
+                      const matchCat = drugModalCategory === 'ALL' || d.category === drugModalCategory;
+                      const matchSearch = !drugModalSearch.trim() ||
+                        d.name.toLowerCase().includes(drugModalSearch.toLowerCase()) ||
+                        d.defaultNote.toLowerCase().includes(drugModalSearch.toLowerCase()) ||
+                        d.unit.toLowerCase().includes(drugModalSearch.toLowerCase());
+                      return matchCat && matchSearch;
+                    }).map((drug, idx) => (
+                      <tr
+                        key={drug.name}
+                        className={`border-b border-slate-200 hover:bg-[#F2F7FD] transition ${
+                          idx % 2 === 1 ? 'bg-[#FAFBFD]' : 'bg-white'
+                        }`}
+                      >
+                        <td className="p-2 border-r border-slate-200 text-center font-bold text-slate-500">
+                          {idx + 1}
+                        </td>
+                        <td className="p-2 border-r border-slate-200 font-bold text-[#00156E]">
+                          {drug.name}
+                        </td>
+                        <td className="p-2 border-r border-slate-200 text-center text-[10.5px] text-slate-600 whitespace-nowrap">
+                          {drug.categoryLabel ? drug.categoryLabel.split(' ')[1] : 'Thuốc'}
+                        </td>
+                        <td className="p-2 border-r border-slate-200 text-center font-semibold text-slate-700">
+                          <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-300">
+                            {drug.unit}
+                          </span>
+                        </td>
+                        <td className="p-2 border-r border-slate-200 text-right font-mono font-bold text-emerald-700">
+                          {Number(drug.price).toLocaleString('vi-VN')} đ
+                        </td>
+                        <td className="p-2 border-r border-slate-200 text-slate-700 text-[11.5px]">
+                          {drug.defaultNote}
+                        </td>
+                        <td className="p-2 border-r border-slate-200 text-center font-mono text-[11px] text-slate-600">
+                          S{drug.m} - Tr{drug.n} - C{drug.a} - T{drug.e}
+                        </td>
+                        <td className="p-2 text-center">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              handleSelectCatalogDrug(drug.name);
+                              setIsDrugCatalogModalOpen(false);
+                              showToast(`Đã nạp thuốc "${drug.name}" vào ô kê đơn!`);
+                            }}
+                            className="bg-[#002D62] hover:bg-[#003C74] text-white font-bold px-2.5 py-1 text-xs rounded border border-[#00156E] shadow-xs cursor-pointer whitespace-nowrap"
+                          >
+                            + Chọn kê đơn
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Footer Modal */}
+              <div className="p-2.5 bg-[#D4E2F4] border-t border-[#8BA8C7] flex items-center justify-between shrink-0">
+                <span className="text-xs text-slate-600 italic">
+                  💡 Nhấn nút <b>"+ Chọn kê đơn"</b> để tự động nạp thuốc, số lượng, cách dùng vào lượt khám hiện tại.
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setIsDrugCatalogModalOpen(false)}
+                  className="${WIN_BTN} font-bold px-4"
+                >
+                  Đóng
+                </button>
+              </div>
+
+            </div>
+          </div>
+        )}
+
         {/* Modal In Đơn Thuốc A5 */}
         {isPrintModalOpen && selectedPatient && currentVisit && (
           <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
@@ -5136,13 +4928,24 @@ function khoiTaoCauTrucSheets() {
                     📄 File PDF (.pdf) - Lưu trữ / Email
                   </label>
                 </div>
-                <span className="text-[11px] text-slate-600 italic">
-                  💡 App sẽ tự động ghi nhớ tùy chọn xuất sau cùng của anh.
-                </span>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => handleExportPrescription()}
+                    className="bg-[#2E7D32] hover:bg-[#1B5E20] text-white font-bold px-3 py-1.5 text-xs rounded border border-[#1b5e20] shadow-sm flex items-center gap-1.5 cursor-pointer"
+                    title="Lưu file vào máy tính (mở hộp thoại chọn thư mục lưu nếu trình duyệt hỗ trợ)"
+                  >
+                    💾 LƯU XUỐNG Ổ CỨNG MÁY TÍNH ({exportPref === 'pdf' ? 'PDF' : 'ẢNH'})
+                  </button>
+                  <span className="text-[10.5px] text-slate-600 italic hidden sm:inline">
+                    (Tự ghi nhớ định dạng)
+                  </span>
+                </div>
               </div>
 
               {/* VÙNG ĐƠN THUỐC KHỔ A5 ĐỂ IN HOẶC XUẤT ẢNH/PDF (MẪU DUYỆT CHUẨN BSCK1 TÔN THẤT HÀO) */}
-              <div className="p-6 bg-white text-slate-900 font-sans" id="prescription-print-area" style={{ width: '100%', maxWidth: '600px', margin: '0 auto', minHeight: '800px', color: '#0f172a', backgroundColor: '#ffffff', boxSizing: 'border-box' }}>
+              <div className="flex-1 overflow-y-auto p-3 sm:p-5 bg-slate-300 flex justify-center">
+                <div className="p-6 bg-white text-slate-900 font-sans shadow-lg" id="prescription-print-area" style={{ width: '100%', maxWidth: '600px', margin: '0 auto', minHeight: '800px', color: '#0f172a', backgroundColor: '#ffffff', boxSizing: 'border-box' }}>
                 {/* 1. HEADER BỆNH VIỆN & THÔNG TIN HÀNH CHÍNH (ĐÃ BỎ HOÀN TOÀN MÃ VẠCH) */}
                 <div className="flex justify-between items-start border-b border-slate-300 pb-2">
                   <div className="flex items-start gap-2.5">
@@ -5304,8 +5107,9 @@ function khoiTaoCauTrucSheets() {
                   </div>
                 </div>
               </div>
+              </div>
               {/* THANH NÚT ĐIỀU KHIỂN XUẤT FILE & IN ẤN */}
-              <div className="p-3 bg-[#D4E2F4] border-t border-[#8BA8C7] flex flex-wrap items-center justify-between gap-2">
+              <div className="p-2.5 bg-[#D4E2F4] border-t-2 border-[#7DA2CE] flex flex-wrap items-center justify-between gap-2 shrink-0">
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
@@ -6793,7 +6597,8 @@ function khoiTaoCauTrucSheets() {
           App được thiết kế và phát triển bởi #ktskhoa365 LH:0908297118
         </div>
       </main>
-    </div>
+    
+        </div>
   );
 }
 
