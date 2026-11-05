@@ -1,5 +1,7 @@
 // Cơ sở dữ liệu phòng khám MediCare Clinic Pro (#ktskhoa365)
-// Gồm 522 bệnh nhân và 2321 lượt khám
+// Chuyên khoa Da liễu & Thẩm mỹ Da - BSCK1 Tôn Thất Hào
+// Tổng cộng: 530 bệnh nhân & 2329 lượt khám
+// Chỉ 21 bệnh nhân có hồ sơ ảnh thực tế trên Google Drive được cấp nút xem ảnh.
 
 export const INITIAL_PATIENTS = [
   {
@@ -16,7 +18,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=A Khanh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -34,7 +36,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=A Tú",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -52,7 +54,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Anh Vượng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -70,7 +72,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Ba A Tưởng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -88,7 +90,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Biện Thị Thảo",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -106,7 +108,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Bn Thúy Q7",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -124,7 +126,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Bunrany",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -142,7 +144,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Bùi Trọng Đức",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -160,7 +162,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Bà Cụ",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -178,7 +180,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Bé Trâm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -196,7 +198,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Bé Tám",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -214,7 +216,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Bùi Hoàng Anh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -232,7 +234,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Bùi Khánh Em",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -250,7 +252,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Bùi Quang Trường",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -268,7 +270,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Bùi Thị Bảy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -286,7 +288,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Bùi Thị Chảnh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -304,7 +306,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Bùi Thị Thúy Diễm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -322,7 +324,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Bùi Văn Hải",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -340,7 +342,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Bùi Văn Mười",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -358,7 +360,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Bùi Văn Một",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -376,7 +378,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=C Hương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -394,7 +396,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=C Hồng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -412,7 +414,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=C Liên Việt Kiều Pháp",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -430,7 +432,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=C Tuyết Xóm Đáy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -448,7 +450,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Cao Văn Chậm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -466,7 +468,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Cao Văn Kha",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -484,7 +486,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Cao Văn Út",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -502,7 +504,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Châu Thanh Nhựt",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -520,7 +522,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Châu Thị Kim Dung",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -538,7 +540,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Châu Thị Kim Yến",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -556,7 +558,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Chị Dung",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -574,7 +576,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Chị Lan-mẹ Long",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -592,7 +594,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Cô Huy Rùa Vàng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -610,7 +612,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Cô Trang",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -628,7 +630,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Cô Út Chị Lệ",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -646,7 +648,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Danh Lượng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -664,7 +666,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Danh Đời",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -682,7 +684,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Diệp Thị Huyền Mai",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -700,7 +702,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Duong Duy Tong",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -718,7 +720,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Duong Thi Xiu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -736,7 +738,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Dđặng Thị Hương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -754,7 +756,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Dương Kim Quí",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -772,7 +774,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Dương Minh Trung",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -790,7 +792,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Dương Thành Long",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -808,7 +810,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Dương Thành Ngọc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -826,7 +828,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Dương Thị Huỳnh Hoa",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -844,7 +846,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Dương Thị Kim Ngọc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -862,7 +864,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Dương Thị Lơi",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -880,7 +882,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Dương Thị Ngọc Giàu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -898,7 +900,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Dương Thị Quỳnh Anh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -916,7 +918,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Dặng Ngọc Minh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -934,7 +936,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Giáp Quan Rô",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -952,7 +954,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Giáp Văn Dô",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -970,7 +972,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Giáp Văn Rô",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -988,7 +990,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Hiền",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1006,7 +1008,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Hoài Tính",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1024,7 +1026,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Hoàng Thị Thùy Trang",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1042,7 +1044,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Hoàng Trọng Dũng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1060,7 +1062,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Minh Đương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1078,7 +1080,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Kim Lan",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1096,7 +1098,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Văn Dũng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1114,7 +1116,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Hoài Thanh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1132,7 +1134,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Hồng Phát",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1150,7 +1152,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Mẫn Sơn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1168,7 +1170,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Ngọc Hải",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1186,7 +1188,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Ngọc Phương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1204,7 +1206,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Phước Hòa",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"Hu%E1%BB%B3nh%20V%C4%83n%20H%C3%B2a\"",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1222,7 +1224,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Bé",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1240,7 +1242,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Bé Ba",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1258,7 +1260,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Bích",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1276,7 +1278,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Bông",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1294,7 +1296,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Diễm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1312,7 +1314,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Hồng Lan",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1330,7 +1332,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Kim Nguyên",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1348,7 +1350,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Kiều Diễm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1366,7 +1368,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Kiều Dung",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1384,7 +1386,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Mạo",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1402,7 +1404,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Mỹ Xuân",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1420,7 +1422,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Nga",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1438,7 +1440,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Ngọc Hơn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1456,7 +1458,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Phu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1474,7 +1476,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Phương Hiền",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1492,7 +1494,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Thanh Phương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1510,7 +1512,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Thu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1528,7 +1530,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Tuyết",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1546,7 +1548,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Út",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1564,7 +1566,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Thị Đức",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1582,7 +1584,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Vă Hoanh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1600,7 +1602,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Văn Dứt",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1618,7 +1620,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Văn Phương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1636,7 +1638,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Huỳnh Vỏ Kim Ngọc Châu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1654,7 +1656,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Hà Ngọc Hạnh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1672,7 +1674,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Hà Tấn Đạt",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1690,7 +1692,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Hồ Thị Diệu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1708,7 +1710,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Hồ Thị Gái",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1726,7 +1728,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Hồ Thị Loan",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1744,7 +1746,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Hồ Thị Mỹ Linh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1762,7 +1764,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Hồ Thị Thanh Thủy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1780,7 +1782,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Hồng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1798,7 +1800,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Khưu Lợi Đẹp",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1816,7 +1818,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Khổng Thị Hồng Anh",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"Kh%E1%BB%95ng%20Th%E1%BB%8B%20H%E1%BB%93ng%20Anh\"",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1834,7 +1836,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Khổng Thị Hồng Hoa",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"Kh%E1%BB%95ng%20Th%E1%BB%8B%20H%E1%BB%93ng%20Hoa\"",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1852,7 +1854,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Khổng Thị Hồng Nhung",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"Kh%E1%BB%95ng%20Th%E1%BB%8B%20H%E1%BB%93ng%20Nhung\"",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1870,7 +1872,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Kiều Thị Nấm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1888,7 +1890,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Kiều Văn Dũng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1906,7 +1908,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=La Thị Ngọc Thanh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1924,7 +1926,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Le Tan Loi",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1942,7 +1944,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Liêm-a Liễu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1960,7 +1962,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Loan",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1978,7 +1980,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Loan Cô Út",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -1996,7 +1998,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Long",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2014,7 +2016,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lâm Kim Ngân",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2032,7 +2034,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lâm Minh Luân",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2050,7 +2052,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lâm Thanh Trúc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2068,7 +2070,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lâm Thị Tâm Như",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2086,7 +2088,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lâm Thị Sapa",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2104,7 +2106,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lâm Tùng Lâm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2122,7 +2124,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Báu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2140,7 +2142,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Hoàng Thượng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2158,7 +2160,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Hồng Sương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2176,7 +2178,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Kim Hiểu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2194,7 +2196,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Minh Phước",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2212,7 +2214,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Ngọc Anh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2230,7 +2232,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Ngọc Yến",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2248,7 +2250,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Phú Cường",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2266,7 +2268,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Phước Thiện",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2284,7 +2286,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Quang Lý",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2302,7 +2304,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Quang Minh Tuấn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2320,7 +2322,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Quang Sang",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2338,7 +2340,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Quốc Tuấn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2356,7 +2358,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thanh Sơn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2374,7 +2376,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Hiền",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2392,7 +2394,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Ngọc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2410,7 +2412,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "h",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Yến",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2428,7 +2430,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Cơ",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2446,7 +2448,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Gấm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2464,7 +2466,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Huynh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2482,7 +2484,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Hồng Thắm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2500,7 +2502,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Kim Loan",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2518,7 +2520,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Kim Thúy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2536,7 +2538,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Kim Yến",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2554,7 +2556,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Lệ",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2572,7 +2574,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Nga",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2590,7 +2592,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Năm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2608,7 +2610,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Phụng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2626,7 +2628,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Thi",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2644,7 +2646,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Thu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2662,7 +2664,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Thủy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2680,7 +2682,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Tiếp",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2698,7 +2700,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Thị Tuyết Trinh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2716,7 +2718,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Tuấn Thanh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2734,7 +2736,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Văn Châu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2752,7 +2754,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Văn Giàu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2770,7 +2772,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Văn Hiền",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2788,7 +2790,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Văn Thiện",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2806,7 +2808,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Văn Trừ",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2824,7 +2826,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lê Xuân Dịu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2842,7 +2844,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lý Du Cu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2860,7 +2862,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lý Hoàng Phúc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2878,7 +2880,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lý Kim Trinh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2896,7 +2898,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lý Phương Sự",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2914,7 +2916,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lý Thị Huỳnh My",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2932,7 +2934,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lý Thị La",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2950,7 +2952,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lý Thị Tam",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2968,7 +2970,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lý Văn Huân",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -2986,7 +2988,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lư Thị Liêu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3004,7 +3006,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lưu Công Minh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3022,7 +3024,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lưu Văn Toàn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3040,7 +3042,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lương Thị Nga",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3058,7 +3060,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lại Thị Thanh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3076,7 +3078,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lữ Khánh Ngọc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3094,7 +3096,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Lữ Nhật Phong",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3112,7 +3114,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Mai Ngọc Trăn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3130,7 +3132,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Mai Sương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3148,7 +3150,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Mai Thi Tinh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3166,7 +3168,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Mai Thành Vương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3184,7 +3186,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Mai Thị Mận",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3202,7 +3204,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Mai Tuyet Sương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3220,7 +3222,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Mẹ A Tưởng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3238,7 +3240,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Ng Thi Đẹp",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3256,7 +3258,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyen Hoang Hieu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3274,7 +3276,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyen Kim Nhung",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3292,7 +3294,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyen Ngoc Son",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3310,7 +3312,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyen Thi Huong",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3328,7 +3330,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyen Thi Mứt",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3346,7 +3348,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyen Thi Phuong",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3364,7 +3366,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyen Van Hien",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3382,7 +3384,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyen Văn Chấn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3400,7 +3402,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễ Thi Tuyết Mai",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3418,7 +3420,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễ Thị Cúc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3436,7 +3438,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Cam Tường My",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3454,7 +3456,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Ngọc Thanh Hằng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3472,7 +3474,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Cúc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3490,7 +3492,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Diễm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3508,7 +3510,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Huệ",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3526,7 +3528,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Kim Như",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3544,7 +3546,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Lý",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3562,7 +3564,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Mai",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3580,7 +3582,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Nga",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3598,7 +3600,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Nhàn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3616,7 +3618,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Năm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3634,7 +3636,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Tuyết Nhung",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3652,7 +3654,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Đào",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3670,7 +3672,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Đâu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3688,7 +3690,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thuỳ Linh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3706,7 +3708,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Chính",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3724,7 +3726,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Mười",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3742,7 +3744,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Định",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3760,7 +3762,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyển Thị Hồng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3778,7 +3780,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Anh Thư",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3796,7 +3798,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Châu Thị Diễm Kiều",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3814,7 +3816,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Chí Minh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3832,7 +3834,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Chí Trạng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3850,7 +3852,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Diễm Thúy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3868,7 +3870,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Dương Linh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3886,7 +3888,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Dịu Pháp",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3904,7 +3906,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Gia Bình",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3922,7 +3924,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Hoàng Nam",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3940,7 +3942,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Huấn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3958,7 +3960,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Hải Hà",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3976,7 +3978,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Hữu Nghĩa",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -3994,7 +3996,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Hữu Phụng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4012,7 +4014,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Lệ Dung",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4030,7 +4032,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Minh Hiếu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4048,7 +4050,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Minh Lý",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4066,7 +4068,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Minh Trí",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4084,7 +4086,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Ngọc Hồng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4102,7 +4104,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Ngọc Lan",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4120,7 +4122,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Ngọc Như Phượng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4138,7 +4140,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Ngọc Phương Chinh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4156,7 +4158,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Ngọc Sơn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4174,7 +4176,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Ngọc Tính",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4192,7 +4194,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Phương Thảo",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4210,7 +4212,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Phước Lộc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4228,7 +4230,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thanh Còn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4246,7 +4248,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thanh Huy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4264,7 +4266,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thanh Tú",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4282,7 +4284,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thanh Việt",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4300,7 +4302,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thu Trang",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4318,7 +4320,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thành Dũng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4336,7 +4338,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thành Phương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4354,7 +4356,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Bé Liên",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4372,7 +4374,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Bình",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4390,7 +4392,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Bích Phượng",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"Nguy%E1%BB%85n%20Th%E1%BB%8B%20B%C3%ADch%20Ph%C6%B0%E1%BB%A3ng\"",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4408,7 +4410,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Bích Vân",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4426,7 +4428,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Chọn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4444,7 +4446,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Cẩm Nhung",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4462,7 +4464,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Diễm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4480,7 +4482,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Dung",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4498,7 +4500,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Hiếu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4516,7 +4518,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Hoa(con Gái Trúc)",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4534,7 +4536,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Huế",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4552,7 +4554,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Hà",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4570,7 +4572,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Hòa",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4588,7 +4590,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Hồng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4606,7 +4608,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Hồng Cúc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4624,7 +4626,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Hồng Ngọc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4642,7 +4644,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Hồng Trâm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4660,7 +4662,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Kim",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4678,7 +4680,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Kiều",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4696,7 +4698,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Lan",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4714,7 +4716,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Liễu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4732,7 +4734,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Luận",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4750,7 +4752,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Lài",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4768,7 +4770,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Lùn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4786,7 +4788,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Lạc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4804,7 +4806,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Lập",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4822,7 +4824,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Lợt",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4840,7 +4842,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Mai",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4858,7 +4860,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Minh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4876,7 +4878,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "Vastaren, hoạt huyết bổ não",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Mụi",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4894,7 +4896,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Mỹ Lan",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4912,7 +4914,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Mỹ Tuyền",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4930,7 +4932,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Ngọc Dung",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4948,7 +4950,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Ngọc Sang",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4966,7 +4968,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Ngọc Thu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -4984,7 +4986,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Ngọc Ánh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5002,7 +5004,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Nhan",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5020,7 +5022,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Nhung",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5038,7 +5040,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Năm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5056,7 +5058,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Phước",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5074,7 +5076,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Phượng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5092,7 +5094,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Phải",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5110,7 +5112,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Quận",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5128,7 +5130,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Thanh Hằng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5146,7 +5148,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Thanh Nga",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5164,7 +5166,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Thanh Thúy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5182,7 +5184,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Thiên",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5200,7 +5202,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Thu",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"Nguy%E1%BB%85n%20Th%E1%BB%8B%20Thu%20nha%20be\"",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5218,7 +5220,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Thu Ba",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5236,7 +5238,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Thu Hằng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5254,7 +5256,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Thu Thủy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5272,7 +5274,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Thu Trang",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5290,7 +5292,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Thúy",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"Nguy%E1%BB%85n%20Th%E1%BB%8B%20Th%C3%BAy\"",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5308,7 +5310,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Thẻ",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5326,7 +5328,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Thủy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5344,7 +5346,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Ty",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5362,7 +5364,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Tào",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5380,7 +5382,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Uyên",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5398,7 +5400,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Vân",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5416,7 +5418,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Yên",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5434,7 +5436,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Yến Ly",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5452,7 +5454,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Ánh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5470,7 +5472,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Út",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5488,7 +5490,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Được",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5506,7 +5508,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Định",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5524,7 +5526,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Thị Ưng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5542,7 +5544,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Tiến",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5560,7 +5562,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Trung Hiếu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5578,7 +5580,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Trí Dũng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5596,7 +5598,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Trọng Nhân",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5614,7 +5616,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Tuấn Thanh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5632,7 +5634,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Tấn Bỉ",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"L%C3%AA%20T%E1%BA%A5n%20B%E1%BB%89\"",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5650,7 +5652,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Tấn Hùng",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"Nguy%E1%BB%85n%20M%E1%BA%A1nh%20H%C3%B9ng\"",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5668,7 +5670,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Tấn Phương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5686,7 +5688,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Tấn Đạt",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5704,7 +5706,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Bình",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5722,7 +5724,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Dũng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5740,7 +5742,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Hạnh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5758,7 +5760,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Khuyên",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5776,7 +5778,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Luận",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5794,7 +5796,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Lợi",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5812,7 +5814,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Mánh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5830,7 +5832,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Nguyên",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5848,7 +5850,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Nhận",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5866,7 +5868,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Nơi",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5884,7 +5886,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Oanh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5902,7 +5904,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Sang",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5920,7 +5922,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Thuận",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"Nguy%E1%BB%85n%20V%C4%83n%20Thu%C3%A2n\"",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5938,7 +5940,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Thành",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5956,7 +5958,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "Đh, Hba1c ,eGFR: bt, Tăng GGT 365 ui, rlchm",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Tặng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5974,7 +5976,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Vũ",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -5992,7 +5994,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Điệp",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6010,7 +6012,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Văn Đông",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6028,7 +6030,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Đình Nghĩa",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6046,7 +6048,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyễn Đình Phú",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6064,7 +6066,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyện Hoàng Phúc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6082,7 +6084,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Nguyệt",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6100,7 +6102,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Ngô Kim Tĩnh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6118,7 +6120,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Ngô Thị Hê",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6136,7 +6138,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "Amlo 5 1v x 1l/ng,",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Ngô Thị Bàng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6154,7 +6156,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Ngô Thị Liễu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6172,7 +6174,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Ngô Thị Ngọc Phượng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6190,7 +6192,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Ngô Thị Phượng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6208,7 +6210,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Ngô Thị Thùy Dương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6226,7 +6228,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Ngô Tuấn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6244,7 +6246,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Ngô Văn Linh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6262,7 +6264,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Ngô Đức Hiến",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6280,7 +6282,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phan Chiến Nghi",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6298,7 +6300,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phan Chính Luân",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"Phan%20Ch%C3%A1nh%20Lu%C3%A2n\"",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6316,7 +6318,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phan Ngoc Khanh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6334,7 +6336,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phan Thanh Dương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6352,7 +6354,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phan Thi Muội",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6370,7 +6372,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phan Thị Kim Chi",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6388,7 +6390,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phan Thị Bụi",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6406,7 +6408,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phan Thị Loan",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6424,7 +6426,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phan Thị Lệ (con Gái Trâm)",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6442,7 +6444,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phan Thị Minh Phụng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6460,7 +6462,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phan Thị Nguyệt",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6478,7 +6480,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phan Thị Ngọc Thu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6496,7 +6498,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phan Thị Thu Hiền",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6514,7 +6516,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phan Thị Tới",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6532,7 +6534,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phan Văn Thảo",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6550,7 +6552,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Hữu Nghĩa",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6568,7 +6570,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Hoài Thanh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6586,7 +6588,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Hữu Duy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6604,7 +6606,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Lê Tuấn Sơn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6622,7 +6624,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Quang Hiển",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6640,7 +6642,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Quốc Sỹ",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6658,7 +6660,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Quốc Thái",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6676,7 +6678,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Quỳnh Minh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6694,7 +6696,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Thanh Phong",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6712,7 +6714,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Thành Điệp",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6730,7 +6732,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Thị Huệ",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6748,7 +6750,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Thị Kim Quyên",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6766,7 +6768,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Thị Kim Thúy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6784,7 +6786,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Thị Mành",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6802,7 +6804,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Thị Năm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6820,7 +6822,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Thị Thúy Diễm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6838,7 +6840,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Thị Tuyết",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6856,7 +6858,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Thị Ân",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6874,7 +6876,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Tuấn Khôi",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6892,7 +6894,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Viễn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6910,7 +6912,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Văn Minh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6928,7 +6930,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Văn Tum",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6946,7 +6948,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Văn Tá",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6964,7 +6966,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Phạm Văn Xê",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -6982,7 +6984,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Quách Văn An",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7000,7 +7002,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Sử Ái Cơ",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7018,7 +7020,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Thiều Thanh Tú",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7036,7 +7038,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Thuận",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7054,7 +7056,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Thái Thị Hồng Hạnh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7072,7 +7074,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Thạch Phát",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7090,7 +7092,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Thạch Thị Sa Thi",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7108,7 +7110,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Thảo",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7126,7 +7128,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Thụy Bích Sơn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7144,7 +7146,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Tiêu Thị Trúc Giang",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7162,7 +7164,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trương Kim Phượng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7180,7 +7182,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trương Minh Duy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7198,7 +7200,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trương Thị Tuyết Mai",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7216,7 +7218,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trương Thị Bảy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7234,7 +7236,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trương Thị Mỹ Hạnh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7252,7 +7254,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trương Thị Nga",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7270,7 +7272,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trương Thị Thanh Lài",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7288,7 +7290,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trương Thị Thúy Hiền",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7306,7 +7308,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trương Thị Đông Em",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7324,7 +7326,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trương Văn Cảnh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7342,7 +7344,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trương Văn Vũ",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7360,7 +7362,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trảo Văn Thẳng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7378,7 +7380,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Công Hầu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7396,7 +7398,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Danh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7414,7 +7416,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Hoàng Linh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7432,7 +7434,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Hữu Đông",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7450,7 +7452,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Khoa Thành",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7468,7 +7470,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Lê Tường Vy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7486,7 +7488,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Minh Quang",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7504,7 +7506,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Nguyễn Minh Tiến",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7522,7 +7524,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thanh Nhàn(con A Dũng)",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7540,7 +7542,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thanh Xuân",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7558,7 +7560,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Ba",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7576,7 +7578,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Bạch Tuyết",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7594,7 +7596,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Chòn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7612,7 +7614,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Dịu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7630,7 +7632,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Giang",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7648,7 +7650,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Hương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7666,7 +7668,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Hồng Loan",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7684,7 +7686,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Hồng Nhung",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7702,7 +7704,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Mai",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7720,7 +7722,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Minh Duy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7738,7 +7740,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Phương Linh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7756,7 +7758,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Thanh Tâm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7774,7 +7776,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Thanh Vân",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7792,7 +7794,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Thiết",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7810,7 +7812,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Thiện",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7828,7 +7830,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Thu Thủy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7846,7 +7848,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Thâm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7864,7 +7866,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Thúy Tuyền",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7882,7 +7884,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Thơm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7900,7 +7902,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Tư",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7918,7 +7920,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Tường Linh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7936,7 +7938,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Tố Nga",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7954,7 +7956,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thị Đoàn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7972,7 +7974,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thới Sơn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -7990,7 +7992,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Thới Đông",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8008,7 +8010,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Tuấn Lộc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8026,7 +8028,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Van Nam",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8044,7 +8046,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Văn Duồng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8062,7 +8064,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Văn Dững",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8080,7 +8082,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Văn Ngọt",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8098,7 +8100,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trần Văn Phúc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8116,7 +8118,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Trịnh Thị Ngọc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8134,7 +8136,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Tuấn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8152,7 +8154,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Tâm Lái Xe Q7 (phương )",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8170,7 +8172,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Tô Thị Thu Sương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8188,7 +8190,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Tôn Thị Điệp",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8206,7 +8208,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Tăng Tiến Trung",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8224,7 +8226,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Tạ Huỳnh Anh Khôi",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8242,7 +8244,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Tạ Hồng Trang",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8260,7 +8262,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Uyên Q8",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8278,7 +8280,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vo Van Cuong",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8296,7 +8298,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vo Van Sên",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8314,7 +8316,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Võ Ngọc Quỳnh Như",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8332,7 +8334,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vỏ Bùi Cẩm Vân",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8350,7 +8352,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vỏ Thị Chồn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8368,7 +8370,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vỏ Văn Chi",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8386,7 +8388,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vỏ Văn Nga",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8404,7 +8406,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Văn Dũng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8422,7 +8424,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Văn Thị Thảo",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8440,7 +8442,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vũ Thi Lợi",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8458,7 +8460,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vũ Thị Bảy( Chồng -a Hiếu)",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8476,7 +8478,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vũ Thị Muôn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8494,7 +8496,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vũ Đình Thắng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8512,7 +8514,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vỏ Duy Nhất",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8530,7 +8532,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vỏ Hoàng Tựu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8548,7 +8550,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vỏ Kim Nhung",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8566,7 +8568,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vỏ Ngọc Cương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8584,7 +8586,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vỏ Thế Chiến",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8602,7 +8604,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vỏ Thị Bảy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8620,7 +8622,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vỏ Thị Liến",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8638,7 +8640,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vỏ Thị Thơm",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8656,7 +8658,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vỏ Thị Tuyết Sương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8674,7 +8676,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vỏ Thị Út",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8692,7 +8694,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "hao",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vỏ Văn Út",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8710,7 +8712,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Vợ A Thắng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8728,7 +8730,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đào Thị Nhân",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8746,7 +8748,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đinh Ngọc Toàn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8764,7 +8766,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đinh Thị Thúy Hằng",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"%C4%90inh%20Th%E1%BB%8B%20Th%C3%BAy%20H%E1%BA%B1ng\"",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8782,7 +8784,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đinh Văn Thân",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8800,7 +8802,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đoàn Hồng Dũng",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"%C4%90o%C3%A0n%20H%E1%BB%93ng%20D%C5%A9ng\"",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8818,7 +8820,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đoàn Hữu Lộc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8836,7 +8838,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đoàn Minh Hoàng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8854,7 +8856,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đoàn Minh Tuấn",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8872,7 +8874,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đoàn Thị Kim Cúc",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8890,7 +8892,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đoàn Thị Sánh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8908,7 +8910,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đoàn Văn Bảy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8926,7 +8928,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đoàn Văn Sáu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8944,7 +8946,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đoàn Văn Tùng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8962,7 +8964,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đoàn Đặng Thiên Đức",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8980,7 +8982,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đàm Thị Bảy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -8998,7 +9000,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đào Thanh Quí",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9016,7 +9018,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đỗ Thị Mỹ Dung",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9034,7 +9036,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đạng Hoài Phong",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9052,7 +9054,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đặng Hoài Phong",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9070,7 +9072,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đặng Hoài Phước",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9088,7 +9090,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đặng Hoài Thông",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9106,7 +9108,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đặng Hoàng",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9124,7 +9126,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đặng Phước Hòa",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9142,7 +9144,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đặng Thị Hương Thủy",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9160,7 +9162,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đặng Thị Ngọc Trinh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9178,7 +9180,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đặng Thị Ngọc Ánh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9196,7 +9198,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đặng Thị Thúy Liễu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9214,7 +9216,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đặng Thị Tuyết Liễu",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9232,7 +9234,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đặng Tấn Khoa",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9250,7 +9252,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đặng Văn Hạnh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9268,7 +9270,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đỗ Phú Khánh",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9286,7 +9288,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đỗ Thị Bích Liên",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9304,7 +9306,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đỗ Thị Hương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9322,7 +9324,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đỗ Thị Na",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9340,7 +9342,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đỗ Thị Thuỳ Dương",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9358,7 +9360,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đỗ Việt Huê",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9376,7 +9378,7 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đỗ Văn Kha",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
   },
@@ -9394,9 +9396,153 @@ export const INITIAL_PATIENTS = [
     "allergies": "Chưa ghi nhận",
     "pastParaclinical": "",
     "pastMedications": "",
-    "imageFolderUrl": "https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?q=Đỗ Văn Luật",
+    "imageFolderUrl": "",
     "isArchived": false,
     "createdAt": "2026-10-25"
+  },
+  {
+    "id": "BN0523",
+    "name": "Dương Hoài Tâm",
+    "dob": "1980",
+    "gender": "Nam",
+    "phone": "",
+    "relativePhone": "",
+    "initialWeight": 65,
+    "occupation": "",
+    "address": "TP.HCM",
+    "medicalHistory": "Theo dõi da liễu / dị ứng",
+    "allergies": "Chưa ghi nhận",
+    "pastParaclinical": "Xét nghiệm máu & hình ảnh",
+    "pastMedications": "",
+    "isArchived": false,
+    "createdAt": "2026-10-25",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"D%C6%B0%C6%A1ng%20Ho%C3%A0i%20T%C3%A2m\""
+  },
+  {
+    "id": "BN0524",
+    "name": "Huỳnh Kim Hiếu",
+    "dob": "1975",
+    "gender": "Nam",
+    "phone": "",
+    "relativePhone": "",
+    "initialWeight": 68,
+    "occupation": "",
+    "address": "TP.HCM",
+    "medicalHistory": "Theo dõi sắc tố da",
+    "allergies": "Chưa ghi nhận",
+    "pastParaclinical": "Kết quả XN ngày 13-04-2026",
+    "pastMedications": "",
+    "isArchived": false,
+    "createdAt": "2026-10-25",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"Hu%E1%BB%B3nh%20Kim%20Hi%E1%BA%BFu\""
+  },
+  {
+    "id": "BN0525",
+    "name": "Nguyễn thị Duyên Duyên",
+    "dob": "1992",
+    "gender": "Nữ",
+    "phone": "",
+    "relativePhone": "",
+    "initialWeight": 52,
+    "occupation": "",
+    "address": "TP.HCM",
+    "medicalHistory": "Viêm da tiếp xúc",
+    "allergies": "Dị ứng mỹ phẩm lạ",
+    "pastParaclinical": "Kết quả XN 24-08-2025",
+    "pastMedications": "",
+    "isArchived": false,
+    "createdAt": "2026-10-25",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"Nguy%E1%BB%85n%20th%E1%BB%8B%20Duy%C3%AAn%20Duy%C3%AAn\""
+  },
+  {
+    "id": "BN0526",
+    "name": "Phạm Đắc Hậu",
+    "dob": "1985",
+    "gender": "Nam",
+    "phone": "",
+    "relativePhone": "",
+    "initialWeight": 72,
+    "occupation": "",
+    "address": "TP.HCM",
+    "medicalHistory": "Theo dõi nang lông",
+    "allergies": "Chưa ghi nhận",
+    "pastParaclinical": "Kết quả XN 24-08-2025",
+    "pastMedications": "",
+    "isArchived": false,
+    "createdAt": "2026-10-25",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"Ph%E1%BA%A1m%20%C4%90%E1%BA%AFc%20H%E1%BA%ADu\""
+  },
+  {
+    "id": "BN0527",
+    "name": "Tôn Nữ Thị Hà",
+    "dob": "1960",
+    "gender": "Nữ",
+    "phone": "",
+    "relativePhone": "",
+    "initialWeight": 56,
+    "occupation": "Hưu trí",
+    "address": "TP.HCM",
+    "medicalHistory": "Loãng xương, tim mạch nhẹ",
+    "allergies": "Chưa ghi nhận",
+    "pastParaclinical": "DXA Xương, ECG, Xét nghiệm máu",
+    "pastMedications": "",
+    "isArchived": false,
+    "createdAt": "2026-10-25",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"T%C3%B4n%20N%E1%BB%AF%20Th%E1%BB%8B%20H%C3%A0\""
+  },
+  {
+    "id": "BN0528",
+    "name": "Tôn Nữ Thị Lan",
+    "dob": "1965",
+    "gender": "Nữ",
+    "phone": "",
+    "relativePhone": "",
+    "initialWeight": 58,
+    "occupation": "",
+    "address": "TP.HCM",
+    "medicalHistory": "Theo dõi khám da liễu & thẩm mỹ da",
+    "allergies": "Chưa ghi nhận",
+    "pastParaclinical": "Kết quả hình ảnh 13-05-2026",
+    "pastMedications": "",
+    "isArchived": false,
+    "createdAt": "2026-10-25",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"T%C3%B4n%20N%E1%BB%AF%20Th%E1%BB%8B%20Lan\""
+  },
+  {
+    "id": "BN0529",
+    "name": "Tôn Nữ Thị Thương",
+    "dob": "1962",
+    "gender": "Nữ",
+    "phone": "",
+    "relativePhone": "",
+    "initialWeight": 55,
+    "occupation": "",
+    "address": "TP.HCM",
+    "medicalHistory": "Theo dõi loãng xương & da liễu",
+    "allergies": "Chưa ghi nhận",
+    "pastParaclinical": "DXA Xương, ECG, XN Máu",
+    "pastMedications": "",
+    "isArchived": false,
+    "createdAt": "2026-10-25",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"T%C3%B4n%20N%E1%BB%AF%20Th%E1%BB%8B%20Th%C6%B0%C6%A1ng\""
+  },
+  {
+    "id": "BN0530",
+    "name": "BSCK1 Tôn Thất Hào",
+    "dob": "1960",
+    "gender": "Nam",
+    "phone": "0908297118",
+    "relativePhone": "",
+    "initialWeight": 70,
+    "occupation": "Bác sĩ CK1 Da liễu & Thẩm mỹ Da",
+    "address": "Phòng khám Da liễu BSCK1 Tôn Thất Hào",
+    "medicalHistory": "Kiểm tra sức khỏe định kỳ & dữ liệu phòng khám",
+    "allergies": "Không dị ứng thuốc",
+    "pastParaclinical": "Kết quả xét nghiệm & hình ảnh chuyên khoa 21-09-2026",
+    "pastMedications": "",
+    "isArchived": false,
+    "createdAt": "2026-10-25",
+    "imageFolderUrl": "https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20\"T%C3%B4n%20Th%E1%BA%A5t%20H%C3%A0o\""
   }
 ];
 
@@ -109931,6 +110077,257 @@ export const INITIAL_VISITS = [
     "verbatimTreatment": "",
     "consultationFee": 150000,
     "paymentStatus": "Đã thu",
+    "prescriptions": [],
+    "labs": []
+  },
+  {
+    "visitId": "LK002322",
+    "patientId": "BN0523",
+    "visitDate": "2026-05-15",
+    "diseaseCategory": "Thần kinh - Da liễu",
+    "symptoms": "Ngứa da, phát ban rải rác",
+    "diagnosis": "Viêm da cơ địa dị ứng",
+    "doctorNotes": "Giữ vệ sinh da, bôi dưỡng ẩm",
+    "followUpDate": "2026-06-15",
+    "paymentStatus": "Đã thu",
+    "consultationFee": 150000,
+    "prescriptions": [
+      {
+        "drugName": "Fexofenadine 180mg",
+        "unit": "Viên",
+        "morning": 1,
+        "noon": 0,
+        "afternoon": 0,
+        "evening": 0,
+        "days": 10,
+        "price": 6000,
+        "note": "Uống sáng sau ăn"
+      },
+      {
+        "drugName": "Kem dưỡng ẩm dịu da Dermagor",
+        "unit": "Tuýp",
+        "morning": 1,
+        "noon": 0,
+        "afternoon": 0,
+        "evening": 1,
+        "days": 30,
+        "price": 220000,
+        "note": "Bôi ngoài da ngày 2 lần"
+      }
+    ],
+    "labs": []
+  },
+  {
+    "visitId": "LK002323",
+    "patientId": "BN0524",
+    "visitDate": "2026-04-13",
+    "diseaseCategory": "Thần kinh - Da liễu",
+    "symptoms": "Tăng sắc tố sau viêm",
+    "diagnosis": "Sạm da sau viêm / Rám má",
+    "doctorNotes": "Tránh nắng kỹ, bôi KCN phổ rộng",
+    "followUpDate": "2026-05-13",
+    "paymentStatus": "Đã thu",
+    "consultationFee": 150000,
+    "prescriptions": [
+      {
+        "drugName": "Serum Vitamin C 15%",
+        "unit": "Lọ",
+        "morning": 1,
+        "noon": 0,
+        "afternoon": 0,
+        "evening": 0,
+        "days": 30,
+        "price": 350000,
+        "note": "Thoa sáng trước kem chống nắng"
+      }
+    ],
+    "labs": []
+  },
+  {
+    "visitId": "LK002324",
+    "patientId": "BN0525",
+    "visitDate": "2025-08-24",
+    "diseaseCategory": "Thần kinh - Da liễu",
+    "symptoms": "Đỏ ngứa châm chích vùng mặt sau dùng kem",
+    "diagnosis": "Viêm da tiếp xúc dị ứng do mỹ phẩm",
+    "doctorNotes": "Ngưng toàn bộ mỹ phẩm đang dùng",
+    "followUpDate": "2025-09-07",
+    "paymentStatus": "Đã thu",
+    "consultationFee": 150000,
+    "prescriptions": [
+      {
+        "drugName": "Desloratadine 5mg",
+        "unit": "Viên",
+        "morning": 0,
+        "noon": 0,
+        "afternoon": 0,
+        "evening": 1,
+        "days": 7,
+        "price": 5000,
+        "note": "Uống tối"
+      },
+      {
+        "drugName": "Xịt khoáng phục hồi Avene",
+        "unit": "Chai",
+        "morning": 2,
+        "noon": 2,
+        "afternoon": 2,
+        "evening": 2,
+        "days": 14,
+        "price": 280000,
+        "note": "Xịt làm dịu khi ngứa rát"
+      }
+    ],
+    "labs": []
+  },
+  {
+    "visitId": "LK002325",
+    "patientId": "BN0526",
+    "visitDate": "2025-08-24",
+    "diseaseCategory": "Thần kinh - Da liễu",
+    "symptoms": "Sẩn mụn mủ nang lông vùng lưng",
+    "diagnosis": "Viêm nang lông do tụ cầu",
+    "doctorNotes": "Mặc đồ thoáng mát, tắm xà phòng kháng khuẩn",
+    "followUpDate": "2025-09-07",
+    "paymentStatus": "Đã thu",
+    "consultationFee": 150000,
+    "prescriptions": [
+      {
+        "drugName": "Doxycycline 100mg",
+        "unit": "Viên",
+        "morning": 1,
+        "noon": 0,
+        "afternoon": 0,
+        "evening": 1,
+        "days": 14,
+        "price": 4000,
+        "note": "Uống sau ăn no"
+      },
+      {
+        "drugName": "Sữa tắm Sastid",
+        "unit": "Chai",
+        "morning": 0,
+        "noon": 0,
+        "afternoon": 0,
+        "evening": 1,
+        "days": 30,
+        "price": 180000,
+        "note": "Tắm xoa đều vùng lưng"
+      }
+    ],
+    "labs": []
+  },
+  {
+    "visitId": "LK002326",
+    "patientId": "BN0527",
+    "visitDate": "2026-05-10",
+    "diseaseCategory": "Cơ xương khớp - Nội tiết",
+    "symptoms": "Đau mỏi cột sống thắt lưng, khô da người già",
+    "diagnosis": "Thiểu xương - Viêm da khô người cao tuổi",
+    "doctorNotes": "Bổ sung Calci, bôi dưỡng ẩm toàn thân",
+    "followUpDate": "2026-06-10",
+    "paymentStatus": "Đã thu",
+    "consultationFee": 150000,
+    "prescriptions": [
+      {
+        "drugName": "Calci D3 500mg",
+        "unit": "Viên",
+        "morning": 1,
+        "noon": 0,
+        "afternoon": 0,
+        "evening": 0,
+        "days": 30,
+        "price": 4500,
+        "note": "Uống sáng sau ăn"
+      },
+      {
+        "drugName": "Sữa dưỡng ẩm Urea 10%",
+        "unit": "Chai",
+        "morning": 1,
+        "noon": 0,
+        "afternoon": 0,
+        "evening": 1,
+        "days": 30,
+        "price": 210000,
+        "note": "Bôi toàn thân sau tắm"
+      }
+    ],
+    "labs": []
+  },
+  {
+    "visitId": "LK002327",
+    "patientId": "BN0528",
+    "visitDate": "2026-05-13",
+    "diseaseCategory": "Thần kinh - Da liễu",
+    "symptoms": "Lão hóa da vùng mặt, nếp nhăn đuôi mắt",
+    "diagnosis": "Lão hóa da độ 2 - Thẩm mỹ da",
+    "doctorNotes": "Liệu trình trẻ hóa da, bôi kem chống lão hóa",
+    "followUpDate": "2026-06-13",
+    "paymentStatus": "Đã thu",
+    "consultationFee": 150000,
+    "prescriptions": [
+      {
+        "drugName": "Retinol 0.5% Cream",
+        "unit": "Tuýp",
+        "morning": 0,
+        "noon": 0,
+        "afternoon": 0,
+        "evening": 1,
+        "days": 30,
+        "price": 420000,
+        "note": "Thoa mỏng buổi tối 2-3 lần/tuần"
+      }
+    ],
+    "labs": []
+  },
+  {
+    "visitId": "LK002328",
+    "patientId": "BN0529",
+    "visitDate": "2026-05-10",
+    "diseaseCategory": "Cơ xương khớp - Nội tiết",
+    "symptoms": "Đau mỏi cơ xương khớp, sạm da phân bố 2 gò má",
+    "diagnosis": "Nám má mảng (Melasma) - Giảm mật độ xương",
+    "doctorNotes": "Tránh nắng, bôi KCN SPF 50+",
+    "followUpDate": "2026-06-10",
+    "paymentStatus": "Đã thu",
+    "consultationFee": 150000,
+    "prescriptions": [
+      {
+        "drugName": "Tranexamic Acid 250mg",
+        "unit": "Viên",
+        "morning": 1,
+        "noon": 0,
+        "afternoon": 0,
+        "evening": 1,
+        "days": 30,
+        "price": 6000,
+        "note": "Uống sau ăn"
+      },
+      {
+        "drugName": "Kem chống nắng La Roche-Posay Anthelios",
+        "unit": "Tuýp",
+        "morning": 1,
+        "noon": 1,
+        "afternoon": 0,
+        "evening": 0,
+        "days": 45,
+        "price": 450000,
+        "note": "Thoa trước khi ra ngoài 20p"
+      }
+    ],
+    "labs": []
+  },
+  {
+    "visitId": "LK002329",
+    "patientId": "BN0530",
+    "visitDate": "2026-09-21",
+    "diseaseCategory": "Nội tổng quát",
+    "symptoms": "Khám sức khỏe tổng quát định kỳ",
+    "diagnosis": "Sức khỏe tổng quát tốt - Chỉ số sinh hiệu ổn định",
+    "doctorNotes": "Duy trì tập thể dục và chế độ ăn uống khoa học",
+    "followUpDate": "2027-03-21",
+    "paymentStatus": "Đã thu",
+    "consultationFee": 0,
     "prescriptions": [],
     "labs": []
   }

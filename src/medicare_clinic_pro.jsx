@@ -68,12 +68,28 @@ const formatVND = (amount) => {
   return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount || 0);
 };
 
-// Hàm tính tuổi từ ngày sinh
+// Hàm tính tuổi từ ngày sinh hoặc chuỗi ghi chú tuổi (vd: "68t-50 Kg", "50 T", "1970", "7 tuổi")
 const calculateAge = (dobString) => {
   if (!dobString) return '--';
-  const birthYear = new Date(dobString).getFullYear();
-  const currentYear = 2026;
-  return currentYear - birthYear;
+  const str = String(dobString).trim();
+  // 1. Nếu có năm sinh 4 chữ số (19xx hoặc 20xx)
+  const yearMatch = str.match(/(19\d{2}|20\d{2})/);
+  if (yearMatch) {
+    const y = Number(yearMatch[1]);
+    if (y >= 1900 && y <= 2026) return 2026 - y;
+  }
+  // 2. Nếu đã là số tuổi kèm chữ t/tuổi hoặc dấu gạch (vd: "68t-50 Kg", "50 T", "54t", "7 tuổi")
+  const ageMatch = str.match(/^(\d{1,3})\s*(t|tuổi)?/i);
+  if (ageMatch && Number(ageMatch[1]) < 120) {
+    return Number(ageMatch[1]);
+  }
+  // 3. Thử parse date chuẩn
+  const parsed = new Date(str);
+  if (!isNaN(parsed.getTime())) {
+    const y = parsed.getFullYear();
+    if (y >= 1900 && y <= 2026) return 2026 - y;
+  }
+  return str.replace(/[^0-9]/g, '') || '--';
 };
 
 // Style chuẩn cho giao diện Desktop WinForms Full Màn Hình (chữ to, rõ, dễ đọc)
@@ -239,7 +255,7 @@ function MediCareClinicApp() {
   const [activeTab, setActiveTab] = useState('tab1');
   const [patients, setPatients] = useState(() => {
     try {
-      const saved = localStorage.getItem('MEDICARE_PATIENTS_V1');
+      const saved = localStorage.getItem('MEDICARE_PATIENTS_V2');
       if (saved) {
         const parsed = JSON.parse(saved);
         const isDemo = Array.isArray(parsed) && (
@@ -249,7 +265,7 @@ function MediCareClinicApp() {
         if (!isDemo && parsed.length > 0) return parsed;
       }
       try {
-        localStorage.setItem('MEDICARE_PATIENTS_V1', JSON.stringify(INITIAL_PATIENTS));
+        localStorage.setItem('MEDICARE_PATIENTS_V2', JSON.stringify(INITIAL_PATIENTS));
       } catch (e) {}
       return INITIAL_PATIENTS;
     } catch (e) {
@@ -258,7 +274,7 @@ function MediCareClinicApp() {
   });
   const [visits, setVisits] = useState(() => {
     try {
-      const saved = localStorage.getItem('MEDICARE_VISITS_V1');
+      const saved = localStorage.getItem('MEDICARE_VISITS_V2');
       if (saved) {
         const parsed = JSON.parse(saved);
         const isDemo = Array.isArray(parsed) && (
@@ -268,7 +284,7 @@ function MediCareClinicApp() {
         if (!isDemo && parsed.length > 0) return parsed;
       }
       try {
-        localStorage.setItem('MEDICARE_VISITS_V1', JSON.stringify(INITIAL_VISITS));
+        localStorage.setItem('MEDICARE_VISITS_V2', JSON.stringify(INITIAL_VISITS));
       } catch (e) {}
       return INITIAL_VISITS;
     } catch (e) {
@@ -285,13 +301,13 @@ function MediCareClinicApp() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('MEDICARE_PATIENTS_V1', JSON.stringify(patients));
+      localStorage.setItem('MEDICARE_PATIENTS_V2', JSON.stringify(patients));
     } catch (e) {}
   }, [patients]);
 
   useEffect(() => {
     try {
-      localStorage.setItem('MEDICARE_VISITS_V1', JSON.stringify(visits));
+      localStorage.setItem('MEDICARE_VISITS_V2', JSON.stringify(visits));
     } catch (e) {}
   }, [visits]);
 
@@ -576,8 +592,8 @@ function MediCareClinicApp() {
 
     // Lưu ngay vào localStorage
     try {
-      localStorage.setItem('MEDICARE_PATIENTS_V1', JSON.stringify(patients));
-      localStorage.setItem('MEDICARE_VISITS_V1', JSON.stringify(visits));
+      localStorage.setItem('MEDICARE_PATIENTS_V2', JSON.stringify(patients));
+      localStorage.setItem('MEDICARE_VISITS_V2', JSON.stringify(visits));
     } catch (e) {}
 
     if (sheetWebAppUrl && sheetWebAppUrl.trim().startsWith('https://script.google.com')) {
@@ -619,8 +635,8 @@ function MediCareClinicApp() {
 
     // Lưu ngay vào localStorage
     try {
-      localStorage.setItem('MEDICARE_PATIENTS_V1', JSON.stringify(patients));
-      localStorage.setItem('MEDICARE_VISITS_V1', JSON.stringify(visits));
+      localStorage.setItem('MEDICARE_PATIENTS_V2', JSON.stringify(patients));
+      localStorage.setItem('MEDICARE_VISITS_V2', JSON.stringify(visits));
     } catch (e) {}
 
     if (sheetWebAppUrl && sheetWebAppUrl.trim().startsWith('https://script.google.com')) {
@@ -703,8 +719,8 @@ function MediCareClinicApp() {
       if (INITIAL_PATIENTS[0]) setSelectedPatientId(INITIAL_PATIENTS[0].id);
       if (INITIAL_VISITS[0]) setSelectedVisitId(INITIAL_VISITS[0].visitId);
       try {
-        localStorage.setItem('MEDICARE_PATIENTS_V1', JSON.stringify(INITIAL_PATIENTS));
-        localStorage.setItem('MEDICARE_VISITS_V1', JSON.stringify(INITIAL_VISITS));
+        localStorage.setItem('MEDICARE_PATIENTS_V2', JSON.stringify(INITIAL_PATIENTS));
+        localStorage.setItem('MEDICARE_VISITS_V2', JSON.stringify(INITIAL_VISITS));
       } catch (e) {}
       showToast(`Đã nạp thành công ${INITIAL_PATIENTS.length} bệnh nhân & ${INITIAL_VISITS.length} lượt khám gốc!`);
     }
@@ -743,7 +759,7 @@ function MediCareClinicApp() {
   const patientVisits = useMemo(() => {
     return visits
       .filter((v) => v.patientId === selectedPatient?.id)
-      .sort((a, b) => b.visitDate.localeCompare(a.visitDate));
+      .sort((a, b) => String(b.visitDate || '').localeCompare(String(a.visitDate || '')));
   }, [visits, selectedPatient]);
 
   // Lượt khám đang chọn
@@ -755,23 +771,29 @@ function MediCareClinicApp() {
   // Khi click vào tên bệnh nhân ở Tab 1 -> chuyển sang Tab 2
   // Nếu bệnh nhân đang nằm trong Kho lưu trữ mà quay lại tái khám, tự động mở lại trạng thái "Đang điều trị"
   const handleSelectPatientFromList = (patientId, autoReactivate = false) => {
-    if (autoReactivate) {
-      setPatients((prev) =>
-        prev.map((p) => (p.id === patientId ? { ...p, isArchived: false } : p))
-      );
-      const target = patients.find((p) => p.id === patientId);
-      if (target?.isArchived) {
-        showToast(`Đã khôi phục hồ sơ "${target.name}" từ Kho lưu trữ sang Đang điều trị!`);
+    try {
+      if (!patientId) return;
+      if (autoReactivate) {
+        setPatients((prev) =>
+          prev.map((p) => (p.id === patientId ? { ...p, isArchived: false } : p))
+        );
+        const target = (patients || []).find((p) => p.id === patientId);
+        if (target?.isArchived) {
+          showToast(`Đã khôi phục hồ sơ "${target.name}" từ Kho lưu trữ sang Đang điều trị!`);
+        }
       }
+      setSelectedPatientId(patientId);
+      const pVisits = (visits || [])
+        .filter((v) => v.patientId === patientId)
+        .sort((a, b) => String(b.visitDate || '').localeCompare(String(a.visitDate || '')));
+      if (pVisits.length > 0) {
+        setSelectedVisitId(pVisits[0].visitId);
+      }
+    } catch (err) {
+      console.error('Error selecting patient:', err);
+    } finally {
+      setActiveTab('tab2');
     }
-    setSelectedPatientId(patientId);
-    const pVisits = visits
-      .filter((v) => v.patientId === patientId)
-      .sort((a, b) => b.visitDate.localeCompare(a.visitDate));
-    if (pVisits.length > 0) {
-      setSelectedVisitId(pVisits[0].visitId);
-    }
-    setActiveTab('tab2');
   };
 
   // Chuyển bệnh nhân đã hết bệnh vào Kho lưu trữ (ẩn khỏi danh sách đang khám) hoặc khôi phục lại
@@ -818,7 +840,7 @@ function MediCareClinicApp() {
       setSelectedPatientId(nextP.id);
       const nextV = remainingVisits
         .filter((v) => v.patientId === nextP.id)
-        .sort((a, b) => b.visitDate.localeCompare(a.visitDate));
+        .sort((a, b) => String(b.visitDate || '').localeCompare(String(a.visitDate || '')));
       setSelectedVisitId(nextV[0]?.visitId || '');
     } else {
       setSelectedPatientId('');
@@ -833,7 +855,7 @@ function MediCareClinicApp() {
     return patients.map((p) => {
       const pVisits = visits
         .filter((v) => v.patientId === p.id)
-        .sort((a, b) => b.visitDate.localeCompare(a.visitDate));
+        .sort((a, b) => String(b.visitDate || '').localeCompare(String(a.visitDate || '')));
       const latestVisit = pVisits[0] || null;
       return {
         ...p,
@@ -1697,7 +1719,7 @@ function doPost(e) {
                               return (
                                 <tr
                                   key={p.id}
-                                  onClick={() => handleSelectPatientFromList(p.id)}
+                                  onClick={() => handleSelectPatientFromList(p.id, p.isArchived)}
                                   className={`border-b border-[#E2EAF4] cursor-pointer ${
                                     selectedPatientId === p.id
                                       ? 'bg-[#FFF2C9] font-semibold'
@@ -1706,25 +1728,42 @@ function doPost(e) {
                                       : 'bg-[#F7FAFC] hover:bg-[#E8F1FC]'
                                   }`}
                                 >
-                                  <td className="py-2 px-2.5 border-r border-[#E2EAF4] font-mono font-bold text-[#00156E] align-middle">
+                                  <td
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleSelectPatientFromList(p.id, p.isArchived);
+                                    }}
+                                    className="py-2 px-2.5 border-r border-[#E2EAF4] font-mono font-bold text-[#00156E] align-middle cursor-pointer hover:underline"
+                                    title="Mở hồ sơ Tab 2"
+                                  >
                                     {p.id}
                                   </td>
                                   <td className="py-2 px-3 border-r border-[#E2EAF4] text-left align-middle">
                                     <div className="flex items-center gap-2 flex-wrap">
-                                      <span className="text-[#00156E] font-bold underline whitespace-nowrap">
-                                        {p.name}
-                                      </span>
-                                      <a
-                                        href={p.imageFolderUrl || `https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20"${encodeURIComponent(p.name)}"`}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        onClick={(e) => e.stopPropagation()}
-                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-blue-50 border border-blue-400 text-blue-800 text-[11px] font-bold rounded-[2px] hover:bg-blue-100 shadow-2xs"
-                                        title={p.imageFolderUrl ? "Mở thư mục ảnh Drive của bệnh nhân" : "Tìm kiếm ảnh của bệnh nhân trong thư mục Drive gốc"}
+                                      <button
+                                        type="button"
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          handleSelectPatientFromList(p.id, p.isArchived);
+                                        }}
+                                        className="text-[#00156E] font-bold underline hover:text-[#0055EA] hover:bg-blue-100/60 px-1 py-0.5 rounded-[2px] text-left cursor-pointer transition text-[13.5px] whitespace-nowrap"
+                                        title="Bấm vào tên để mở hồ sơ bệnh án & khám bệnh chi tiết (Tab 2)"
                                       >
-                                        <FolderOpen className="w-3 h-3 text-blue-600" />
-                                        Ảnh Drive ↗
-                                      </a>
+                                        {p.name}
+                                      </button>
+                                      {p.imageFolderUrl && p.imageFolderUrl.trim().length > 0 && !p.imageFolderUrl.includes('?q=') && (
+                                        <a
+                                          href={p.imageFolderUrl}
+                                          target="_blank"
+                                          rel="noreferrer"
+                                          onClick={(e) => e.stopPropagation()}
+                                          className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-blue-50 border border-blue-400 text-blue-800 text-[11px] font-bold rounded-[2px] hover:bg-blue-100 shadow-2xs"
+                                          title="Mở thư mục ảnh Drive của bệnh nhân"
+                                        >
+                                          <FolderOpen className="w-3 h-3 text-blue-600" />
+                                          Ảnh Drive ↗
+                                        </a>
+                                      )}
                                       {p.isArchived && (
                                         <span className="px-1.5 py-0.5 bg-slate-200 border border-slate-400 text-slate-700 text-[11px] font-bold rounded-[2px]">
                                           📦 Đã lưu trữ (Hết bệnh)
@@ -1738,7 +1777,7 @@ function doPost(e) {
                                     )}
                                   </td>
                                   <td className="py-2 px-2.5 border-r border-[#E2EAF4] align-middle whitespace-nowrap">
-                                    {p.age}t ({p.gender})
+                                    {p.age && p.age !== '--' ? `${p.age}t` : '--'} ({p.gender || 'Chưa rõ'})
                                   </td>
                                   <td className="py-2 px-2.5 border-r border-[#E2EAF4] font-mono align-middle whitespace-nowrap">
                                     {p.phone}
@@ -1862,9 +1901,10 @@ function doPost(e) {
                         <label className={`${WIN_LABEL} w-32`}>Ngày sinh / Tuổi:</label>
                         <div className="flex-1 flex items-center gap-1.5">
                           <input
-                            type="date"
-                            value={selectedPatient.dob}
+                            type="text"
+                            value={selectedPatient.dob || ''}
                             onChange={(e) => handleUpdatePatientField('dob', e.target.value)}
+                            placeholder="Năm sinh hoặc số tuổi..."
                             className={WIN_INPUT}
                           />
                           <span className={WIN_LABEL}>Tuổi:</span>
@@ -1950,22 +1990,23 @@ function doPost(e) {
                           className={`${WIN_INPUT} font-mono text-[12.5px] bg-white`}
                         />
                         <div className="flex items-center gap-1.5 shrink-0">
-                          <button
-                            type="button"
-                            onClick={() => {
-                              if (selectedPatient.imageFolderUrl && selectedPatient.imageFolderUrl.trim().startsWith('http')) {
+                          {selectedPatient.imageFolderUrl && selectedPatient.imageFolderUrl.trim().length > 0 && !selectedPatient.imageFolderUrl.includes('?q=') ? (
+                            <button
+                              type="button"
+                              onClick={() => {
                                 window.open(selectedPatient.imageFolderUrl.trim(), '_blank');
-                              } else {
-                                const qName = encodeURIComponent(selectedPatient.name || '');
-                                window.open(`https://drive.google.com/drive/u/0/search?q=parent:18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4%20"${qName}"`, '_blank');
-                              }
-                            }}
-                            className="inline-flex items-center gap-1 px-3 py-1.5 text-[12.5px] font-bold text-white bg-gradient-to-b from-[#0055EA] to-[#003C74] border border-[#00264D] rounded-[3px] hover:brightness-110 cursor-pointer shadow-xs whitespace-nowrap"
-                            title="Mở thư mục ảnh xét nghiệm / X-quang của bệnh nhân này trên Google Drive"
-                          >
-                            <ExternalLink className="w-3.5 h-3.5" />
-                            Mở ảnh BN ↗
-                          </button>
+                              }}
+                              className="inline-flex items-center gap-1 px-3 py-1.5 text-[12.5px] font-bold text-white bg-gradient-to-b from-[#0055EA] to-[#003C74] border border-[#00264D] rounded-[3px] hover:brightness-110 cursor-pointer shadow-xs whitespace-nowrap"
+                              title="Mở thư mục ảnh xét nghiệm / X-quang của bệnh nhân này trên Google Drive"
+                            >
+                              <ExternalLink className="w-3.5 h-3.5" />
+                              Mở ảnh BN ↗
+                            </button>
+                          ) : (
+                            <span className="text-[11.5px] text-slate-500 italic px-2 py-1 bg-white/70 border border-slate-300 rounded-[2px] whitespace-nowrap">
+                              Chưa có ảnh Drive
+                            </span>
+                          )}
                           <button
                             type="button"
                             onClick={() => window.open('https://drive.google.com/drive/folders/18BJKFc3Xoqtoiwx_5f5GTJbfjPT_U1T4?usp=drive_link', '_blank')}

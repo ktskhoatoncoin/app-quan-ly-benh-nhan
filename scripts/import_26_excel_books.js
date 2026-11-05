@@ -100,7 +100,8 @@ export function importAllExcelFiles() {
         const cls = data[9] && data[9][2] ? String(data[9][2]).trim() : '';
         const allergies = 'Chưa ghi nhận';
         const pastMedications = data[11] && data[11][2] ? String(data[11][2]).trim() : '';
-        const imageFolderUrl = `https://drive.google.com/drive/folders/${ROOT_DRIVE_FOLDER_ID}?q=${encodeURIComponent(name)}`;
+        // Chỉ gán link nếu bệnh nhân thực sự có thư mục ảnh trên Google Drive, không gán link tìm kiếm rỗng
+        const imageFolderUrl = '';
 
         const patientObj = {
           id: pId,
@@ -222,3 +223,4 @@ function exportClinicData(patients, visits) {
 if (process.argv[1] && process.argv[1].endsWith('import_26_excel_books.js')) {
   importAllExcelFiles();
 }
+
