@@ -61,6 +61,53 @@ if (typeof window !== 'undefined') {
     const ShieldCheck = makeIcon(<><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></>);
     const Archive = makeIcon(<><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></>);
 
+// Danh mục thuốc mẫu phục vụ kê toa nhanh
+export const DRUG_CATALOG = [
+  { name: 'Amlodipin 5mg', unit: 'Viên', price: 3500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Atorvastatin 20mg (Lipitor)', unit: 'Viên', price: 14000, defaultNote: 'Uống sau ăn tối', m: 0, n: 0, a: 0, e: 1 },
+  { name: 'Rosuvastatin 10mg (Crestor)', unit: 'Viên', price: 16000, defaultNote: 'Uống sau ăn tối', m: 0, n: 0, a: 0, e: 1 },
+  { name: 'Telmisartan 40mg (Micardis)', unit: 'Viên', price: 9500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Coversyl 5mg (Perindopril)', unit: 'Viên', price: 8000, defaultNote: 'Uống trước ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Concor 2.5mg (Bisoprolol)', unit: 'Viên', price: 5000, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Concor 5mg (Bisoprolol)', unit: 'Viên', price: 6500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Metformin 850mg (Glucophage)', unit: 'Viên', price: 3200, defaultNote: 'Uống ngay sau ăn', m: 1, n: 0, a: 0, e: 1 },
+  { name: 'Glucophage XR 750mg', unit: 'Viên', price: 5500, defaultNote: 'Uống sau ăn tối', m: 0, n: 0, a: 0, e: 1 },
+  { name: 'Diamicron MR 30mg', unit: 'Viên', price: 4200, defaultNote: 'Uống trước ăn sáng 15 phút', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Esomeprazol 40mg (Nexium)', unit: 'Viên', price: 11000, defaultNote: 'Uống trước ăn sáng 30 phút', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Phosphalugel (Sữa dạ dày)', unit: 'Gói', price: 6500, defaultNote: 'Uống sau ăn 1 giờ hoặc khi đau', m: 0, n: 1, a: 0, e: 1 },
+  { name: 'Domperidon 10mg (Motilium)', unit: 'Viên', price: 2500, defaultNote: 'Uống trước ăn 15 phút', m: 1, n: 1, a: 0, e: 1 },
+  { name: 'Betahistin 16mg (Betaserc)', unit: 'Viên', price: 4800, defaultNote: 'Uống sau ăn no', m: 1, n: 0, a: 0, e: 1 },
+  { name: 'Betaserc 24mg', unit: 'Viên', price: 7500, defaultNote: 'Uống sau ăn no', m: 1, n: 0, a: 0, e: 1 },
+  { name: 'Ginkgo Biloba 120mg (Tanakan)', unit: 'Viên', price: 5000, defaultNote: 'Uống sau ăn', m: 1, n: 0, a: 1, e: 0 },
+  { name: 'Medrol 4mg (Methylprednisolon)', unit: 'Viên', price: 2500, defaultNote: 'Uống sau ăn sáng no', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Medrol 16mg (Methylprednisolon)', unit: 'Viên', price: 6000, defaultNote: 'Uống sau ăn sáng no', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Celecoxib 200mg (Celebrex)', unit: 'Viên', price: 7500, defaultNote: 'Uống sau ăn no', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Glucosamin Sulfate 1500mg', unit: 'Gói', price: 9000, defaultNote: 'Pha nước uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Fexofenadin 180mg (Telfast)', unit: 'Viên', price: 5500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Desloratadin 5mg (Aerius)', unit: 'Viên', price: 7500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Augmentin 1g (Amox/Clav)', unit: 'Viên', price: 16000, defaultNote: 'Uống ngay sau ăn no', m: 1, n: 0, a: 0, e: 1 },
+  { name: 'Cefixim 200mg', unit: 'Viên', price: 8000, defaultNote: 'Uống sau ăn sáng - tối', m: 1, n: 0, a: 0, e: 1 },
+  { name: 'Febuxostat 40mg (Feburic)', unit: 'Viên', price: 8500, defaultNote: 'Uống sau ăn sáng', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Lipanthyl 145mg (Fenofibrat)', unit: 'Viên', price: 12500, defaultNote: 'Uống sau ăn chính', m: 1, n: 0, a: 0, e: 0 },
+  { name: 'Daflon 500mg', unit: 'Viên', price: 4500, defaultNote: 'Uống sau ăn trưa - tối', m: 0, n: 1, a: 0, e: 1 },
+  { name: 'Paracetamol 500mg', unit: 'Viên', price: 1500, defaultNote: 'Uống sau ăn khi đau/sốt > 38.5 độ', m: 1, n: 1, a: 0, e: 1 },
+  { name: 'Vitamin 3B (B1-B6-B12)', unit: 'Viên', price: 2000, defaultNote: 'Uống sau ăn sáng - trưa', m: 1, n: 1, a: 0, e: 0 }
+];
+
+// Danh mục xét nghiệm / X-Quang mẫu
+export const LAB_CATALOG = [
+  { type: 'Thử máu', name: 'Công thức máu 18 thông số (CBC)', cost: 120000 },
+  { type: 'Thử máu', name: 'Xét nghiệm mỡ máu (Cholesterol, Triglyceride, HDL, LDL)', cost: 220000 },
+  { type: 'Thử máu', name: 'Đường huyết đói (Glucose) & HbA1c', cost: 250000 },
+  { type: 'Thử máu', name: 'Acid Uric máu & Chức năng gan thận (AST, ALT, Creatinin)', cost: 240000 },
+  { type: 'Chụp X-Quang', name: 'X-Quang tim phổi thẳng kỹ thuật số', cost: 160000 },
+  { type: 'Chụp X-Quang', name: 'X-Quang cột sống thắt lưng (Thẳng - Nghiêng)', cost: 190000 },
+  { type: 'Chụp X-Quang', name: 'X-Quang khớp gối (Thẳng - Nghiêng)', cost: 180000 },
+  { type: 'Siêu âm', name: 'Siêu âm bụng tổng quát màu', cost: 200000 },
+  { type: 'Điện tim', name: 'Điện tâm đồ (ECG) 12 chuyển đạo', cost: 100000 },
+  { type: 'Xét nghiệm', name: 'Test hơi thở tìm vi khuẩn H.Pylori (C13)', cost: 350000 }
+];
+
 // Cơ sở dữ liệu 522 bệnh nhân & 2.321 lượt khám đã nạp từ clinicData.js
 
 // Hàm hỗ trợ định dạng tiền tệ VNĐ
@@ -1751,7 +1798,7 @@ function doPost(e) {
                                       >
                                         {p.name}
                                       </button>
-                                      {p.imageFolderUrl && p.imageFolderUrl.trim().length > 0 && !p.imageFolderUrl.includes('?q=') && (
+                                      {Boolean(p.imageFolderUrl && p.imageFolderUrl.trim().length > 0) && (
                                         <a
                                           href={p.imageFolderUrl}
                                           target="_blank"
@@ -1990,7 +2037,7 @@ function doPost(e) {
                           className={`${WIN_INPUT} font-mono text-[12.5px] bg-white`}
                         />
                         <div className="flex items-center gap-1.5 shrink-0">
-                          {selectedPatient.imageFolderUrl && selectedPatient.imageFolderUrl.trim().length > 0 && !selectedPatient.imageFolderUrl.includes('?q=') ? (
+                          {Boolean(selectedPatient.imageFolderUrl && selectedPatient.imageFolderUrl.trim().length > 0) ? (
                             <button
                               type="button"
                               onClick={() => {
@@ -2280,7 +2327,7 @@ function doPost(e) {
                               const totalQty =
                                 daily > 0 ? daily * (Number(item.days) || 1) : Number(item.days) || 1;
                               return (
-                                <tr key={item.id} className="border-b border-[#E2EAF4] hover:bg-[#E8F1FC]">
+                                <tr key={item.id || idx} className="border-b border-[#E2EAF4] hover:bg-[#E8F1FC]">
                                   <td className="py-1 px-2 border-r border-[#E2EAF4] text-center">{idx + 1}</td>
                                   <td className="py-1 px-2 border-r border-[#E2EAF4] font-bold text-[#00156E]">
                                     {item.drugName}
@@ -3247,7 +3294,7 @@ function doPost(e) {
                 </button>
               </div>
 
-              <div className="bg-[#E4ECF7] px-3 pt-2 border-b border-[#8BA8C7] flex items-center gap-1 overflow-x-auto">
+              <div className="bg-[#E4ECF7] px-3 pt-3.5 pb-0 border-b-2 border-[#8BA8C7] flex items-end gap-1.5 overflow-x-auto min-h-[46px]">
                 {[
                   { id: 'Benh_Nhan', label: 'Sheet 1: Benh_Nhan' },
                   { id: 'Luot_Kham', label: 'Sheet 2: Luot_Kham' },
@@ -3260,10 +3307,10 @@ function doPost(e) {
                     key={t.id}
                     type="button"
                     onClick={() => setSheetPreviewTab(t.id)}
-                    className={`px-3 py-1.5 text-xs border-t border-x border-[#8BA8C7] ${
+                    className={`px-3.5 py-2 text-[12.5px] border-t-2 border-x rounded-t-[4px] font-bold transition whitespace-nowrap leading-normal cursor-pointer ${
                       sheetPreviewTab === t.id
-                        ? 'bg-white font-bold text-[#00156E]'
-                        : 'bg-[#DCE6F4] text-slate-700'
+                        ? 'bg-white text-[#00156E] border-[#003C74] -mb-[2px] pb-2.5 shadow-xs'
+                        : 'bg-[#DCE6F4] hover:bg-[#EEF4FC] text-slate-700 border-[#8BA8C7]'
                     }`}
                   >
                     {t.label}
@@ -3290,7 +3337,19 @@ function doPost(e) {
                       {patients.map((p) => (
                         <tr key={p.id}>
                           <td className="border border-slate-300 p-1.5 font-mono font-bold">{p.id}</td>
-                          <td className="border border-slate-300 p-1.5 font-semibold">{p.name}</td>
+                          <td className="border border-slate-300 p-1.5">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setIsSheetModalOpen(false);
+                                handleSelectPatientFromList(p.id, p.isArchived);
+                              }}
+                              className="font-bold text-[#00156E] hover:underline hover:text-[#0055EA] text-left cursor-pointer bg-transparent border-0 p-0 text-[12.5px]"
+                              title="Bấm để đóng bảng và mở chi tiết hồ sơ bệnh án (Tab 2)"
+                            >
+                              {p.name}
+                            </button>
+                          </td>
                           <td className="border border-slate-300 p-1.5">{p.dob} ({p.gender})</td>
                           <td className="border border-slate-300 p-1.5">
                             <div>{p.phone}</div>
